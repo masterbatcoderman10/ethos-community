@@ -25,6 +25,10 @@ const Icon = ({ name }) => {
       return <svg {...props}><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-2 6a3 3 0 0 0 6 0l-2-6"/><path d="M19 7l-2 6a3 3 0 0 0 6 0l-2-6"/></svg>;
     case "arrow":
       return <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>;
+    case "hamburger":
+      return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>;
+    case "close":
+      return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
     default: return null;
   }
 };
@@ -135,6 +139,7 @@ const VERTICALS = [
 // ─────── App ─────────────────────────────────────────────────────────────
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     document.body.dataset.pair = t.typePair;
@@ -152,7 +157,7 @@ function App() {
       {/* NAV */}
       <nav className="nav">
         <div className="container nav-inner">
-          <a href="#" className="logo"><span className="logo-mark"></span> Ethos Community™</a>
+          <a href="#" className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
           <div className="nav-links">
             <a href="#verticals">Services</a>
             <a href="#impact">Impact</a>
@@ -160,10 +165,23 @@ function App() {
             <a href="#founder">About</a>
           </div>
           <div className="nav-cta">
-            <a href="supporter-dashboard.html" className="btn btn-ghost">Dashboard</a>
-            <button className="btn btn-primary" onClick={onCTA("Support a Case")}>Support a Case <Icon name="arrow"/></button>
+            <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
+              <Icon name={menuOpen ? "close" : "hamburger"}/>
+            </button>
           </div>
         </div>
+        {menuOpen && (
+          <div className="nav-mobile-menu">
+            <a href="#verticals" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Services</a>
+            <a href="#impact" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Impact</a>
+            <a href="#how" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>How it works</a>
+            <a href="#founder" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>About</a>
+            <div className="nav-mobile-ctas">
+              <a href="supporter-dashboard.html" className="btn btn-ghost btn-sm">Dashboard</a>
+              <button className="btn btn-primary btn-sm" onClick={onCTA("Support a Case")}>Support a Case <Icon name="arrow"/></button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* HERO */}

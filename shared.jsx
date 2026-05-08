@@ -30,6 +30,8 @@ const Icon = ({ name, size = 24 }) => {
     case "users": return <svg {...props}><circle cx="9" cy="8" r="3"/><circle cx="15" cy="8" r="3"/><path d="M4 18c0-2.5 2-4 5-4s5 1.5 5 4"/><path d="M10 18c0-2.5 2-4 5-4s5 1.5 5 4"/></svg>;
     case "heart": return <svg {...props}><path d="M12 21s-8-5-8-12a4 4 0 0 1 8-2 4 4 0 0 1 8 2c0 7-8 12-8 12z"/></svg>;
     case "menu": return <svg {...props}><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>;
+    case "hamburger": return <svg {...props}><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>;
+    case "close": return <svg {...props}><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>;
     case "more": return <svg {...props}><circle cx="6" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/></svg>;
     case "plus": return <svg {...props}><path d="M12 5v14"/><path d="M5 12h14"/></svg>;
     case "external": return <svg {...props}><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M19 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6"/></svg>;
@@ -96,6 +98,7 @@ const showToast = (msg) => {
 };
 
 const Nav = ({ active }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const links = [
     { href: "supporter-dashboard.html", label: "Dashboard", key: "dashboard" },
     { href: "education.html", label: "Education", key: "education" },
@@ -106,17 +109,29 @@ const Nav = ({ active }) => {
   return (
     <nav className="nav">
       <div className="container nav-inner">
-        <a href="Landing Page.html" className="logo"><span className="logo-mark"></span> Ethos Community™</a>
+        <a href="Landing Page.html" className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
         <div className="nav-links">
           {links.map(l => (
             <a key={l.key} href={l.href} className={active === l.key ? "active" : ""}>{l.label}</a>
           ))}
         </div>
         <div className="nav-cta">
-          <button className="btn btn-soft sm" onClick={() => showToast("Notifications — coming next")}><Icon name="bell" size={16}/></button>
-          <a href="supporter-dashboard.html" className="btn btn-primary sm">Support a Case <Icon name="arrow"/></a>
+          <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
+            <Icon name={menuOpen ? "close" : "hamburger"}/>
+          </button>
         </div>
       </div>
+      {menuOpen && (
+        <div className="nav-mobile-menu">
+          {links.map(l => (
+            <a key={l.key} href={l.href} className={`nav-mobile-link ${active === l.key ? "active" : ""}`} onClick={() => setMenuOpen(false)}>{l.label}</a>
+          ))}
+          <div className="nav-mobile-ctas">
+            <button className="btn btn-soft btn-sm" onClick={() => { setMenuOpen(false); showToast("Notifications — coming next"); }}><Icon name="bell" size={16}/></button>
+            <a href="supporter-dashboard.html" className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Support a Case <Icon name="arrow"/></a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
