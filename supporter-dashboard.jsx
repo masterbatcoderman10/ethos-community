@@ -105,7 +105,7 @@ function App() {
 
             {filtered.map((c, i) => (
               <Reveal key={c.id} delay={i * 50}>
-                <a href="beneficiary-profile.html" className="case-row" style={{display:"grid"}}>
+                <div className="case-row" style={{display:"grid",cursor:"pointer"}} onClick={() => c.id === "K-2384" ? window.location.href = "beneficiary-profile.html" : showToast("Full case profiles — coming next")} role="button">
                   <div className="ava-wrap" style={c.img ? {background:`url(${c.img}) center/cover`} : {}}></div>
                   <div>
                     <div className="vert"><Icon name={VERT_ICON[c.verticalKey]} size={14} style={{verticalAlign:"-3px"}}/> {c.vert}</div>
@@ -126,7 +126,7 @@ function App() {
                     <span className={`tag ${c.status}`}><span className="dot"></span> {c.status === "complete" ? "Complete" : c.status === "verified" ? "Verified · Active" : c.status === "urgent" ? `Urgent · ${c.urgency}` : "Pending verification"}</span>
                   </div>
                   <div style={{textAlign:"right",color:"var(--green)"}}><Icon name="arrow-up-right" size={20}/></div>
-                </a>
+                </div>
               </Reveal>
             ))}
           </div>

@@ -149,7 +149,7 @@ function App() {
           </Reveal>
           {STUDENTS.map((s, i) => (
             <Reveal key={i} delay={i * 40}>
-              <a href="beneficiary-profile.html" className="student-row" style={{display:"grid"}}>
+              <div className="student-row" style={{display:"grid",cursor:"pointer"}} onClick={() => s.name === "Maryam A." ? window.location.href = "beneficiary-profile.html" : showToast("Full student profiles — coming next")} role="button">
                 <div className="avatar initials">{s.initials}</div>
                 <div>
                   <h4 className="nm">{s.name}</h4>
@@ -161,7 +161,7 @@ function App() {
                   <div className="progress"><div className="progress-fill" style={{width:`${s.progress}%`}}></div></div>
                 </div>
                 <div style={{textAlign:"right",color:"var(--green)"}}><Icon name="arrow-up-right" size={20}/></div>
-              </a>
+              </div>
             </Reveal>
           ))}
         </div>
