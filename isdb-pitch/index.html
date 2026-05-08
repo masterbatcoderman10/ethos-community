@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,400&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --cream: #f7f4ee;
+      --cream-2: #efeae0;
+      --ink: #141512;
+      --ink-soft: #3a3a36;
+      --muted: #7a7568;
+      --line: #e2dccf;
+      --green: #0e3b2e;
+      --green-2: #0a2a21;
+      --gold: #c9a961;
+      --gold-2: #a8884a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: var(--green-2);
+    }
+    .clip {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    /* ── Scene 1: Opening ─────────────────────────────────────────── */
+    #s1 {
+      background: var(--green-2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 160px;
+    }
+    #s1 .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 20px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+    #s1 .headline {
+      font-family: "Newsreader", serif;
+      font-size: 112px;
+      line-height: 1.0;
+      color: var(--cream);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      max-width: 1100px;
+    }
+    #s1 .headline em { font-style: italic; color: var(--gold); }
+    #s1 .sub {
+      font-family: "Manrope", sans-serif;
+      font-size: 26px;
+      color: rgba(247,244,238,0.6);
+      margin-top: 40px;
+      font-weight: 300;
+      max-width: 760px;
+      line-height: 1.55;
+    }
+    #s1 .badge {
+      margin-top: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid rgba(201,169,97,0.35);
+      border-radius: 999px;
+      padding: 14px 26px;
+    }
+    #s1 .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+    #s1 .badge-text {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    #s1 .aside {
+      position: absolute;
+      right: 200px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 44px;
+    }
+    #s1 .aside-stat { text-align: center; }
+    #s1 .aside-num {
+      font-family: "Newsreader", serif;
+      font-size: 68px;
+      color: var(--gold);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    #s1 .aside-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(201,169,97,0.55);
+      margin-top: 10px;
+    }
+    #s1 .aside-div { width: 1px; height: 36px; background: rgba(201,169,97,0.25); }
+    #s1 .vert-line {
+      position: absolute;
+      right: 420px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 320px;
+      background: linear-gradient(to bottom, transparent, rgba(201,169,97,0.4), transparent);
+    }
+
+    /* ── Scene 2: Problem ─────────────────────────────────────────── */
+    #s2 {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 160px;
+    }
+    #s2 .sec-num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+      margin-bottom: 28px;
+    }
+    #s2 .headline {
+      font-family: "Newsreader", serif;
+      font-size: 80px;
+      line-height: 1.05;
+      color: var(--ink);
+      font-weight: 300;
+      letter-spacing: -0.022em;
+      max-width: 880px;
+    }
+    #s2 .headline em { font-style: italic; color: var(--green); }
+    #s2 .body {
+      font-family: "Manrope", sans-serif;
+      font-size: 24px;
+      color: var(--ink-soft);
+      margin-top: 36px;
+      max-width: 720px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    #s2 .stats {
+      position: absolute;
+      right: 160px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 52px;
+    }
+    #s2 .stat-block { border-left: 3px solid var(--gold); padding-left: 32px; }
+    #s2 .stat-big {
+      font-family: "Newsreader", serif;
+      font-size: 88px;
+      color: var(--ink);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.025em;
+    }
+    #s2 .stat-sub {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* ── Scene 3: Solution ────────────────────────────────────────── */
+    #s3 {
+      background: var(--green);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 160px;
+    }
+    #s3 .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    #s3 .headline {
+      font-family: "Newsreader", serif;
+      font-size: 96px;
+      line-height: 1.0;
+      color: var(--cream);
+      font-weight: 300;
+      letter-spacing: -0.022em;
+      max-width: 1060px;
+    }
+    #s3 .headline em { font-style: italic; color: var(--gold); }
+    #s3 .sub {
+      font-family: "Manrope", sans-serif;
+      font-size: 26px;
+      color: rgba(247,244,238,0.65);
+      margin-top: 32px;
+      max-width: 780px;
+      line-height: 1.55;
+      font-weight: 300;
+    }
+    #s3 .pillars {
+      position: absolute;
+      bottom: 100px;
+      left: 160px;
+      right: 160px;
+      display: flex;
+      gap: 2px;
+    }
+    #s3 .pillar {
+      flex: 1;
+      background: rgba(247,244,238,0.05);
+      border: 1px solid rgba(247,244,238,0.1);
+      padding: 32px 28px;
+    }
+    #s3 .pillar-bar { width: 36px; height: 2px; background: var(--gold); margin-bottom: 18px; }
+    #s3 .pillar-title {
+      font-family: "Newsreader", serif;
+      font-size: 26px;
+      color: var(--cream);
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    #s3 .pillar-body {
+      font-family: "Manrope", sans-serif;
+      font-size: 15px;
+      color: rgba(247,244,238,0.55);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── Scene 4: Verticals ───────────────────────────────────────── */
+    #s4 {
+      background: var(--cream);
+      padding: 72px 160px 80px;
+      display: flex;
+      flex-direction: column;
+    }
+    #s4 .head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    #s4 .sec-num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+      margin-bottom: 10px;
+    }
+    #s4 .title {
+      font-family: "Newsreader", serif;
+      font-size: 54px;
+      line-height: 1.05;
+      color: var(--ink);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+    #s4 .sub {
+      font-family: "Manrope", sans-serif;
+      font-size: 19px;
+      color: var(--ink-soft);
+      max-width: 520px;
+      line-height: 1.55;
+      font-weight: 300;
+      text-align: right;
+    }
+    #s4 .grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2px;
+      flex: 1;
+    }
+    #s4 .card {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    #s4 .card-num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+    #s4 .card-title {
+      font-family: "Newsreader", serif;
+      font-size: 22px;
+      color: var(--ink);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      flex: 1;
+    }
+    #s4 .card-tags { display: flex; flex-direction: column; gap: 6px; }
+    #s4 .tag {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--cream-2);
+      color: var(--ink-soft);
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* ── Scene 5: Impact ──────────────────────────────────────────── */
+    #s5 {
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 160px;
+    }
+    #s5 .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+    #s5 .title {
+      font-family: "Newsreader", serif;
+      font-size: 68px;
+      color: var(--cream);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 52px;
+    }
+    #s5 .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(247,244,238,0.07);
+      border: 1px solid rgba(247,244,238,0.07);
+    }
+    #s5 .stat {
+      background: rgba(20,21,18,0.97);
+      padding: 44px 32px;
+      text-align: center;
+    }
+    #s5 .stat-num {
+      font-family: "Newsreader", serif;
+      font-size: 80px;
+      color: var(--gold);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.025em;
+    }
+    #s5 .stat-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.4);
+      margin-top: 14px;
+    }
+
+    /* ── Scene 6: Maryam ──────────────────────────────────────────── */
+    #s6 { background: var(--green-2); display: flex; }
+    #s6 .photo {
+      width: 50%;
+      height: 1080px;
+      background: linear-gradient(155deg, #1a4a3a 0%, #0a2a21 60%, #141512 100%);
+      flex-shrink: 0;
+      position: relative;
+    }
+    #s6 .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,42,33,0.85) 0%, transparent 55%);
+    }
+    #s6 .photo-label {
+      position: absolute;
+      bottom: 48px;
+      left: 52px;
+      right: 52px;
+    }
+    #s6 .photo-name {
+      font-family: "Newsreader", serif;
+      font-size: 52px;
+      color: var(--cream);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+    #s6 .photo-sub {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 10px;
+    }
+    #s6 .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 88px;
+      gap: 24px;
+    }
+    #s6 .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    #s6 .quote {
+      font-family: "Newsreader", serif;
+      font-size: 34px;
+      line-height: 1.3;
+      color: var(--cream);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+    #s6 .body {
+      font-family: "Manrope", sans-serif;
+      font-size: 20px;
+      color: rgba(247,244,238,0.6);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    #s6 .case-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(201,169,97,0.22);
+    }
+    #s6 .cs-num {
+      font-family: "Newsreader", serif;
+      font-size: 52px;
+      color: var(--gold);
+      font-weight: 300;
+      line-height: 1;
+    }
+    #s6 .cs-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(201,169,97,0.55);
+      margin-top: 10px;
+    }
+
+    /* ── Scene 7: Founder ─────────────────────────────────────────── */
+    #s7 { background: var(--cream-2); display: flex; }
+    #s7 .photo {
+      width: 40%;
+      height: 1080px;
+      background: linear-gradient(160deg, #cdc3ad 0%, #b8ad98 100%);
+      flex-shrink: 0;
+      position: relative;
+    }
+    #s7 .photo-label {
+      position: absolute;
+      top: 52px;
+      left: 48px;
+    }
+    #s7 .photo-num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(20,21,18,0.4);
+    }
+    #s7 .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 96px;
+      gap: 24px;
+    }
+    #s7 .sec-num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+    #s7 .quote {
+      font-family: "Newsreader", serif;
+      font-size: 38px;
+      line-height: 1.28;
+      color: var(--ink);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+    #s7 .name {
+      font-family: "Newsreader", serif;
+      font-size: 28px;
+      color: var(--ink);
+      font-weight: 300;
+    }
+    #s7 .title-line {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+    #s7 .creds { display: flex; flex-direction: column; gap: 10px; }
+    #s7 .cred {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      padding: 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* ── Scene 8: IsDB Alignment ──────────────────────────────────── */
+    #s8 {
+      background: var(--green);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 160px;
+    }
+    #s8 .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+    #s8 .headline {
+      font-family: "Newsreader", serif;
+      font-size: 88px;
+      line-height: 1.0;
+      color: var(--cream);
+      font-weight: 300;
+      letter-spacing: -0.022em;
+      max-width: 1060px;
+    }
+    #s8 .headline em { font-style: italic; color: var(--gold); }
+    #s8 .pillars {
+      display: flex;
+      gap: 80px;
+      margin-top: 64px;
+    }
+    #s8 .pillar { display: flex; flex-direction: column; gap: 12px; }
+    #s8 .pillar-bar { width: 32px; height: 2px; background: var(--gold); }
+    #s8 .pillar-title {
+      font-family: "Newsreader", serif;
+      font-size: 30px;
+      color: var(--cream);
+      font-weight: 300;
+    }
+    #s8 .pillar-body {
+      font-family: "Manrope", sans-serif;
+      font-size: 16px;
+      color: rgba(247,244,238,0.58);
+      line-height: 1.65;
+      font-weight: 300;
+      max-width: 360px;
+    }
+
+    /* ── Scene 9: CTA ─────────────────────────────────────────────── */
+    #s9 {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #s9 .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Newsreader", serif;
+      font-size: 24px;
+      color: var(--ink);
+      font-weight: 300;
+      margin-bottom: 44px;
+    }
+    #s9 .logo-ring {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--green);
+      position: relative;
+      flex-shrink: 0;
+    }
+    #s9 .logo-inner {
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+    }
+    #s9 .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+      margin-bottom: 28px;
+    }
+    #s9 .headline {
+      font-family: "Newsreader", serif;
+      font-size: 96px;
+      line-height: 1.0;
+      color: var(--ink);
+      font-weight: 300;
+      letter-spacing: -0.022em;
+      max-width: 1100px;
+    }
+    #s9 .headline em { font-style: italic; color: var(--green); }
+    #s9 .sub {
+      font-family: "Manrope", sans-serif;
+      font-size: 24px;
+      color: var(--ink-soft);
+      margin-top: 28px;
+      max-width: 760px;
+      line-height: 1.55;
+      font-weight: 300;
+    }
+    #s9 .cta-btn {
+      margin-top: 52px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--green);
+      color: var(--cream);
+      padding: 22px 48px;
+      border-radius: 999px;
+      font-family: "Manrope", sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    #s9 .url {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"
+       data-composition-id="main"
+       data-start="0"
+       data-duration="60"
+       data-width="1920"
+       data-height="1080">
+
+    <!-- ── Scene 1: Opening (0–7.5s) ─────────────────────────────── -->
+    <div id="s1" class="clip"
+         data-start="0" data-duration="7.5" data-track-index="1">
+      <div id="s1-eyebrow" class="eyebrow">Ethos Community™ · Kushian™ Sudan Pilot</div>
+      <div id="s1-headline" class="headline">
+        A diaspora<br/>rebuilding Sudan,<br/><em>one family at a time.</em>
+      </div>
+      <div id="s1-sub" class="sub">
+        Connection-as-a-Service linking Sudanese diaspora supporters with displaced families, students, women professionals and SMEs.
+      </div>
+      <div id="s1-badge" class="badge">
+        <div class="badge-dot"></div>
+        <div class="badge-text">IsDB Group Innovation &amp; Startups Competition 2026</div>
+      </div>
+      <div id="s1-vert-line" class="vert-line"></div>
+      <div id="s1-aside" class="aside">
+        <div class="aside-stat">
+          <div class="aside-num">14</div>
+          <div class="aside-label">Countries</div>
+        </div>
+        <div class="aside-div"></div>
+        <div class="aside-stat">
+          <div class="aside-num">6</div>
+          <div class="aside-label">Verticals</div>
+        </div>
+        <div class="aside-div"></div>
+        <div class="aside-stat">
+          <div class="aside-num">2026</div>
+          <div class="aside-label">Pilot Cohort</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scene 2: Problem (7–14.5s) ───────────────────────────── -->
+    <div id="s2" class="clip"
+         data-start="7" data-duration="7.5" data-track-index="2">
+      <div id="s2-secnum" class="sec-num">§ 01 / The Problem</div>
+      <div id="s2-headline" class="headline">
+        Sudan's crisis demands<br/><em>more than aid.</em><br/>It demands infrastructure.
+      </div>
+      <div id="s2-body" class="body">
+        12 million displaced. 200,000+ girls forced out of school. An educated diaspora with capital and conviction — but no trusted channel to direct it.
+      </div>
+      <div class="stats">
+        <div id="s2-sb1" class="stat-block">
+          <div class="stat-big">12M</div>
+          <div class="stat-sub">People Displaced</div>
+        </div>
+        <div id="s2-sb2" class="stat-block">
+          <div class="stat-big">200K+</div>
+          <div class="stat-sub">Girls Out of School</div>
+        </div>
+        <div id="s2-sb3" class="stat-block">
+          <div class="stat-big">$0</div>
+          <div class="stat-sub">Transparent Infrastructure</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scene 3: Solution (14–22.5s) ─────────────────────────── -->
+    <div id="s3" class="clip"
+         data-start="14" data-duration="8.5" data-track-index="3">
+      <div id="s3-eyebrow" class="eyebrow">§ 02 / The Solution</div>
+      <div id="s3-headline" class="headline">
+        Kushian™ by<br/><em>Ethos Community™</em>
+      </div>
+      <div id="s3-sub" class="sub">
+        A Connection-as-a-Service platform. Verified beneficiaries. Partner-delivered services. Traceable impact for every pledge.
+      </div>
+      <div class="pillars">
+        <div id="s3-p1" class="pillar">
+          <div class="pillar-bar"></div>
+          <div class="pillar-title">Verified</div>
+          <div class="pillar-body">KYC-grade beneficiary identity. Partner attestation at every milestone.</div>
+        </div>
+        <div id="s3-p2" class="pillar">
+          <div class="pillar-bar"></div>
+          <div class="pillar-title">Purpose-Linked</div>
+          <div class="pillar-body">Every pledge tied to a specific need — tuition, hospitalization, working capital.</div>
+        </div>
+        <div id="s3-p3" class="pillar">
+          <div class="pillar-bar"></div>
+          <div class="pillar-title">Partner-Delivered</div>
+          <div class="pillar-body">Licensed partners execute. Ethos never holds funds. Full audit trail.</div>
+        </div>
+        <div id="s3-p4" class="pillar">
+          <div class="pillar-bar"></div>
+          <div class="pillar-title">Sharia-Compliant</div>
+          <div class="pillar-body">Takaful workflows, Sharia-compliance reviews, and Islamic finance principles throughout.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scene 4: Six Verticals (22–33.5s) ────────────────────── -->
+    <div id="s4" class="clip"
+         data-start="22" data-duration="11.5" data-track-index="4">
+      <div class="head">
+        <div>
+          <div id="s4-secnum" class="sec-num">§ 03 / Six Verticals, Partner-Delivered</div>
+          <div id="s4-title" class="title">Six verticals,<br/>partner-delivered.</div>
+        </div>
+        <div id="s4-sub" class="sub">
+          Each vertical operated through verified clinics, universities, advisory firms, Takaful operators and legal counsel.
+        </div>
+      </div>
+      <div class="grid">
+        <div id="s4-c1" class="card">
+          <div class="card-num">01</div>
+          <div class="card-title">Education, CPD &amp; Mentorship</div>
+          <div class="card-tags">
+            <span class="tag">CPD</span>
+            <span class="tag">Mentorship</span>
+          </div>
+        </div>
+        <div id="s4-c2" class="card">
+          <div class="card-num">02</div>
+          <div class="card-title">Healthcare &amp; Takaful Access</div>
+          <div class="card-tags">
+            <span class="tag">Clinics</span>
+            <span class="tag">Takaful</span>
+          </div>
+        </div>
+        <div id="s4-c3" class="card">
+          <div class="card-num">03</div>
+          <div class="card-title">Purpose-Linked Family Support</div>
+          <div class="card-tags">
+            <span class="tag">Pledges</span>
+            <span class="tag">Verified</span>
+          </div>
+        </div>
+        <div id="s4-c4" class="card">
+          <div class="card-num">04</div>
+          <div class="card-title">Women Empowerment &amp; Workforce</div>
+          <div class="card-tags">
+            <span class="tag">Skills</span>
+            <span class="tag">Returnship</span>
+          </div>
+        </div>
+        <div id="s4-c5" class="card">
+          <div class="card-num">05</div>
+          <div class="card-title">SME Recovery Finance &amp; Advisory</div>
+          <div class="card-tags">
+            <span class="tag">Advisory</span>
+            <span class="tag">Recovery</span>
+          </div>
+        </div>
+        <div id="s4-c6" class="card">
+          <div class="card-num">06</div>
+          <div class="card-title">Legal &amp; Professional Services</div>
+          <div class="card-tags">
+            <span class="tag">Legal</span>
+            <span class="tag">Sharia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scene 5: Impact (33–41.5s) ───────────────────────────── -->
+    <div id="s5" class="clip"
+         data-start="33" data-duration="8.5" data-track-index="5">
+      <div id="s5-eyebrow" class="eyebrow">§ 04 / Pilot Impact · Demo Cohort 2026</div>
+      <div id="s5-title" class="title">Measurable outcomes,<br/>not just outputs.</div>
+      <div id="s5-grid" class="grid">
+        <div class="stat">
+          <div id="s5-n1" class="stat-num">1,247</div>
+          <div class="stat-label">Diaspora Supporters</div>
+        </div>
+        <div class="stat">
+          <div id="s5-n2" class="stat-num">3,892</div>
+          <div class="stat-label">Lives Reached</div>
+        </div>
+        <div class="stat">
+          <div id="s5-n3" class="stat-num">486</div>
+          <div class="stat-label">Women Onboarded</div>
+        </div>
+        <div class="stat">
+          <div id="s5-n4" class="stat-num">142</div>
+          <div class="stat-label">SMEs Advised</div>
+        </div>
+        <div class="stat">
+          <div id="s5-n5" class="stat-num">14</div>
+          <div class="stat-label">Countries Served</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scene 6: Maryam Case Study (41–48.5s) ────────────────── -->
+    <div id="s6" class="clip"
+         data-start="41" data-duration="7.5" data-track-index="6">
+      <div id="s6-photo" class="photo">
+        <div class="photo-overlay"></div>
+        <div id="s6-photo-label" class="photo-label">
+          <div class="photo-name">Maryam, 14</div>
+          <div class="photo-sub">Omdurman → Cairo · Case #K-2384 · Verified</div>
+        </div>
+      </div>
+      <div class="content">
+        <div id="s6-eyebrow" class="eyebrow">Case Study · Education Vertical</div>
+        <div id="s6-quote" class="quote">
+          "Maryam was one of 200,000 Sudanese girls out of school. Twelve diaspora supporters changed that."
+        </div>
+        <div id="s6-body" class="body">
+          Displaced from Omdurman. Twelve supporters across Riyadh, Doha, Manchester and Toronto pledged through Kushian™ — coordinated by a verified Cairo school partner.
+        </div>
+        <div id="s6-stats" class="case-stats">
+          <div>
+            <div class="cs-num">12</div>
+            <div class="cs-label">Supporters</div>
+          </div>
+          <div>
+            <div class="cs-num">$3,840</div>
+            <div class="cs-label">Pledged</div>
+          </div>
+          <div>
+            <div class="cs-num">9 mo</div>
+            <div class="cs-label">Coverage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scene 7: Founder (48–54.5s) ──────────────────────────── -->
+    <div id="s7" class="clip"
+         data-start="48" data-duration="6.5" data-track-index="7">
+      <div id="s7-photo" class="photo">
+        <div class="photo-label">
+          <div class="photo-num">§ 05 / Founder</div>
+        </div>
+      </div>
+      <div class="content">
+        <div id="s7-secnum" class="sec-num">§ 05 / Founder</div>
+        <blockquote id="s7-quote" class="quote">
+          "The diaspora has the capital and the conviction to rebuild. What was missing was the trusted infrastructure to channel it."
+        </blockquote>
+        <div id="s7-name" class="name">Dr Hatim El Tahir</div>
+        <div id="s7-titleline" class="title-line">
+          Founder · Ethos Community™ · Kushian™ Sudan Pilot
+        </div>
+        <div id="s7-creds" class="creds">
+          <span class="cred">Former Deloitte · Islamic Finance Leadership</span>
+          <span class="cred">AAOIFI Ethics &amp; Governance Committee</span>
+          <span class="cred">IIFM Sukuk Working Group</span>
+          <span class="cred">CISI IFQ Accredited Training</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scene 8: IsDB Alignment (54–58.5s) ───────────────────── -->
+    <div id="s8" class="clip"
+         data-start="54" data-duration="4.5" data-track-index="8">
+      <div id="s8-eyebrow" class="eyebrow">§ 06 / Why IsDB</div>
+      <div id="s8-headline" class="headline">
+        Built on the principles<br/>Islamic development finance<br/><em>was designed for.</em>
+      </div>
+      <div class="pillars">
+        <div id="s8-p1" class="pillar">
+          <div class="pillar-bar"></div>
+          <div class="pillar-title">Takaful-Enabled</div>
+          <div class="pillar-body">Cooperative risk-sharing workflows through licensed Takaful partners across host countries.</div>
+        </div>
+        <div id="s8-p2" class="pillar">
+          <div class="pillar-bar"></div>
+          <div class="pillar-title">Sharia-Compliant</div>
+          <div class="pillar-body">Sharia review at every service layer. No interest. No ambiguity. AAOIFI-aligned governance.</div>
+        </div>
+        <div id="s8-p3" class="pillar">
+          <div class="pillar-bar"></div>
+          <div class="pillar-title">Diaspora Finance</div>
+          <div class="pillar-body">Channelling GCC, UK and US diaspora capital into verified, traceable development outcomes.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scene 9: CTA (58–60s) ─────────────────────────────────── -->
+    <div id="s9" class="clip"
+         data-start="58" data-duration="2" data-track-index="9">
+      <div id="s9-logo" class="logo">
+        <div class="logo-ring"><div class="logo-inner"></div></div>
+        Ethos Community™
+      </div>
+      <div id="s9-eyebrow" class="eyebrow">IsDB Group Innovation &amp; Startups</div>
+      <div id="s9-headline" class="headline">
+        The diaspora is ready.<br/><em>Are you?</em>
+      </div>
+      <div id="s9-sub" class="sub">
+        Join the Kushian™ pilot cohort or request the full pitch deck for the IsDB Group Innovation review.
+      </div>
+      <div id="s9-btn" class="cta-btn">Support a Case →</div>
+      <div id="s9-url" class="url">ethoscommunity.co</div>
+    </div>
+
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // ── Scene 1: Opening (0–7.5s) ────────────────────────────────────
+    tl.set("#s1", { opacity: 1 });
+    tl.from("#s1-eyebrow",   { opacity: 0, x: -24, duration: 0.55, ease: "power2.out" }, 0.3);
+    tl.from("#s1-headline",  { opacity: 0, y: 32,  duration: 0.75, ease: "power3.out" }, 0.55);
+    tl.from("#s1-sub",       { opacity: 0, y: 20,  duration: 0.55, ease: "power2.out" }, 0.95);
+    tl.from("#s1-badge",     { opacity: 0, y: 16,  duration: 0.5,  ease: "power2.out" }, 1.3);
+    tl.from("#s1-vert-line", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.9, ease: "power2.inOut" }, 0.4);
+    tl.from("#s1-aside",     { opacity: 0, x: 20,  duration: 0.7,  ease: "power2.out" }, 0.65);
+    tl.to("#s1",             { opacity: 0, duration: 0.45, ease: "power2.in" }, 7.05);
+
+    // ── Scene 2: Problem (7–14.5s) ───────────────────────────────────
+    tl.set("#s2", { opacity: 1 });
+    tl.from("#s2-secnum",    { opacity: 0, x: -16, duration: 0.4,  ease: "power2.out" }, 7.2);
+    tl.from("#s2-headline",  { opacity: 0, y: 28,  duration: 0.7,  ease: "power3.out" }, 7.4);
+    tl.from("#s2-body",      { opacity: 0, y: 18,  duration: 0.55, ease: "power2.out" }, 7.85);
+    tl.from("#s2-sb1",       { opacity: 0, x: 24,  duration: 0.5,  ease: "power2.out" }, 8.2);
+    tl.from("#s2-sb2",       { opacity: 0, x: 24,  duration: 0.5,  ease: "power2.out" }, 8.55);
+    tl.from("#s2-sb3",       { opacity: 0, x: 24,  duration: 0.5,  ease: "power2.out" }, 8.9);
+    tl.to("#s2",             { opacity: 0, duration: 0.45, ease: "power2.in" }, 14.05);
+
+    // ── Scene 3: Solution (14–22.5s) ─────────────────────────────────
+    tl.set("#s3", { opacity: 1 });
+    tl.from("#s3-eyebrow",   { opacity: 0, y: -14, duration: 0.4,  ease: "power2.out" }, 14.2);
+    tl.from("#s3-headline",  { opacity: 0, y: 28,  duration: 0.7,  ease: "power3.out" }, 14.4);
+    tl.from("#s3-sub",       { opacity: 0, y: 18,  duration: 0.55, ease: "power2.out" }, 14.85);
+    tl.from("#s3-p1",        { opacity: 0, y: 22,  duration: 0.4,  ease: "power2.out" }, 15.5);
+    tl.from("#s3-p2",        { opacity: 0, y: 22,  duration: 0.4,  ease: "power2.out" }, 15.75);
+    tl.from("#s3-p3",        { opacity: 0, y: 22,  duration: 0.4,  ease: "power2.out" }, 16.0);
+    tl.from("#s3-p4",        { opacity: 0, y: 22,  duration: 0.4,  ease: "power2.out" }, 16.25);
+    tl.to("#s3",             { opacity: 0, duration: 0.45, ease: "power2.in" }, 22.05);
+
+    // ── Scene 4: Verticals (22–33.5s) ────────────────────────────────
+    tl.set("#s4", { opacity: 1 });
+    tl.from("#s4-secnum",    { opacity: 0, y: -12, duration: 0.4,  ease: "power2.out" }, 22.2);
+    tl.from("#s4-title",     { opacity: 0, y: 22,  duration: 0.6,  ease: "power3.out" }, 22.4);
+    tl.from("#s4-sub",       { opacity: 0, y: 16,  duration: 0.5,  ease: "power2.out" }, 22.75);
+    tl.from("#s4-c1",        { opacity: 0, y: 26,  duration: 0.4,  ease: "power2.out" }, 23.3);
+    tl.from("#s4-c2",        { opacity: 0, y: 26,  duration: 0.4,  ease: "power2.out" }, 23.6);
+    tl.from("#s4-c3",        { opacity: 0, y: 26,  duration: 0.4,  ease: "power2.out" }, 23.9);
+    tl.from("#s4-c4",        { opacity: 0, y: 26,  duration: 0.4,  ease: "power2.out" }, 24.2);
+    tl.from("#s4-c5",        { opacity: 0, y: 26,  duration: 0.4,  ease: "power2.out" }, 24.5);
+    tl.from("#s4-c6",        { opacity: 0, y: 26,  duration: 0.4,  ease: "power2.out" }, 24.8);
+    tl.to("#s4",             { opacity: 0, duration: 0.45, ease: "power2.in" }, 33.05);
+
+    // ── Scene 5: Impact (33–41.5s) ────────────────────────────────────
+    tl.set("#s5", { opacity: 1 });
+    tl.from("#s5-eyebrow",   { opacity: 0, y: -14, duration: 0.4,  ease: "power2.out" }, 33.2);
+    tl.from("#s5-title",     { opacity: 0, y: 24,  duration: 0.6,  ease: "power3.out" }, 33.4);
+    tl.from("#s5-grid",      { opacity: 0, y: 20,  duration: 0.55, ease: "power2.out" }, 33.85);
+    tl.from("#s5-n1",        { opacity: 0, scale: 0.82, duration: 0.5, ease: "back.out(1.4)" }, 34.3);
+    tl.from("#s5-n2",        { opacity: 0, scale: 0.82, duration: 0.5, ease: "back.out(1.4)" }, 34.6);
+    tl.from("#s5-n3",        { opacity: 0, scale: 0.82, duration: 0.5, ease: "back.out(1.4)" }, 34.9);
+    tl.from("#s5-n4",        { opacity: 0, scale: 0.82, duration: 0.5, ease: "back.out(1.4)" }, 35.2);
+    tl.from("#s5-n5",        { opacity: 0, scale: 0.82, duration: 0.5, ease: "back.out(1.4)" }, 35.5);
+    tl.to("#s5",             { opacity: 0, duration: 0.45, ease: "power2.in" }, 41.05);
+
+    // ── Scene 6: Maryam (41–48.5s) ───────────────────────────────────
+    tl.set("#s6", { opacity: 1 });
+    tl.from("#s6-photo",      { x: -72, opacity: 0, duration: 0.7,  ease: "power3.out" }, 41.2);
+    tl.from("#s6-photo-label",{ y: 18,  opacity: 0, duration: 0.5,  ease: "power2.out" }, 41.75);
+    tl.from("#s6-eyebrow",    { opacity: 0, y: -12, duration: 0.4,  ease: "power2.out" }, 41.5);
+    tl.from("#s6-quote",      { opacity: 0, y: 20,  duration: 0.6,  ease: "power2.out" }, 41.85);
+    tl.from("#s6-body",       { opacity: 0, y: 16,  duration: 0.5,  ease: "power2.out" }, 42.3);
+    tl.from("#s6-stats",      { opacity: 0, y: 16,  duration: 0.5,  ease: "power2.out" }, 42.7);
+    tl.to("#s6",              { opacity: 0, duration: 0.45, ease: "power2.in" }, 48.05);
+
+    // ── Scene 7: Founder (48–54.5s) ──────────────────────────────────
+    tl.set("#s7", { opacity: 1 });
+    tl.from("#s7-photo",     { x: -56, opacity: 0, duration: 0.7,  ease: "power3.out" }, 48.2);
+    tl.from("#s7-secnum",    { opacity: 0, y: -12, duration: 0.4,  ease: "power2.out" }, 48.4);
+    tl.from("#s7-quote",     { opacity: 0, y: 22,  duration: 0.6,  ease: "power2.out" }, 48.65);
+    tl.from("#s7-name",      { opacity: 0, y: 14,  duration: 0.4,  ease: "power2.out" }, 49.15);
+    tl.from("#s7-titleline", { opacity: 0, y: 10,  duration: 0.4,  ease: "power2.out" }, 49.4);
+    tl.from("#s7-creds .cred", {
+      opacity: 0, x: -18, duration: 0.35, ease: "power2.out", stagger: 0.1
+    }, 49.6);
+    tl.to("#s7",             { opacity: 0, duration: 0.45, ease: "power2.in" }, 54.05);
+
+    // ── Scene 8: IsDB Alignment (54–58.5s) ───────────────────────────
+    tl.set("#s8", { opacity: 1 });
+    tl.from("#s8-eyebrow",   { opacity: 0, y: -14, duration: 0.4,  ease: "power2.out" }, 54.2);
+    tl.from("#s8-headline",  { opacity: 0, y: 26,  duration: 0.65, ease: "power3.out" }, 54.4);
+    tl.from("#s8-p1",        { opacity: 0, x: -22, duration: 0.45, ease: "power2.out" }, 55.1);
+    tl.from("#s8-p2",        { opacity: 0, x: -22, duration: 0.45, ease: "power2.out" }, 55.4);
+    tl.from("#s8-p3",        { opacity: 0, x: -22, duration: 0.45, ease: "power2.out" }, 55.7);
+    tl.to("#s8",             { opacity: 0, duration: 0.45, ease: "power2.in" }, 58.05);
+
+    // ── Scene 9: CTA (58–60s) ─────────────────────────────────────────
+    tl.set("#s9", { opacity: 1 });
+    tl.from("#s9-logo",      { opacity: 0, y: -12, duration: 0.4,  ease: "power2.out" }, 58.2);
+    tl.from("#s9-eyebrow",   { opacity: 0, y: -10, duration: 0.35, ease: "power2.out" }, 58.35);
+    tl.from("#s9-headline",  { opacity: 0, y: 22,  duration: 0.5,  ease: "power3.out" }, 58.5);
+    tl.from("#s9-sub",       { opacity: 0, y: 14,  duration: 0.4,  ease: "power2.out" }, 58.85);
+    tl.from("#s9-btn",       { opacity: 0, scale: 0.9, duration: 0.4, ease: "back.out(1.4)" }, 59.15);
+    tl.from("#s9-url",       { opacity: 0, duration: 0.3, ease: "power2.out" }, 59.5);
+
+    window.__timelines["main"] = tl;
+  </script>
+</body>
+</html>
