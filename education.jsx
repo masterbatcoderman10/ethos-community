@@ -33,7 +33,7 @@ function App() {
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <Photo caption="EDUCATION · CPD · MENTORSHIP" overlay="Graduate cohort, Riyadh CPD circle" pill="Photo: Place"/>
+              <Photo caption="EDUCATION · CPD · MENTORSHIP" overlay="Graduate cohort, Riyadh CPD circle" img="images/education-cpd.jpg"/>
             </Reveal>
           </div>
           <div className="vert-stats">

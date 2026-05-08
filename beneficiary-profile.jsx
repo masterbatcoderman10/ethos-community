@@ -44,8 +44,7 @@ function App() {
       <section className="bp-hero">
         <div className="container">
           <div className="bp-hero-grid">
-            <Reveal><div className="bp-photo">
-              <div className="photo-pill">Photo: Place</div>
+            <Reveal><div className="bp-photo" style={{background:"url(images/maryam-school.jpg) center/cover"}}>
               <div className="photo-meta"><span>BENEFICIARY · MARYAM A.</span><span>4 : 5</span></div>
             </div></Reveal>
             <Reveal delay={120}>

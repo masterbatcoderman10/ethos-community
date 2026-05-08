@@ -45,7 +45,7 @@ function App() {
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <Photo caption="SME RECOVERY · ADVISORY" overlay="Dr Afaf Osman's clinic, Sharjah relocation"/>
+              <Photo caption="SME RECOVERY · ADVISORY" overlay="Dr Afaf Osman's clinic, Sharjah relocation" img="images/sme-hero.jpg"/>
             </Reveal>
           </div>
           <div className="vert-stats">
