@@ -8,12 +8,12 @@ const PERSONAS = [
 ];
 
 const CASES = [
-  { id: "K-2384", name: "Maryam A.", desc: "Year 9 student, displaced from Omdurman", vert: "Education", verticalKey: "education", location: "Cairo, EG", since: "Sept 2025", pledged: 3840, target: 4200, progress: 91, status: "verified", supporters: 12, urgency: null },
-  { id: "K-1908", name: "Awad Family", desc: "5 dependents, father seeking work", vert: "Family Support", verticalKey: "family", location: "Kampala, UG", since: "Jul 2025", pledged: 6240, target: 9600, progress: 65, status: "verified", supporters: 8, urgency: null },
-  { id: "K-3014", name: "Dr Afaf O.", desc: "Dental clinic relocation advisory", vert: "SME Recovery", verticalKey: "sme", location: "Sharjah, AE", since: "Jan 2026", pledged: 12400, target: 18000, progress: 69, status: "verified", supporters: 4, urgency: null },
-  { id: "K-2756", name: "Yasmin H.", desc: "Hospitalization · cardiac surgery", vert: "Healthcare", verticalKey: "health", location: "Khartoum, SD", since: "Mar 2026", pledged: 4200, target: 8400, progress: 50, status: "urgent", supporters: 6, urgency: "48h remaining" },
-  { id: "K-2102", name: "Ibrahim Engineering Cohort", desc: "12 graduate engineers · CPD return-track", vert: "Education", verticalKey: "education", location: "Riyadh, SA", since: "Aug 2025", pledged: 14400, target: 14400, progress: 100, status: "complete", supporters: 22, urgency: null },
-  { id: "K-2890", name: "Halima M.", desc: "Women's returnship programme · finance", vert: "Women & Workforce", verticalKey: "women", location: "Doha, QA", since: "Feb 2026", pledged: 1800, target: 3600, progress: 50, status: "pending", supporters: 3, urgency: null }
+  { id: "K-2384", name: "Maryam A.", desc: "Year 9 student, displaced from Omdurman", vert: "Education", verticalKey: "education", location: "Cairo, EG", since: "Sept 2025", pledged: 3840, target: 4200, progress: 91, status: "verified", supporters: 12, urgency: null, img: "images/maryam-school.jpg" },
+  { id: "K-1908", name: "Awad Family", desc: "5 dependents, father seeking work", vert: "Family Support", verticalKey: "family", location: "Kampala, UG", since: "Jul 2025", pledged: 6240, target: 9600, progress: 65, status: "verified", supporters: 8, urgency: null, img: "images/case-family.jpg" },
+  { id: "K-3014", name: "Dr Afaf O.", desc: "Dental clinic relocation advisory", vert: "SME Recovery", verticalKey: "sme", location: "Sharjah, AE", since: "Jan 2026", pledged: 12400, target: 18000, progress: 69, status: "verified", supporters: 4, urgency: null, img: "images/sme-hero.jpg" },
+  { id: "K-2756", name: "Yasmin H.", desc: "Hospitalization · cardiac surgery", vert: "Healthcare", verticalKey: "health", location: "Khartoum, SD", since: "Mar 2026", pledged: 4200, target: 8400, progress: 50, status: "urgent", supporters: 6, urgency: "48h remaining", img: "images/case-healthcare.jpg" },
+  { id: "K-2102", name: "Ibrahim Engineering Cohort", desc: "12 graduate engineers · CPD return-track", vert: "Education", verticalKey: "education", location: "Riyadh, SA", since: "Aug 2025", pledged: 14400, target: 14400, progress: 100, status: "complete", supporters: 22, urgency: null, img: "images/education-cpd.jpg" },
+  { id: "K-2890", name: "Halima M.", desc: "Women's returnship programme · finance", vert: "Women & Workforce", verticalKey: "women", location: "Doha, QA", since: "Feb 2026", pledged: 1800, target: 3600, progress: 50, status: "pending", supporters: 3, urgency: null, img: "images/case-workforce.jpg" }
 ];
 
 const VERT_ICON = { education:"education", family:"family", sme:"sme", health:"health", women:"women" };
@@ -106,7 +106,7 @@ function App() {
             {filtered.map((c, i) => (
               <Reveal key={c.id} delay={i * 50}>
                 <a href="beneficiary-profile.html" className="case-row" style={{display:"grid"}}>
-                  <div className="ava-wrap"></div>
+                  <div className="ava-wrap" style={c.img ? {background:`url(${c.img}) center/cover`} : {}}></div>
                   <div>
                     <div className="vert"><Icon name={VERT_ICON[c.verticalKey]} size={14} style={{verticalAlign:"-3px"}}/> {c.vert}</div>
                     <h4>{c.name}</h4>

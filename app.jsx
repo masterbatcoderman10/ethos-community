@@ -116,10 +116,10 @@ const HeroImpact = () => (
 );
 
 const HERO_PHOTOS = {
-  mission: { caption: "DIASPORA · GCC + EUROPE + UK", overlay: "Diaspora gathering, Riyadh — November 2025", pill: "Photo: Place" },
-  proposition: { caption: "PARTNER NETWORK · 6 VERTICALS", overlay: "Service directory, Kushian™ partner clinic", pill: "Photo: Place" },
-  case: { caption: "BENEFICIARY · MARYAM, 14", overlay: "Maryam returning to school, Cairo — March 2026", pill: "Photo: Place" },
-  impact: { caption: "PORTFOLIO · 14 COUNTRIES", overlay: "Live impact map · Q2 2026 demo cohort", pill: "Photo: Place" }
+  mission: { caption: "DIASPORA · GCC + EUROPE + UK", overlay: "Diaspora gathering, Riyadh — November 2025", img: "images/hero-mission.jpg" },
+  proposition: { caption: "PARTNER NETWORK · 6 VERTICALS", overlay: "Service directory, Kushian™ partner clinic", img: "images/hero-proposition.jpg" },
+  case: { caption: "BENEFICIARY · MARYAM, 14", overlay: "Maryam returning to school, Cairo — March 2026", img: "images/maryam-school.jpg" },
+  impact: { caption: "PORTFOLIO · 14 COUNTRIES", overlay: "Live impact map · Q2 2026 demo cohort", img: "images/hero-impact.jpg" }
 };
 
 // ─────── Verticals ───────────────────────────────────────────────────────
@@ -183,8 +183,7 @@ function App() {
             </div>
           </Reveal>
           <Reveal delay={150}>
-            <div className="photo">
-              <div className="photo-pill">{photo.pill}</div>
+            <div className="photo" style={photo.img ? { background: `url(${photo.img}) center/cover` } : {}}>
               <div className="photo-overlay">{photo.overlay}</div>
               <div className="photo-meta"><span>{photo.caption}</span><span>4 : 5</span></div>
             </div>
@@ -242,8 +241,7 @@ function App() {
             <p className="section-lede">Every supporter sees the verification trail behind their pledge — beneficiary identity, partner delivery, milestone updates and outcome data. No black boxes.</p>
           </Reveal>
           <Reveal className="case">
-            <div className="case-photo">
-              <div className="photo-pill">Photo: Place</div>
+            <div className="case-photo" style={{background:"url(images/maryam-school.jpg) center/cover"}}>
               <div className="photo-overlay" style={{color:"#f7f4ee"}}>Maryam, 14 — Omdurman → Cairo</div>
               <div className="photo-meta" style={{color:"rgba(247,244,238,.6)"}}><span>BENEFICIARY · CASE #K-2384</span><span>VERIFIED</span></div>
             </div>
@@ -298,8 +296,7 @@ function App() {
       <section className="section" id="founder" style={{paddingTop:0}}>
         <div className="container">
           <Reveal className="founder">
-            <div className="founder-photo">
-              <div className="photo-pill">Photo: Place</div>
+            <div className="founder-photo" style={{background:"url(images/true_founder_hq.webp) center top/cover"}}>
               <div className="photo-meta"><span>FOUNDER</span><span>4 : 5</span></div>
             </div>
             <div>

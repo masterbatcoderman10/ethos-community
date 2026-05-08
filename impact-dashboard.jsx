@@ -75,11 +75,16 @@ function App() {
 
       <section className="imp-hero">
         <div className="container">
-          <Reveal>
-            <div className="eyebrow">§ Impact dashboard · Live ledger · Q2 2026</div>
-            <h1>3,892 lives.<br/><em>Every payout, traceable.</em></h1>
-            <p>The Kushian™ Impact Ledger publishes every disbursement, every partner attestation and every Sharia audit — in real time. Independent quarterly review by the Sudan Doctors Network and Takaful Re-insurance Co.</p>
-          </Reveal>
+          <div className="imp-hero-grid">
+            <Reveal>
+              <div className="eyebrow">§ Impact dashboard · Live ledger · Q2 2026</div>
+              <h1>3,892 lives.<br/><em>Every payout, traceable.</em></h1>
+              <p>The Kushian™ Impact Ledger publishes every disbursement, every partner attestation and every Sharia audit — in real time. Independent quarterly review by the Sudan Doctors Network and Takaful Re-insurance Co.</p>
+            </Reveal>
+            <Reveal delay={120}>
+              <Photo caption="BENEFICIARIES · 14 COUNTRIES" overlay="Kushian™ beneficiary community, Q2 2026" img="images/impact-hero.jpg" dark={true}/>
+            </Reveal>
+          </div>
           <div className="big-stats">
             <div><div className="num"><Counter to={3892}/></div><div className="label">Lives reached</div><div className="delta">↑ 412 this quarter</div></div>
             <div><div className="num"><Counter to={1.2} prefix="$" suffix="m"/></div><div className="label">Capital structured</div><div className="delta">↑ 18% YoY</div></div>
