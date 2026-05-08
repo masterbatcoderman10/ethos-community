@@ -147,9 +147,11 @@ function App() {
             </div>
             <p style={{fontSize:16,lineHeight:1.6,color:"var(--ink-soft)",maxWidth:480}}>From secondary tuition to postgraduate research — every student profile is verified and pledge-traceable.</p>
           </Reveal>
-          {STUDENTS.map((s, i) => (
+          {STUDENTS.map((s, i) => {
+            const isMaryam = s.name === "Maryam A.";
+            return (
             <Reveal key={i} delay={i * 40}>
-              <div className="student-row" style={{display:"grid",cursor:"pointer"}} onClick={() => s.name === "Maryam A." ? window.location.href = "beneficiary-profile.html" : showToast("Full student profiles — coming next")} role="button">
+              <div className="student-row" style={{display:"grid",cursor:"pointer"}} onClick={() => isMaryam ? window.location.href = "beneficiary-profile.html" : showToast("Full student profiles — coming next")} role="button">
                 <div className="avatar initials">{s.initials}</div>
                 <div>
                   <h4 className="nm">{s.name}</h4>
@@ -163,7 +165,8 @@ function App() {
                 <div style={{textAlign:"right",color:"var(--green)"}}><Icon name="arrow-up-right" size={20}/></div>
               </div>
             </Reveal>
-          ))}
+          );
+          })}
         </div>
       </section>
 

@@ -103,9 +103,12 @@ function App() {
               <button className="chip" onClick={() => showToast("Filter sheet — coming next")}><Icon name="filter" size={12}/> More filters</button>
             </div>
 
-            {filtered.map((c, i) => (
+            {filtered.map((c, i) => {
+              const profileMap = { "K-2384": "beneficiary-profile.html", "K-1908": "awad-profile.html", "K-2756": "yasmin-profile.html", "K-3014": "afaf-profile.html", "K-2102": "ibrahim-profile.html", "K-2890": "halima-profile.html" };
+              const profileUrl = profileMap[c.id];
+              return (
               <Reveal key={c.id} delay={i * 50}>
-                <div className="case-row" style={{display:"grid",cursor:"pointer"}} onClick={() => c.id === "K-2384" ? window.location.href = "beneficiary-profile.html" : showToast("Full case profiles — coming next")} role="button">
+                <div className="case-row" style={{display:"grid",cursor:"pointer"}} onClick={() => profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next")} role="button">
                   <div className="ava-wrap" style={c.img ? {background:`url(${c.img}) center/cover`} : {}}></div>
                   <div>
                     <div className="vert"><Icon name={VERT_ICON[c.verticalKey]} size={14} style={{verticalAlign:"-3px"}}/> {c.vert}</div>
@@ -128,7 +131,8 @@ function App() {
                   <div style={{textAlign:"right",color:"var(--green)"}}><Icon name="arrow-up-right" size={20}/></div>
                 </div>
               </Reveal>
-            ))}
+            );
+            })}
           </div>
 
           <aside>
