@@ -78,10 +78,10 @@ function App() {
                   <strong>Cleopatra</strong>
                 </div>
               </div>
-              <div className="panel" style={{background:"var(--green)",color:"var(--cream)",borderColor:"var(--green)"}}>
-                <div className="panel-eyebrow" style={{color:"var(--gold)"}}>Verification status</div>
-                <div style={{display:"flex",alignItems:"center",gap:10,fontFamily:"var(--ff-display)",fontSize:18}}><Icon name="check" size={18}/> Fully verified</div>
-                <p style={{fontSize:13,lineHeight:1.6,margin:"10px 0 0",color:"rgba(247,244,238,.78)"}}>Cardiac assessment and clinical case attested by Cleopatra Hospital. Takaful pool reviewed 3 May 2026.</p>
+              <div className="panel verification">
+                <div className="panel-eyebrow">Verification status</div>
+                <div style={{display:"flex",alignItems:"center",gap:10}}><Icon name="check" size={18}/> <strong>Fully verified</strong></div>
+                <p>Cardiac assessment and clinical case attested by Cleopatra Hospital. Takaful pool reviewed 3 May 2026.</p>
               </div>
             </Reveal>
           </div>

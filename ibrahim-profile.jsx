@@ -83,10 +83,10 @@ function App() {
                   <strong>COMPLETE</strong>
                 </div>
               </div>
-              <div className="panel" style={{background:"var(--green)",color:"var(--cream)",borderColor:"var(--green)"}}>
-                <div className="panel-eyebrow" style={{color:"var(--gold)"}}>Completion status</div>
-                <div style={{display:"flex",alignItems:"center",gap:10,fontFamily:"var(--ff-display)",fontSize:18}}><Icon name="check" size={18}/> Fully placed</div>
-                <p style={{fontSize:13,lineHeight:1.6,margin:"10px 0 0",color:"rgba(247,244,238,.78)"}}>All 12 cohort members employed in engineering roles. Final attestation: 28 May 2026.</p>
+              <div className="panel verification">
+                <div className="panel-eyebrow">Completion status</div>
+                <div style={{display:"flex",alignItems:"center",gap:10}}><Icon name="check" size={18}/> <strong>Fully placed</strong></div>
+                <p>All 12 cohort members employed in engineering roles. Final attestation: 28 May 2026.</p>
               </div>
             </Reveal>
           </div>

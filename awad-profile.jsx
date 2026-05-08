@@ -81,10 +81,10 @@ function App() {
                   <strong>Kampala CDO</strong>
                 </div>
               </div>
-              <div className="panel" style={{background:"var(--green)",color:"var(--cream)",borderColor:"var(--green)"}}>
-                <div className="panel-eyebrow" style={{color:"var(--gold)"}}>Verification status</div>
-                <div style={{display:"flex",alignItems:"center",gap:10,fontFamily:"var(--ff-display)",fontSize:18}}><Icon name="check" size={18}/> Fully verified</div>
-                <p style={{fontSize:13,lineHeight:1.6,margin:"10px 0 0",color:"rgba(247,244,238,.78)"}}>Identity, displacement and income attested by Kampala partner. Last assessment: 22 Apr 2026.</p>
+              <div className="panel verification">
+                <div className="panel-eyebrow">Verification status</div>
+                <div style={{display:"flex",alignItems:"center",gap:10}}><Icon name="check" size={18}/> <strong>Fully verified</strong></div>
+                <p>Identity, displacement and income attested by Kampala partner. Last assessment: 22 Apr 2026.</p>
               </div>
             </Reveal>
           </div>

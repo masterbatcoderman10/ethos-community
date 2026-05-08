@@ -76,10 +76,10 @@ function App() {
                   <strong>Murabaha</strong>
                 </div>
               </div>
-              <div className="panel" style={{background:"var(--green)",color:"var(--cream)",borderColor:"var(--green)"}}>
-                <div className="panel-eyebrow" style={{color:"var(--gold)"}}>Verification status</div>
-                <div style={{display:"flex",alignItems:"center",gap:10,fontFamily:"var(--ff-display)",fontSize:18}}><Icon name="check" size={18}/> Fully verified</div>
-                <p style={{fontSize:13,lineHeight:1.6,margin:"10px 0 0",color:"rgba(247,244,238,.78)"}}>Credentials, business plan and Sharia compliance attested by advisor board. Last review: 18 Apr 2026.</p>
+              <div className="panel verification">
+                <div className="panel-eyebrow">Verification status</div>
+                <div style={{display:"flex",alignItems:"center",gap:10}}><Icon name="check" size={18}/> <strong>Fully verified</strong></div>
+                <p>Credentials, business plan and Sharia compliance attested by advisor board. Last review: 18 Apr 2026.</p>
               </div>
             </Reveal>
           </div>
