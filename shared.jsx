@@ -109,7 +109,7 @@ const Nav = ({ active }) => {
   return (
     <nav className="nav">
       <div className="container nav-inner">
-        <a href="Landing Page.html" className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
+        <a href="landing.html" className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
         <div className="nav-links">
           {links.map(l => (
             <a key={l.key} href={l.href} className={active === l.key ? "active" : ""}>{l.label}</a>
@@ -141,7 +141,7 @@ const Footer = () => (
     <div className="container">
       <div className="footer-top">
         <div className="footer-brand">
-          <a href="Landing Page.html" className="logo"><span className="logo-mark"></span> Ethos Community™</a>
+          <a href="landing.html" className="logo"><span className="logo-mark"></span> Ethos Community™</a>
           <p>A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.</p>
         </div>
         <div className="footer-col">
