@@ -179,3 +179,15 @@ footer{background:var(--green-2);color:rgba(247,244,238,.7);padding:64px 0 32px;
 .upload-zone:hover{border-color:var(--green);color:var(--green)}
 .upload-zone:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 .upload-zone-hint{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em}
+
+/* choice card */
+.choice-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;width:100%;text-align:left;padding:24px;background:var(--cream);border:1px solid var(--line);border-radius:6px;cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;font-family:inherit;color:inherit}
+.choice-card:hover{border-color:#d4caac;box-shadow:0 4px 16px -8px rgba(20,21,18,.1)}
+.choice-card:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.choice-card.selected{border-color:var(--green);background:rgba(14,59,46,.04);box-shadow:0 6px 18px -10px rgba(14,59,46,.4)}
+.choice-card-icon{width:48px;height:48px;border-radius:50%;background:var(--cream-2);color:var(--green);display:flex;align-items:center;justify-content:center;transition:background .2s ease,color .2s ease}
+.choice-card.selected .choice-card-icon{background:var(--green);color:var(--cream)}
+.choice-card-title{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:20px;line-height:1.2;letter-spacing:var(--display-tracking);margin:4px 0 0}
+.choice-card-desc{font-size:14px;line-height:1.55;color:var(--ink-soft);margin:0;flex:1}
+.choice-card-cta{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--green);font-weight:500;margin-top:6px}
+.choice-card.selected .choice-card-cta{color:var(--green-2)}
