@@ -20,12 +20,12 @@ const RoleChooserPage = () => {
   };
   return (
     <>
-      <Nav />
+      <Nav active="role" />
       <DemoTag />
       <main className="role-chooser">
         <div className="container">
           <Reveal as="header" className="role-chooser-header">
-            <span className="section-eyebrow">Step 1 of registration</span>
+            <span className="eyebrow">Step 1 of registration</span>
             <h1>How would you like to engage with Ethos Community?</h1>
             <p>Select the role that best describes how you'll use the platform. You can change this later from your account settings.</p>
           </Reveal>

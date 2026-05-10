@@ -10,7 +10,7 @@ const SUPPORT_TYPES = [
 const Step1Support = ({ value, onSelect }) => (
   <div>
     <div className="step-header">
-      <span className="section-eyebrow">Step 1</span>
+      <span className="eyebrow">Step 1</span>
       <h2>What kind of support is this case for?</h2>
       <p>Choose the category that best matches the need. You can refine details in the next steps.</p>
     </div>
@@ -45,7 +45,7 @@ const BENEFICIARY_CATEGORIES = [
 const Step2Beneficiary = ({ value, onChange }) => (
   <div>
     <div className="step-header">
-      <span className="section-eyebrow">Step 2</span>
+      <span className="eyebrow">Step 2</span>
       <h2>Who is this case for?</h2>
       <p>Provide basic details about the beneficiary. A community ambassador will verify these in the next stage.</p>
     </div>
@@ -72,13 +72,13 @@ const SUGGESTED_DOCS = [
 const Step3Need = ({ value, onChange }) => (
   <div>
     <div className="step-header">
-      <span className="section-eyebrow">Step 3</span>
+      <span className="eyebrow">Step 3</span>
       <h2>Describe the need</h2>
       <p>Give enough context that a verifier and a supporter can understand the case. Documents help speed verification.</p>
     </div>
     <div className="form-grid">
-      <FormField label="Need description" required hint="Minimum 20 characters.">
-        <FormTextarea placeholder="e.g. Surgical follow-up costs for displaced parent currently in Cairo. Initial assessment completed at Cleopatra Hospital on 12 March." value={value.description} onChange={e => onChange({ ...value, description: e.target.value })} />
+      <FormField label="Need description" htmlFor="need-desc" required hint="Minimum 20 characters.">
+        <FormTextarea id="need-desc" placeholder="e.g. Surgical follow-up costs for displaced parent currently in Cairo. Initial assessment completed at Cleopatra Hospital on 12 March." value={value.description} onChange={e => onChange({ ...value, description: e.target.value })} />
       </FormField>
       <FormField label="Supporting documents" hint="Demo only — uploads are not stored.">
         <UploadZone />
@@ -103,13 +103,13 @@ const FREQUENCIES = [
 const Step4Funding = ({ value, onChange }) => (
   <div>
     <div className="step-header">
-      <span className="section-eyebrow">Step 4</span>
+      <span className="eyebrow">Step 4</span>
       <h2>Funding pathway</h2>
       <p>Set an initial pledge target. Supporters can contribute any amount up to the target.</p>
     </div>
     <div className="form-grid">
-      <FormField label="Pledge target (USD)" required>
-        <FormInput type="number" placeholder="0" value={value.amount} onChange={e => onChange({ ...value, amount: e.target.value })} min="0" />
+      <FormField label="Pledge target (USD)" htmlFor="funding-amount" required>
+        <FormInput id="funding-amount" type="number" placeholder="0" value={value.amount} onChange={e => onChange({ ...value, amount: e.target.value })} min="0" />
       </FormField>
       <FormField label="Frequency" required>
         <FormRadioGroup name="frequency" options={FREQUENCIES} value={value.frequency} onChange={e => onChange({ ...value, frequency: e.target.value })} />
@@ -131,7 +131,7 @@ const FREQUENCY_LABELS = Object.fromEntries(FREQUENCIES.map(f => [f.value, f.lab
 const Step5Confirm = ({ caseId, supportType, beneficiary, need, funding }) => (
   <div className="confirm-panel">
     <div className="confirm-icon"><Icon name="check" size={28} /></div>
-    <span className="section-eyebrow">Step 5 — review</span>
+    <span className="eyebrow">Step 5 — review</span>
     <h2>Case ready for verification</h2>
     <p>Your case has been assigned ID <strong>{caseId}</strong>. A community ambassador will review the details within 48 hours.</p>
     <dl className="confirm-summary">
@@ -177,7 +177,7 @@ const CaseCreationPage = () => {
       <main className="case-creation">
         <div className="container">
           <header className="case-creation-header">
-            <span className="section-eyebrow">Create a support case</span>
+            <span className="eyebrow">Create a support case</span>
             <h1>Set up a verified, purpose-linked support pathway</h1>
           </header>
           <StepWizard steps={steps} currentStep={step} onStepChange={setStep} onSubmit={handleSubmit} canAdvance={canAdvance} submitLabel="Submit case" />
