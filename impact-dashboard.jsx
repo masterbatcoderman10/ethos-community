@@ -31,7 +31,7 @@ function Donut() {
   let offset = 0;
   const C = 2 * Math.PI * 70;
   return (
-    <div style={{display:"grid",gridTemplateColumns:"180px 1fr",gap:32,alignItems:"center"}}>
+    <div className="donut-wrap" style={{display:"grid",gridTemplateColumns:"180px 1fr",gap:32,alignItems:"center"}}>
       <svg viewBox="0 0 180 180" style={{width:180,height:180,transform:"rotate(-90deg)"}}>
         <circle cx="90" cy="90" r="70" fill="none" stroke="var(--cream-2)" strokeWidth="22"/>
         {segs.map((s, i) => {

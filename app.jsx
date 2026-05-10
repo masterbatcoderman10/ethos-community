@@ -165,6 +165,8 @@ function App() {
             <a href="#founder">About</a>
           </div>
           <div className="nav-cta">
+            <a href="supporter-dashboard.html" className="btn btn-ghost nav-cta-btn">Dashboard</a>
+            <button className="btn btn-primary nav-cta-btn" onClick={onCTA("Support a Case")}>Support a Case <Icon name="arrow"/></button>
             <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
               <Icon name={menuOpen ? "close" : "hamburger"}/>
             </button>
@@ -176,10 +178,6 @@ function App() {
             <a href="#impact" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Impact</a>
             <a href="#how" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>How it works</a>
             <a href="#founder" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>About</a>
-            <div className="nav-mobile-ctas">
-              <a href="supporter-dashboard.html" className="btn btn-ghost btn-sm">Dashboard</a>
-              <button className="btn btn-primary btn-sm" onClick={onCTA("Support a Case")}>Support a Case <Icon name="arrow"/></button>
-            </div>
           </div>
         )}
       </nav>
