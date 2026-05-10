@@ -1,0 +1,18 @@
+/* case creation page */
+.case-creation{padding:48px 0 96px}
+@media(max-width:880px){.case-creation{padding:32px 0 64px}}
+
+.case-creation-header{max-width:720px;margin:0 0 32px}
+.case-creation-header h1{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:clamp(28px,3.4vw,40px);line-height:1.1;letter-spacing:var(--display-tracking);margin:12px 0 0}
+
+.step-header{margin-bottom:28px}
+.step-header h2{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:clamp(22px,2.4vw,30px);line-height:1.15;letter-spacing:var(--display-tracking);margin:10px 0 8px}
+.step-header p{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0;max-width:560px}
+
+.support-type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:1024px){.support-type-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.support-type-grid{grid-template-columns:1fr}}
+
+.step-placeholder{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);padding:40px;text-align:center}
+
+.case-creation-cancel{margin-top:24px;text-align:center}
