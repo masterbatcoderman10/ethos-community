@@ -1,0 +1,14 @@
+/* role chooser page */
+.role-chooser{padding:64px 0 96px}
+@media(max-width:880px){.role-chooser{padding:40px 0 64px}}
+
+.role-chooser-header{max-width:720px;margin:0 0 48px}
+.role-chooser-header h1{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:clamp(32px,4vw,48px);line-height:1.1;letter-spacing:var(--display-tracking);margin:14px 0 16px}
+.role-chooser-header p{font-size:16px;line-height:1.55;color:var(--ink-soft);margin:0;max-width:560px}
+
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:1024px){.role-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.role-grid{grid-template-columns:1fr}}
+
+.role-chooser-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:48px;padding-top:32px;border-top:1px solid var(--line)}
+@media(max-width:640px){.role-chooser-footer{flex-direction:column-reverse;align-items:stretch}}
