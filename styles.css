@@ -206,3 +206,24 @@ footer{background:var(--green-2);color:rgba(247,244,238,.7);padding:64px 0 32px;
 .form-field-label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
 .form-field-required{color:var(--red)}
 .form-field-hint{font-size:12.5px;color:var(--muted)}
+
+/* step progress */
+.step-progress{display:flex;align-items:center;gap:14px;padding:24px;background:var(--cream);border:1px solid var(--line);border-radius:6px}
+.step-progress-line{flex:0 0 auto;width:24px;height:1px;background:var(--line);transition:background .2s ease}
+.step-progress-line.done{background:var(--green)}
+@media(max-width:720px){
+  .step-progress{flex-wrap:wrap;gap:10px}
+  .step-progress-line{display:none}
+  .step-indicator{flex:1 1 calc(50% - 6px)}
+}
+
+/* step wizard */
+.step-wizard{display:flex;flex-direction:column;gap:24px}
+.step-wizard-content{padding:32px;background:var(--cream);border:1px solid var(--line);border-radius:6px;min-height:280px}
+.step-wizard-actions{display:flex;justify-content:space-between;gap:12px}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .choice-card,.choice-card-icon,.form-input,.form-textarea,.form-select,.form-radio,.upload-zone,.status-dot,.step-progress-line{transition:none !important}
+}
