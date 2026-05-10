@@ -90,7 +90,14 @@ const Reveal = ({ children, delay = 0, as: Tag = "div", className = "", ...rest 
 let toastTimer;
 const showToast = (msg) => {
   let el = document.getElementById("__toast");
-  if (!el) { el = document.createElement("div"); el.id = "__toast"; el.className = "toast"; document.body.appendChild(el); }
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "__toast";
+    el.className = "toast";
+    el.setAttribute("role", "status");
+    el.setAttribute("aria-live", "polite");
+    document.body.appendChild(el);
+  }
   el.textContent = msg;
   el.classList.add("show");
   clearTimeout(toastTimer);
@@ -199,4 +206,13 @@ const Avatar = ({ initials, size = "", className = "", green = false }) => {
   return <div className={cls}>{initials || ""}</div>;
 };
 
-Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar });
+const StatusDot = ({ status = "idle", size = 12, children }) => {
+  const cls = `status-dot status-dot-${status}`;
+  return (
+    <span className={cls} style={{ width: size, height: size }} aria-hidden="true">
+      {status === "done" ? <Icon name="check" size={Math.round(size * 0.7)} /> : children}
+    </span>
+  );
+};
+
+Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar, StatusDot });
