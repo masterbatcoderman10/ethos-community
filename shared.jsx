@@ -215,4 +215,37 @@ const StatusDot = ({ status = "idle", size = 12, children }) => {
   );
 };
 
-Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar, StatusDot });
+const FormInput = ({ type = "text", placeholder = "", value, onChange, name, id, ...rest }) => (
+  <input type={type} className="form-input" placeholder={placeholder} value={value} onChange={onChange} name={name} id={id} {...rest} />
+);
+
+const FormTextarea = ({ placeholder = "", rows = 5, value, onChange, name, id, ...rest }) => (
+  <textarea className="form-textarea" rows={rows} placeholder={placeholder} value={value} onChange={onChange} name={name} id={id} {...rest} />
+);
+
+const FormSelect = ({ options = [], value, onChange, name, id, placeholder = "Select…" }) => (
+  <select className="form-select" value={value || ""} onChange={onChange} name={name} id={id}>
+    <option value="" disabled>{placeholder}</option>
+    {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+  </select>
+);
+
+const FormRadioGroup = ({ name, options = [], value, onChange }) => (
+  <div className="form-radio-group" role="radiogroup">
+    {options.map(o => (
+      <label key={o.value} className={`form-radio ${value === o.value ? "checked" : ""}`}>
+        <input type="radio" name={name} value={o.value} checked={value === o.value} onChange={onChange} />
+        <span>{o.label}</span>
+      </label>
+    ))}
+  </div>
+);
+
+const UploadZone = ({ hint = "Drag files or click to upload", onClick }) => (
+  <button type="button" className="upload-zone" onClick={onClick || (() => showToast("Upload — demo only"))}>
+    <Icon name="doc" size={28} />
+    <span className="upload-zone-hint">{hint}</span>
+  </button>
+);
+
+Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar, StatusDot, FormInput, FormTextarea, FormSelect, FormRadioGroup, UploadZone });

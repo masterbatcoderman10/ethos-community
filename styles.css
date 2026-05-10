@@ -161,3 +161,21 @@ footer{background:var(--green-2);color:rgba(247,244,238,.7);padding:64px 0 32px;
 .status-dot-idle{background:var(--cream-2);border:1px solid var(--line);color:var(--muted)}
 .status-dot-active{background:var(--gold);border:1px solid var(--gold-2);color:var(--green-2)}
 .status-dot-done{background:var(--green);border:1px solid var(--green);color:var(--cream)}
+
+/* form atoms */
+.form-input,.form-textarea,.form-select{width:100%;font-family:var(--ff-body);font-size:14px;color:var(--ink);background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:12px 14px;transition:border-color .15s ease,box-shadow .15s ease}
+.form-input:focus-visible,.form-textarea:focus-visible,.form-select:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-color:var(--green)}
+.form-input:disabled{background:var(--cream-2);color:var(--muted);cursor:not-allowed}
+.form-textarea{resize:vertical;min-height:120px;font-family:var(--ff-body)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23141512' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+
+.form-radio-group{display:flex;flex-direction:column;gap:8px}
+.form-radio{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--cream);cursor:pointer;font-size:14px;transition:border-color .15s ease,background .15s ease}
+.form-radio input{accent-color:var(--green)}
+.form-radio:hover{border-color:var(--green)}
+.form-radio.checked{border-color:var(--green);background:rgba(14,59,46,.04)}
+
+.upload-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:32px;width:100%;border:1.5px dashed var(--line);border-radius:8px;background:var(--cream-2);color:var(--muted);cursor:pointer;transition:border-color .15s ease,color .15s ease;font-family:inherit}
+.upload-zone:hover{border-color:var(--green);color:var(--green)}
+.upload-zone:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.upload-zone-hint{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em}
