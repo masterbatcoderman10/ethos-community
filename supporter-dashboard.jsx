@@ -59,7 +59,7 @@ function App() {
               <div style={{fontFamily:"JetBrains Mono, monospace",fontSize:11,letterSpacing:".08em",color:"var(--muted)",textTransform:"uppercase",marginTop:4}}>{persona.role}</div>
               <div style={{display:"flex",gap:10,justifyContent:"flex-end",marginTop:20}}>
                 <button className="btn btn-soft sm" onClick={() => showToast("Profile settings — coming next")}>Settings</button>
-                <button className="btn btn-primary sm" onClick={() => showToast("New pledge flow — coming next")}><Icon name="plus" size={14}/> New pledge</button>
+                <a href="case-creation.html" className="btn btn-primary sm"><Icon name="plus" size={14}/> New pledge</a>
               </div>
             </div>
           </div>
