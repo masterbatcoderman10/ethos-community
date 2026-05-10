@@ -21,3 +21,12 @@
 
 .suggested-docs ul{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:6px}
 .suggested-docs li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
+
+.confirm-panel{max-width:560px}
+.confirm-icon{width:56px;height:56px;border-radius:50%;background:var(--green);color:var(--cream);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.confirm-panel h2{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:28px;line-height:1.15;letter-spacing:var(--display-tracking);margin:8px 0 10px}
+.confirm-panel p{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0 0 24px}
+.confirm-summary{display:flex;flex-direction:column;gap:14px;margin:0;padding:20px;background:var(--cream-2);border-radius:6px}
+.confirm-summary>div{display:flex;flex-direction:column;gap:2px}
+.confirm-summary dt{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+.confirm-summary dd{margin:0;font-size:14px;color:var(--ink)}

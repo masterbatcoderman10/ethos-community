@@ -121,19 +121,42 @@ const Step4Funding = ({ value, onChange }) => (
   </div>
 );
 
+const generateCaseId = () => `K-${3500 + Math.floor(Math.random() * 500)}`;
+
+const SUPPORT_TYPE_LABELS = Object.fromEntries(SUPPORT_TYPES.map(s => [s.id, s.title]));
+const LOCATION_LABELS = Object.fromEntries(LOCATIONS.map(l => [l.value, l.label]));
+const CATEGORY_LABELS = Object.fromEntries(BENEFICIARY_CATEGORIES.map(c => [c.value, c.label]));
+const FREQUENCY_LABELS = Object.fromEntries(FREQUENCIES.map(f => [f.value, f.label]));
+
+const Step5Confirm = ({ caseId, supportType, beneficiary, need, funding }) => (
+  <div className="confirm-panel">
+    <div className="confirm-icon"><Icon name="check" size={28} /></div>
+    <span className="section-eyebrow">Step 5 — review</span>
+    <h2>Case ready for verification</h2>
+    <p>Your case has been assigned ID <strong>{caseId}</strong>. A community ambassador will review the details within 48 hours.</p>
+    <dl className="confirm-summary">
+      <div><dt>Support type</dt><dd>{SUPPORT_TYPE_LABELS[supportType] || "—"}</dd></div>
+      <div><dt>Beneficiary</dt><dd>{beneficiary.name} · {LOCATION_LABELS[beneficiary.location] || "—"} · {CATEGORY_LABELS[beneficiary.category] || "—"}</dd></div>
+      <div><dt>Need</dt><dd>{need.description.slice(0, 140)}{need.description.length > 140 ? "…" : ""}</dd></div>
+      <div><dt>Funding</dt><dd>${Number(funding.amount).toLocaleString()} · {FREQUENCY_LABELS[funding.frequency] || "—"}</dd></div>
+    </dl>
+  </div>
+);
+
 const CaseCreationPage = () => {
   const [step, setStep] = useState(0);
   const [supportType, setSupportType] = useState(null);
   const [beneficiary, setBeneficiary] = useState({ name: "", location: "", category: "" });
   const [need, setNeed] = useState({ description: "" });
   const [funding, setFunding] = useState({ amount: "", frequency: "" });
+  const [caseId] = useState(generateCaseId);
 
   const steps = [
     { label: "Support Type", content: <Step1Support value={supportType} onSelect={setSupportType} /> },
     { label: "Beneficiary", content: <Step2Beneficiary value={beneficiary} onChange={setBeneficiary} /> },
     { label: "Need", content: <Step3Need value={need} onChange={setNeed} /> },
     { label: "Funding", content: <Step4Funding value={funding} onChange={setFunding} /> },
-    { label: "Confirm", content: <div className="step-placeholder">Step 5 — coming next</div> }
+    { label: "Confirm", content: <Step5Confirm caseId={caseId} supportType={supportType} beneficiary={beneficiary} need={need} funding={funding} /> }
   ];
 
   const canAdvance =
@@ -142,7 +165,10 @@ const CaseCreationPage = () => {
     step === 2 ? need.description.trim().length >= 20 :
     step === 3 ? !!(Number(funding.amount) > 0 && funding.frequency) :
     true;
-  const handleSubmit = () => showToast("Case submitted — demo only");
+  const handleSubmit = () => {
+    showToast(`Case ${caseId} submitted for verification`);
+    setTimeout(() => { window.location.href = "supporter-dashboard.html"; }, 1200);
+  };
 
   return (
     <>
