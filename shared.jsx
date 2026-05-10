@@ -90,7 +90,14 @@ const Reveal = ({ children, delay = 0, as: Tag = "div", className = "", ...rest 
 let toastTimer;
 const showToast = (msg) => {
   let el = document.getElementById("__toast");
-  if (!el) { el = document.createElement("div"); el.id = "__toast"; el.className = "toast"; document.body.appendChild(el); }
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "__toast";
+    el.className = "toast";
+    el.setAttribute("role", "status");
+    el.setAttribute("aria-live", "polite");
+    document.body.appendChild(el);
+  }
   el.textContent = msg;
   el.classList.add("show");
   clearTimeout(toastTimer);
@@ -104,7 +111,8 @@ const Nav = ({ active }) => {
     { href: "education.html", label: "Education", key: "education" },
     { href: "healthcare.html", label: "Healthcare", key: "healthcare" },
     { href: "sme-advisory.html", label: "SME Advisory", key: "sme" },
-    { href: "impact-dashboard.html", label: "Impact", key: "impact" }
+    { href: "impact-dashboard.html", label: "Impact", key: "impact" },
+    { href: "role-chooser.html", label: "Get Started", key: "role" }
   ];
   return (
     <nav className="nav">
@@ -128,7 +136,7 @@ const Nav = ({ active }) => {
           ))}
           <div className="nav-mobile-ctas">
             <button className="btn btn-soft btn-sm" onClick={() => { setMenuOpen(false); showToast("Notifications — coming next"); }}><Icon name="bell" size={16}/></button>
-            <a href="supporter-dashboard.html" className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Support a Case <Icon name="arrow"/></a>
+            <a href="case-creation.html" className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Create Case <Icon name="arrow"/></a>
           </div>
         </div>
       )}
@@ -199,4 +207,119 @@ const Avatar = ({ initials, size = "", className = "", green = false }) => {
   return <div className={cls}>{initials || ""}</div>;
 };
 
-Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar });
+const StatusDot = ({ status = "idle", size = 12, children }) => {
+  const cls = `status-dot status-dot-${status}`;
+  return (
+    <span className={cls} style={{ width: size, height: size }} aria-hidden="true">
+      {status === "done" ? <Icon name="check" size={Math.round(size * 0.7)} /> : children}
+    </span>
+  );
+};
+
+const FormInput = ({ type = "text", placeholder = "", value, onChange, name, id, ...rest }) => (
+  <input type={type} className="form-input" placeholder={placeholder} value={value} onChange={onChange} name={name} id={id} {...rest} />
+);
+
+const FormTextarea = ({ placeholder = "", rows = 5, value, onChange, name, id, ...rest }) => (
+  <textarea className="form-textarea" rows={rows} placeholder={placeholder} value={value} onChange={onChange} name={name} id={id} {...rest} />
+);
+
+const FormSelect = ({ options = [], value, onChange, name, id, placeholder = "Select…" }) => (
+  <select className="form-select" value={value || ""} onChange={onChange} name={name} id={id}>
+    <option value="" disabled>{placeholder}</option>
+    {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+  </select>
+);
+
+const FormRadioGroup = ({ name, options = [], value, onChange }) => (
+  <div className="form-radio-group" role="radiogroup">
+    {options.map(o => (
+      <label key={o.value} className={`form-radio ${value === o.value ? "checked" : ""}`}>
+        <input type="radio" name={name} value={o.value} checked={value === o.value} onChange={onChange} />
+        <span>{o.label}</span>
+      </label>
+    ))}
+  </div>
+);
+
+const UploadZone = ({ hint = "Drag files or click to upload", onClick }) => (
+  <button type="button" className="upload-zone" onClick={onClick || (() => showToast("Upload — demo only"))}>
+    <Icon name="doc" size={28} />
+    <span className="upload-zone-hint">{hint}</span>
+  </button>
+);
+
+const ChoiceCard = ({ icon, title, desc, selected = false, onSelect, ctaLabel = "Select" }) => (
+  <button type="button" className={`choice-card ${selected ? "selected" : ""}`} onClick={onSelect}>
+    <div className="choice-card-icon"><Icon name={icon} size={28} /></div>
+    <h3 className="choice-card-title">{title}</h3>
+    <p className="choice-card-desc">{desc}</p>
+    <span className="choice-card-cta">
+      {selected ? <><Icon name="check" size={16} /> Selected</> : <>{ctaLabel} <Icon name="arrow" size={16} /></>}
+    </span>
+  </button>
+);
+
+const StepIndicator = ({ index, label, status = "idle" }) => (
+  <div className={`step-indicator step-indicator-${status}`}>
+    <StatusDot status={status} size={28}>
+      {status !== "done" && <span className="step-indicator-num-inner">{index}</span>}
+    </StatusDot>
+    <span className="step-indicator-label">
+      <span className="step-indicator-num">Step {index}</span>
+      <span className="step-indicator-text">{label}</span>
+    </span>
+  </div>
+);
+
+const FormField = ({ label, htmlFor, hint, required = false, children }) => (
+  <div className="form-field">
+    {label && (
+      <label htmlFor={htmlFor} className="form-field-label">
+        {label}{required && <span className="form-field-required" aria-hidden="true"> *</span>}
+      </label>
+    )}
+    {children}
+    {hint && <span className="form-field-hint">{hint}</span>}
+  </div>
+);
+
+const StepProgressBar = ({ steps = [], currentStep = 0 }) => (
+  <div className="step-progress">
+    {steps.map((s, i) => {
+      const status = i < currentStep ? "done" : i === currentStep ? "active" : "idle";
+      return (
+        <React.Fragment key={i}>
+          <StepIndicator index={i + 1} label={s.label} status={status} />
+          {i < steps.length - 1 && <span className={`step-progress-line ${i < currentStep ? "done" : ""}`} />}
+        </React.Fragment>
+      );
+    })}
+  </div>
+);
+
+const StepWizard = ({ steps = [], currentStep = 0, onStepChange, onSubmit, canAdvance = true, submitLabel = "Submit" }) => {
+  const isLast = currentStep === steps.length - 1;
+  const back = () => onStepChange && currentStep > 0 && onStepChange(currentStep - 1);
+  const next = () => {
+    if (!canAdvance) return;
+    if (isLast) onSubmit && onSubmit();
+    else onStepChange && onStepChange(currentStep + 1);
+  };
+  return (
+    <div className="step-wizard">
+      <StepProgressBar steps={steps} currentStep={currentStep} />
+      <div className="step-wizard-content">{steps[currentStep] && steps[currentStep].content}</div>
+      <div className="step-wizard-actions">
+        <button type="button" className="btn btn-soft" onClick={back} disabled={currentStep === 0}>
+          <Icon name="arrow-left" size={16} /> Back
+        </button>
+        <button type="button" className="btn btn-primary" onClick={next} disabled={!canAdvance}>
+          {isLast ? submitLabel : <>Next <Icon name="arrow" size={16} /></>}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar, StatusDot, FormInput, FormTextarea, FormSelect, FormRadioGroup, UploadZone, ChoiceCard, StepIndicator, FormField, StepProgressBar, StepWizard });
