@@ -63,15 +63,48 @@ const Step2Beneficiary = ({ value, onChange }) => (
   </div>
 );
 
+const SUGGESTED_DOCS = [
+  "Government-issued ID",
+  "Proof of need (medical letter, school enrolment, etc.)",
+  "Proof of relationship (where applicable)"
+];
+
+const Step3Need = ({ value, onChange }) => (
+  <div>
+    <div className="step-header">
+      <span className="section-eyebrow">Step 3</span>
+      <h2>Describe the need</h2>
+      <p>Give enough context that a verifier and a supporter can understand the case. Documents help speed verification.</p>
+    </div>
+    <div className="form-grid">
+      <FormField label="Need description" required hint="Minimum 20 characters.">
+        <FormTextarea placeholder="e.g. Surgical follow-up costs for displaced parent currently in Cairo. Initial assessment completed at Cleopatra Hospital on 12 March." value={value.description} onChange={e => onChange({ ...value, description: e.target.value })} />
+      </FormField>
+      <FormField label="Supporting documents" hint="Demo only — uploads are not stored.">
+        <UploadZone />
+      </FormField>
+      <div className="suggested-docs">
+        <span className="form-field-label">Suggested documents</span>
+        <ul>
+          {SUGGESTED_DOCS.map((d, i) => (
+            <li key={i}><Icon name="doc" size={14} /> {d}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
 const CaseCreationPage = () => {
   const [step, setStep] = useState(0);
   const [supportType, setSupportType] = useState(null);
   const [beneficiary, setBeneficiary] = useState({ name: "", location: "", category: "" });
+  const [need, setNeed] = useState({ description: "" });
 
   const steps = [
     { label: "Support Type", content: <Step1Support value={supportType} onSelect={setSupportType} /> },
     { label: "Beneficiary", content: <Step2Beneficiary value={beneficiary} onChange={setBeneficiary} /> },
-    { label: "Need", content: <div className="step-placeholder">Step 3 — coming next</div> },
+    { label: "Need", content: <Step3Need value={need} onChange={setNeed} /> },
     { label: "Funding", content: <div className="step-placeholder">Step 4 — coming next</div> },
     { label: "Confirm", content: <div className="step-placeholder">Step 5 — coming next</div> }
   ];
@@ -79,6 +112,7 @@ const CaseCreationPage = () => {
   const canAdvance =
     step === 0 ? !!supportType :
     step === 1 ? !!(beneficiary.name && beneficiary.location && beneficiary.category) :
+    step === 2 ? need.description.trim().length >= 20 :
     true;
   const handleSubmit = () => showToast("Case submitted — demo only");
 
