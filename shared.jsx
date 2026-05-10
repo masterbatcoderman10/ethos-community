@@ -259,4 +259,28 @@ const ChoiceCard = ({ icon, title, desc, selected = false, onSelect, ctaLabel = 
   </button>
 );
 
-Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar, StatusDot, FormInput, FormTextarea, FormSelect, FormRadioGroup, UploadZone, ChoiceCard });
+const StepIndicator = ({ index, label, status = "idle" }) => (
+  <div className={`step-indicator step-indicator-${status}`}>
+    <StatusDot status={status} size={28}>
+      {status !== "done" && <span className="step-indicator-num-inner">{index}</span>}
+    </StatusDot>
+    <span className="step-indicator-label">
+      <span className="step-indicator-num">Step {index}</span>
+      <span className="step-indicator-text">{label}</span>
+    </span>
+  </div>
+);
+
+const FormField = ({ label, htmlFor, hint, required = false, children }) => (
+  <div className="form-field">
+    {label && (
+      <label htmlFor={htmlFor} className="form-field-label">
+        {label}{required && <span className="form-field-required" aria-hidden="true"> *</span>}
+      </label>
+    )}
+    {children}
+    {hint && <span className="form-field-hint">{hint}</span>}
+  </div>
+);
+
+Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar, StatusDot, FormInput, FormTextarea, FormSelect, FormRadioGroup, UploadZone, ChoiceCard, StepIndicator, FormField });

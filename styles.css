@@ -191,3 +191,18 @@ footer{background:var(--green-2);color:rgba(247,244,238,.7);padding:64px 0 32px;
 .choice-card-desc{font-size:14px;line-height:1.55;color:var(--ink-soft);margin:0;flex:1}
 .choice-card-cta{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--green);font-weight:500;margin-top:6px}
 .choice-card.selected .choice-card-cta{color:var(--green-2)}
+
+/* step indicator */
+.step-indicator{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.step-indicator-num-inner{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600}
+.step-indicator-label{display:flex;flex-direction:column;gap:2px;min-width:0}
+.step-indicator-num{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.step-indicator-text{font-size:13px;color:var(--ink);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.step-indicator-active .step-indicator-text{color:var(--green-2)}
+.step-indicator-done .step-indicator-num,.step-indicator-done .step-indicator-text{color:var(--muted)}
+
+/* form field */
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field-label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.form-field-required{color:var(--red)}
+.form-field-hint{font-size:12.5px;color:var(--muted)}
