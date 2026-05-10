@@ -68,13 +68,13 @@ const RoleChooserPage = () => {
             </section>
           </div>
           <footer className="role-chooser-footer">
-            <a href="landing.html" className="btn-text">Skip — continue as guest <Icon name="arrow" size={16} /></a>
+            <a href="landing.html" className="btn-text">Skip — continue as guest <span className="material-symbols-rounded arrow">arrow_forward</span></a>
             <div className="role-chooser-footer-action">
               <span className="role-chooser-status" aria-live="polite">
                 {selectedRole ? <><span className="role-chooser-status-dot" aria-hidden="true" /> {selectedRole.title}</> : "No role selected"}
               </span>
               <button type="button" className="btn btn-primary" onClick={handleContinue} disabled={!selected}>
-                Continue <Icon name="arrow" size={16} />
+                Continue <span className="material-symbols-rounded" style={{fontSize:18}}>arrow_forward</span>
               </button>
             </div>
           </footer>

@@ -60,8 +60,9 @@ input,select,textarea{font-family:inherit}
 .btn-soft:hover{background:var(--line)}
 .btn-gold{background:var(--gold);color:var(--green-2)}
 .btn-gold:hover{background:#d8b86c}
-.btn-text{padding:8px 0;color:var(--green);font-weight:500;font-size:14px}
+.btn-text{display:inline-flex !important;align-items:center;gap:6px;padding:8px 0;color:var(--green);font-weight:500;font-size:14px;text-decoration:none;line-height:1}
 .btn-text:hover{color:var(--gold-2)}
+.btn-text .material-symbols-rounded{font-size:18px;line-height:1;transform:translateY(0.5px)}
 .btn-text .arrow{transition:transform .2s ease;display:inline-block}
 .btn-text:hover .arrow{transform:translateX(4px)}
 @media(max-width:720px){

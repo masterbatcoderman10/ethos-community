@@ -124,6 +124,8 @@ const Nav = ({ active }) => {
           ))}
         </div>
         <div className="nav-cta">
+          <button className="btn btn-soft sm nav-cta-btn" onClick={() => showToast("Notifications — coming next")}><Icon name="bell" size={16}/></button>
+          <a href="supporter-dashboard.html" className="btn btn-primary sm nav-cta-btn">Support a Case <Icon name="arrow"/></a>
           <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
             <Icon name={menuOpen ? "close" : "hamburger"}/>
           </button>
