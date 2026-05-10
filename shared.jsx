@@ -111,7 +111,8 @@ const Nav = ({ active }) => {
     { href: "education.html", label: "Education", key: "education" },
     { href: "healthcare.html", label: "Healthcare", key: "healthcare" },
     { href: "sme-advisory.html", label: "SME Advisory", key: "sme" },
-    { href: "impact-dashboard.html", label: "Impact", key: "impact" }
+    { href: "impact-dashboard.html", label: "Impact", key: "impact" },
+    { href: "role-chooser.html", label: "Get Started", key: "role" }
   ];
   return (
     <nav className="nav">
@@ -135,7 +136,7 @@ const Nav = ({ active }) => {
           ))}
           <div className="nav-mobile-ctas">
             <button className="btn btn-soft btn-sm" onClick={() => { setMenuOpen(false); showToast("Notifications — coming next"); }}><Icon name="bell" size={16}/></button>
-            <a href="supporter-dashboard.html" className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Support a Case <Icon name="arrow"/></a>
+            <a href="case-creation.html" className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Create Case <Icon name="arrow"/></a>
           </div>
         </div>
       )}
