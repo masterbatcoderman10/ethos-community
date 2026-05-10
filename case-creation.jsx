@@ -95,17 +95,44 @@ const Step3Need = ({ value, onChange }) => (
   </div>
 );
 
+const FREQUENCIES = [
+  { value: "one-time", label: "One-time pledge" },
+  { value: "monthly", label: "Recurring monthly" }
+];
+
+const Step4Funding = ({ value, onChange }) => (
+  <div>
+    <div className="step-header">
+      <span className="section-eyebrow">Step 4</span>
+      <h2>Funding pathway</h2>
+      <p>Set an initial pledge target. Supporters can contribute any amount up to the target.</p>
+    </div>
+    <div className="form-grid">
+      <FormField label="Pledge target (USD)" required>
+        <FormInput type="number" placeholder="0" value={value.amount} onChange={e => onChange({ ...value, amount: e.target.value })} min="0" />
+      </FormField>
+      <FormField label="Frequency" required>
+        <FormRadioGroup name="frequency" options={FREQUENCIES} value={value.frequency} onChange={e => onChange({ ...value, frequency: e.target.value })} />
+      </FormField>
+      <FormField label="Wallet / payment account" hint="Bank or wallet details will be collected after community ambassador verification.">
+        <FormInput placeholder="Will be collected after verification" disabled />
+      </FormField>
+    </div>
+  </div>
+);
+
 const CaseCreationPage = () => {
   const [step, setStep] = useState(0);
   const [supportType, setSupportType] = useState(null);
   const [beneficiary, setBeneficiary] = useState({ name: "", location: "", category: "" });
   const [need, setNeed] = useState({ description: "" });
+  const [funding, setFunding] = useState({ amount: "", frequency: "" });
 
   const steps = [
     { label: "Support Type", content: <Step1Support value={supportType} onSelect={setSupportType} /> },
     { label: "Beneficiary", content: <Step2Beneficiary value={beneficiary} onChange={setBeneficiary} /> },
     { label: "Need", content: <Step3Need value={need} onChange={setNeed} /> },
-    { label: "Funding", content: <div className="step-placeholder">Step 4 — coming next</div> },
+    { label: "Funding", content: <Step4Funding value={funding} onChange={setFunding} /> },
     { label: "Confirm", content: <div className="step-placeholder">Step 5 — coming next</div> }
   ];
 
@@ -113,6 +140,7 @@ const CaseCreationPage = () => {
     step === 0 ? !!supportType :
     step === 1 ? !!(beneficiary.name && beneficiary.location && beneficiary.category) :
     step === 2 ? need.description.trim().length >= 20 :
+    step === 3 ? !!(Number(funding.amount) > 0 && funding.frequency) :
     true;
   const handleSubmit = () => showToast("Case submitted — demo only");
 
