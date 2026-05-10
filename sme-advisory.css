@@ -41,6 +41,7 @@
 
 .workflow{background:var(--ink);color:var(--cream);border-radius:8px;padding:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative}
 @media(max-width:880px){.workflow{grid-template-columns:1fr;gap:24px;padding:32px}}
+@media(max-width:560px){.vert-stats{grid-template-columns:1fr;gap:18px}.advisor-row{grid-template-columns:1fr}.workflow{padding:28px 20px}}
 .wf-step .num{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--gold);letter-spacing:.14em;margin-bottom:14px}
 .wf-step h4{font-family:var(--ff-display);font-size:22px;margin:0 0 8px;line-height:1.2;color:var(--cream)}
 .wf-step p{font-size:13.5px;line-height:1.55;color:rgba(247,244,238,.7);margin:0}
