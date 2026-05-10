@@ -22,19 +22,64 @@ const Step1Support = ({ value, onSelect }) => (
   </div>
 );
 
+const LOCATIONS = [
+  { value: "sudan", label: "Sudan" },
+  { value: "egypt", label: "Egypt" },
+  { value: "uae", label: "United Arab Emirates" },
+  { value: "ksa", label: "Saudi Arabia" },
+  { value: "qatar", label: "Qatar" },
+  { value: "uganda", label: "Uganda" },
+  { value: "uk", label: "United Kingdom" },
+  { value: "other", label: "Other" }
+];
+
+const BENEFICIARY_CATEGORIES = [
+  { value: "family", label: "Family Member" },
+  { value: "student", label: "Student" },
+  { value: "patient", label: "Patient" },
+  { value: "professional", label: "Professional" },
+  { value: "sme", label: "SME / Business" },
+  { value: "other", label: "Other" }
+];
+
+const Step2Beneficiary = ({ value, onChange }) => (
+  <div>
+    <div className="step-header">
+      <span className="section-eyebrow">Step 2</span>
+      <h2>Who is this case for?</h2>
+      <p>Provide basic details about the beneficiary. A community ambassador will verify these in the next stage.</p>
+    </div>
+    <div className="form-grid">
+      <FormField label="Beneficiary name" htmlFor="bn-name" required>
+        <FormInput id="bn-name" placeholder="e.g. Halima Mohammed" value={value.name} onChange={e => onChange({ ...value, name: e.target.value })} />
+      </FormField>
+      <FormField label="Location" htmlFor="bn-loc" required>
+        <FormSelect id="bn-loc" options={LOCATIONS} value={value.location} onChange={e => onChange({ ...value, location: e.target.value })} placeholder="Select country" />
+      </FormField>
+      <FormField label="Category" hint="Determines which verification template applies." required>
+        <FormRadioGroup name="bn-category" options={BENEFICIARY_CATEGORIES} value={value.category} onChange={e => onChange({ ...value, category: e.target.value })} />
+      </FormField>
+    </div>
+  </div>
+);
+
 const CaseCreationPage = () => {
   const [step, setStep] = useState(0);
   const [supportType, setSupportType] = useState(null);
+  const [beneficiary, setBeneficiary] = useState({ name: "", location: "", category: "" });
 
   const steps = [
     { label: "Support Type", content: <Step1Support value={supportType} onSelect={setSupportType} /> },
-    { label: "Beneficiary", content: <div className="step-placeholder">Step 2 — coming next</div> },
+    { label: "Beneficiary", content: <Step2Beneficiary value={beneficiary} onChange={setBeneficiary} /> },
     { label: "Need", content: <div className="step-placeholder">Step 3 — coming next</div> },
     { label: "Funding", content: <div className="step-placeholder">Step 4 — coming next</div> },
     { label: "Confirm", content: <div className="step-placeholder">Step 5 — coming next</div> }
   ];
 
-  const canAdvance = step === 0 ? !!supportType : true;
+  const canAdvance =
+    step === 0 ? !!supportType :
+    step === 1 ? !!(beneficiary.name && beneficiary.location && beneficiary.category) :
+    true;
   const handleSubmit = () => showToast("Case submitted — demo only");
 
   return (

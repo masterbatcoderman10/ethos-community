@@ -16,3 +16,5 @@
 .step-placeholder{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);padding:40px;text-align:center}
 
 .case-creation-cancel{margin-top:24px;text-align:center}
+
+.form-grid{display:flex;flex-direction:column;gap:20px;max-width:560px}
