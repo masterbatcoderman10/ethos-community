@@ -228,3 +228,12 @@ footer{background:var(--green-2);color:rgba(247,244,238,.7);padding:64px 0 32px;
 @media (prefers-reduced-motion: reduce){
   .choice-card,.choice-card-icon,.form-input,.form-textarea,.form-select,.form-radio,.upload-zone,.status-dot,.step-progress-line{transition:none !important}
 }
+
+/* side badge in nav */
+.nav-side-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--cream);color:var(--ink);font-size:12px;text-decoration:none;transition:border-color .15s ease,background .15s ease}
+.nav-side-badge:hover{border-color:var(--green);background:rgba(14,59,46,.04)}
+.nav-side-badge-label{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.nav-side-badge-value{font-weight:600;color:var(--ink)}
+.nav-side-badge-switch{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--green);padding-left:8px;border-left:1px solid var(--line)}
+@media(max-width:960px){.nav-side-badge{display:none}}
+.nav-mobile-switch{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--green) !important;border-top:1px solid var(--line);padding-top:12px;margin-top:8px}

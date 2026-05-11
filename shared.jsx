@@ -104,28 +104,104 @@ const showToast = (msg) => {
   toastTimer = setTimeout(() => el.classList.remove("show"), 2400);
 };
 
-const Nav = ({ active }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const links = [
-    { href: "supporter-dashboard.html", label: "Dashboard", key: "dashboard" },
-    { href: "education.html", label: "Education", key: "education" },
-    { href: "healthcare.html", label: "Healthcare", key: "healthcare" },
-    { href: "sme-advisory.html", label: "SME Advisory", key: "sme" },
-    { href: "impact-dashboard.html", label: "Impact", key: "impact" },
-    { href: "role-chooser.html", label: "Get Started", key: "role" }
+const ROLE_TO_SIDE = {
+  supporter: "supporter",
+  mentor: "supporter",
+  ambassador: "supporter",
+  finance: "supporter",
+  development: "supporter",
+  beneficiary: "beneficiary",
+  sme: "beneficiary"
+};
+
+const roleToSide = (role) => ROLE_TO_SIDE[role] || null;
+
+const getEthosRole = () => {
+  try { return localStorage.getItem("ethos.role"); } catch (e) { return null; }
+};
+
+const getEthosSide = () => roleToSide(getEthosRole());
+
+const setEthosRole = (role) => {
+  try { localStorage.setItem("ethos.role", role); } catch (e) {}
+};
+
+const clearEthosRole = () => {
+  try { localStorage.removeItem("ethos.role"); } catch (e) {}
+};
+
+const SIDE_ROOT = {
+  supporter: "supporter/",
+  beneficiary: "beneficiary/"
+};
+
+const sideDashboardUrl = (side, fromDepth = 0) => {
+  const prefix = fromDepth === 0 ? "" : "../".repeat(fromDepth);
+  const root = SIDE_ROOT[side];
+  if (!root) return `${prefix}landing.html`;
+  return `${prefix}${root}dashboard.html`;
+};
+
+const NAV_LINKS_SUPPORTER = (depth) => {
+  const p = "../".repeat(depth);
+  return [
+    { href: `${p}supporter/dashboard.html`, label: "Dashboard", key: "dashboard" },
+    { href: `${p}supporter/education.html`, label: "Education", key: "education" },
+    { href: `${p}supporter/healthcare.html`, label: "Healthcare", key: "healthcare" },
+    { href: `${p}supporter/sme-advisory.html`, label: "SME Advisory", key: "sme" },
+    { href: `${p}supporter/impact.html`, label: "Impact", key: "impact" }
   ];
+};
+
+const NAV_LINKS_BENEFICIARY = (depth) => {
+  const p = "../".repeat(depth);
+  return [
+    { href: `${p}beneficiary/dashboard.html`, label: "Dashboard", key: "dashboard" },
+    { href: `${p}beneficiary/my-cases.html`, label: "My Cases", key: "my-cases" },
+    { href: `${p}beneficiary/documents.html`, label: "Documents", key: "documents" },
+    { href: `${p}beneficiary/messages.html`, label: "Messages", key: "messages" }
+  ];
+};
+
+const NAV_LINKS_NEUTRAL = (depth) => {
+  const p = "../".repeat(depth);
+  return [
+    { href: `${p}landing.html`, label: "Home", key: "home" },
+    { href: `${p}role-chooser.html`, label: "Get Started", key: "role" }
+  ];
+};
+
+const Nav = ({ active, side = "supporter", depth = 0 }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const links =
+    side === "beneficiary" ? NAV_LINKS_BENEFICIARY(depth) :
+    side === "neutral" ? NAV_LINKS_NEUTRAL(depth) :
+    NAV_LINKS_SUPPORTER(depth);
+  const prefix = "../".repeat(depth);
+  const logoHref = `${prefix}landing.html`;
+  const ctaHref = `${prefix}case-creation.html`;
+  const chooserHref = `${prefix}role-chooser.html`;
+  const sideLabel = side === "supporter" ? "Supporter" : side === "beneficiary" ? "Beneficiary" : null;
+
   return (
     <nav className="nav">
       <div className="container nav-inner">
-        <a href="landing.html" className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
+        <a href={logoHref} className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
         <div className="nav-links">
           {links.map(l => (
             <a key={l.key} href={l.href} className={active === l.key ? "active" : ""}>{l.label}</a>
           ))}
         </div>
         <div className="nav-cta">
+          {sideLabel && (
+            <a href={chooserHref} className="nav-side-badge" title="Switch role">
+              <span className="nav-side-badge-label">You're in:</span>
+              <span className="nav-side-badge-value">{sideLabel}</span>
+              <span className="nav-side-badge-switch">Switch role</span>
+            </a>
+          )}
           <button className="btn btn-soft sm nav-cta-btn" onClick={() => showToast("Notifications — coming next")}><Icon name="bell" size={16}/></button>
-          <a href="supporter-dashboard.html" className="btn btn-primary sm nav-cta-btn">Support a Case <Icon name="arrow"/></a>
+          <a href={ctaHref} className="btn btn-primary sm nav-cta-btn">Create Case <Icon name="arrow"/></a>
           <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
             <Icon name={menuOpen ? "close" : "hamburger"}/>
           </button>
@@ -136,9 +212,12 @@ const Nav = ({ active }) => {
           {links.map(l => (
             <a key={l.key} href={l.href} className={`nav-mobile-link ${active === l.key ? "active" : ""}`} onClick={() => setMenuOpen(false)}>{l.label}</a>
           ))}
+          {sideLabel && (
+            <a href={chooserHref} className="nav-mobile-link nav-mobile-switch" onClick={() => setMenuOpen(false)}>Switch role · You're in {sideLabel}</a>
+          )}
           <div className="nav-mobile-ctas">
             <button className="btn btn-soft btn-sm" onClick={() => { setMenuOpen(false); showToast("Notifications — coming next"); }}><Icon name="bell" size={16}/></button>
-            <a href="case-creation.html" className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Create Case <Icon name="arrow"/></a>
+            <a href={ctaHref} className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Create Case <Icon name="arrow"/></a>
           </div>
         </div>
       )}
@@ -324,4 +403,10 @@ const StepWizard = ({ steps = [], currentStep = 0, onStepChange, onSubmit, canAd
   );
 };
 
-Object.assign(window, { Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar, StatusDot, FormInput, FormTextarea, FormSelect, FormRadioGroup, UploadZone, ChoiceCard, StepIndicator, FormField, StepProgressBar, StepWizard });
+Object.assign(window, {
+  Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar,
+  StatusDot, FormInput, FormTextarea, FormSelect, FormRadioGroup, UploadZone,
+  ChoiceCard, StepIndicator, FormField, StepProgressBar, StepWizard,
+  roleToSide, getEthosRole, getEthosSide, setEthosRole, clearEthosRole,
+  sideDashboardUrl
+});
