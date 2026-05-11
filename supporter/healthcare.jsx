@@ -21,7 +21,7 @@ const PARTNERS = [
 function App() {
   return (
     <>
-      <Nav active="healthcare"/>
+      <Nav active="healthcare" side="supporter" depth={1} />
 
       <section className="vert-hero">
         <div className="container">
@@ -36,7 +36,7 @@ function App() {
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <Photo caption="HEALTHCARE · TAKAFUL" overlay="Cleopatra Hospital partner ward, Cairo" img="images/case-healthcare.jpg"/>
+              <Photo caption="HEALTHCARE · TAKAFUL" overlay="Cleopatra Hospital partner ward, Cairo" img="../images/case-healthcare.jpg"/>
             </Reveal>
           </div>
           <div className="vert-stats">
@@ -56,7 +56,7 @@ function App() {
                 <h4>Yasmin H. · Paediatric cardiac surgery — 48 hours remaining</h4>
                 <p>$4,200 pledged of $8,400 needed. Surgery scheduled 12 May 2026 at Cleopatra Hospital.</p>
               </div>
-              <button className="btn btn-primary sm" onClick={() => window.location.href = "yasmin-profile.html"}>View case <Icon name="arrow"/></button>
+              <button className="btn btn-primary sm" onClick={() => window.location.href = "cases/yasmin.html"}>View case <Icon name="arrow"/></button>
             </div>
           </Reveal>
 
@@ -101,7 +101,7 @@ function App() {
           <div className="case-stack">
             {HEALTH_CASES.map((c, i) => (
               <Reveal key={c.id} delay={i * 50}>
-                <div className="case-row" style={{display:"grid",gridTemplateColumns:"80px 1fr 220px 200px 120px",gap:20,alignItems:"center",padding:"20px 0",borderBottom:"1px solid var(--line)",cursor:"pointer"}} onClick={() => c.id === "K-2756" ? window.location.href = "yasmin-profile.html" : showToast("Full case profiles — coming next")} role="button">
+                <div className="case-row" style={{display:"grid",gridTemplateColumns:"80px 1fr 220px 200px 120px",gap:20,alignItems:"center",padding:"20px 0",borderBottom:"1px solid var(--line)",cursor:"pointer"}} onClick={() => c.id === "K-2756" ? window.location.href = "cases/yasmin.html" : showToast("Full case profiles — coming next")} role="button">
                   <div style={{width:64,height:64,borderRadius:6,background:"repeating-linear-gradient(135deg,#d8cfba 0,#d8cfba 2px,#cdc3ad 2px,#cdc3ad 8px)"}}></div>
                   <div>
                     <div style={{fontFamily:"JetBrains Mono, monospace",fontSize:11,color:"var(--gold-2)",letterSpacing:".1em",textTransform:"uppercase"}}><Icon name="health" size={14} style={{verticalAlign:"-3px"}}/> {c.vert}</div>
@@ -152,7 +152,7 @@ function App() {
         </div>
       </section>
 
-      <Footer/>
+      <Footer depth={1} />
       <DemoTag/>
     </>
   );

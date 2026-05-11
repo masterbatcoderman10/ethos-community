@@ -30,7 +30,7 @@ const ADVISORS = [
 function App() {
   return (
     <>
-      <Nav active="sme"/>
+      <Nav active="sme" side="supporter" depth={1} />
 
       <section className="vert-hero">
         <div className="container">
@@ -45,7 +45,7 @@ function App() {
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <Photo caption="SME RECOVERY · ADVISORY" overlay="Dr Afaf Osman's clinic, Sharjah relocation" img="images/sme-hero.jpg"/>
+              <Photo caption="SME RECOVERY · ADVISORY" overlay="Dr Afaf Osman's clinic, Sharjah relocation" img="../images/sme-hero.jpg"/>
             </Reveal>
           </div>
           <div className="vert-stats">
@@ -168,7 +168,7 @@ function App() {
         </div>
       </section>
 
-      <Footer/>
+      <Footer depth={1} />
       <DemoTag/>
     </>
   );

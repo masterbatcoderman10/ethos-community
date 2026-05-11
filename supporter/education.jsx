@@ -18,7 +18,7 @@ const STUDENTS = [
 function App() {
   return (
     <>
-      <Nav active="education"/>
+      <Nav active="education" side="supporter" depth={1} />
 
       <section className="vert-hero">
         <div className="container">
@@ -33,7 +33,7 @@ function App() {
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <Photo caption="EDUCATION · CPD · MENTORSHIP" overlay="Graduate cohort, Riyadh CPD circle" img="images/education-cpd.jpg"/>
+              <Photo caption="EDUCATION · CPD · MENTORSHIP" overlay="Graduate cohort, Riyadh CPD circle" img="../images/education-cpd.jpg"/>
             </Reveal>
           </div>
           <div className="vert-stats">
@@ -151,7 +151,7 @@ function App() {
             const isMaryam = s.name === "Maryam A.";
             return (
             <Reveal key={i} delay={i * 40}>
-              <div className="student-row" style={{display:"grid",cursor:"pointer"}} onClick={() => isMaryam ? window.location.href = "beneficiary-profile.html" : showToast("Full student profiles — coming next")} role="button">
+              <div className="student-row" style={{display:"grid",cursor:"pointer"}} onClick={() => isMaryam ? window.location.href = "cases/maryam.html" : showToast("Full student profiles — coming next")} role="button">
                 <div className="avatar initials">{s.initials}</div>
                 <div>
                   <h4 className="nm">{s.name}</h4>
@@ -170,7 +170,7 @@ function App() {
         </div>
       </section>
 
-      <Footer/>
+      <Footer depth={1} />
       <DemoTag/>
     </>
   );
