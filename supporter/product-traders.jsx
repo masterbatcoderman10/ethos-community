@@ -35,10 +35,10 @@ const DOC_CHECKLIST = [
 ];
 
 const FINANCE_OPTIONS = [
-  { icon: "shield", title: "Islamic Murabaha",  desc: "Asset-backed, Sharia-compliant trade finance for export working capital." },
-  { icon: "trend",  title: "Export Credit",     desc: "Pre-shipment and post-shipment credit from development finance partners." },
-  { icon: "users",  title: "Microfinance",      desc: "Small-scale working capital for early-stage traders and cooperatives." },
-  { icon: "globe",  title: "Trade Finance",     desc: "Letters of credit, documentary collections and supply chain financing." }
+  { icon: "shield", title: "Islamic Murabaha",  img: "../images/finance-murabaha.png", desc: "Asset-backed, Sharia-compliant trade finance for export working capital." },
+  { icon: "trend",  title: "Export Credit",     img: "../images/finance-export.png",   desc: "Pre-shipment and post-shipment credit from development finance partners." },
+  { icon: "users",  title: "Microfinance",      img: "../images/finance-micro.png",    desc: "Small-scale working capital for early-stage traders and cooperatives." },
+  { icon: "globe",  title: "Trade Finance",     img: "../images/finance-trade.png",    desc: "Letters of credit, documentary collections and supply chain financing." }
 ];
 
 function App() {
@@ -58,7 +58,7 @@ function App() {
                 <button className="btn btn-ghost" onClick={() => showToast("Trade finance options — coming next")}>Trade Finance Options</button>
               </div>
             </Reveal>
-            <Reveal delay={120}><Photo caption="TRADE · EXPORT · RECOVERY" overlay="Sesame processing, Port Sudan 2026"/></Reveal>
+            <Reveal delay={120}><Photo caption="TRADE · EXPORT · RECOVERY" overlay="Sesame processing, Port Sudan 2026" img="../images/sesame-processing.png"/></Reveal>
           </div>
           <div className="vert-stats">
             <div><div className="num"><Counter to={6}/></div><div className="label">Trade corridors</div></div>
@@ -97,7 +97,7 @@ function App() {
           <Reveal>
             <div className="section-num" style={{color:"rgba(247,244,238,.6)"}}>§ Trade Corridors</div>
             <h2 style={{color:"var(--cream)",marginBottom:32}}>Sudan's export network, rebuilt.</h2>
-            <div className="pt-corridor-img"><img src="../images/trade-corridors.png" alt="Trade corridor map"/></div>
+            <div className="pt-corridor-img"><img src="../images/trade-corridors-v2.png" alt="Trade corridor map"/></div>
           </Reveal>
         </div>
       </section>
@@ -142,7 +142,8 @@ function App() {
                 {FINANCE_OPTIONS.map((f,i) => (
                   <div key={i} className="pt-finance-card">
                     <div className="pt-finance-icon"><Icon name={f.icon} size={22}/></div>
-                    <div><strong>{f.title}</strong><p>{f.desc}</p></div>
+                    <div className="pt-finance-img"><img src={f.img} alt={f.title}/></div>
+                    <div className="pt-finance-body"><strong>{f.title}</strong><p>{f.desc}</p></div>
                     <button className="btn btn-ghost sm" onClick={() => showToast(`${f.title} referral sent`)}>Apply <Icon name="arrow" size={14}/></button>
                   </div>
                 ))}
