@@ -292,7 +292,7 @@ const StatusDot = ({ status = "idle", size = 12, children }) => {
   const cls = `status-dot status-dot-${status}`;
   return (
     <span className={cls} style={{ width: size, height: size }} aria-hidden="true">
-      {status === "done" ? <Icon name="check" size={Math.round(size * 0.7)} /> : children}
+      {(status === "done" || status === "complete") ? <Icon name="check" size={Math.round(size * 0.7)} /> : children}
     </span>
   );
 };
@@ -403,10 +403,69 @@ const StepWizard = ({ steps = [], currentStep = 0, onStepChange, onSubmit, canAd
   );
 };
 
+const CaseProgressBar = ({ raised = 0, target = 0, compact = false }) => {
+  const pct = target > 0 ? Math.min(100, Math.round((raised / target) * 100)) : 0;
+  const remaining = Math.max(0, target - raised);
+  const fmt = (n) => `$${Number(n).toLocaleString()}`;
+  return (
+    <div className={`case-progress ${compact ? "compact" : ""}`}>
+      {!compact && (
+        <div className="case-progress-label">
+          <span className="case-progress-raised">{fmt(raised)} raised</span>
+          <span className="case-progress-remaining">{fmt(remaining)} to go</span>
+        </div>
+      )}
+      <div className="case-progress-track" aria-label={`${pct}% funded`}>
+        <div className="case-progress-fill" style={{ width: `${pct}%` }} />
+      </div>
+      {compact && <span className="case-progress-pct">{pct}%</span>}
+    </div>
+  );
+};
+
+const STATUS_PILL_LABEL = {
+  draft: "Draft",
+  pending: "Pending review",
+  verified: "Verified",
+  funded: "Funded",
+  completed: "Completed",
+  action_needed: "Action needed"
+};
+
+const StatusPill = ({ status = "pending" }) => {
+  const label = STATUS_PILL_LABEL[status] || status;
+  return <span className={`status-pill status-pill-${status}`}>{label}</span>;
+};
+
+const MessageBubble = ({ sender = "system", name, timestamp, children }) => {
+  if (sender === "system") {
+    return (
+      <div className="message-row message-row-system">
+        <div className="message-system">{children}</div>
+      </div>
+    );
+  }
+  const initials = (name || "").split(" ").map(s => s[0]).slice(0, 2).join("").toUpperCase();
+  return (
+    <div className={`message-row message-row-${sender}`}>
+      {sender === "ambassador" && <Avatar initials={initials} green />}
+      <div className="message-stack">
+        <div className="message-meta">
+          {name && <span className="message-name">{name}</span>}
+          {timestamp && <span className="message-time">{timestamp}</span>}
+        </div>
+        <div className={`message-bubble message-bubble-${sender}`}>{children}</div>
+      </div>
+      {sender === "me" && <Avatar initials={initials || "ME"} />}
+    </div>
+  );
+};
+
 Object.assign(window, {
   Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar,
   StatusDot, FormInput, FormTextarea, FormSelect, FormRadioGroup, UploadZone,
   ChoiceCard, StepIndicator, FormField, StepProgressBar, StepWizard,
+  CaseProgressBar, StatusPill, MessageBubble,
   roleToSide, getEthosRole, getEthosSide, setEthosRole, clearEthosRole,
   sideDashboardUrl
 });
