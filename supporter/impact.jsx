@@ -19,6 +19,15 @@ const LEDGER = [
   { dt: "03 May", id: "K-2890", desc: "Halima M. · CPD module 3 fees", partner: "AAOIFI Pathway", amount: 360, status: "settled" }
 ];
 
+const VERTICALS = [
+  { category: "education", count: 142, label: "Education" },
+  { category: "health",    count: 184, label: "Healthcare" },
+  { category: "family",    count: 97,  label: "Family Support" },
+  { category: "women",     count: 312, label: "Women" },
+  { category: "sme",       count: 63,  label: "SME Recovery" },
+  { category: "legal",     count: 44,  label: "Legal" }
+];
+
 function Donut() {
   const segs = [
     { val: 39, color: "var(--green)", lab: "Direct beneficiary" },
@@ -86,10 +95,20 @@ function App() {
             </Reveal>
           </div>
           <div className="big-stats">
+            <div style={{gridColumn:"1/-1",background:"var(--green)",color:"var(--cream)",borderRadius:6,padding:"28px 32px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:24,flexWrap:"wrap"}}>
+              <div>
+                <div style={{fontFamily:"var(--mono)",fontSize:11,letterSpacing:".08em",textTransform:"uppercase",opacity:.7,marginBottom:8}}>Verified Support Facilitated</div>
+                <div style={{fontSize:"clamp(36px,5vw,56px)",fontWeight:400}}><Counter prefix="$" to={2400000}/></div>
+              </div>
+              <div style={{fontFamily:"var(--mono)",fontSize:12,opacity:.6,maxWidth:320,lineHeight:1.6}}>Across all verified cases, verticals and corridors · Updated monthly</div>
+            </div>
             <div><div className="num"><Counter to={3892}/></div><div className="label">Lives reached</div><div className="delta">↑ 412 this quarter</div></div>
             <div><div className="num"><Counter to={1.2} prefix="$" suffix="m"/></div><div className="label">Capital structured</div><div className="delta">↑ 18% YoY</div></div>
             <div><div className="num"><Counter to={284}/></div><div className="label">Jobs supported</div><div className="delta">↑ 64 this quarter</div></div>
             <div><div className="num"><Counter to={94} suffix="%"/></div><div className="label">Year-1 retention</div><div className="delta">Stable</div></div>
+            <div><div className="num"><Counter to={312}/></div><div className="label">Women Reached</div></div>
+            <div><div className="num"><Counter to={529}/></div><div className="label">Students Supported</div></div>
+            <div><div className="num"><Counter to={184}/></div><div className="label">Healthcare Cases</div></div>
           </div>
         </div>
       </section>
@@ -141,6 +160,23 @@ function App() {
                 <div className="geo">
                   <div className="num"><Counter to={g.num}/></div>
                   <div className="label">{g.label}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-block">
+        <div className="container">
+          <Reveal className="block-head"><div><div className="section-num">§ Verticals</div><h2>Six verticals impacted.</h2></div></Reveal>
+          <div className="impact-verticals">
+            {VERTICALS.map((v,i) => (
+              <Reveal key={i} delay={i*60}>
+                <div className="impact-vertical-tile">
+                  <PurposeBadge category={v.category}/>
+                  <div className="impact-vertical-count"><Counter to={v.count}/></div>
+                  <div className="impact-vertical-label">{v.label}</div>
                 </div>
               </Reveal>
             ))}

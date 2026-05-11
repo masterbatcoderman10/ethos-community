@@ -27,6 +27,22 @@ const ADVISORS = [
   { initials: "TI", name: "Tarek Ibrahim", role: "Partner · Allen & Overy" }
 ];
 
+const FINANCE_CHECKLIST = [
+  { label: "Business Registered",       status: "complete" },
+  { label: "Licensed & Permitted",      status: "complete" },
+  { label: "Tax Compliant",             status: "in_progress" },
+  { label: "Audited Financials",        status: "in_progress" },
+  { label: "Cash-Flow Statement Ready", status: "pending" },
+  { label: "Finance Partner Matched",   status: "pending" }
+];
+
+const FINANCE_PARTNERS = [
+  { icon: "shield", title: "Islamic Murabaha Financing", desc: "Asset-backed, Sharia-compliant working capital for registered SMEs." },
+  { icon: "trend",  title: "Microfinance",               desc: "Small-scale working capital from verified microfinance partners." },
+  { icon: "globe",  title: "Development Finance",        desc: "IsDB member-country facilities for displacement-affected SMEs." },
+  { icon: "sme",    title: "Trade Finance",              desc: "Export/import credit lines and documentary collections." }
+];
+
 function App() {
   return (
     <>
@@ -161,6 +177,54 @@ function App() {
                   <div className="ava">{a.initials}</div>
                   <h4>{a.name}</h4>
                   <div className="role">{a.role}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-block" style={{background:"var(--cream-2)",borderTop:"1px solid var(--line)",borderBottom:"1px solid var(--line)"}}>
+        <div className="container">
+          <Reveal className="block-head">
+            <div><div className="section-num">§ Finance Readiness</div><h2>Know where you stand before you apply.</h2></div>
+            <p style={{fontSize:16,lineHeight:1.65,color:"var(--ink-soft)",maxWidth:480}}>Structured checklist to assess your SME's readiness for Sharia-compliant financing. Ambassadors use this to prepare a tailored referral.</p>
+          </Reveal>
+          <div className="sme-finance-grid">
+            <Reveal>
+              <div className="sme-checklist-panel">
+                <h3>Finance-Readiness Checklist</h3>
+                <Checklist items={FINANCE_CHECKLIST}/>
+                <button className="btn btn-ghost" style={{marginTop:24}} onClick={() => showToast("Download readiness guide — coming next")}>Download Readiness Guide <Icon name="download" size={16}/></button>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="sme-cashflow-panel">
+                <h3>Cash-Flow Snapshot</h3>
+                <div className="sme-cashflow-table">
+                  <div className="sme-cf-row header"><span>Item</span><span>Month 1</span><span>Month 3</span><span>Month 6</span></div>
+                  <div className="sme-cf-row"><span>Revenue</span><span>$4,200</span><span>$8,600</span><span>$14,800</span></div>
+                  <div className="sme-cf-row"><span>Operating Costs</span><span>$3,100</span><span>$5,800</span><span>$9,200</span></div>
+                  <div className="sme-cf-row positive"><span>Net Cash Flow</span><span>$1,100</span><span>$2,800</span><span>$5,600</span></div>
+                </div>
+                <p style={{fontSize:13,color:"var(--muted)",marginTop:12}}>Sample projection — Sudanese grocery SME, Riyadh · Pre-financing baseline</p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-block">
+        <div className="container">
+          <Reveal className="block-head"><div><div className="section-num">§ Finance Partners</div><h2>Sharia-compliant finance referrals.</h2></div></Reveal>
+          <div className="sme-finance-partners">
+            {FINANCE_PARTNERS.map((p,i) => (
+              <Reveal key={i} delay={i*60}>
+                <div className="sme-finance-partner-card">
+                  <div className="sme-fp-icon"><Icon name={p.icon} size={28}/></div>
+                  <h4>{p.title}</h4>
+                  <p>{p.desc}</p>
+                  <button className="btn btn-ghost sm" onClick={() => showToast(`${p.title} referral sent`)}>Apply for Referral <Icon name="arrow" size={14}/></button>
                 </div>
               </Reveal>
             ))}
