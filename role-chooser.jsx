@@ -33,18 +33,28 @@ const RoleRow = ({ index, role, isSelected, onSelect }) => {
 
 const RoleChooserPage = () => {
   const [selected, setSelected] = useState(null);
+  useEffect(() => {
+    const stored = getEthosRole();
+    if (stored && ROLES.some(r => r.id === stored)) setSelected(stored);
+  }, []);
+
   const handleSelect = (id, title) => {
     setSelected(prev => (prev === id ? null : id));
     if (selected !== id) showToast(`Role selected: ${title}`);
   };
   const handleContinue = () => {
     if (!selected) return;
-    showToast("Continue to sign-up — demo only");
+    setEthosRole(selected);
+    const side = roleToSide(selected);
+    const target = side === "beneficiary" ? "beneficiary/dashboard.html" : "supporter/dashboard.html";
+    const title = ROLES.find(r => r.id === selected)?.title || "selected role";
+    showToast(`Continuing as ${title}...`);
+    setTimeout(() => { window.location.href = target; }, 600);
   };
   const selectedRole = ROLES.find(r => r.id === selected);
   return (
     <>
-      <Nav active="role" />
+      <Nav side="neutral" depth={0} active="role" />
       <DemoTag />
       <main className="role-chooser">
         <div className="container">
