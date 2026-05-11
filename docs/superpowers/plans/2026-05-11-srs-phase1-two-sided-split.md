@@ -1,6 +1,6 @@
 # Phase 1 (revised): Two-Sided Prototype Split Implementation Plan
 
-**Status:** Waves A–D complete (Tasks 1–16 committed). Wave E (Task 17 — final validation) pending.
+**Status:** Waves A–E complete (Tasks 1–17 committed). Phase 1 done.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -25,7 +25,7 @@ Wave A (solo)        : Task 1 ✅                  (directory scaffold)
 Wave B (solo)        : Tasks 2 + 9 + 10 ✅        (shared.jsx + styles.css — same files)
 Wave C (parallel, 6×): Tasks 3, 4, 5, 6, 7, 8 ✅  (disjoint file sets)
 Wave D (parallel, 5×): Tasks 12, 13, 14, 15, 16 ✅ (new beneficiary files)
-Wave E (solo)        : Task 17 ⏳ PENDING                 (full-system validation)
+Wave E (solo)        : Task 17 ✅                        (full-system validation)
 ```
 
 ### Wave A — Task 1
@@ -2160,7 +2160,7 @@ git commit -m "feat(beneficiary): messages page with ambassador thread"
 
 Catch-all verification before declaring Phase 1 complete.
 
-- [ ] **Step 17.1: Whole-flow smoke test**
+- [x] **Step 17.1: Whole-flow smoke test**
 
 Clear browser localStorage first (`localStorage.clear()` in devtools console), then walk:
 
@@ -2178,7 +2178,7 @@ Clear browser localStorage first (`localStorage.clear()` in devtools console), t
 12. Click "Create Case" from beneficiary nav → `/case-creation.html` loads with neutral nav
 13. Walk the 5 steps → Submit → redirects to `/beneficiary/dashboard.html`
 
-- [ ] **Step 17.2: Console error sweep**
+- [x] **Step 17.2: Console error sweep**
 
 For each page, open and check the browser devtools console for errors. Any error = bug to fix.
 
@@ -2188,7 +2188,7 @@ Pages to check:
 - `supporter/cases/maryam.html`, `supporter/cases/awad.html`, `supporter/cases/yasmin.html`, `supporter/cases/afaf.html`, `supporter/cases/ibrahim.html`, `supporter/cases/halima.html`
 - `beneficiary/dashboard.html`, `beneficiary/my-cases.html`, `beneficiary/case-detail.html`, `beneficiary/documents.html`, `beneficiary/messages.html`
 
-- [ ] **Step 17.3: Broken-link sweep**
+- [x] **Step 17.3: Broken-link sweep**
 
 ```bash
 grep -rn 'href="supporter-dashboard.html"\|href="impact-dashboard.html"\|href="beneficiary-profile.html"\|href="awad-profile.html"\|href="yasmin-profile.html"\|href="afaf-profile.html"\|href="ibrahim-profile.html"\|href="halima-profile.html"' --include="*.jsx" --include="*.html" .
@@ -2196,15 +2196,15 @@ grep -rn 'href="supporter-dashboard.html"\|href="impact-dashboard.html"\|href="b
 
 Expected: no matches (all old root-level paths should be gone or replaced with new subdirectory paths).
 
-- [ ] **Step 17.4: Responsive sweep**
+- [x] **Step 17.4: Responsive sweep**
 
 Open each new beneficiary page at 360px, 768px, 1024px, 1440px. Confirm no overflow, no broken layouts.
 
-- [ ] **Step 17.5: Spec checklist sync**
+- [x] **Step 17.5: Spec checklist sync**
 
 Open `docs/superpowers/specs/2026-05-09-srs-gap-prototype-design.md` §10 (validation checklist) and tick off each item that this plan covered. Any unticked item = follow-up work for phase 2.
 
-- [ ] **Step 17.6: Commit final validation fixes (if any)**
+- [x] **Step 17.6: Commit final validation fixes (if any)**
 
 ```bash
 git add -A

@@ -19,14 +19,17 @@ const RoleRow = ({ index, role, isSelected, onSelect }) => {
           <span className="role-row-lede">{role.lede}</span>
         </span>
         <span className="role-row-meta">
-          {isSelected ? <span className="role-row-pill">Selected</span> : <Icon name="arrow" size={18} />}
+          <span className={`role-row-meta-inner ${isSelected ? 'is-selected' : ''}`}>
+            <span className="role-row-meta-arrow"><Icon name="arrow" size={18} /></span>
+            <span className="role-row-pill">Selected</span>
+          </span>
         </span>
       </button>
-      {isSelected && (
-        <div className="role-row-detail">
+      <div className={`role-row-detail ${isSelected ? 'is-open' : ''}`}>
+        <div className="role-row-detail-inner">
           <p>{role.detail}</p>
         </div>
-      )}
+      </div>
     </li>
   );
 };
@@ -77,14 +80,15 @@ const RoleChooserPage = () => {
               </ol>
             </section>
           </div>
-          <footer className="role-chooser-footer">
+          <footer className={`role-chooser-footer ${selected ? "is-ready" : ""}`}>
             <a href="landing.html" className="btn-text">Skip — continue as guest <span className="material-symbols-rounded arrow">arrow_forward</span></a>
             <div className="role-chooser-footer-action">
               <span className="role-chooser-status" aria-live="polite">
-                {selectedRole ? <><span className="role-chooser-status-dot" aria-hidden="true" /> {selectedRole.title}</> : "No role selected"}
+                {selectedRole ? <><span className="role-chooser-status-dot" aria-hidden="true" /> <span className="role-chooser-status-text" key={selectedRole.id}>{selectedRole.title}</span></> : <span className="role-chooser-status-text" key="none">No role selected</span>}
               </span>
-              <button type="button" className="btn btn-primary" onClick={handleContinue} disabled={!selected}>
-                Continue <span className="material-symbols-rounded" style={{fontSize:18}}>arrow_forward</span>
+              <button type="button" className="btn btn-primary role-chooser-continue" onClick={handleContinue} disabled={!selected}>
+                <span className="role-chooser-continue-label">Continue</span>
+                <span className="material-symbols-rounded role-chooser-continue-icon" style={{fontSize:18}}>arrow_forward</span>
               </button>
             </div>
           </footer>
