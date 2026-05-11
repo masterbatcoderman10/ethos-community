@@ -286,7 +286,8 @@ footer{background:var(--green-2);color:rgba(247,244,238,.7);padding:64px 0 32px;
 @keyframes kushianPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(14,59,46,.15); } 50% { box-shadow: 0 0 0 4px rgba(14,59,46,0); } }
 
 /* ── Nav overflow at 9 links ─────────────────────────── */
-@media (max-width: 1100px) { .nav-links { gap: 16px; } .nav-links a { font-size: 13px; } }
+@media (max-width: 1100px) { .nav-links { gap: 12px; } .nav-links a { font-size: 12px; } .logo { font-size: 20px; } }
+@media (max-width: 960px) { .nav-links { gap: 8px; } .nav-links a { font-size: 11px; } .logo { font-size: 18px; } }
 
 /* ── Section block (revenue, partnership) ────────────── */
 .section-block { padding: 96px 0; position: relative; }

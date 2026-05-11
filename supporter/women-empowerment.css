@@ -42,9 +42,12 @@
 .we-case-card h4 { font-size: 17px; font-weight: 400; margin: 0; }
 .we-case-loc { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
 .we-case-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+.we-case-card .btn { align-self: flex-start; }
+.we-takaful-img { width: 120px; height: 120px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.we-takaful-img img { width: 100%; height: 100%; object-fit: cover; }
 .we-takaful { background: var(--cream-2); border-top: 1px solid var(--line); }
-.we-takaful-inner { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; background: var(--cream); border: 1px solid var(--line); border-radius: 6px; padding: 40px; }
+.we-takaful-inner { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; background: var(--cream); border: 1px solid var(--line); border-radius: 6px; padding: 40px; }
 .we-takaful-icon { color: var(--green); flex-shrink: 0; }
-.we-takaful-inner > div { flex: 1; }
+.we-takaful-inner > div:not(.we-takaful-icon):not(.we-takaful-img) { flex: 1; }
 .we-takaful-inner h3 { font-size: 22px; font-weight: 400; margin: 8px 0 12px; }
 .we-takaful-inner p { font-size: 15px; color: var(--ink-soft); max-width: 420px; line-height: 1.65; }

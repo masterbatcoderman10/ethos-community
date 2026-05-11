@@ -41,7 +41,7 @@ function App() {
                 <button className="btn btn-ghost" onClick={() => showToast("List your practice — coming next")}>List Your Practice</button>
               </div>
             </Reveal>
-            <Reveal delay={120}><Photo caption="LEGAL · COMPLIANCE · ADVISORY" overlay="Professional advisory session, Dubai 2026"/></Reveal>
+            <Reveal delay={120}><Photo caption="LEGAL · COMPLIANCE · ADVISORY" overlay="Professional advisory session, Dubai 2026" img="../images/legal-advisory.png"/></Reveal>
           </div>
           <div className="vert-stats">
             <div><div className="num"><Counter to={74}/></div><div className="label">Listed practitioners</div></div>
@@ -91,7 +91,7 @@ function App() {
 
       <section className="section-block">
         <div className="container">
-          <Reveal className="block-head">
+          <Reveal className="block-head ls-practitioner-header">
             <div><div className="section-num">§ Practitioners</div><h2>12 verified practitioners ready.</h2></div>
             <button className="btn btn-ghost sm" onClick={() => showToast("List your practice — coming next")}>List Your Practice <Icon name="arrow" size={14}/></button>
           </Reveal>
