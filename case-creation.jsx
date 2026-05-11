@@ -264,14 +264,17 @@ const CaseCreationPage = () => {
     if (isLast) submit();
     else setStep(step + 1);
   };
+  const dashboardHref = sideDashboardUrl(getEthosSide() || "supporter", 0);
   const submit = () => {
+    const side = getEthosSide() || "supporter";
+    const target = sideDashboardUrl(side, 0);
     showToast(`Case ${caseId} submitted for verification`);
-    setTimeout(() => { window.location.href = "supporter-dashboard.html"; }, 1200);
+    setTimeout(() => { window.location.href = target; }, 1200);
   };
 
   return (
     <>
-      <Nav />
+      <Nav side="neutral" depth={0} />
       <DemoTag />
       <main className="case-creation">
         <div className="container">
@@ -305,7 +308,7 @@ const CaseCreationPage = () => {
           </footer>
 
           <div className="cc-cancel">
-            <a href="supporter-dashboard.html" className="btn-text">Cancel and return to dashboard</a>
+            <a href={dashboardHref} className="btn-text">Cancel and return to dashboard</a>
           </div>
         </div>
       </main>

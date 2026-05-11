@@ -30,10 +30,10 @@ function App() {
   const [tab, setTab] = useState("story");
   return (
     <>
-      <Nav active="dashboard"/>
+      <Nav active="dashboard" side="supporter" depth={2} />
 
       <div className="container bp-back">
-        <a href="supporter-dashboard.html" style={{display:"flex",alignItems:"center",gap:6}}><Icon name="arrow-left" size={14}/> Back to dashboard</a>
+        <a href="../dashboard.html" style={{display:"flex",alignItems:"center",gap:6}}><Icon name="arrow-left" size={14}/> Back to dashboard</a>
         <span style={{color:"var(--line)"}}>·</span>
         <span style={{fontFamily:"JetBrains Mono, monospace",fontSize:11,letterSpacing:".08em"}}>CASE K-2756</span>
       </div>
@@ -41,7 +41,7 @@ function App() {
       <section className="bp-hero">
         <div className="container">
           <div className="bp-hero-grid">
-            <Reveal><div className="bp-photo" style={{background:"url(images/case-healthcare.jpg) center/cover"}}>
+            <Reveal><div className="bp-photo" style={{background:"url(../../images/case-healthcare.jpg) center/cover"}}>
               <div className="photo-meta"><span>BENEFICIARY · YASMIN H.</span><span>4 : 5</span></div>
             </div></Reveal>
             <Reveal delay={120}>
@@ -167,15 +167,15 @@ function App() {
             </div>
             <div className="panel">
               <div className="panel-eyebrow">Similar cases</div>
-              <a href="beneficiary-profile.html" className="activity-item" style={{color:"var(--ink)",display:"flex"}}><span className="when">K-2901</span><span>Mariam K. · Maternal care · Kampala</span></a>
+              <a href="maryam.html" className="activity-item" style={{color:"var(--ink)",display:"flex"}}><span className="when">K-2901</span><span>Mariam K. · Maternal care · Kampala</span></a>
               <a href="#" className="activity-item" style={{color:"var(--ink)",display:"flex"}}><span className="when">K-2944</span><span>Ahmed S. · Pediatric oncology · Doha</span></a>
-              <a href="#" className="activity-item" style={{color:"var(--ink)",display:"flex"}}><span className="when">K-2812</span><span>Awad M. · Chronic care · Wad Madani</span></a>
+              <a href="awad.html" className="activity-item" style={{color:"var(--ink)",display:"flex"}}><span className="when">K-2812</span><span>Awad M. · Chronic care · Wad Madani</span></a>
             </div>
           </aside>
         </div>
       </div>
 
-      <Footer/>
+      <Footer depth={2} />
       <DemoTag/>
     </>
   );
