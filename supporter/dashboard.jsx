@@ -108,7 +108,18 @@ function App() {
               const profileUrl = profileMap[c.id];
               return (
               <Reveal key={c.id} delay={i * 50}>
-                <div className="case-row" style={{display:"grid",cursor:"pointer"}} onClick={() => profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next")} role="button">
+                <div
+                  className="case-row"
+                  style={{display:"grid",cursor:"pointer"}}
+                  onClick={() => profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next")}
+                  onKeyDown={(e) => {
+                    if (e.key !== "Enter" && e.key !== " ") return;
+                    e.preventDefault();
+                    profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next");
+                  }}
+                  role="button"
+                  tabIndex={0}
+                >
                   <div className="ava-wrap" style={c.img ? {background:`url(${c.img}) center/cover`} : {}}></div>
                   <div>
                     <div className="vert"><Icon name={VERT_ICON[c.verticalKey]} size={14} style={{verticalAlign:"-3px"}}/> {c.vert}</div>

@@ -151,7 +151,18 @@ function App() {
             const isMaryam = s.name === "Maryam A.";
             return (
             <Reveal key={i} delay={i * 40}>
-              <div className="student-row" style={{display:"grid",cursor:"pointer"}} onClick={() => isMaryam ? window.location.href = "cases/maryam.html" : showToast("Full student profiles — coming next")} role="button">
+              <div
+                className="student-row"
+                style={{display:"grid",cursor:"pointer"}}
+                onClick={() => isMaryam ? window.location.href = "cases/maryam.html" : showToast("Full student profiles — coming next")}
+                onKeyDown={(e) => {
+                  if (e.key !== "Enter" && e.key !== " ") return;
+                  e.preventDefault();
+                  isMaryam ? window.location.href = "cases/maryam.html" : showToast("Full student profiles — coming next");
+                }}
+                role="button"
+                tabIndex={0}
+              >
                 <div className="avatar initials">{s.initials}</div>
                 <div>
                   <h4 className="nm">{s.name}</h4>

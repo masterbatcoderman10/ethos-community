@@ -18,6 +18,7 @@ const Icon = ({ name, size = 24 }) => {
     case "search": return <svg {...props}><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>;
     case "filter": return <svg {...props}><path d="M3 5h18"/><path d="M6 12h12"/><path d="M10 19h4"/></svg>;
     case "bell": return <svg {...props}><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>;
+    case "alert": return <svg {...props}><path d="M12 3l10 18H2L12 3z"/><path d="M12 9v5"/><path d="M12 17h.01"/></svg>;
     case "user": return <svg {...props}><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>;
     case "calendar": return <svg {...props}><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 9h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>;
     case "clock": return <svg {...props}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>;
@@ -200,7 +201,7 @@ const Nav = ({ active, side = "supporter", depth = 0 }) => {
               <span className="nav-side-badge-switch">Switch role</span>
             </a>
           )}
-          <button className="btn btn-soft sm nav-cta-btn" onClick={() => showToast("Notifications — coming next")}><Icon name="bell" size={16}/></button>
+          <button className="btn btn-soft sm nav-cta-btn" aria-label="Notifications" onClick={() => showToast("Notifications — coming next")}><Icon name="bell" size={16}/></button>
           <a href={ctaHref} className="btn btn-primary sm nav-cta-btn">Create Case <Icon name="arrow"/></a>
           <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
             <Icon name={menuOpen ? "close" : "hamburger"}/>
@@ -216,7 +217,7 @@ const Nav = ({ active, side = "supporter", depth = 0 }) => {
             <a href={chooserHref} className="nav-mobile-link nav-mobile-switch" onClick={() => setMenuOpen(false)}>Switch role · You're in {sideLabel}</a>
           )}
           <div className="nav-mobile-ctas">
-            <button className="btn btn-soft btn-sm" onClick={() => { setMenuOpen(false); showToast("Notifications — coming next"); }}><Icon name="bell" size={16}/></button>
+            <button className="btn btn-soft btn-sm" aria-label="Notifications" onClick={() => { setMenuOpen(false); showToast("Notifications — coming next"); }}><Icon name="bell" size={16}/></button>
             <a href={ctaHref} className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Create Case <Icon name="arrow"/></a>
           </div>
         </div>

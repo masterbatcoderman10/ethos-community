@@ -101,7 +101,18 @@ function App() {
           <div className="case-stack">
             {HEALTH_CASES.map((c, i) => (
               <Reveal key={c.id} delay={i * 50}>
-                <div className="case-row" style={{display:"grid",gridTemplateColumns:"80px 1fr 220px 200px 120px",gap:20,alignItems:"center",padding:"20px 0",borderBottom:"1px solid var(--line)",cursor:"pointer"}} onClick={() => c.id === "K-2756" ? window.location.href = "cases/yasmin.html" : showToast("Full case profiles — coming next")} role="button">
+                <div
+                  className="case-row"
+                  style={{display:"grid",gridTemplateColumns:"80px 1fr 220px 200px 120px",gap:20,alignItems:"center",padding:"20px 0",borderBottom:"1px solid var(--line)",cursor:"pointer"}}
+                  onClick={() => c.id === "K-2756" ? window.location.href = "cases/yasmin.html" : showToast("Full case profiles — coming next")}
+                  onKeyDown={(e) => {
+                    if (e.key !== "Enter" && e.key !== " ") return;
+                    e.preventDefault();
+                    c.id === "K-2756" ? window.location.href = "cases/yasmin.html" : showToast("Full case profiles — coming next");
+                  }}
+                  role="button"
+                  tabIndex={0}
+                >
                   <div style={{width:64,height:64,borderRadius:6,background:"repeating-linear-gradient(135deg,#d8cfba 0,#d8cfba 2px,#cdc3ad 2px,#cdc3ad 8px)"}}></div>
                   <div>
                     <div style={{fontFamily:"JetBrains Mono, monospace",fontSize:11,color:"var(--gold-2)",letterSpacing:".1em",textTransform:"uppercase"}}><Icon name="health" size={14} style={{verticalAlign:"-3px"}}/> {c.vert}</div>
