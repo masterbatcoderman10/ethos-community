@@ -1,8 +1,8 @@
 const PRODUCTS = [
-  { name: "Sesame",     icon: "sme",     volume: "520,000 MT/yr", demand: "high",   desc: "Sudan's largest agricultural export. Key global input for tahini, oil and food manufacturing. Supply disrupted." },
-  { name: "Arabic Gum", icon: "globe",   volume: "80,000 MT/yr",  demand: "high",   desc: "Sudan produces 70% of the world's gum arabic. Critical for confectionery, beverages, pharma and printing." },
-  { name: "Karkadi",    icon: "heart",   volume: "12,000 MT/yr",  demand: "medium", desc: "Premium dried hibiscus. Growing demand for specialty beverages, health drinks and natural dyes." },
-  { name: "Baobab",     icon: "trend",   volume: "4,000 MT/yr",   demand: "medium", desc: "Emerging superfood with growing European and US demand. Rich in vitamin C, fibre and antioxidants." }
+  { name: "Sesame",     icon: "sme",     volume: "520,000 MT/yr", demand: "high",   img: "../images/sesame.png", desc: "Sudan's largest agricultural export. Key global input for tahini, oil and food manufacturing. Supply disrupted." },
+  { name: "Arabic Gum", icon: "globe",   volume: "80,000 MT/yr",  demand: "high",   img: "../images/arabic-gum.png", desc: "Sudan produces 70% of the world's gum arabic. Critical for confectionery, beverages, pharma and printing." },
+  { name: "Karkadi",    icon: "heart",   volume: "12,000 MT/yr",  demand: "medium", img: "../images/karkadi.png", desc: "Premium dried hibiscus. Growing demand for specialty beverages, health drinks and natural dyes." },
+  { name: "Baobab",     icon: "trend",   volume: "4,000 MT/yr",   demand: "medium", img: "../images/baobab.png", desc: "Emerging superfood with growing European and US demand. Rich in vitamin C, fibre and antioxidants." }
 ];
 
 const CORRIDORS = ["Cairo, Egypt","Dubai & Abu Dhabi, UAE","Riyadh, KSA","London, UK","Rotterdam, Netherlands","Singapore"];
@@ -76,7 +76,7 @@ function App() {
             {PRODUCTS.map((p,i) => (
               <Reveal key={i} delay={i*60}>
                 <div className="pt-product-card">
-                  <Photo caption={p.name.toUpperCase()} overlay={p.name}/>
+                  <div className="pt-product-img"><img src={p.img} alt={p.name}/></div>
                   <div className="pt-product-body">
                     <div className="pt-product-top">
                       <h3>{p.name}</h3>
@@ -95,22 +95,9 @@ function App() {
       <section className="pt-corridors-section">
         <div className="container">
           <Reveal>
-            <div className="section-num">§ Trade Corridors</div>
-            <h2>Sudan's export network, rebuilt.</h2>
-            <div className="pt-corridor-map">
-              <div className="pt-corridor-origin">
-                <div className="pt-corridor-dot origin"></div>
-                <div className="pt-corridor-origin-label">Sudan / Port Sudan</div>
-              </div>
-              <div className="pt-corridor-lines">
-                {CORRIDORS.map((c,i) => (
-                  <div key={i} className="pt-corridor-row">
-                    <div className="pt-corridor-line"></div>
-                    <div className="pt-corridor-dest"><div className="pt-corridor-dot"></div><span>{c}</span></div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <div className="section-num" style={{color:"rgba(247,244,238,.6)"}}>§ Trade Corridors</div>
+            <h2 style={{color:"var(--cream)",marginBottom:32}}>Sudan's export network, rebuilt.</h2>
+            <div className="pt-corridor-img"><img src="../images/trade-corridors.png" alt="Trade corridor map"/></div>
           </Reveal>
         </div>
       </section>

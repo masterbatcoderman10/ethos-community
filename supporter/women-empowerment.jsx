@@ -9,7 +9,7 @@ const PATHWAYS = [
 ];
 
 const CASES = [
-  { id: "K-2890", name: "Halima M.", loc: "Dubai → Riyadh",  tag: "women",  desc: "Finance returnship · AAOIFI CPD pathway · Mentor-matched",           raised: 6200, target: 9000,  href: "../cases/halima.html" },
+  { id: "K-2890", name: "Halima M.", loc: "Dubai → Riyadh",  tag: "women",  desc: "Finance returnship · AAOIFI CPD pathway · Mentor-matched",           raised: 6200, target: 9000,  href: "cases/halima.html" },
   { id: "K-3120", name: "Fatima A.", loc: "Kassala, Sudan",  tag: "family", desc: "Widowed mother of 3 · Living + children's education support",         raised: 2800, target: 8000,  href: null },
   { id: "K-3275", name: "Amira A.",  loc: "Cairo, Egypt",    tag: "women",  desc: "Displaced nurse · CPD recertification pathway · CCHM target",         raised: 1400, target: 5000,  href: null },
   { id: "K-3401", name: "Nour H.",   loc: "Omdurman, Sudan", tag: "sme",    desc: "Women-led textile cooperative · Export-readiness + market access",    raised: 3600, target: 12000, href: null },
@@ -40,7 +40,7 @@ function App() {
                 <button className="btn btn-ghost" onClick={() => showToast("View all cases — coming next")}>View all cases</button>
               </div>
             </Reveal>
-            <Reveal delay={120}><Photo caption="WOMEN · EMPOWERMENT · RESILIENCE" overlay="Women CPD circle, Riyadh 2026"/></Reveal>
+            <Reveal delay={120}><Photo caption="WOMEN · EMPOWERMENT · RESILIENCE" overlay="Women CPD circle, Riyadh 2026" img="../images/women-cpd.png"/></Reveal>
           </div>
           <div className="vert-stats">
             <div><div className="num"><Counter to={312}/></div><div className="label">Women supported</div></div>
@@ -75,7 +75,7 @@ function App() {
         <div className="container">
           <Reveal className="block-head">
             <div><div className="section-num">§ Active Cases</div><h2>Women supported right now.</h2></div>
-            <a href="../cases/halima.html" className="btn btn-ghost sm">View Halima's profile <Icon name="arrow" size={14}/></a>
+            <a href="cases/halima.html" className="btn btn-ghost sm">View Halima's profile <Icon name="arrow" size={14}/></a>
           </Reveal>
           <div className="we-cases">
             {CASES.map((c,i) => (
@@ -124,8 +124,9 @@ function App() {
           <Reveal>
             <div className="we-takaful-inner">
               <div className="we-takaful-icon"><Icon name="health" size={36}/></div>
+              <div className="we-takaful-img"><img src="../images/women-healthcare.png" alt="Healthcare support"/></div>
               <div>
-                <div className="eyebrow">Healthcare & Protection</div>
+                <div className="eyebrow">Healthcare &amp; Protection</div>
                 <h3>Takaful coverage for women and families</h3>
                 <p>Cooperative health and family protection plans for widows and female-headed households — through our Takaful partner network.</p>
               </div>
