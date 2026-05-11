@@ -288,18 +288,7 @@ function App() {
         ? <Nav side="neutral" depth={0} />
         : <LandingFallbackNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} onCTA={onCTA} />}
       {typeof DemoTag !== "undefined" ? <DemoTag /> : <div className="demo-tag">Prototype · Demo Only</div>}
-      {(() => {
-        const role = typeof getEthosRole === "function" ? getEthosRole() : null;
-        if (!role) return null;
-        const side = typeof roleToSide === "function" ? roleToSide(role) : null;
-        const dash = side === "beneficiary" ? "beneficiary/dashboard.html" : "supporter/dashboard.html";
-        return (
-          <div className="returning-ribbon">
-            <span>Welcome back · You're registered as <strong>{role}</strong></span>
-            <a href={dash} className="btn btn-text sm">Go to your dashboard <Icon name="arrow" size={14}/></a>
-          </div>
-        );
-      })()}
+      <ReturningRibbon />
 
       {/* HERO */}
       <section className="hero">
@@ -471,7 +460,7 @@ function App() {
               <p className="landing-revenue-headline">This is not a charity app — it is <em>scalable human-development infrastructure</em> that converts informal diaspora support into verified, purpose-linked and measurable outcomes.</p>
               <div className="revenue-pills">
                 {["Platform Fees","Subscriptions","Referral Commissions","Training & CPD","SME Advisory","White-Label Licensing"].map(r => (
-                  <span key={r} className="revenue-pill">{r}</span>
+                  <span key={r} className="revenue-pill"><span>{r}</span></span>
                 ))}
               </div>
               <button className="btn btn-text" style={{marginTop:20}} onClick={() => showToast("Business model — learn more coming next")}>Learn about our model <Icon name="arrow"/></button>

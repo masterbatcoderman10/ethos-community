@@ -45,6 +45,7 @@ function App() {
               <input
                 className="mp-search"
                 type="search"
+                aria-label="Search providers by name, specialty, or location"
                 placeholder="Search by name, specialty, or location…"
                 value={search}
                 onChange={e => setSearch(e.target.value)}

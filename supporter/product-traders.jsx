@@ -95,8 +95,8 @@ function App() {
       <section className="pt-corridors-section">
         <div className="container">
           <Reveal>
-            <div className="section-num" style={{color:"rgba(247,244,238,.6)"}}>§ Trade Corridors</div>
-            <h2 style={{color:"var(--cream)",marginBottom:32}}>Sudan's export network, rebuilt.</h2>
+            <div className="section-num">§ Trade Corridors</div>
+            <h2>Sudan's export network, rebuilt.</h2>
             <div className="pt-corridor-map">
               <div className="pt-corridor-origin">
                 <div className="pt-corridor-dot origin"></div>
@@ -139,7 +139,7 @@ function App() {
 
       <section className="section-block" style={{background:"var(--cream-2)",borderTop:"1px solid var(--line)",borderBottom:"1px solid var(--line)"}}>
         <div className="container">
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"start"}}>
+          <div className="pt-doc-finance-grid">
             <Reveal>
               <div className="section-num">§ Documentation</div>
               <h2>Export documentation checklist.</h2>
