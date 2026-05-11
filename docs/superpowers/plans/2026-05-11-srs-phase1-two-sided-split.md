@@ -1,5 +1,7 @@
 # Phase 1 (revised): Two-Sided Prototype Split Implementation Plan
 
+**Status:** Waves A–D complete (Tasks 1–16 committed). Wave E (Task 17 — final validation) pending.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Restructure the existing single-shell prototype into a two-sided platform (Upwork-style). Relocate all existing supporter-side pages under `/supporter/*`, build a new beneficiary shell under `/beneficiary/*`, fork the shared `Nav` component to render side-specific link sets, and turn the role chooser into a real gate that redirects users into the correct side.
@@ -19,11 +21,11 @@
 The 17 tasks form a dependency graph that compresses to **five execution waves**. Use this map only when running under `superpowers:subagent-driven-development` — inline execution should keep the natural Task 1 → 17 order.
 
 ```
-Wave A (solo)        : Task 1                  (directory scaffold)
-Wave B (solo)        : Tasks 2 + 9 + 10        (shared.jsx + styles.css — same files)
-Wave C (parallel, 6×): Tasks 3, 4, 5, 6, 7, 8  (disjoint file sets)
-Wave D (parallel, 5×): Tasks 12, 13, 14, 15, 16 (new beneficiary files)
-Wave E (solo)        : Task 17                 (full-system validation)
+Wave A (solo)        : Task 1 ✅                  (directory scaffold)
+Wave B (solo)        : Tasks 2 + 9 + 10 ✅        (shared.jsx + styles.css — same files)
+Wave C (parallel, 6×): Tasks 3, 4, 5, 6, 7, 8 ✅  (disjoint file sets)
+Wave D (parallel, 5×): Tasks 12, 13, 14, 15, 16 ✅ (new beneficiary files)
+Wave E (solo)        : Task 17 ⏳ PENDING                 (full-system validation)
 ```
 
 ### Wave A — Task 1
@@ -222,14 +224,14 @@ Apply findings inline. Optional delight ideas can be deferred to phase 2; must-f
 **Files:**
 - Create: `supporter/.gitkeep`, `supporter/cases/.gitkeep`, `beneficiary/.gitkeep`
 
-- [ ] **Step 1.1: Create the three directories with placeholder files**
+- [x] **Step 1.1: Create the three directories with placeholder files**
 
 ```bash
 mkdir -p supporter/cases beneficiary
 touch supporter/.gitkeep supporter/cases/.gitkeep beneficiary/.gitkeep
 ```
 
-- [ ] **Step 1.2: Verify directories exist**
+- [x] **Step 1.2: Verify directories exist**
 
 ```bash
 ls -la supporter/ supporter/cases/ beneficiary/
@@ -237,7 +239,7 @@ ls -la supporter/ supporter/cases/ beneficiary/
 
 Expected: each directory listed with `.gitkeep` inside.
 
-- [ ] **Step 1.3: Commit**
+- [x] **Step 1.3: Commit**
 
 ```bash
 git add supporter/.gitkeep supporter/cases/.gitkeep beneficiary/.gitkeep
@@ -254,7 +256,7 @@ Add three link sets keyed by side. Default `side="supporter"` for transitional b
 - Modify: `shared.jsx` (Nav component + helpers, append to `Object.assign`)
 - Modify: `styles.css` (append side-badge styles)
 
-- [ ] **Step 2.1: Add side-state helpers to `shared.jsx`**
+- [x] **Step 2.1: Add side-state helpers to `shared.jsx`**
 
 Insert immediately after the `showToast` function (~line 105), before the `Nav` declaration:
 
@@ -298,7 +300,7 @@ const sideDashboardUrl = (side, fromDepth = 0) => {
 };
 ```
 
-- [ ] **Step 2.2: Replace the `Nav` component in `shared.jsx`**
+- [x] **Step 2.2: Replace the `Nav` component in `shared.jsx`**
 
 Replace the existing `Nav` definition (currently lines 107–147) with the side-aware version:
 
@@ -387,7 +389,7 @@ const Nav = ({ active, side = "supporter", depth = 0 }) => {
 };
 ```
 
-- [ ] **Step 2.3: Extend the `Object.assign(window, …)` export at the bottom of `shared.jsx`**
+- [x] **Step 2.3: Extend the `Object.assign(window, …)` export at the bottom of `shared.jsx`**
 
 Replace the existing single-line export with:
 
@@ -401,7 +403,7 @@ Object.assign(window, {
 });
 ```
 
-- [ ] **Step 2.4: Append side-badge styles to `styles.css`**
+- [x] **Step 2.4: Append side-badge styles to `styles.css`**
 
 Append at the very end:
 
@@ -416,7 +418,7 @@ Append at the very end:
 .nav-mobile-switch{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--green) !important;border-top:1px solid var(--line);padding-top:12px;margin-top:8px}
 ```
 
-- [ ] **Step 2.5: Smoke-test that nothing is broken**
+- [x] **Step 2.5: Smoke-test that nothing is broken**
 
 ```
 open landing.html
@@ -427,7 +429,7 @@ Manual checks:
 - Nav still functions (the default `side="supporter"` means links point to `/supporter/*`, which doesn't exist yet — those links will 404, but the page itself renders).
 - No layout shift on the nav row.
 
-- [ ] **Step 2.6: Commit**
+- [x] **Step 2.6: Commit**
 
 ```bash
 git add shared.jsx styles.css
@@ -443,14 +445,14 @@ git commit -m "feat(nav): add side prop with supporter/beneficiary/neutral link 
 - Move: `supporter-dashboard.jsx` → `supporter/dashboard.jsx`
 - Modify: both for path fixups + `<Nav side="supporter" depth={1} />`
 
-- [ ] **Step 3.1: Move files via git**
+- [x] **Step 3.1: Move files via git**
 
 ```bash
 git mv supporter-dashboard.html supporter/dashboard.html
 git mv supporter-dashboard.jsx supporter/dashboard.jsx
 ```
 
-- [ ] **Step 3.2: Fix asset paths in `supporter/dashboard.html`**
+- [x] **Step 3.2: Fix asset paths in `supporter/dashboard.html`**
 
 Open `supporter/dashboard.html` and apply these substitutions:
 
@@ -461,7 +463,7 @@ Open `supporter/dashboard.html` and apply these substitutions:
 
 If the file references any other per-page CSS or images by relative root path, also prefix with `../`.
 
-- [ ] **Step 3.3: Update Nav call site in `supporter/dashboard.jsx`**
+- [x] **Step 3.3: Update Nav call site in `supporter/dashboard.jsx`**
 
 Find the JSX `<Nav active="dashboard" />` (or `<Nav />`) and replace with:
 
@@ -469,7 +471,7 @@ Find the JSX `<Nav active="dashboard" />` (or `<Nav />`) and replace with:
 <Nav active="dashboard" side="supporter" depth={1} />
 ```
 
-- [ ] **Step 3.4: Update internal links inside `supporter/dashboard.jsx`**
+- [x] **Step 3.4: Update internal links inside `supporter/dashboard.jsx`**
 
 Apply these substitutions (treat each as a `replace_all` in the file):
 
@@ -492,7 +494,7 @@ Apply these substitutions (treat each as a `replace_all` in the file):
 
 (Apply only substitutions where the LHS appears in the file. Some may not.)
 
-- [ ] **Step 3.5: Verify**
+- [x] **Step 3.5: Verify**
 
 ```
 open supporter/dashboard.html
@@ -505,7 +507,7 @@ Manual checks:
 - Logo links to `../landing.html`.
 - Hero, case grid, activity feed render.
 
-- [ ] **Step 3.6: Commit**
+- [x] **Step 3.6: Commit**
 
 ```bash
 git add supporter/dashboard.html supporter/dashboard.jsx
@@ -521,7 +523,7 @@ git commit -m "refactor(split): relocate supporter-dashboard to /supporter/dashb
 - Move: `impact-dashboard.jsx` → `supporter/impact.jsx`
 - Move: `impact-dashboard.css` → `supporter/impact.css`
 
-- [ ] **Step 4.1: Move files**
+- [x] **Step 4.1: Move files**
 
 ```bash
 git mv impact-dashboard.html supporter/impact.html
@@ -529,24 +531,24 @@ git mv impact-dashboard.jsx supporter/impact.jsx
 git mv impact-dashboard.css supporter/impact.css
 ```
 
-- [ ] **Step 4.2: Path fixups in `supporter/impact.html`**
+- [x] **Step 4.2: Path fixups in `supporter/impact.html`**
 
 Apply same substitutions as Task 3 Step 3.2, plus:
 
 - `<link rel="stylesheet" href="impact-dashboard.css">` → `<link rel="stylesheet" href="impact.css">`
 - `<script type="text/babel" src="impact-dashboard.jsx">` → `<script type="text/babel" src="impact.jsx">`
 
-- [ ] **Step 4.3: Nav update in `supporter/impact.jsx`**
+- [x] **Step 4.3: Nav update in `supporter/impact.jsx`**
 
 ```jsx
 <Nav active="impact" side="supporter" depth={1} />
 ```
 
-- [ ] **Step 4.4: Internal link updates in `supporter/impact.jsx`**
+- [x] **Step 4.4: Internal link updates in `supporter/impact.jsx`**
 
 Apply the same link substitution table from Task 3 Step 3.4.
 
-- [ ] **Step 4.5: Verify**
+- [x] **Step 4.5: Verify**
 
 ```
 open supporter/impact.html
@@ -554,7 +556,7 @@ open supporter/impact.html
 
 Manual checks: page loads, no console errors, side badge present, charts and ledger render with their CSS.
 
-- [ ] **Step 4.6: Commit**
+- [x] **Step 4.6: Commit**
 
 ```bash
 git add supporter/impact.html supporter/impact.jsx supporter/impact.css
@@ -572,7 +574,7 @@ Three near-identical relocations. Group into a single task.
 - Move: `healthcare.html` + `.jsx` + `.css` → `supporter/`
 - Move: `sme-advisory.html` + `.jsx` + `.css` → `supporter/`
 
-- [ ] **Step 5.1: Move files**
+- [x] **Step 5.1: Move files**
 
 ```bash
 git mv education.html supporter/education.html
@@ -586,7 +588,7 @@ git mv sme-advisory.jsx supporter/sme-advisory.jsx
 git mv sme-advisory.css supporter/sme-advisory.css
 ```
 
-- [ ] **Step 5.2: HTML path fixups for each of the three pages**
+- [x] **Step 5.2: HTML path fixups for each of the three pages**
 
 In each of `supporter/education.html`, `supporter/healthcare.html`, `supporter/sme-advisory.html`, apply:
 - `href="favicon.svg"` → `href="../favicon.svg"`
@@ -594,7 +596,7 @@ In each of `supporter/education.html`, `supporter/healthcare.html`, `supporter/s
 - `src="shared.jsx"` → `src="../shared.jsx"`
 - (the per-page `.css` and `.jsx` stay as-is since they're co-located after the move)
 
-- [ ] **Step 5.3: Nav + internal links in each `.jsx`**
+- [x] **Step 5.3: Nav + internal links in each `.jsx`**
 
 For each file, update Nav:
 - `supporter/education.jsx` → `<Nav active="education" side="supporter" depth={1} />`
@@ -603,7 +605,7 @@ For each file, update Nav:
 
 Apply the link substitution table from Task 3 Step 3.4 to each file.
 
-- [ ] **Step 5.4: Verify all three pages**
+- [x] **Step 5.4: Verify all three pages**
 
 ```
 open supporter/education.html
@@ -613,7 +615,7 @@ open supporter/sme-advisory.html
 
 Manual checks (per page): loads without console errors, hero + content sections render with their CSS, side badge present, Nav active state correct.
 
-- [ ] **Step 5.5: Commit**
+- [x] **Step 5.5: Commit**
 
 ```bash
 git add supporter/education.* supporter/healthcare.* supporter/sme-advisory.*
@@ -631,7 +633,7 @@ Maryam is the only profile with a dedicated `.css`. Handle it separately as a te
 - Move: `beneficiary-profile.jsx` → `supporter/cases/maryam.jsx`
 - Move: `beneficiary-profile.css` → `supporter/cases/maryam.css`
 
-- [ ] **Step 6.1: Move files**
+- [x] **Step 6.1: Move files**
 
 ```bash
 git mv beneficiary-profile.html supporter/cases/maryam.html
@@ -639,7 +641,7 @@ git mv beneficiary-profile.jsx supporter/cases/maryam.jsx
 git mv beneficiary-profile.css supporter/cases/maryam.css
 ```
 
-- [ ] **Step 6.2: HTML path fixups in `supporter/cases/maryam.html`**
+- [x] **Step 6.2: HTML path fixups in `supporter/cases/maryam.html`**
 
 Two-level depth — use `../../`:
 
@@ -649,7 +651,7 @@ Two-level depth — use `../../`:
 - `href="beneficiary-profile.css"` → `href="maryam.css"`
 - `src="beneficiary-profile.jsx"` → `src="maryam.jsx"`
 
-- [ ] **Step 6.3: Nav in `supporter/cases/maryam.jsx`**
+- [x] **Step 6.3: Nav in `supporter/cases/maryam.jsx`**
 
 ```jsx
 <Nav side="supporter" depth={2} />
@@ -657,7 +659,7 @@ Two-level depth — use `../../`:
 
 (`active` omitted — profile pages aren't a top-level nav target.)
 
-- [ ] **Step 6.4: Internal link updates in `supporter/cases/maryam.jsx`**
+- [x] **Step 6.4: Internal link updates in `supporter/cases/maryam.jsx`**
 
 | Old href | New href |
 |---|---|
@@ -676,7 +678,7 @@ Two-level depth — use `../../`:
 | `"role-chooser.html"` | `"../../role-chooser.html"` |
 | `"case-creation.html"` | `"../../case-creation.html"` |
 
-- [ ] **Step 6.5: Verify**
+- [x] **Step 6.5: Verify**
 
 ```
 open supporter/cases/maryam.html
@@ -684,7 +686,7 @@ open supporter/cases/maryam.html
 
 Manual checks: case detail loads, tabs work, photos render (verify image references at `../../images/*` resolve), side badge present, "Support this case" toast still fires.
 
-- [ ] **Step 6.6: Commit**
+- [x] **Step 6.6: Commit**
 
 ```bash
 git add supporter/cases/maryam.html supporter/cases/maryam.jsx supporter/cases/maryam.css
@@ -699,7 +701,7 @@ Awad, Yasmin, Afaf, Ibrahim, Halima — all use root `styles.css` only (no per-p
 
 **Files:** 5 × (`.html` + `.jsx`)
 
-- [ ] **Step 7.1: Move files**
+- [x] **Step 7.1: Move files**
 
 ```bash
 git mv awad-profile.html supporter/cases/awad.html
@@ -714,7 +716,7 @@ git mv halima-profile.html supporter/cases/halima.html
 git mv halima-profile.jsx supporter/cases/halima.jsx
 ```
 
-- [ ] **Step 7.2: HTML path fixups for each profile**
+- [x] **Step 7.2: HTML path fixups for each profile**
 
 For each of `awad.html`, `yasmin.html`, `afaf.html`, `ibrahim.html`, `halima.html`, apply:
 
@@ -723,7 +725,7 @@ For each of `awad.html`, `yasmin.html`, `afaf.html`, `ibrahim.html`, `halima.htm
 - `src="shared.jsx"` → `src="../../shared.jsx"`
 - `src="<name>-profile.jsx"` → `src="<name>.jsx"` (e.g., `src="awad-profile.jsx"` → `src="awad.jsx"`)
 
-- [ ] **Step 7.3: Nav + internal links in each `.jsx`**
+- [x] **Step 7.3: Nav + internal links in each `.jsx`**
 
 In each of the 5 files, set Nav:
 
@@ -733,7 +735,7 @@ In each of the 5 files, set Nav:
 
 Apply the link substitution table from Task 6 Step 6.4.
 
-- [ ] **Step 7.4: Verify all 5 profiles**
+- [x] **Step 7.4: Verify all 5 profiles**
 
 ```
 open supporter/cases/awad.html
@@ -745,7 +747,7 @@ open supporter/cases/halima.html
 
 Manual checks per page: loads, tabs work, image references resolve, side badge present.
 
-- [ ] **Step 7.5: Commit**
+- [x] **Step 7.5: Commit**
 
 ```bash
 git add supporter/cases/
@@ -765,7 +767,7 @@ git commit -m "refactor(split): relocate remaining 5 case profiles to /supporter
 **Files:**
 - Modify: `app.jsx` (landing), `role-chooser.jsx`, `case-creation.jsx`
 
-- [ ] **Step 8.1: Update Nav call in `app.jsx`**
+- [x] **Step 8.1: Update Nav call in `app.jsx`**
 
 Find the existing `<Nav ... />` call and replace with:
 
@@ -773,7 +775,7 @@ Find the existing `<Nav ... />` call and replace with:
 <Nav side="neutral" depth={0} />
 ```
 
-- [ ] **Step 8.2: Add returning-user ribbon to `app.jsx`**
+- [x] **Step 8.2: Add returning-user ribbon to `app.jsx`**
 
 Find the top of the `App` component's JSX (immediately after `<Nav .../>` and `<DemoTag />`, before the hero). Insert a `ReturningRibbon` component definition above `App` and render it:
 
@@ -805,7 +807,7 @@ Render it inside `App`, immediately after `<DemoTag />`:
 <ReturningRibbon />
 ```
 
-- [ ] **Step 8.3: Append ribbon styles to `styles.css`**
+- [x] **Step 8.3: Append ribbon styles to `styles.css`**
 
 ```css
 /* returning-user ribbon */
@@ -817,11 +819,11 @@ Render it inside `App`, immediately after `<DemoTag />`:
 @media(max-width:640px){.returning-ribbon-inner{flex-direction:column;align-items:flex-start;gap:6px;padding:12px 0}}
 ```
 
-- [ ] **Step 8.4: Update Nav + landing CTA in `app.jsx`**
+- [x] **Step 8.4: Update Nav + landing CTA in `app.jsx`**
 
 Any landing-page CTAs that previously linked to `supporter-dashboard.html` should now link to `role-chooser.html` (for the unified "Get Started" flow). Specifically, scan `app.jsx` for `href="supporter-dashboard.html"` and change to `href="role-chooser.html"`. Footer links (in `shared.jsx`) we'll fix in Task 11.
 
-- [ ] **Step 8.5: Update `role-chooser.jsx` for gate behavior**
+- [x] **Step 8.5: Update `role-chooser.jsx` for gate behavior**
 
 Open `role-chooser.jsx`. Update the Nav call:
 
@@ -851,7 +853,7 @@ useEffect(() => {
 }, []);
 ```
 
-- [ ] **Step 8.6: Update `case-creation.jsx` for neutral nav + side-aware submit/cancel**
+- [x] **Step 8.6: Update `case-creation.jsx` for neutral nav + side-aware submit/cancel**
 
 Open `case-creation.jsx`. Update the Nav call:
 
@@ -885,7 +887,7 @@ with:
 >Cancel and return to dashboard</a>
 ```
 
-- [ ] **Step 8.7: Update `index.html` redirect target**
+- [x] **Step 8.7: Update `index.html` redirect target**
 
 Verify `index.html` still redirects to `landing.html`. If it doesn't, fix it. (No relocation — index stays at root.)
 
@@ -895,7 +897,7 @@ cat index.html
 
 Expected: contains `<meta http-equiv="refresh" content="0; url=landing.html">` or similar redirect.
 
-- [ ] **Step 8.8: Verify**
+- [x] **Step 8.8: Verify**
 
 ```
 open landing.html
@@ -908,7 +910,7 @@ Manual checks:
 - **Role chooser:** loads, neutral nav. Pick a role → Continue → toast fires → redirects to correct side dashboard within ~600ms. localStorage now contains the role. Return to chooser: previously-selected card pre-highlighted.
 - **Case-creation:** loads, neutral nav. Cancel link routes to `/supporter/dashboard.html` (or `/beneficiary/dashboard.html` if localStorage is beneficiary). Complete wizard → Submit → toast + redirect to correct side dashboard.
 
-- [ ] **Step 8.9: Commit**
+- [x] **Step 8.9: Commit**
 
 ```bash
 git add app.jsx role-chooser.jsx case-creation.jsx styles.css
@@ -923,7 +925,7 @@ git commit -m "feat(split): root pages neutral nav + role-chooser gate + side-aw
 - Modify: `shared.jsx`
 - Modify: `styles.css`
 
-- [ ] **Step 9.1: Add the three components to `shared.jsx`**
+- [x] **Step 9.1: Add the three components to `shared.jsx`**
 
 Insert immediately after `StepWizard` (and before the `Object.assign(window, ...)` export):
 
@@ -987,7 +989,7 @@ const MessageBubble = ({ sender = "system", name, timestamp, children }) => {
 };
 ```
 
-- [ ] **Step 9.2: Extend the `Object.assign(window, …)` export**
+- [x] **Step 9.2: Extend the `Object.assign(window, …)` export**
 
 Update the final `Object.assign` to include the three new names:
 
@@ -1002,7 +1004,7 @@ Object.assign(window, {
 });
 ```
 
-- [ ] **Step 9.3a: Extend `StatusDot` to support doc-checklist statuses**
+- [x] **Step 9.3a: Extend `StatusDot` to support doc-checklist statuses**
 
 `Step 14` and `Step 15` pass `status="complete"`, `status="in_progress"`, and `status="pending"` to `StatusDot`, but the existing CSS only defines `idle|active|done`. Add the missing variants by appending to `styles.css`:
 
@@ -1024,7 +1026,7 @@ Replace with:
 {(status === "done" || status === "complete") ? <Icon name="check" size={Math.round(size * 0.7)} /> : children}
 ```
 
-- [ ] **Step 9.3: Append component styles to `styles.css`**
+- [x] **Step 9.3: Append component styles to `styles.css`**
 
 ```css
 /* case progress bar */
@@ -1061,7 +1063,7 @@ Replace with:
 .message-system{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:6px 12px;background:var(--cream-2);border-radius:999px}
 ```
 
-- [ ] **Step 9.4: Smoke test**
+- [x] **Step 9.4: Smoke test**
 
 ```
 open landing.html
@@ -1069,7 +1071,7 @@ open landing.html
 
 Manual: page renders without console errors (the three new components aren't consumed yet — pure availability check).
 
-- [ ] **Step 9.5: Commit**
+- [x] **Step 9.5: Commit**
 
 ```bash
 git add shared.jsx styles.css
@@ -1087,7 +1089,7 @@ For now (Phase 1), keep the Footer simple — accept a `depth` prop and prefix l
 **Files:**
 - Modify: `shared.jsx` (Footer component)
 
-- [ ] **Step 10.1: Update `Footer` in `shared.jsx`**
+- [x] **Step 10.1: Update `Footer` in `shared.jsx`**
 
 Replace the existing `Footer` definition with:
 
@@ -1141,7 +1143,7 @@ const Footer = ({ depth = 0 }) => {
 };
 ```
 
-- [ ] **Step 10.2: Update every consumer to pass `depth`**
+- [x] **Step 10.2: Update every consumer to pass `depth`**
 
 For every `<Footer />` call across the project:
 - Root pages (`landing`, `role-chooser`, `case-creation`): `<Footer depth={0} />` (or just `<Footer />`)
@@ -1157,7 +1159,7 @@ grep -rln "<Footer" --include="*.jsx" .
 
 For each file in the output, set the appropriate `depth`. Default-no-prop is acceptable for root pages.
 
-- [ ] **Step 10.3: Verify**
+- [x] **Step 10.3: Verify**
 
 ```
 open landing.html
@@ -1167,7 +1169,7 @@ open supporter/cases/maryam.html
 
 Manual: footer links resolve from each location. Click "Supporter Dashboard" from Maryam profile → routes to `../dashboard.html` (which is `supporter/dashboard.html`).
 
-- [ ] **Step 10.4: Commit**
+- [x] **Step 10.4: Commit**
 
 ```bash
 git add shared.jsx supporter/ app.jsx role-chooser.jsx case-creation.jsx
@@ -1180,7 +1182,7 @@ git commit -m "feat(footer): depth-aware footer links across subdirectories"
 
 (Folded into Task 10 if footer change was done globally; this task only runs if footer was deferred.) Skip if Task 10 covered all `<Footer />` consumers.
 
-- [ ] **Step 11.1: Skip if Task 10 complete; otherwise repeat Task 10 Step 10.2 for the cases/ subdirectory.**
+- [x] **Step 11.1: Skip if Task 10 complete; otherwise repeat Task 10 Step 10.2 for the cases/ subdirectory.**
 
 ---
 
@@ -1191,7 +1193,7 @@ First beneficiary page. **Ends with mandatory impeccable subagent review.**
 **Files:**
 - Create: `beneficiary/dashboard.html`, `beneficiary/dashboard.jsx`, `beneficiary/dashboard.css`
 
-- [ ] **Step 12.1: Create `beneficiary/dashboard.html`**
+- [x] **Step 12.1: Create `beneficiary/dashboard.html`**
 
 ```html
 <!doctype html>
@@ -1218,7 +1220,7 @@ First beneficiary page. **Ends with mandatory impeccable subagent review.**
 </html>
 ```
 
-- [ ] **Step 12.2: Create `beneficiary/dashboard.jsx`**
+- [x] **Step 12.2: Create `beneficiary/dashboard.jsx`**
 
 ```jsx
 const BENE_CASES = [
@@ -1376,7 +1378,7 @@ const BeneficiaryDashboard = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(<BeneficiaryDashboard />);
 ```
 
-- [ ] **Step 12.3: Create `beneficiary/dashboard.css`**
+- [x] **Step 12.3: Create `beneficiary/dashboard.css`**
 
 ```css
 .bene-dashboard{padding:48px 0 96px}
@@ -1432,7 +1434,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<BeneficiaryDashboar
 .bene-activity-when{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted)}
 ```
 
-- [ ] **Step 12.4: Verify in browser**
+- [x] **Step 12.4: Verify in browser**
 
 ```
 open beneficiary/dashboard.html
@@ -1449,7 +1451,7 @@ Manual checks:
 - Click any "View case" → routes to `case-detail.html` (currently 404 until Task 14; verify the URL is correct).
 - Resize to 360px / 768px / 1024px: layout stacks gracefully without overflow.
 
-- [ ] **Step 12.5: Dispatch impeccable subagent review**
+- [x] **Step 12.5: Dispatch impeccable subagent review**
 
 Use the Agent tool with the template from the cross-cutting rule above, substituting:
 - `<page>` → `beneficiary/dashboard.html`
@@ -1457,7 +1459,7 @@ Use the Agent tool with the template from the cross-cutting rule above, substitu
 
 Apply must-fix and recommended-polish findings before committing.
 
-- [ ] **Step 12.6: Commit**
+- [x] **Step 12.6: Commit**
 
 ```bash
 git add beneficiary/dashboard.html beneficiary/dashboard.jsx beneficiary/dashboard.css
@@ -1471,14 +1473,14 @@ git commit -m "feat(beneficiary): dashboard page with stats, cases, next steps, 
 **Files:**
 - Create: `beneficiary/my-cases.html`, `beneficiary/my-cases.jsx`, `beneficiary/my-cases.css`
 
-- [ ] **Step 13.1: Create `beneficiary/my-cases.html`**
+- [x] **Step 13.1: Create `beneficiary/my-cases.html`**
 
 Copy the HTML shell from Task 12 Step 12.1 and adjust:
 - `<title>My Cases — Ethos Community™ Beneficiary</title>`
 - `<link rel="stylesheet" href="my-cases.css" />` (replacing `dashboard.css`)
 - `<script type="text/babel" src="my-cases.jsx">` (replacing `dashboard.jsx`)
 
-- [ ] **Step 13.2: Create `beneficiary/my-cases.jsx`**
+- [x] **Step 13.2: Create `beneficiary/my-cases.jsx`**
 
 ```jsx
 const ALL_BENE_CASES = [
@@ -1561,7 +1563,7 @@ const MyCasesPage = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(<MyCasesPage />);
 ```
 
-- [ ] **Step 13.3: Create `beneficiary/my-cases.css`**
+- [x] **Step 13.3: Create `beneficiary/my-cases.css`**
 
 ```css
 .bene-my-cases{padding:48px 0 96px}
@@ -1594,7 +1596,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<MyCasesPage />);
 .bene-empty p{margin:0;font-size:14px}
 ```
 
-- [ ] **Step 13.4: Verify**
+- [x] **Step 13.4: Verify**
 
 ```
 open beneficiary/my-cases.html
@@ -1608,11 +1610,11 @@ Manual checks:
 - "New case" CTA routes to `../case-creation.html`.
 - Each row's arrow link routes to `case-detail.html`.
 
-- [ ] **Step 13.5: Impeccable subagent review**
+- [x] **Step 13.5: Impeccable subagent review**
 
 Dispatch using the template above with `<page>` → `beneficiary/my-cases.html` and `§4.0.<n>` → `§4.0.2`. Apply findings.
 
-- [ ] **Step 13.6: Commit**
+- [x] **Step 13.6: Commit**
 
 ```bash
 git add beneficiary/my-cases.html beneficiary/my-cases.jsx beneficiary/my-cases.css
@@ -1626,11 +1628,11 @@ git commit -m "feat(beneficiary): my-cases list page with filters"
 **Files:**
 - Create: `beneficiary/case-detail.html`, `beneficiary/case-detail.jsx`, `beneficiary/case-detail.css`
 
-- [ ] **Step 14.1: Create `beneficiary/case-detail.html`**
+- [x] **Step 14.1: Create `beneficiary/case-detail.html`**
 
 Same shell as Task 12, with `title`/`css`/`jsx` swapped to `case-detail.*` and `<title>Case K-2890 — Ethos Community™ Beneficiary</title>`.
 
-- [ ] **Step 14.2: Create `beneficiary/case-detail.jsx`**
+- [x] **Step 14.2: Create `beneficiary/case-detail.jsx`**
 
 ```jsx
 const CASE = {
@@ -1782,7 +1784,7 @@ const CaseDetailPage = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(<CaseDetailPage />);
 ```
 
-- [ ] **Step 14.3: Create `beneficiary/case-detail.css`**
+- [x] **Step 14.3: Create `beneficiary/case-detail.css`**
 
 ```css
 .bene-case-detail{padding:32px 0 96px}
@@ -1829,7 +1831,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<CaseDetailPage />);
 .bene-updates{display:flex;flex-direction:column}
 ```
 
-- [ ] **Step 14.4: Verify**
+- [x] **Step 14.4: Verify**
 
 ```
 open beneficiary/case-detail.html
@@ -1847,11 +1849,11 @@ Manual checks:
 - **NO "Support this case" CTA anywhere.** This is the key differentiator from supporter-side profiles.
 - Back link routes to `my-cases.html`.
 
-- [ ] **Step 14.5: Impeccable subagent review**
+- [x] **Step 14.5: Impeccable subagent review**
 
 Dispatch with `<page>` → `beneficiary/case-detail.html`, `§4.0.<n>` → `§4.0.3`. Apply findings.
 
-- [ ] **Step 14.6: Commit**
+- [x] **Step 14.6: Commit**
 
 ```bash
 git add beneficiary/case-detail.html beneficiary/case-detail.jsx beneficiary/case-detail.css
@@ -1865,11 +1867,11 @@ git commit -m "feat(beneficiary): case-detail page with tabs and recipient frami
 **Files:**
 - Create: `beneficiary/documents.html`, `beneficiary/documents.jsx`, `beneficiary/documents.css`
 
-- [ ] **Step 15.1: Create `beneficiary/documents.html`**
+- [x] **Step 15.1: Create `beneficiary/documents.html`**
 
 Same shell as Task 12 with `documents.*` swapped in and `<title>Documents — Ethos Community™ Beneficiary</title>`.
 
-- [ ] **Step 15.2: Create `beneficiary/documents.jsx`**
+- [x] **Step 15.2: Create `beneficiary/documents.jsx`**
 
 ```jsx
 const DOCS = [
@@ -1945,7 +1947,7 @@ const DocumentsPage = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(<DocumentsPage />);
 ```
 
-- [ ] **Step 15.3: Create `beneficiary/documents.css`**
+- [x] **Step 15.3: Create `beneficiary/documents.css`**
 
 ```css
 .bene-documents{padding:48px 0 96px}
@@ -1971,7 +1973,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<DocumentsPage />);
 .bene-documents-cta{text-align:center}
 ```
 
-- [ ] **Step 15.4: Verify**
+- [x] **Step 15.4: Verify**
 
 ```
 open beneficiary/documents.html
@@ -1985,11 +1987,11 @@ Manual checks:
 - Upload / Replace buttons fire correct toast.
 - "Submit for re-verification" CTA fires toast.
 
-- [ ] **Step 15.5: Impeccable subagent review**
+- [x] **Step 15.5: Impeccable subagent review**
 
 Dispatch with `<page>` → `beneficiary/documents.html`, `§4.0.<n>` → `§4.0.4`. Apply findings.
 
-- [ ] **Step 15.6: Commit**
+- [x] **Step 15.6: Commit**
 
 ```bash
 git add beneficiary/documents.html beneficiary/documents.jsx beneficiary/documents.css
@@ -2003,11 +2005,11 @@ git commit -m "feat(beneficiary): documents page with status grid"
 **Files:**
 - Create: `beneficiary/messages.html`, `beneficiary/messages.jsx`, `beneficiary/messages.css`
 
-- [ ] **Step 16.1: Create `beneficiary/messages.html`**
+- [x] **Step 16.1: Create `beneficiary/messages.html`**
 
 Same shell, swap to `messages.*` and `<title>Messages — Ethos Community™ Beneficiary</title>`.
 
-- [ ] **Step 16.2: Create `beneficiary/messages.jsx`**
+- [x] **Step 16.2: Create `beneficiary/messages.jsx`**
 
 ```jsx
 const THREADS = [
@@ -2095,7 +2097,7 @@ const MessagesPage = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(<MessagesPage />);
 ```
 
-- [ ] **Step 16.3: Create `beneficiary/messages.css`**
+- [x] **Step 16.3: Create `beneficiary/messages.css`**
 
 ```css
 .bene-messages{padding:48px 0 96px}
@@ -2124,7 +2126,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<MessagesPage />);
 .bene-thread-composer .form-textarea{flex:1;min-height:60px}
 ```
 
-- [ ] **Step 16.4: Verify**
+- [x] **Step 16.4: Verify**
 
 ```
 open beneficiary/messages.html
@@ -2141,11 +2143,11 @@ Manual checks:
 - Textarea composer at bottom; "Send" disabled until text typed; clicking Send fires toast and clears textarea.
 - Resize to mobile: pane stacks, composer remains usable.
 
-- [ ] **Step 16.5: Impeccable subagent review**
+- [x] **Step 16.5: Impeccable subagent review**
 
 Dispatch with `<page>` → `beneficiary/messages.html`, `§4.0.<n>` → `§4.0.5`. Apply findings.
 
-- [ ] **Step 16.6: Commit**
+- [x] **Step 16.6: Commit**
 
 ```bash
 git add beneficiary/messages.html beneficiary/messages.jsx beneficiary/messages.css
