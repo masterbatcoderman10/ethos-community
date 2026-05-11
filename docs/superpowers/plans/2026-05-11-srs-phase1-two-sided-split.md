@@ -14,6 +14,85 @@
 
 ---
 
+## Parallel Execution Map
+
+The 17 tasks form a dependency graph that compresses to **five execution waves**. Use this map only when running under `superpowers:subagent-driven-development` — inline execution should keep the natural Task 1 → 17 order.
+
+```
+Wave A (solo)        : Task 1                  (directory scaffold)
+Wave B (solo)        : Tasks 2 + 9 + 10        (shared.jsx + styles.css — same files)
+Wave C (parallel, 6×): Tasks 3, 4, 5, 6, 7, 8  (disjoint file sets)
+Wave D (parallel, 5×): Tasks 12, 13, 14, 15, 16 (new beneficiary files)
+Wave E (solo)        : Task 17                 (full-system validation)
+```
+
+### Wave A — Task 1
+
+Single subagent. Creates `supporter/`, `supporter/cases/`, `beneficiary/` with `.gitkeep` files. ~30s of work.
+
+### Wave B — Tasks 2 + 9 + 10 (serialize on shared resources)
+
+Tasks 2, 9, and 10 all modify `shared.jsx` and/or `styles.css`. Running them in parallel guarantees merge conflicts. Two options:
+
+**Option B1 (recommended):** dispatch one subagent that executes all three tasks in sequence as a single hand-off. Net work is identical, no merge risk. Treat them as one logical wave.
+
+**Option B2:** dispatch sequentially in three separate subagent rounds (Task 2 → review → Task 9 → review → Task 10 → review). Slower but provides three review checkpoints if design risk is high.
+
+After Wave B, `shared.jsx` exports the side-aware `Nav`, the three new components, the depth-aware `Footer`, and all `setEthosRole` / `getEthosSide` / `sideDashboardUrl` helpers. `styles.css` carries the side-badge, returning-ribbon, three-component, and StatusDot-extension rules.
+
+### Wave C — Tasks 3, 4, 5, 6, 7, 8 (6× parallel)
+
+Six independent subagents touching disjoint file sets. None of the six modifies `shared.jsx` or `styles.css` (Wave B already did). Each task's verification step may fail to reach all targets (e.g., Task 3 verification clicks "Healthcare" which is moved by Task 5) — that is expected during this wave; Task 17 is the final cross-page check.
+
+| Subagent | Task | Files |
+|---|---|---|
+| C1 | Task 3 | `supporter-dashboard.{html,jsx}` → `supporter/dashboard.*` |
+| C2 | Task 4 | `impact-dashboard.{html,jsx,css}` → `supporter/impact.*` |
+| C3 | Task 5 | `education.*`, `healthcare.*`, `sme-advisory.*` → `supporter/` |
+| C4 | Task 6 | `beneficiary-profile.{html,jsx,css}` → `supporter/cases/maryam.*` |
+| C5 | Task 7 | 5 remaining `*-profile.{html,jsx}` → `supporter/cases/` |
+| C6 | Task 8 | `app.jsx`, `role-chooser.jsx`, `case-creation.jsx` (root pages — neutral nav + gate + side-aware redirects) |
+
+**Shared-file caveat for C6:** Task 8 step 8.3 appends returning-ribbon CSS to `styles.css`. This conflicts with Wave B if Wave B is still in flight. Two safe handlings:
+- Move the returning-ribbon CSS into Wave B (recommended — fold into Task 8.3 work) and let C6 only touch the three `.jsx` files.
+- Or hold C6 until C1–C5 also finish, then run C6 solo. Slower; choose only if Wave B was split.
+
+If you adopt the first handling, also pre-extract Task 8 step 8.3 from C6's prompt and append it to whichever Wave B subagent executes Task 9 (since Task 9 already appends `styles.css` rules).
+
+### Wave D — Tasks 12, 13, 14, 15, 16 (5× parallel)
+
+Five independent subagents, each builds one beneficiary page. All five touch only their own three new files (`<page>.html`, `<page>.jsx`, `<page>.css`) under `/beneficiary/`. Zero file overlap.
+
+| Subagent | Task | New files |
+|---|---|---|
+| D1 | Task 12 | `beneficiary/dashboard.{html,jsx,css}` |
+| D2 | Task 13 | `beneficiary/my-cases.{html,jsx,css}` |
+| D3 | Task 14 | `beneficiary/case-detail.{html,jsx,css}` |
+| D4 | Task 15 | `beneficiary/documents.{html,jsx,css}` |
+| D5 | Task 16 | `beneficiary/messages.{html,jsx,css}` |
+
+Each D-subagent itself dispatches a **second-level** impeccable subagent (see Cross-cutting rule above) before committing. The orchestrator does not need to manage this — the D-subagent owns the full task including its own quality gate.
+
+**Cross-page link caveat:** Task 12 (dashboard) links to `case-detail.html`; Task 13 (my-cases) also links to `case-detail.html`. Both can author those links before Task 14 produces the target — links are static strings, not validated at edit time. Task 17 catches any drift.
+
+### Wave E — Task 17
+
+Single subagent. Walks every page, runs the broken-link grep, ticks the spec §10 checklist, and commits any final fixes.
+
+### Wall-clock estimate (subagent-driven)
+
+If each subagent takes ~5 min for relocation work and ~15 min for a beneficiary page (including its impeccable second-level review), the sequential 17-task run is ~120 min and the 5-wave parallel run is roughly:
+
+- Wave A: ~1 min
+- Wave B: ~15 min (one combined subagent)
+- Wave C: ~10 min (6-way parallel ≈ longest task ≈ Task 5 with 3 pages × 5 min, plus overhead)
+- Wave D: ~20 min (5-way parallel ≈ longest beneficiary page including impeccable review)
+- Wave E: ~10 min
+
+**Total parallel ≈ 55 min vs. ~120 min sequential.** Roughly 2× speed-up, gated by Wave B and Wave E.
+
+---
+
 ## Cross-cutting rule — Impeccable subagent review
 
 Per `CLAUDE.md`, `AGENTS.md`, and spec §"Cross-cutting rule": every major page-creation task ends with a step that dispatches a subagent to run the `impeccable` skill (modes `craft`, `critique`, `polish`, `adapt`, `delight` as relevant) against the just-completed work. The implementing developer's review is biased toward their own output; the subagent provides independent design critique. Findings must be applied (or explicitly deferred with reasoning) before the page is committed and the task marked complete.
