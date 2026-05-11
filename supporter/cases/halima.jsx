@@ -25,6 +25,12 @@ const SUPPORTERS = [
   { initials: "NK", name: "Nouf K.", loc: "Riyadh, SA", amt: 400 }
 ];
 
+const SIMILAR_CASES = [
+  { id: "Women",      name: "Browse women's support pathways", href: "../women-empowerment.html" },
+  { id: "K-3275",     name: "Amira A. — Women CPD", href: "../women-empowerment.html" },
+  { id: "K-3401",     name: "Nour H. — Women-Led SME", href: "../women-empowerment.html" }
+];
+
 function App() {
   const [tab, setTab] = useState("story");
   return (
@@ -53,7 +59,7 @@ function App() {
               </div>
               <p className="bp-story">Halima, a mid-career finance professional with 6 years' banking experience in Khartoum, was displaced in February 2026. Through Kushian™'s Women & Workforce pool, four diaspora supporters funded a 12-week CPD returnship in Sharia-compliant finance — professional upskilling, mentor coaching from a senior Islamic banker, and employer placement support — positioning her for re-entry into banking across the GCC.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <button className="btn btn-primary" onClick={() => showToast("Pledge support — coming next")}>Pledge support <Icon name="arrow"/></button>
+                <button className="btn btn-primary" onClick={() => showToast("To support this case, create a support case → case-creation.html")}>Pledge support <Icon name="arrow"/></button>
                 <button className="btn btn-ghost" onClick={() => showToast("Message professional — coming next")}>Send a message</button>
                 <button className="btn btn-text" onClick={() => showToast("Share case — coming next")}>Share case <Icon name="external" size={14}/></button>
               </div>
@@ -173,6 +179,23 @@ function App() {
           </aside>
         </div>
       </div>
+
+      <section className="section-block" style={{background:"var(--cream-2)",borderTop:"1px solid var(--line)"}}>
+        <div className="container">
+          <Reveal>
+            <div className="section-num">§ Similar Cases</div>
+            <h3 style={{fontSize:20,fontWeight:400,marginBottom:24}}>Other cases you might support</h3>
+            <div style={{display:"flex",gap:16,flexWrap:"wrap"}}>
+              {SIMILAR_CASES.map((s,i) => (
+                <a key={i} href={s.href} className="similar-case-link">
+                  <span className="similar-case-id">{s.id}</span>
+                  <span className="similar-case-name">{s.name} <Icon name="arrow" size={14}/></span>
+                </a>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       <Footer depth={2} />
       <DemoTag/>

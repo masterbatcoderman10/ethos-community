@@ -8,12 +8,12 @@ const PERSONAS = [
 ];
 
 const CASES = [
-  { id: "K-2384", name: "Maryam A.", desc: "Year 9 student, displaced from Omdurman", vert: "Education", verticalKey: "education", location: "Cairo, EG", since: "Sept 2025", pledged: 3840, target: 4200, progress: 91, status: "verified", supporters: 12, urgency: null, img: "../images/maryam-school.jpg" },
-  { id: "K-1908", name: "Awad Family", desc: "5 dependents, father seeking work", vert: "Family Support", verticalKey: "family", location: "Kampala, UG", since: "Jul 2025", pledged: 6240, target: 9600, progress: 65, status: "verified", supporters: 8, urgency: null, img: "../images/case-family.jpg" },
-  { id: "K-3014", name: "Dr Afaf O.", desc: "Dental clinic relocation advisory", vert: "SME Recovery", verticalKey: "sme", location: "Sharjah, AE", since: "Jan 2026", pledged: 12400, target: 18000, progress: 69, status: "verified", supporters: 4, urgency: null, img: "../images/sme-hero.jpg" },
-  { id: "K-2756", name: "Yasmin H.", desc: "Hospitalization · cardiac surgery", vert: "Healthcare", verticalKey: "health", location: "Khartoum, SD", since: "Mar 2026", pledged: 4200, target: 8400, progress: 50, status: "urgent", supporters: 6, urgency: "48h remaining", img: "../images/case-healthcare.jpg" },
-  { id: "K-2102", name: "Ibrahim Engineering Cohort", desc: "12 graduate engineers · CPD return-track", vert: "Education", verticalKey: "education", location: "Riyadh, SA", since: "Aug 2025", pledged: 14400, target: 14400, progress: 100, status: "complete", supporters: 22, urgency: null, img: "../images/education-cpd.jpg" },
-  { id: "K-2890", name: "Halima M.", desc: "Women's returnship programme · finance", vert: "Women & Workforce", verticalKey: "women", location: "Doha, QA", since: "Feb 2026", pledged: 1800, target: 3600, progress: 50, status: "pending", supporters: 3, urgency: null, img: "../images/case-workforce.jpg" }
+  { id: "K-2384", name: "Maryam A.", desc: "Year 9 student, displaced from Omdurman", vert: "Education", verticalKey: "education", category: "family", location: "Cairo, EG", since: "Sept 2025", pledged: 3840, target: 4200, progress: 91, status: "verified", supporters: 12, urgency: null, img: "../images/maryam-school.jpg" },
+  { id: "K-1908", name: "Awad Family", desc: "5 dependents, father seeking work", vert: "Family Support", verticalKey: "family", category: "family", location: "Kampala, UG", since: "Jul 2025", pledged: 6240, target: 9600, progress: 65, status: "verified", supporters: 8, urgency: null, img: "../images/case-family.jpg" },
+  { id: "K-3014", name: "Dr Afaf O.", desc: "Dental clinic relocation advisory", vert: "SME Recovery", verticalKey: "sme", category: "sme", location: "Sharjah, AE", since: "Jan 2026", pledged: 12400, target: 18000, progress: 69, status: "verified", supporters: 4, urgency: null, img: "../images/sme-hero.jpg" },
+  { id: "K-2756", name: "Yasmin H.", desc: "Hospitalization · cardiac surgery", vert: "Healthcare", verticalKey: "health", category: "health", location: "Khartoum, SD", since: "Mar 2026", pledged: 4200, target: 8400, progress: 50, status: "urgent", supporters: 6, urgency: "48h remaining", img: "../images/case-healthcare.jpg" },
+  { id: "K-2102", name: "Ibrahim Engineering Cohort", desc: "12 graduate engineers · CPD return-track", vert: "Education", verticalKey: "education", category: "education", location: "Riyadh, SA", since: "Aug 2025", pledged: 14400, target: 14400, progress: 100, status: "complete", supporters: 22, urgency: null, img: "../images/education-cpd.jpg" },
+  { id: "K-2890", name: "Halima M.", desc: "Women's returnship programme · finance", vert: "Women & Workforce", verticalKey: "women", category: "women", location: "Doha, QA", since: "Feb 2026", pledged: 1800, target: 3600, progress: 50, status: "pending", supporters: 3, urgency: null, img: "../images/case-workforce.jpg" }
 ];
 
 const VERT_ICON = { education:"education", family:"family", sme:"sme", health:"health", women:"women" };
@@ -29,6 +29,7 @@ const ACTIVITY = [
 function App() {
   const [persona, setPersona] = useState(PERSONAS[0]);
   const [filter, setFilter] = useState("all");
+  const [showEmpty, setShowEmpty] = useState(() => new URLSearchParams(window.location.search).get("empty") === "1");
 
   const filtered = filter === "all" ? CASES : CASES.filter(c => c.status === filter);
   const totalPledged = CASES.reduce((s, c) => s + c.pledged, 0);
@@ -62,6 +63,10 @@ function App() {
                 <a href="../case-creation.html" className="btn btn-primary sm"><Icon name="plus" size={14}/> New pledge</a>
               </div>
             </div>
+          </div>
+          
+          <div style={{display:"flex",justifyContent:"flex-end",marginTop:16}}>
+            <a href="../case-creation.html" className="btn btn-primary"><Icon name="plus" size={16}/> Create New Case</a>
           </div>
 
           <div className="summary-grid">
@@ -103,47 +108,61 @@ function App() {
               <button className="chip" onClick={() => showToast("Filter sheet — coming next")}><Icon name="filter" size={12}/> More filters</button>
             </div>
 
-            {filtered.map((c, i) => {
-              const profileMap = { "K-2384": "cases/maryam.html", "K-1908": "cases/awad.html", "K-2756": "cases/yasmin.html", "K-3014": "cases/afaf.html", "K-2102": "cases/ibrahim.html", "K-2890": "cases/halima.html" };
-              const profileUrl = profileMap[c.id];
-              return (
-              <Reveal key={c.id} delay={i * 50}>
-                <div
-                  className="case-row"
-                  style={{display:"grid",cursor:"pointer"}}
-                  onClick={() => profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next")}
-                  onKeyDown={(e) => {
-                    if (e.key !== "Enter" && e.key !== " ") return;
-                    e.preventDefault();
-                    profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next");
-                  }}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <div className="ava-wrap" style={c.img ? {background:`url(${c.img}) center/cover`} : {}}></div>
-                  <div>
-                    <div className="vert"><Icon name={VERT_ICON[c.verticalKey]} size={14} style={{verticalAlign:"-3px"}}/> {c.vert}</div>
-                    <h4>{c.name}</h4>
-                    <div style={{fontSize:14,color:"var(--ink-soft)",lineHeight:1.5}}>{c.desc}</div>
-                    <div className="case-meta">
-                      <span><Icon name="pin" size={12} style={{verticalAlign:"-2px"}}/> {c.location}</span>
-                      <span><Icon name="calendar" size={12} style={{verticalAlign:"-2px"}}/> Since {c.since}</span>
-                      <span>Case {c.id}</span>
-                    </div>
-                  </div>
-                  <div className="progress-cell">
-                    <div className="pct"><span>${c.pledged.toLocaleString()} / ${c.target.toLocaleString()}</span><span>{c.progress}%</span></div>
-                    <div className="progress"><div className="progress-fill" style={{width:`${c.progress}%`}}></div></div>
-                    <div style={{fontFamily:"JetBrains Mono, monospace",fontSize:10.5,color:"var(--muted)",letterSpacing:".06em"}}>{c.supporters} supporters</div>
-                  </div>
-                  <div>
-                    <span className={`tag ${c.status}`}><span className="dot"></span> {c.status === "complete" ? "Complete" : c.status === "verified" ? "Verified · Active" : c.status === "urgent" ? `Urgent · ${c.urgency}` : "Pending verification"}</span>
-                  </div>
-                  <div style={{textAlign:"right",color:"var(--green)"}}><Icon name="arrow-up-right" size={20}/></div>
+            {showEmpty ? (
+              <div className="dash-empty-state">
+                <div className="dash-empty-icon"><Icon name="users" size={48}/></div>
+                <h3>Get started with Ethos Community</h3>
+                <div className="dash-empty-steps">
+                  <div className="dash-empty-step"><span className="dash-empty-num">1</span><p>Choose your role and join the platform</p></div>
+                  <div className="dash-empty-step"><span className="dash-empty-num">2</span><p>Create your first verified support case</p></div>
+                  <div className="dash-empty-step"><span className="dash-empty-num">3</span><p>Track verified outcomes on the impact dashboard</p></div>
                 </div>
-              </Reveal>
-            );
-            })}
+                <a href="../role-chooser.html" className="btn btn-primary">Get Started <Icon name="arrow"/></a>
+                <button className="btn btn-text sm" style={{marginTop:12}} onClick={() => setShowEmpty(false)}>View demo cases</button>
+              </div>
+            ) : (
+              filtered.map((c, i) => {
+                const profileMap = { "K-2384": "cases/maryam.html", "K-1908": "cases/awad.html", "K-2756": "cases/yasmin.html", "K-3014": "cases/afaf.html", "K-2102": "cases/ibrahim.html", "K-2890": "cases/halima.html" };
+                const profileUrl = profileMap[c.id];
+                return (
+                <Reveal key={c.id} delay={i * 50}>
+                  <div
+                    className="case-row"
+                    style={{display:"grid",cursor:"pointer"}}
+                    onClick={() => profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next")}
+                    onKeyDown={(e) => {
+                      if (e.key !== "Enter" && e.key !== " ") return;
+                      e.preventDefault();
+                      profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next");
+                    }}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <div className="ava-wrap" style={c.img ? {background:`url(${c.img}) center/cover`} : {}}></div>
+                    <div>
+                      <div className="vert"><Icon name={VERT_ICON[c.verticalKey]} size={14} style={{verticalAlign:"-3px"}}/> {c.vert}</div>
+                      <h4>{c.name}</h4>
+                      <div style={{fontSize:14,color:"var(--ink-soft)",lineHeight:1.5}}>{c.desc}</div>
+                      <div className="case-meta">
+                        <span><Icon name="pin" size={12} style={{verticalAlign:"-2px"}}/> {c.location}</span>
+                        <span><Icon name="calendar" size={12} style={{verticalAlign:"-2px"}}/> Since {c.since}</span>
+                        <span>Case {c.id} <PurposeBadge category={c.category}/></span>
+                      </div>
+                    </div>
+                    <div className="progress-cell">
+                      <div className="pct"><span>${c.pledged.toLocaleString()} / ${c.target.toLocaleString()}</span><span>{c.progress}%</span></div>
+                      <div className="progress"><div className="progress-fill" style={{width:`${c.progress}%`}}></div></div>
+                      <div style={{fontFamily:"JetBrains Mono, monospace",fontSize:10.5,color:"var(--muted)",letterSpacing:".06em"}}>{c.supporters} supporters</div>
+                    </div>
+                    <div>
+                      <span className={`tag ${c.status}`}><span className="dot"></span> {c.status === "complete" ? "Complete" : c.status === "verified" ? "Verified · Active" : c.status === "urgent" ? `Urgent · ${c.urgency}` : "Pending verification"}</span>
+                    </div>
+                    <div style={{textAlign:"right",color:"var(--green)"}}><Icon name="arrow-up-right" size={20}/></div>
+                  </div>
+                </Reveal>
+              );
+              })
+            )}
           </div>
 
           <aside>

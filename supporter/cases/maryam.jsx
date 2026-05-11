@@ -29,6 +29,12 @@ const SUPPORTERS = [
   { initials: "+5", name: "5 more supporters", loc: "GCC + Europe", amt: 900 }
 ];
 
+const SIMILAR_CASES = [
+  { id: "K-1908", name: "Awad T. — Family Support", href: "awad.html" },
+  { id: "K-3120", name: "Fatima A. — Widows Support", href: "../women-empowerment.html" },
+  { id: "K-3580", name: "Samira K. — Family Resilience", href: "../women-empowerment.html" }
+];
+
 function App() {
   const [tab, setTab] = useState("story");
   return (
@@ -57,7 +63,7 @@ function App() {
               </div>
               <p className="bp-story">When her family was displaced from Omdurman in August 2024, Maryam's secondary education stopped. Through Kushian™, twelve diaspora supporters across Riyadh, Doha, Manchester and Toronto pledged toward her tuition, books, transport and counselling for the academic year — coordinated by a verified Cairo school partner with monthly attestations.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <button className="btn btn-primary" onClick={() => showToast("Pledge flow — coming next")}>Pledge support <Icon name="arrow"/></button>
+                <button className="btn btn-primary" onClick={() => showToast("To support this case, create a support case → case-creation.html")}>Pledge support <Icon name="arrow"/></button>
                 <button className="btn btn-ghost" onClick={() => showToast("Message family — coming next")}>Send a message</button>
                 <button className="btn btn-text" onClick={() => showToast("Share case — coming next")}>Share case <Icon name="external" size={14}/></button>
               </div>
@@ -177,6 +183,23 @@ function App() {
           </aside>
         </div>
       </div>
+
+      <section className="section-block" style={{background:"var(--cream-2)",borderTop:"1px solid var(--line)"}}>
+        <div className="container">
+          <Reveal>
+            <div className="section-num">§ Similar Cases</div>
+            <h3 style={{fontSize:20,fontWeight:400,marginBottom:24}}>Other cases you might support</h3>
+            <div style={{display:"flex",gap:16,flexWrap:"wrap"}}>
+              {SIMILAR_CASES.map((s,i) => (
+                <a key={i} href={s.href} className="similar-case-link">
+                  <span className="similar-case-id">{s.id}</span>
+                  <span className="similar-case-name">{s.name} <Icon name="arrow" size={14}/></span>
+                </a>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       <Footer depth={2} />
       <DemoTag/>
