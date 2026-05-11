@@ -146,11 +146,15 @@ const sideDashboardUrl = (side, fromDepth = 0) => {
 const NAV_LINKS_SUPPORTER = (depth) => {
   const p = "../".repeat(depth);
   return [
-    { href: `${p}supporter/dashboard.html`, label: "Dashboard", key: "dashboard" },
-    { href: `${p}supporter/education.html`, label: "Education", key: "education" },
-    { href: `${p}supporter/healthcare.html`, label: "Healthcare", key: "healthcare" },
-    { href: `${p}supporter/sme-advisory.html`, label: "SME Advisory", key: "sme" },
-    { href: `${p}supporter/impact.html`, label: "Impact", key: "impact" }
+    { href: `${p}supporter/dashboard.html`,            label: "Dashboard",   key: "dashboard" },
+    { href: `${p}supporter/education.html`,            label: "Education",   key: "education" },
+    { href: `${p}supporter/healthcare.html`,           label: "Healthcare",  key: "healthcare" },
+    { href: `${p}supporter/sme-advisory.html`,         label: "SME",         key: "sme" },
+    { href: `${p}supporter/women-empowerment.html`,    label: "Women",       key: "women" },
+    { href: `${p}supporter/legal-services.html`,       label: "Legal",       key: "legal" },
+    { href: `${p}supporter/product-traders.html`,      label: "Trade",       key: "trade" },
+    { href: `${p}supporter/provider-marketplace.html`, label: "Marketplace", key: "marketplace" },
+    { href: `${p}supporter/impact.html`,               label: "Impact",      key: "impact" }
   ];
 };
 
@@ -188,6 +192,7 @@ const Nav = ({ active, side = "supporter", depth = 0 }) => {
     <nav className="nav">
       <div className="container nav-inner">
         <a href={logoHref} className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
+        <KushianBadge variant="pilot" />
         <div className="nav-links">
           {links.map(l => (
             <a key={l.key} href={l.href} className={active === l.key ? "active" : ""}>{l.label}</a>
@@ -472,11 +477,85 @@ const MessageBubble = ({ sender = "system", name, timestamp, children }) => {
   );
 };
 
+const ProviderCard = ({ name, category, verified = false, location, rating = 4.5, desc }) => {
+  const stars = Array.from({ length: 5 }, (_, i) => i < Math.floor(rating) ? "★" : i < rating ? "½" : "☆").join("");
+  return (
+    <div className="provider-card">
+      <div className="provider-card-top">
+        <span className="tag">{category}</span>
+        <span className={`provider-verified ${verified ? "verified" : "pending"}`}>
+          <Icon name="shield" size={14} />
+          {verified ? "Verified" : "Pending"}
+        </span>
+      </div>
+      <h3 className="provider-card-name">{name}</h3>
+      <div className="provider-card-loc"><Icon name="pin" size={13}/> {location}</div>
+      <div className="provider-card-stars" aria-label={`Rating: ${rating} out of 5`}>{stars} <span className="provider-card-rating">{rating}</span></div>
+      <p className="provider-card-desc">{desc}</p>
+      <button className="btn btn-ghost sm provider-card-cta" onClick={() => showToast(`Introduction request sent for ${name}`)}>
+        Request Introduction <Icon name="arrow" size={14}/>
+      </button>
+    </div>
+  );
+};
+
+const CHECKLIST_ICONS = {
+  complete: <Icon name="check" size={15}/>,
+  in_progress: <Icon name="clock" size={15}/>,
+  pending: null
+};
+
+const Checklist = ({ items = [] }) => (
+  <ul className="checklist">
+    {items.map((item, i) => (
+      <li key={i} className={`checklist-item checklist-item-${item.status}`}>
+        <span className="checklist-icon">{CHECKLIST_ICONS[item.status]}</span>
+        <span className="checklist-label">{item.label}</span>
+      </li>
+    ))}
+  </ul>
+);
+
+const PURPOSE_BADGE_MAP = {
+  health:     { label: "Health",     cls: "purpose-health" },
+  education:  { label: "Education",  cls: "purpose-education" },
+  family:     { label: "Family",     cls: "purpose-family" },
+  legal:      { label: "Legal",      cls: "purpose-legal" },
+  emergency:  { label: "Emergency",  cls: "purpose-emergency" },
+  training:   { label: "Training",   cls: "purpose-training" },
+  sme:        { label: "SME",        cls: "purpose-sme" },
+  women:      { label: "Women",      cls: "purpose-women" }
+};
+
+const PurposeBadge = ({ category }) => {
+  const cfg = PURPOSE_BADGE_MAP[category] || { label: category, cls: "" };
+  return <span className={`purpose-badge ${cfg.cls}`}>{cfg.label}</span>;
+};
+
+const PartnershipStrip = ({ partners = [] }) => (
+  <div className="partnership-strip">
+    {partners.map((p, i) => (
+      <div key={i} className="partnership-card">
+        <div className="partnership-icon"><Icon name={p.icon} size={28}/></div>
+        <h4 className="partnership-name">{p.name}</h4>
+        <p className="partnership-desc">{p.desc}</p>
+      </div>
+    ))}
+  </div>
+);
+
+const KushianBadge = ({ variant = "pilot" }) => {
+  if (variant === "powered") return <span className="kushian-badge kushian-badge-powered">Powered by Ethos Community™</span>;
+  if (variant === "full") return <span className="kushian-badge kushian-badge-full">Kushian™ · Sudan Pilot</span>;
+  return <span className="kushian-badge kushian-badge-pilot">Kushian™</span>;
+};
+
 Object.assign(window, {
   Icon, Counter, Reveal, showToast, Nav, Footer, DemoTag, Photo, Avatar,
   StatusDot, FormInput, FormTextarea, FormSelect, FormRadioGroup, UploadZone,
   ChoiceCard, StepIndicator, FormField, StepProgressBar, StepWizard,
   CaseProgressBar, StatusPill, MessageBubble,
+  ProviderCard, Checklist, PurposeBadge, PartnershipStrip, KushianBadge,
   roleToSide, getEthosRole, getEthosSide, setEthosRole, clearEthosRole,
   sideDashboardUrl
 });
