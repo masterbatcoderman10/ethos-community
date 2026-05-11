@@ -8,12 +8,12 @@ const PERSONAS = [
 ];
 
 const CASES = [
-  { id: "K-2384", name: "Maryam A.", desc: "Year 9 student, displaced from Omdurman", vert: "Education", verticalKey: "education", location: "Cairo, EG", since: "Sept 2025", pledged: 3840, target: 4200, progress: 91, status: "verified", supporters: 12, urgency: null, img: "images/maryam-school.jpg" },
-  { id: "K-1908", name: "Awad Family", desc: "5 dependents, father seeking work", vert: "Family Support", verticalKey: "family", location: "Kampala, UG", since: "Jul 2025", pledged: 6240, target: 9600, progress: 65, status: "verified", supporters: 8, urgency: null, img: "images/case-family.jpg" },
-  { id: "K-3014", name: "Dr Afaf O.", desc: "Dental clinic relocation advisory", vert: "SME Recovery", verticalKey: "sme", location: "Sharjah, AE", since: "Jan 2026", pledged: 12400, target: 18000, progress: 69, status: "verified", supporters: 4, urgency: null, img: "images/sme-hero.jpg" },
-  { id: "K-2756", name: "Yasmin H.", desc: "Hospitalization · cardiac surgery", vert: "Healthcare", verticalKey: "health", location: "Khartoum, SD", since: "Mar 2026", pledged: 4200, target: 8400, progress: 50, status: "urgent", supporters: 6, urgency: "48h remaining", img: "images/case-healthcare.jpg" },
-  { id: "K-2102", name: "Ibrahim Engineering Cohort", desc: "12 graduate engineers · CPD return-track", vert: "Education", verticalKey: "education", location: "Riyadh, SA", since: "Aug 2025", pledged: 14400, target: 14400, progress: 100, status: "complete", supporters: 22, urgency: null, img: "images/education-cpd.jpg" },
-  { id: "K-2890", name: "Halima M.", desc: "Women's returnship programme · finance", vert: "Women & Workforce", verticalKey: "women", location: "Doha, QA", since: "Feb 2026", pledged: 1800, target: 3600, progress: 50, status: "pending", supporters: 3, urgency: null, img: "images/case-workforce.jpg" }
+  { id: "K-2384", name: "Maryam A.", desc: "Year 9 student, displaced from Omdurman", vert: "Education", verticalKey: "education", location: "Cairo, EG", since: "Sept 2025", pledged: 3840, target: 4200, progress: 91, status: "verified", supporters: 12, urgency: null, img: "../images/maryam-school.jpg" },
+  { id: "K-1908", name: "Awad Family", desc: "5 dependents, father seeking work", vert: "Family Support", verticalKey: "family", location: "Kampala, UG", since: "Jul 2025", pledged: 6240, target: 9600, progress: 65, status: "verified", supporters: 8, urgency: null, img: "../images/case-family.jpg" },
+  { id: "K-3014", name: "Dr Afaf O.", desc: "Dental clinic relocation advisory", vert: "SME Recovery", verticalKey: "sme", location: "Sharjah, AE", since: "Jan 2026", pledged: 12400, target: 18000, progress: 69, status: "verified", supporters: 4, urgency: null, img: "../images/sme-hero.jpg" },
+  { id: "K-2756", name: "Yasmin H.", desc: "Hospitalization · cardiac surgery", vert: "Healthcare", verticalKey: "health", location: "Khartoum, SD", since: "Mar 2026", pledged: 4200, target: 8400, progress: 50, status: "urgent", supporters: 6, urgency: "48h remaining", img: "../images/case-healthcare.jpg" },
+  { id: "K-2102", name: "Ibrahim Engineering Cohort", desc: "12 graduate engineers · CPD return-track", vert: "Education", verticalKey: "education", location: "Riyadh, SA", since: "Aug 2025", pledged: 14400, target: 14400, progress: 100, status: "complete", supporters: 22, urgency: null, img: "../images/education-cpd.jpg" },
+  { id: "K-2890", name: "Halima M.", desc: "Women's returnship programme · finance", vert: "Women & Workforce", verticalKey: "women", location: "Doha, QA", since: "Feb 2026", pledged: 1800, target: 3600, progress: 50, status: "pending", supporters: 3, urgency: null, img: "../images/case-workforce.jpg" }
 ];
 
 const VERT_ICON = { education:"education", family:"family", sme:"sme", health:"health", women:"women" };
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <Nav active="dashboard"/>
+      <Nav active="dashboard" side="supporter" depth={1} />
 
       <section className="dash-hero">
         <div className="container">
@@ -59,7 +59,7 @@ function App() {
               <div style={{fontFamily:"JetBrains Mono, monospace",fontSize:11,letterSpacing:".08em",color:"var(--muted)",textTransform:"uppercase",marginTop:4}}>{persona.role}</div>
               <div style={{display:"flex",gap:10,justifyContent:"flex-end",marginTop:20}}>
                 <button className="btn btn-soft sm" onClick={() => showToast("Profile settings — coming next")}>Settings</button>
-                <a href="case-creation.html" className="btn btn-primary sm"><Icon name="plus" size={14}/> New pledge</a>
+                <a href="../case-creation.html" className="btn btn-primary sm"><Icon name="plus" size={14}/> New pledge</a>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@ function App() {
             </div>
 
             {filtered.map((c, i) => {
-              const profileMap = { "K-2384": "beneficiary-profile.html", "K-1908": "awad-profile.html", "K-2756": "yasmin-profile.html", "K-3014": "afaf-profile.html", "K-2102": "ibrahim-profile.html", "K-2890": "halima-profile.html" };
+              const profileMap = { "K-2384": "cases/maryam.html", "K-1908": "cases/awad.html", "K-2756": "cases/yasmin.html", "K-3014": "cases/afaf.html", "K-2102": "cases/ibrahim.html", "K-2890": "cases/halima.html" };
               const profileUrl = profileMap[c.id];
               return (
               <Reveal key={c.id} delay={i * 50}>
@@ -163,7 +163,7 @@ function App() {
         </div>
       </section>
 
-      <Footer/>
+      <Footer depth={1} />
       <DemoTag/>
     </>
   );
