@@ -9,6 +9,18 @@
 
 This spec covers all modifications needed to bring the Ethos Community mock prototype into alignment with the Software Requirements Specification (SRS). All additions follow the existing prototype pattern: **static HTML + JSX + CSS, React/Babel loaded from CDN, hardcoded data, toast stubs for all interactive actions, no backend, no real flows.**
 
+## Cross-cutting rule — Impeccable subagent review (added 2026-05-11)
+
+Every plan derived from this spec **must** include, at the end of each major page or section task, a step that dispatches a subagent to run the `impeccable` skill (modes: `craft`, `critique`, `polish`, `adapt`, `delight` as relevant) against the just-completed work. The implementing developer's review is biased toward their own output; the subagent provides independent design critique. Findings are applied before the page/section is declared complete.
+
+This rule applies to:
+- Every new page (e.g., the 5 beneficiary pages in §4.0)
+- Every major section addition (e.g., partner ecosystem strip in §5.1, finance-readiness section in §5.3)
+- Every new shared component once integrated into its first consuming page
+- Not required for trivial wiring tasks (relocation/path fixups, link updates).
+
+The rule is also baked into `CLAUDE.md` and `AGENTS.md` at the project root.
+
 ---
 
 ## 1. Current State

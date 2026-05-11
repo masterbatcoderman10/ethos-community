@@ -1,0 +1,5 @@
+- This project is merely a prototype, business logic and database flows are not a part of this project. Simply UI and UX flows.
+- This project uses superpowers for planning and execution of this prototype. 
+    - The specs and plans can be found in the docs/superpowers directory.
+- Any planning and development of the frontend should ensure that the design choices are grounded by the DESIGN.md file.
+- **Impeccable review rule:** After every major page or section is developed, dispatch a subagent to run the `impeccable` skill (craft / critique / polish / adapt / delight modes as relevant) against the new work. The implementing developer is biased toward their own output — the subagent provides independent design critique. Apply findings before declaring the page or section complete. This rule must be referenced in every plan under `docs/superpowers/plans/` and enforced as a step at the end of each major page/section task.
