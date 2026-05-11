@@ -71,7 +71,7 @@ function App() {
 
   return (
     <>
-      <Nav active="impact"/>
+      <Nav active="impact" side="supporter" depth={1} />
 
       <section className="imp-hero">
         <div className="container">
@@ -82,7 +82,7 @@ function App() {
               <p>The Kushian™ Impact Ledger publishes every disbursement, every partner attestation and every Sharia audit — in real time. Independent quarterly review by the Sudan Doctors Network and Takaful Re-insurance Co.</p>
             </Reveal>
             <Reveal delay={120}>
-              <Photo caption="BENEFICIARIES · 14 COUNTRIES" overlay="Kushian™ beneficiary community, Q2 2026" img="images/impact-hero.jpg" dark={true}/>
+              <Photo caption="BENEFICIARIES · 14 COUNTRIES" overlay="Kushian™ beneficiary community, Q2 2026" img="../images/impact-hero.jpg" dark={true}/>
             </Reveal>
           </div>
           <div className="big-stats">
@@ -207,7 +207,7 @@ function App() {
         </div>
       </section>
 
-      <Footer/>
+      <Footer depth={1} />
       <DemoTag/>
     </>
   );
