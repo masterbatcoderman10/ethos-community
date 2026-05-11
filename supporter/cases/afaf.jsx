@@ -28,7 +28,7 @@ function App() {
   const [tab, setTab] = useState("story");
   return (
     <>
-      <Nav active="dashboard" side="supporter" depth={2} />
+      <Nav side="supporter" depth={2} />
 
       <div className="container bp-back">
         <a href="../dashboard.html" style={{display:"flex",alignItems:"center",gap:6}}><Icon name="arrow-left" size={14}/> Back to dashboard</a>
