@@ -418,7 +418,14 @@ const CaseProgressBar = ({ raised = 0, target = 0, compact = false }) => {
           <span className="case-progress-remaining">{fmt(remaining)} to go</span>
         </div>
       )}
-      <div className="case-progress-track" aria-label={`${pct}% funded`}>
+      <div
+        className="case-progress-track"
+        role="progressbar"
+        aria-label={`${pct}% funded`}
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow={pct}
+      >
         <div className="case-progress-fill" style={{ width: `${pct}%` }} />
       </div>
       {compact && <span className="case-progress-pct">{pct}%</span>}
