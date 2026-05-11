@@ -136,6 +136,123 @@ const VERTICALS = [
   { num: "06", icon: "legal", title: "Legal & Professional Services", desc: "Notarised documents, residency and licensing referrals, Sharia-compliance reviews and pro-bono legal support across host countries.", tags: ["Legal", "Sharia", "Pro-bono"] }
 ];
 
+const readStoredEthosRole = () => {
+  if (typeof getEthosRole === "function") return getEthosRole();
+  try { return localStorage.getItem("ethos.role"); } catch (e) { return null; }
+};
+
+const getStoredRoleSide = (role) => {
+  if (typeof roleToSide === "function") return roleToSide(role);
+  return {
+    supporter: "supporter",
+    mentor: "supporter",
+    ambassador: "supporter",
+    finance: "supporter",
+    development: "supporter",
+    beneficiary: "beneficiary",
+    sme: "beneficiary"
+  }[role] || null;
+};
+
+const getStoredSideDashboardUrl = (side) => {
+  if (typeof sideDashboardUrl === "function") return sideDashboardUrl(side, 0);
+  if (side === "beneficiary") return "beneficiary/dashboard.html";
+  if (side === "supporter") return "supporter/dashboard.html";
+  return "landing.html";
+};
+
+const ReturningRibbon = () => {
+  const [role, setRole] = useState(null);
+  useEffect(() => { setRole(readStoredEthosRole()); }, []);
+  if (!role) return null;
+  const side = getStoredRoleSide(role);
+  if (!side) return null;
+  const sideLabel = side === "supporter" ? "Supporter" : "Beneficiary";
+  const href = getStoredSideDashboardUrl(side);
+  return (
+    <div className="returning-ribbon">
+      <div className="container returning-ribbon-inner">
+        <span className="returning-ribbon-label">Welcome back, {sideLabel}.</span>
+        <a href={href} className="returning-ribbon-link">Return to your dashboard <Icon name="arrow" size={14} /></a>
+      </div>
+    </div>
+  );
+};
+
+const LandingFallbackNav = ({ menuOpen, setMenuOpen, onCTA }) => (
+  <nav className="nav">
+    <div className="container nav-inner">
+      <a href="#" className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
+      <div className="nav-links">
+        <a href="#verticals">Services</a>
+        <a href="#impact">Impact</a>
+        <a href="#how">How it works</a>
+        <a href="#founder">About</a>
+      </div>
+      <div className="nav-cta">
+        <a href="role-chooser.html" className="btn btn-ghost nav-cta-btn">Get Started</a>
+        <button className="btn btn-primary nav-cta-btn" onClick={onCTA("Support a Case")}>Support a Case <Icon name="arrow"/></button>
+        <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
+          <Icon name={menuOpen ? "close" : "hamburger"}/>
+        </button>
+      </div>
+    </div>
+    {menuOpen && (
+      <div className="nav-mobile-menu">
+        <a href="#verticals" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Services</a>
+        <a href="#impact" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Impact</a>
+        <a href="#how" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>How it works</a>
+        <a href="#founder" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>About</a>
+      </div>
+    )}
+  </nav>
+);
+
+const LandingFallbackFooter = () => (
+  <footer>
+    <div className="container">
+      <div className="footer-top">
+        <div className="footer-brand">
+          <a href="#" className="logo"><span className="logo-mark"></span> Ethos Community™</a>
+          <p>A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.</p>
+        </div>
+        <div className="footer-col">
+          <h5>Platform</h5>
+          <ul>
+            <li><a href="#">Support a Case</a></li>
+            <li><a href="#">Find Services</a></li>
+            <li><a href="#">Impact Dashboard</a></li>
+            <li><a href="#">Partner Directory</a></li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h5>Verticals</h5>
+          <ul>
+            <li><a href="#">Education & CPD</a></li>
+            <li><a href="#">Healthcare & Takaful</a></li>
+            <li><a href="#">SME Advisory</a></li>
+            <li><a href="#">Women & Workforce</a></li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h5>Organisation</h5>
+          <ul>
+            <li><a href="#">About Kushian™</a></li>
+            <li><a href="#">Founder</a></li>
+            <li><a href="#">Press & Media</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <p className="compliance">Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.</p>
+      <div className="footer-bottom">
+        <span>© 2026 Ethos Community™</span>
+        <span>Demo · v0.1 · MVP Prototype</span>
+      </div>
+    </div>
+  </footer>
+);
+
 // ─────── App ─────────────────────────────────────────────────────────────
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
@@ -154,33 +271,11 @@ function App() {
 
   return (
     <>
-      {/* NAV */}
-      <nav className="nav">
-        <div className="container nav-inner">
-          <a href="#" className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
-          <div className="nav-links">
-            <a href="#verticals">Services</a>
-            <a href="#impact">Impact</a>
-            <a href="#how">How it works</a>
-            <a href="#founder">About</a>
-          </div>
-          <div className="nav-cta">
-            <a href="supporter-dashboard.html" className="btn btn-ghost nav-cta-btn">Dashboard</a>
-            <button className="btn btn-primary nav-cta-btn" onClick={onCTA("Support a Case")}>Support a Case <Icon name="arrow"/></button>
-            <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
-              <Icon name={menuOpen ? "close" : "hamburger"}/>
-            </button>
-          </div>
-        </div>
-        {menuOpen && (
-          <div className="nav-mobile-menu">
-            <a href="#verticals" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Services</a>
-            <a href="#impact" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Impact</a>
-            <a href="#how" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>How it works</a>
-            <a href="#founder" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>About</a>
-          </div>
-        )}
-      </nav>
+      {typeof Nav !== "undefined"
+        ? <Nav side="neutral" depth={0} />
+        : <LandingFallbackNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} onCTA={onCTA} />}
+      {typeof DemoTag !== "undefined" ? <DemoTag /> : <div className="demo-tag">Prototype · Demo Only</div>}
+      <ReturningRibbon />
 
       {/* HERO */}
       <section className="hero">
@@ -346,52 +441,7 @@ function App() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer>
-        <div className="container">
-          <div className="footer-top">
-            <div className="footer-brand">
-              <a href="#" className="logo"><span className="logo-mark"></span> Ethos Community™</a>
-              <p>A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.</p>
-            </div>
-            <div className="footer-col">
-              <h5>Platform</h5>
-              <ul>
-                <li><a href="#">Support a Case</a></li>
-                <li><a href="#">Find Services</a></li>
-                <li><a href="#">Impact Dashboard</a></li>
-                <li><a href="#">Partner Directory</a></li>
-              </ul>
-            </div>
-            <div className="footer-col">
-              <h5>Verticals</h5>
-              <ul>
-                <li><a href="#">Education & CPD</a></li>
-                <li><a href="#">Healthcare & Takaful</a></li>
-                <li><a href="#">SME Advisory</a></li>
-                <li><a href="#">Women & Workforce</a></li>
-              </ul>
-            </div>
-            <div className="footer-col">
-              <h5>Organisation</h5>
-              <ul>
-                <li><a href="#">About Kushian™</a></li>
-                <li><a href="#">Founder</a></li>
-                <li><a href="#">Press & Media</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <p className="compliance">Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.</p>
-          <div className="footer-bottom">
-            <span>© 2026 Ethos Community™</span>
-            <span>Demo · v0.1 · MVP Prototype</span>
-          </div>
-        </div>
-      </footer>
-
-      {/* Demo watermark */}
-      <div className="demo-tag">Prototype · Demo Only</div>
+      {typeof Footer !== "undefined" ? <Footer depth={0} /> : <LandingFallbackFooter />}
 
       {/* Tweaks */}
       <TweaksPanel>
