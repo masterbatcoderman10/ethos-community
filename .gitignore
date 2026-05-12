@@ -1,3 +1,10 @@
 .impeccable/live/sessions/
 .impeccable/live/server.json
 .impeccable-live.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
