@@ -1,0 +1,33 @@
+{
+  "files": [
+    "index.html",
+    "landing.html",
+    "showcase.html",
+    "role-chooser.html",
+    "case-creation.html",
+    "beneficiary/messages.html",
+    "beneficiary/my-cases.html",
+    "beneficiary/dashboard.html",
+    "beneficiary/documents.html",
+    "beneficiary/case-detail.html",
+    "supporter/women-empowerment.html",
+    "supporter/education.html",
+    "supporter/healthcare.html",
+    "supporter/product-traders.html",
+    "supporter/dashboard.html",
+    "supporter/provider-marketplace.html",
+    "supporter/sme-advisory.html",
+    "supporter/impact.html",
+    "supporter/legal-services.html",
+    "supporter/cases/awad.html",
+    "supporter/cases/ibrahim.html",
+    "supporter/cases/maryam.html",
+    "supporter/cases/halima.html",
+    "supporter/cases/afaf.html",
+    "supporter/cases/yasmin.html",
+    "isdb-pitch/index.html"
+  ],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}
