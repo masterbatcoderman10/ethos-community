@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import Icon from '../components/Icon.jsx';
@@ -9,7 +10,7 @@ import StatusDot from '../components/StatusDot.jsx';
 import MessageBubble from '../components/MessageBubble.jsx';
 import Footer from '../components/Footer.jsx';
 import { showToast } from '../components/Toast.jsx';
-import '../beneficiary/case-detail.css';
+import '../../beneficiary/case-detail.css';
 
 const CASE = {
   id: "K-2890",
@@ -192,10 +193,10 @@ export default function BeneficiaryCaseDetail() {
 
       <main className="cd-page">
         <div className="container">
-          <a href="my-cases.html" className="cd-back-link">
+          <Link to="/beneficiary/cases" className="cd-back-link">
             <Icon name="arrow-left" size={15} />
             Back to my cases
-          </a>
+          </Link>
 
           <section className="cd-hero" aria-labelledby="case-title">
             <div className="cd-hero-main">

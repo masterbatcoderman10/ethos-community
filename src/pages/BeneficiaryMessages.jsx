@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import Icon from '../components/Icon.jsx';
@@ -6,7 +7,7 @@ import MessageBubble from '../components/MessageBubble.jsx';
 import FormTextarea from '../components/FormTextarea.jsx';
 import Footer from '../components/Footer.jsx';
 import { showToast } from '../components/Toast.jsx';
-import '../beneficiary/messages.css';
+import '../../beneficiary/messages.css';
 
 const THREAD = {
   name: "Fatima O.",

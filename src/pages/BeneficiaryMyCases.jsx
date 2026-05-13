@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import Icon from '../components/Icon.jsx';
 import CaseProgressBar from '../components/CaseProgressBar.jsx';
 import StatusPill from '../components/StatusPill.jsx';
 import Footer from '../components/Footer.jsx';
-import '../beneficiary/my-cases.css';
+import '../../beneficiary/my-cases.css';
 
 const ALL_BENE_CASES = [
   {
@@ -77,10 +78,10 @@ export default function BeneficiaryMyCases() {
               <span className="bene-section-eyebrow">My cases</span>
               <h1>All your support cases</h1>
             </div>
-            <a href="../case-creation.html" className="btn btn-primary bene-new-case">
+            <Link to="/create" className="btn btn-primary bene-new-case">
               <Icon name="plus" size={16} />
               New case
-            </a>
+            </Link>
           </header>
 
           <div className="bene-filter-row" role="group" aria-label="Filter support cases by status">
@@ -128,13 +129,13 @@ export default function BeneficiaryMyCases() {
                     <span className="bene-case-row-supporters">{c.supporters} supporters</span>
                     <span className="bene-case-row-updated">Updated {c.updated}</span>
                   </div>
-                  <a
-                    href="case-detail.html"
+                  <Link
+                    to={`/beneficiary/case/${c.id}`}
                     className="bene-case-row-link"
                     aria-label={`View case ${c.id}: ${c.title}`}
                   >
                     <Icon name="arrow" size={16} />
-                  </a>
+                  </Link>
                 </article>
               ))
             )}

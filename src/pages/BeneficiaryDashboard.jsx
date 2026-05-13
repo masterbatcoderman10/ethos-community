@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import Reveal from '../components/Reveal.jsx';
@@ -8,7 +9,7 @@ import Avatar from '../components/Avatar.jsx';
 import StatusDot from '../components/StatusDot.jsx';
 import Icon from '../components/Icon.jsx';
 import Footer from '../components/Footer.jsx';
-import '../beneficiary/dashboard.css';
+import '../../beneficiary/dashboard.css';
 
 const CASES = [
   {
@@ -100,15 +101,15 @@ export default function BeneficiaryDashboard() {
                   <span className="bene-section-kicker">Case portfolio</span>
                   <h2 id="bene-cases-title">Your cases</h2>
                 </div>
-                <a href="my-cases.html" className="bene-text-link" aria-label="View all my cases">
+                <Link to="/beneficiary/cases" className="bene-text-link" aria-label="View all my cases">
                   My Cases <Icon name="arrow" size={14} />
-                </a>
+                </Link>
               </div>
 
               <div className="bene-case-list">
                 {CASES.map((c, index) => (
                   <Reveal key={c.id} delay={index * 80}>
-                    <a href="case-detail.html" className="bene-case-card" aria-label={`View case ${c.id}: ${c.title}`}>
+                    <Link to={`/beneficiary/case/${c.id}`} className="bene-case-card" aria-label={`View case ${c.id}: ${c.title}`}>
                       <div className="bene-case-head">
                         <div>
                           <span className="bene-case-id">{c.id}</span>
@@ -128,7 +129,7 @@ export default function BeneficiaryDashboard() {
                         </div>
                         <span className="bene-card-action">View case <Icon name="arrow" size={14} /></span>
                       </div>
-                    </a>
+                    </Link>
                   </Reveal>
                 ))}
               </div>
@@ -158,9 +159,9 @@ export default function BeneficiaryDashboard() {
                   </div>
                 </div>
                 <p>Fatima is reviewing your education documents and can help unblock both active cases.</p>
-                <a href="messages.html" className="btn btn-primary sm" aria-label="Open conversation with Fatima O.">
+                <Link to="/beneficiary/messages" className="btn btn-primary sm" aria-label="Open conversation with Fatima O.">
                   Open conversation <Icon name="arrow" size={14} />
-                </a>
+                </Link>
               </section>
             </aside>
           </div>
