@@ -32,14 +32,15 @@ const PROVIDERS = [
 
 const CATEGORIES = ["All","Clinics & Hospitals","Mentors & Coaches","Universities & Training","Lawyers","Accountants & Auditors","Tax Advisers","Immigration & Documentation","Property & Inheritance","Business Consultants","Finance Partners","Takaful & Insurance"];
 
-export default function SupporterProviderMarketplace() {
+export default function SupporterProviderMarketplace({ viewerSide = 'supporter' }) {
   const [active, setActive] = useState("All");
   const [search, setSearch] = useState("");
+  const isBen = viewerSide === 'beneficiary'
   const filtered = PROVIDERS.filter(p => active === "All" || p.category === active);
 
   return (
     <>
-      <Nav active="marketplace" side="supporter" depth={1} />
+      <Nav active="marketplace" side={isBen ? 'beneficiary' : 'supporter'} depth={1} />
 
       <section className="mp-hero">
         <div className="container">
@@ -91,7 +92,7 @@ export default function SupporterProviderMarketplace() {
                 <h2>Join our verified provider network</h2>
                 <p>Connect with Sudanese diaspora clients seeking your expertise. Verified listings, structured introductions, community trust.</p>
               </div>
-              <button className="btn btn-primary" onClick={() => showToast("Provider application — coming next")}>Become a Listed Provider <Icon name="arrow"/></button>
+              <button className="btn btn-primary" onClick={() => showToast(isBen ? "Ask ambassador — coming next" : "Provider application — coming next")}>{isBen ? 'Ask ambassador' : 'Become a Listed Provider'} <Icon name="arrow"/></button>
             </div>
           </Reveal>
         </div>

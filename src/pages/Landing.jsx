@@ -15,16 +15,16 @@ import { getEthosRole, roleToSide, sideDashboardUrl } from '../utils/role.js';
 // ─────── Hero variants ───────────────────────────────────────────────────
 const HeroMission = () => (
   <>
-    <div className="eyebrow">Ethos Community™ &nbsp;·&nbsp; Kushian™ Sudan Pilot</div>
-    <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/> Sudan Pilot</div>
+    <div className="eyebrow">Kushian™ &nbsp;·&nbsp; Powered by Ethos Community™</div>
+    <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/></div>
     <h1 className="display">A diaspora<br/>rebuilding Sudan,<br/><em>one family at a time.</em></h1>
-    <p className="lede">Ethos Community™ is a Connection-as-a-Service platform linking Sudanese diaspora supporters in the GCC, UK, Europe and USA with displaced families, students, women professionals and SMEs through partner-enabled support — under the Kushian™ pilot.</p>
+    <p className="lede">Kushian™ is powered by Ethos Community™, a Connection-as-a-Service platform linking Sudanese diaspora supporters in the GCC, UK, Europe and USA with displaced families, students, women professionals and SMEs through partner-enabled support.</p>
   </>
 );
 const HeroProposition = () => (
   <>
     <div className="eyebrow">Connection-as-a-Service · CaaS</div>
-    <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/> Sudan Pilot</div>
+    <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/></div>
     <h1 className="display">Six verticals.<br/>One <em>trusted</em><br/>support network.</h1>
     <p className="lede">Education and mentorship, healthcare and Takaful, purpose-linked family support, women empowerment, SME recovery, and legal services — coordinated end-to-end by Kushian™ for displaced Sudanese communities.</p>
   </>
@@ -32,7 +32,7 @@ const HeroProposition = () => (
 const HeroCase = () => (
   <>
     <div className="eyebrow">Featured Beneficiary · Khartoum → Cairo</div>
-    <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/> Sudan Pilot</div>
+    <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/></div>
     <h1 className="display">Maryam, 14,<br/>is back in school<br/><em>because of you.</em></h1>
     <p className="lede">After her family was displaced from Omdurman, twelve diaspora supporters across Riyadh, Doha and Manchester pledged to cover Maryam's tuition, books and counselling for the academic year. Her story is one of thousands.</p>
   </>
@@ -40,9 +40,9 @@ const HeroCase = () => (
 const HeroImpact = () => (
   <>
     <div className="eyebrow">Live Impact · Demo Cohort</div>
-    <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/> Sudan Pilot</div>
+    <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/></div>
     <h1 className="display"><em>1,247</em> supporters.<br/><em>3,892</em> lives changed.<br/>14 countries.</h1>
-    <p className="lede">Every pledge through Ethos Community™ is verified, traceable and partner-delivered. The Kushian™ pilot demonstrates how diaspora capital and expertise scale into measurable outcomes for displaced Sudanese communities.</p>
+    <p className="lede">Every pledge through Kushian™ is verified, traceable and partner-delivered. Powered by Ethos Community™, the platform demonstrates how diaspora capital and expertise scale into measurable outcomes for displaced Sudanese communities.</p>
   </>
 );
 
@@ -55,12 +55,12 @@ const HERO_PHOTOS = {
 
 // ─────── Verticals ───────────────────────────────────────────────────────
 const VERTICALS = [
-  { num: "01", icon: "education", title: "Education, CPD & Mentorship", desc: "Credential vault, mentor matching, employability training and graduate support — pathways back to study and work for displaced students.", tags: ["CPD", "Mentorship", "Vault"] },
-  { num: "02", icon: "health", title: "Healthcare & Takaful Access", desc: "Partner-enabled medical referrals, clinic directory, hospitalization support, and cooperative Takaful workflows for vulnerable cases.", tags: ["Clinics", "Takaful", "Referrals"] },
-  { num: "03", icon: "family", title: "Purpose-Linked Family Support", desc: "Verified family and student profiles with document checklists, supporter pledges and transparent purpose-linked status updates.", tags: ["Pledges", "Verified", "Transparent"] },
-  { num: "04", icon: "women", title: "Women Empowerment & Workforce", desc: "Skills bridges, returnship tracks and CPD circles for women professionals and graduates seeking remote and relocated employment.", tags: ["Skills", "Returnship", "CPD"] },
-  { num: "05", icon: "sme", title: "SME Recovery Finance & Advisory", desc: "Advisory journeys for relocated Sudanese businesses — Ibrahim's audit practice, Ali's restaurant, Atif's grocery, Dr Afaf's clinic.", tags: ["Advisory", "Recovery", "Diaspora"] },
-  { num: "06", icon: "legal", title: "Legal & Professional Services", desc: "Notarised documents, residency and licensing referrals, Sharia-compliance reviews and pro-bono legal support across host countries.", tags: ["Legal", "Sharia", "Pro-bono"] }
+  { num: "01", icon: "education", title: "Education, CPD & Mentorship", desc: "Credential vault, mentor matching, employability training and graduate support — pathways back to study and work for displaced students.", tags: ["CPD", "Mentorship", "Vault"], href: "/supporter/education" },
+  { num: "02", icon: "health", title: "Healthcare & Takaful Access", desc: "Partner-enabled medical referrals, clinic directory, hospitalization support, and cooperative Takaful workflows for vulnerable cases.", tags: ["Clinics", "Takaful", "Referrals"], href: "/supporter/healthcare" },
+  { num: "03", icon: "family", title: "Purpose-Linked Family Support", desc: "Verified family and student profiles with document checklists, supporter pledges and transparent purpose-linked status updates.", tags: ["Pledges", "Verified", "Transparent"], href: "/supporter/cases/awad" },
+  { num: "04", icon: "women", title: "Women Empowerment & Workforce", desc: "Skills bridges, returnship tracks and CPD circles for women professionals and graduates seeking remote and relocated employment.", tags: ["Skills", "Returnship", "CPD"], href: "/supporter/women" },
+  { num: "05", icon: "sme", title: "SME Recovery Finance & Advisory", desc: "Advisory journeys for relocated Sudanese businesses — Ibrahim's audit practice, Ali's restaurant, Atif's grocery, Dr Afaf's clinic.", tags: ["Advisory", "Recovery", "Diaspora"], href: "/supporter/sme" },
+  { num: "06", icon: "legal", title: "Legal & Professional Services", desc: "Notarised documents, residency and licensing referrals, Sharia-compliance reviews and pro-bono legal support across host countries.", tags: ["Legal", "Sharia", "Pro-bono"], href: "/supporter/legal" }
 ];
 
 const PARTNERS = [
@@ -118,12 +118,13 @@ const ReturningRibbon = () => {
 const LandingFallbackNav = ({ menuOpen, setMenuOpen, onCTA }) => (
   <nav className="nav">
     <div className="container nav-inner">
-      <a href="#" className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></a>
+      <a href="#" className="logo"><span className="logo-mark"></span><span className="logo-text"> Kushian™</span></a>
+      <KushianBadge variant="powered" />
       <div className="nav-links">
         <a href="#verticals">Services</a>
         <a href="#impact">Impact</a>
         <a href="#how">How it works</a>
-        <a href="#founder">About</a>
+        <a href="#ecosystem">Ecosystem</a>
       </div>
       <div className="nav-cta">
         <Link to="/role" className="btn btn-ghost nav-cta-btn">Get Started</Link>
@@ -138,7 +139,7 @@ const LandingFallbackNav = ({ menuOpen, setMenuOpen, onCTA }) => (
         <a href="#verticals" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Services</a>
         <a href="#impact" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Impact</a>
         <a href="#how" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>How it works</a>
-        <a href="#founder" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>About</a>
+        <a href="#ecosystem" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>Ecosystem</a>
       </div>
     )}
   </nav>
@@ -149,8 +150,8 @@ const LandingFallbackFooter = () => (
     <div className="container">
       <div className="footer-top">
         <div className="footer-brand">
-          <a href="#" className="logo"><span className="logo-mark"></span> Ethos Community™</a>
-          <p>A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.</p>
+          <a href="#" className="logo"><span className="logo-mark"></span> Kushian™</a>
+          <p>Powered by Ethos Community™, Kushian™ connects Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.</p>
         </div>
         <div className="footer-col">
           <h5>Platform</h5>
@@ -182,7 +183,7 @@ const LandingFallbackFooter = () => (
       </div>
       <p className="compliance">Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.</p>
       <div className="footer-bottom">
-        <span>© 2026 Ethos Community™</span>
+        <span>© 2026 Kushian™</span>
         <span>Demo · v0.1 · MVP Prototype</span>
       </div>
     </div>
@@ -258,7 +259,7 @@ export default function Landing() {
 
           <div className="verticals">
             {VERTICALS.map((v, i) => (
-              <Reveal key={v.num} delay={i * 60} className="vcard" onClick={onCTA(v.title)}>
+              <Reveal key={v.num} delay={i * 60} as={Link} to={v.href} className="vcard" aria-label={`Open ${v.title}`}>
                 <div className="vcard-top">
                   <span className="vcard-num">{v.num}</span>
                   <span className="vcard-arrow"><Icon name="arrow"/></span>
@@ -324,7 +325,7 @@ export default function Landing() {
             <Reveal delay={120} className="step">
               <div className="step-num">02</div>
               <h4>Pledge purpose-linked support</h4>
-              <p>Allocate a pledge against a defined purpose — tuition, hospitalization, working capital advisory, mentorship hours. Pledges are routed through licensed partners, never held by Ethos.</p>
+              <p>Allocate a pledge against a defined purpose — tuition, hospitalization, working capital advisory, mentorship hours. Pledges are routed through licensed partners, never held by Kushian™ or Ethos Community™.</p>
             </Reveal>
             <Reveal delay={240} className="step">
               <div className="step-num">03</div>
@@ -336,55 +337,13 @@ export default function Landing() {
       </section>
 
       {/* PARTNERSHIP STRIP */}
-      <section className="section-block" style={{background:"var(--cream-2)",borderTop:"1px solid var(--line)",borderBottom:"1px solid var(--line)"}}>
+      <section className="section-block" id="ecosystem" style={{background:"var(--cream-2)",borderTop:"1px solid var(--line)",borderBottom:"1px solid var(--line)"}}>
         <div className="container">
           <Reveal className="block-head">
             <div><div className="section-num">§ Ecosystem</div><h2>An Ecosystem of Trusted Partners</h2></div>
-            <p style={{fontSize:16,lineHeight:1.65,color:"var(--ink-soft)",maxWidth:480}}>Ethos Community connects diaspora supporters with verified providers, finance partners and community institutions — a governed ecosystem, not a single service.</p>
+            <p style={{fontSize:16,lineHeight:1.65,color:"var(--ink-soft)",maxWidth:480}}>Kushian™ connects diaspora supporters with verified providers, finance partners and community institutions, powered by Ethos Community™ governance and infrastructure.</p>
           </Reveal>
           <PartnershipStrip partners={PARTNERS}/>
-        </div>
-      </section>
-
-      {/* FOUNDER */}
-      <section className="section" id="founder" style={{paddingTop:0}}>
-        <div className="container">
-          <Reveal className="founder">
-            <div className="founder-photo" style={{background:"url(images/true_founder_hq.webp) center top/cover"}}>
-              <div className="photo-meta"><span>FOUNDER</span><span>4 : 5</span></div>
-            </div>
-            <div>
-              <div className="section-num" style={{marginBottom:14}}>§ 04 / Founder</div>
-              <blockquote>Ethos Community™ exists because the Sudanese diaspora has both the capital and the conviction to rebuild — what was missing was the trusted infrastructure to channel it.</blockquote>
-              <div className="founder-name">Dr Hatim El Tahir</div>
-              <div className="founder-title">Founder · Ethos Community™ · Kushian™ Sudan Pilot</div>
-              <div className="credentials">
-                <span className="cred">Former Deloitte · Islamic Finance leadership</span>
-                <span className="cred">AAOIFI Ethics & Governance Committee</span>
-                <span className="cred">IIFM Sukuk Working Group</span>
-                <span className="cred">CISI IFQ accredited training</span>
-                <span className="cred">Curriculum-development · Takaful</span>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* REVENUE MODEL */}
-      <section className="section-block">
-        <div className="container">
-          <Reveal>
-            <div className="landing-revenue-inner">
-              <div className="section-num">§ Business Model</div>
-              <p className="landing-revenue-headline">This is not a charity app — it is <em>scalable human-development infrastructure</em> that converts informal diaspora support into verified, purpose-linked and measurable outcomes.</p>
-              <div className="revenue-pills">
-                {["Platform Fees","Subscriptions","Referral Commissions","Training & CPD","SME Advisory","White-Label Licensing"].map(r => (
-                  <span key={r} className="revenue-pill"><span>{r}</span></span>
-                ))}
-              </div>
-              <button className="btn btn-text" style={{marginTop:20}} onClick={() => showToast("Business model — learn more coming next")}>Learn about our model <Icon name="arrow"/></button>
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -406,7 +365,7 @@ export default function Landing() {
         <div className="container">
           <Reveal>
             <h2>The diaspora is ready. Are you?</h2>
-            <p>Join the Kushian™ pilot cohort. Pledge to a verified case in under three minutes, or request the Ethos Community™ pitch deck for the IsDB Group Innovation and Startups review.</p>
+            <p>Join the Kushian™ pilot cohort. Pledge to a verified case in under three minutes, or request the Kushian™ pitch deck for the IsDB Group Innovation and Startups review.</p>
             <div className="hero-ctas" style={{justifyContent:"center"}}>
               <button className="btn btn-primary" onClick={onCTA("Support a Case")}>Support a Case <Icon name="arrow"/></button>
               <button className="btn btn-ghost" onClick={onCTA("Request pitch deck")}>Request pitch deck</button>

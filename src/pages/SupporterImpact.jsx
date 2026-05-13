@@ -1,41 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import Icon from '../components/Icon.jsx';
-import Nav from '../components/Nav.jsx';
-import Footer from '../components/Footer.jsx';
-import DemoTag from '../components/DemoTag.jsx';
-import Reveal from '../components/Reveal.jsx';
-import Counter from '../components/Counter.jsx';
-import Photo from '../components/Photo.jsx';
-import PurposeBadge from '../components/PurposeBadge.jsx';
-import '../../supporter/impact.css';
-
-const VERT_BREAKDOWN = [
-  { lab: "Education & Mentorship", val: 142, of: 500, color: "" },
-  { lab: "Family Support", val: 96, of: 500, color: "" },
-  { lab: "SME Recovery", val: 38, of: 500, color: "gold" },
-  { lab: "Healthcare & Takaful", val: 124, of: 500, color: "" },
-  { lab: "Women & Workforce", val: 68, of: 500, color: "" },
-  { lab: "Hospitalization", val: 18, of: 500, color: "red" }
-];
-
-const LEDGER = [
-  { dt: "08 May", id: "K-2384", desc: "Maryam A. · Term 2 tuition disbursement", partner: "Al-Manarah School", amount: 480, status: "settled" },
-  { dt: "07 May", id: "K-2812", desc: "Awad M. · Quarterly chronic-care payout", partner: "Cleopatra Hospital", amount: 540, status: "settled" },
-  { dt: "06 May", id: "K-1908", desc: "Awad family · May household stipend", partner: "Kampala Diaspora Org", amount: 800, status: "settled" },
-  { dt: "06 May", id: "K-3014", desc: "Dr Afaf O. · Equipment financing tranche 2", partner: "Sharjah CDR", amount: 4800, status: "settled" },
-  { dt: "05 May", id: "K-2756", desc: "Yasmin H. · Surgery deposit", partner: "Cleopatra Hospital", amount: 2100, status: "pending" },
-  { dt: "04 May", id: "K-2102", desc: "Ibrahim cohort · Final placement bonus", partner: "Riyadh Eng. Institute", amount: 6000, status: "settled" },
-  { dt: "03 May", id: "K-2890", desc: "Halima M. · CPD module 3 fees", partner: "AAOIFI Pathway", amount: 360, status: "settled" }
-];
-
-const VERTICALS = [
-  { category: "education", count: 142, label: "Education" },
-  { category: "health",    count: 184, label: "Healthcare" },
-  { category: "family",    count: 97,  label: "Family Support" },
-  { category: "women",     count: 312, label: "Women" },
-  { category: "sme",       count: 63,  label: "SME Recovery" },
-  { category: "legal",     count: 44,  label: "Legal" }
-];
+import React, { useEffect, useMemo, useState } from 'react'
+import Icon from '../components/Icon.jsx'
+import Nav from '../components/Nav.jsx'
+import Footer from '../components/Footer.jsx'
+import DemoTag from '../components/DemoTag.jsx'
+import Reveal from '../components/Reveal.jsx'
+import Counter from '../components/Counter.jsx'
+import Photo from '../components/Photo.jsx'
+import PurposeBadge from '../components/PurposeBadge.jsx'
+import { showToast } from '../components/Toast.jsx'
+import { getActiveUser, getImpactRowsForUser } from '../data/mockQueries.js'
+import { LEDGER, VERT_BREAKDOWN, VERTICALS } from '../data/mockDb.js'
+import '../../supporter/impact.css'
 
 function Donut() {
   const segs = [
@@ -81,11 +56,22 @@ const GEO = [
 ];
 
 export default function SupporterImpact() {
-  const [filled, setFilled] = useState(false);
+  const [filled, setFilled] = useState(false)
+  const [mode, setMode] = useState('global')
+  const activeUser = getActiveUser()
+
   useEffect(() => {
-    const t = setTimeout(() => setFilled(true), 200);
-    return () => clearTimeout(t);
-  }, []);
+    const t = setTimeout(() => setFilled(true), 200)
+    return () => clearTimeout(t)
+  }, [])
+
+  const rows = useMemo(() => {
+    if (mode === 'my' && activeUser) return getImpactRowsForUser(activeUser.id)
+    return LEDGER
+  }, [mode, activeUser])
+
+  const myTotal = useMemo(() => rows.reduce((s, r) => s + r.amount, 0), [rows])
+  const myCases = useMemo(() => new Set(rows.map(r => r.id)).size, [rows])
 
   return (
     <>
@@ -96,28 +82,55 @@ export default function SupporterImpact() {
           <div className="imp-hero-grid">
             <Reveal>
               <div className="eyebrow">§ Impact dashboard · Live ledger · Q2 2026</div>
-              <h1>3,892 lives.<br/><em>Every payout, traceable.</em></h1>
-              <p>The Kushian™ Impact Ledger publishes every disbursement, every partner attestation and every Sharia audit — in real time. Independent quarterly review by the Sudan Doctors Network and Takaful Re-insurance Co.</p>
+              <h1>{mode === 'my' ? `${myCases} cases.` : '3,892 lives.'}<br/><em>{mode === 'my' ? 'Your direct impact.' : 'Every payout, traceable.'}</em></h1>
+              <p>{mode === 'my'
+                ? `Your supported cases through the Kushian™ Impact Ledger — ${myCases} active case${myCases !== 1 ? 's' : ''}, $${myTotal.toLocaleString()} disbursed.`
+                : 'The Kushian™ Impact Ledger publishes every disbursement, every partner attestation and every Sharia audit — in real time. Independent quarterly review by the Sudan Doctors Network and Takaful Re-insurance Co.'
+              }</p>
+              {activeUser && (
+                <div style={{display:'flex',gap:8,marginTop:16}}>
+                  <button className={`chip ${mode==='global'?'active':''}`} onClick={()=>setMode('global')}>Global impact</button>
+                  <button className={`chip ${mode==='my'?'active':''}`} onClick={()=>setMode('my')}>My impact</button>
+                </div>
+              )}
             </Reveal>
             <Reveal delay={120}>
-              <Photo caption="BENEFICIARIES · 14 COUNTRIES" overlay="Kushian™ beneficiary community, Q2 2026" img="../images/impact-hero.jpg" dark={true}/>
+              <Photo caption={mode === 'my' ? `YOUR CASES · ${myCases} ACTIVE` : 'BENEFICIARIES · 14 COUNTRIES'} overlay={mode === 'my' ? 'Your supported beneficiaries, Q2 2026' : 'Kushian™ beneficiary community, Q2 2026'} img="../images/impact-hero.jpg" dark={true}/>
             </Reveal>
           </div>
           <div className="big-stats">
-            <div style={{gridColumn:"1/-1",background:"var(--green)",color:"var(--cream)",borderRadius:6,padding:"28px 32px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:24,flexWrap:"wrap"}}>
-              <div>
-                <div style={{fontFamily:"var(--mono)",fontSize:11,letterSpacing:".08em",textTransform:"uppercase",opacity:.7,marginBottom:8}}>Verified Support Facilitated</div>
-                <div style={{fontSize:"clamp(36px,5vw,56px)",fontWeight:400}}><Counter prefix="$" to={2400000}/></div>
-              </div>
-              <div style={{fontFamily:"var(--mono)",fontSize:12,opacity:.6,maxWidth:320,lineHeight:1.6}}>Across all verified cases, verticals and corridors · Updated monthly</div>
-            </div>
-            <div><div className="num"><Counter to={3892}/></div><div className="label">Lives reached</div><div className="delta">↑ 412 this quarter</div></div>
-            <div><div className="num"><Counter to={1.2} prefix="$" suffix="m"/></div><div className="label">Capital structured</div><div className="delta">↑ 18% YoY</div></div>
-            <div><div className="num"><Counter to={284}/></div><div className="label">Jobs supported</div><div className="delta">↑ 64 this quarter</div></div>
-            <div><div className="num"><Counter to={94} suffix="%"/></div><div className="label">Year-1 retention</div><div className="delta">Stable</div></div>
-            <div><div className="num"><Counter to={312}/></div><div className="label">Women Reached</div></div>
-            <div><div className="num"><Counter to={529}/></div><div className="label">Students Supported</div></div>
-            <div><div className="num"><Counter to={184}/></div><div className="label">Healthcare Cases</div></div>
+            {mode === 'my' ? (
+              <>
+                <div style={{gridColumn:'1/-1',background:'var(--green)',color:'var(--cream)',borderRadius:6,padding:'28px 32px',display:'flex',alignItems:'center',justifyContent:'space-between',gap:24,flexWrap:'wrap'}}>
+                  <div>
+                    <div style={{fontFamily:'"JetBrains Mono",monospace',fontSize:11,letterSpacing:'.08em',textTransform:'uppercase',opacity:.7,marginBottom:8}}>Your Verified Support</div>
+                    <div style={{fontSize:'clamp(36px,5vw,56px)',fontWeight:400}}><Counter prefix='$' to={myTotal}/></div>
+                  </div>
+                  <div style={{fontFamily:'"JetBrains Mono",monospace',fontSize:12,opacity:.6,maxWidth:320,lineHeight:1.6}}>{myCases} case{myCases !== 1 ? 's' : ''} across your portfolio · Updated monthly</div>
+                </div>
+                <div><div className='num'><Counter to={myCases}/></div><div className='label'>Active cases</div></div>
+                <div><div className='num'><Counter to={myTotal} prefix='$'/></div><div className='label'>Total disbursed</div></div>
+                <div><div className='num'><Counter to={rows.filter(r=>r.status==='settled').length}/></div><div className='label'>Settled payouts</div></div>
+                <div><div className='num'><Counter to={rows.filter(r=>r.status==='pending').length}/></div><div className='label'>Pending</div></div>
+              </>
+            ) : (
+              <>
+                <div style={{gridColumn:'1/-1',background:'var(--green)',color:'var(--cream)',borderRadius:6,padding:'28px 32px',display:'flex',alignItems:'center',justifyContent:'space-between',gap:24,flexWrap:'wrap'}}>
+                  <div>
+                    <div style={{fontFamily:'"JetBrains Mono",monospace',fontSize:11,letterSpacing:'.08em',textTransform:'uppercase',opacity:.7,marginBottom:8}}>Verified Support Facilitated</div>
+                    <div style={{fontSize:'clamp(36px,5vw,56px)',fontWeight:400}}><Counter prefix='$' to={2400000}/></div>
+                  </div>
+                  <div style={{fontFamily:'"JetBrains Mono",monospace',fontSize:12,opacity:.6,maxWidth:320,lineHeight:1.6}}>Across all verified cases, verticals and corridors · Updated monthly</div>
+                </div>
+                <div><div className='num'><Counter to={3892}/></div><div className='label'>Lives reached</div><div className='delta'>↑ 412 this quarter</div></div>
+                <div><div className='num'><Counter to={1.2} prefix='$' suffix='m'/></div><div className='label'>Capital structured</div><div className='delta'>↑ 18% YoY</div></div>
+                <div><div className='num'><Counter to={284}/></div><div className='label'>Jobs supported</div><div className='delta'>↑ 64 this quarter</div></div>
+                <div><div className='num'><Counter to={94} suffix="%"/></div><div className='label'>Year-1 retention</div><div className='delta'>Stable</div></div>
+                <div><div className='num'><Counter to={312}/></div><div className='label'>Women Reached</div></div>
+                <div><div className='num'><Counter to={529}/></div><div className='label'>Students Supported</div></div>
+                <div><div className='num'><Counter to={184}/></div><div className='label'>Healthcare Cases</div></div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -197,17 +210,17 @@ export default function SupporterImpact() {
         <div className="container">
           <Reveal className="block-head">
             <div>
-              <div className="section-num">§ Live ledger · Last 7 days</div>
+              <div className="section-num">§ {mode === 'my' ? 'Your ledger' : 'Live ledger'} · Last 7 days</div>
               <h2>Every disbursement, on the record.</h2>
             </div>
-            <p style={{fontSize:16,lineHeight:1.6,color:"var(--ink-soft)",maxWidth:480}}>Public, immutable record of all Kushian™ payouts. Click any case to see partner attestation and Sharia review.</p>
+            <p style={{fontSize:16,lineHeight:1.6,color:"var(--ink-soft)",maxWidth:480}}>{mode === 'my' ? 'Disbursements for cases you support.' : 'Public, immutable record of all Kushian™ payouts. Click any case to see partner attestation and Sharia review.'}</p>
           </Reveal>
           <Reveal>
             <div style={{border:"1px solid var(--line)",borderRadius:6,overflow:"hidden",background:"var(--cream)"}}>
               <div className="ledger-row head">
                 <div>Date</div><div>Disbursement</div><div>Partner of record</div><div style={{textAlign:"right"}}>Amount</div><div style={{textAlign:"right"}}>Status</div>
               </div>
-              {LEDGER.map((l, i) => (
+              {rows.map((l, i) => (
                 <div key={i} className="ledger-row">
                   <div className="dt">{l.dt} · 2026</div>
                   <div>

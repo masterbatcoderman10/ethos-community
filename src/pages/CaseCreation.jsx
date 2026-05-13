@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
@@ -12,6 +12,7 @@ import FormTextarea from '../components/FormTextarea.jsx';
 import UploadZone from '../components/UploadZone.jsx';
 import { showToast } from '../components/Toast.jsx';
 import { getEthosSide, sideDashboardUrl } from '../utils/role.js';
+import { getActiveUser, getActiveUserId, addDraftCase } from '../data/mockSession.js';
 import './CaseCreation.css';
 
 const SUPPORT_TYPES = [
@@ -49,22 +50,50 @@ const SUGGESTED_DOCS = [
   "Proof of relationship (where applicable)"
 ];
 
+const RECEIVER_SUGGESTED_DOCS = [
+  "Government-issued ID or passport",
+  "Medical records or referral letters",
+  "School or university enrolment documents",
+  "Business registration or licence",
+  "Proof of displacement or residency status"
+];
+
 const FREQUENCIES = [
   { value: "one-time", label: "One-time pledge" },
   { value: "monthly", label: "Recurring monthly" }
 ];
 
-const STEP_LABELS = ["Support type", "Beneficiary", "Need", "Funding", "Confirm"];
+const URGENCY_OPTIONS = [
+  { value: "critical", label: "Critical — immediate danger or hardship" },
+  { value: "within-week", label: "Within a week" },
+  { value: "within-month", label: "Within a month" },
+  { value: "flexible", label: "Flexible — no immediate deadline" }
+];
+
+const VERTICAL_OPTIONS = [
+  { value: "", label: "Select a support pathway" },
+  { value: "health", label: "Healthcare" },
+  { value: "education", label: "Education & CPD" },
+  { value: "legal", label: "Legal & Documentation" },
+  { value: "women", label: "Women Empowerment" },
+  { value: "family", label: "Family Support" },
+  { value: "sme", label: "SME Recovery" }
+];
+
+const SUPPORTER_STEPS = ["Support type", "Beneficiary", "Need", "Funding", "Confirm"];
+const RECEIVER_STEPS = ["Situation", "Outcome", "Documents", "Funding", "Confirm"];
 
 const generateCaseId = () => `K-${3500 + Math.floor(Math.random() * 500)}`;
 const SUPPORT_TYPE_LABELS = Object.fromEntries(SUPPORT_TYPES.map(s => [s.id, s.title]));
 const LOCATION_LABELS = Object.fromEntries(LOCATIONS.map(l => [l.value, l.label]));
 const CATEGORY_LABELS = Object.fromEntries(BENEFICIARY_CATEGORIES.map(c => [c.value, c.label]));
 const FREQUENCY_LABELS = Object.fromEntries(FREQUENCIES.map(f => [f.value, f.label]));
+const URGENCY_LABELS = Object.fromEntries(URGENCY_OPTIONS.map(u => [u.value, u.label]));
+const VERTICAL_LABELS = Object.fromEntries(VERTICAL_OPTIONS.filter(v => v.value).map(v => [v.value, v.label]));
 
-const StepRail = ({ current, onJump }) => (
+const StepRail = ({ current, labels, onJump }) => (
   <ol className="cc-rail" aria-label="Wizard progress">
-    {STEP_LABELS.map((label, i) => {
+    {labels.map((label, i) => {
       const status = i < current ? "done" : i === current ? "active" : "idle";
       const num = String(i + 1).padStart(2, "0");
       const reachable = i <= current;
@@ -80,7 +109,7 @@ const StepRail = ({ current, onJump }) => (
             <span className="cc-rail-num">{status === "done" ? <Icon name="check" size={18} /> : num}</span>
             <span className="cc-rail-label">{label}</span>
           </button>
-          {i < STEP_LABELS.length - 1 && <span className="cc-rail-line" aria-hidden="true" />}
+          {i < labels.length - 1 && <span className="cc-rail-line" aria-hidden="true" />}
         </li>
       );
     })}
@@ -232,16 +261,154 @@ const Step5Confirm = ({ caseId, supportType, beneficiary, need, funding }) => {
   );
 };
 
+const RStep1Situation = ({ value, onChange }) => (
+  <div className="cc-step">
+    <header className="cc-step-header">
+      <span className="cc-step-eyebrow">Step 01 of 05</span>
+      <h2>What is your current situation?</h2>
+      <p>I need support / I am registering my situation. Describe what you are going through so ambassadors and supporters understand how to help.</p>
+    </header>
+    <div className="cc-form">
+      <FormField label="Current situation" htmlFor="situation-desc" required hint="Minimum 20 characters.">
+        <FormTextarea id="situation-desc" placeholder="e.g. Displaced from Khartoum with 3 children, currently in Cairo. Need urgent medical care for youngest child and school placement for the others." value={value.description} onChange={e => onChange({ ...value, description: e.target.value })} />
+      </FormField>
+      <FormField label="Urgency" required>
+        <FormRadioGroup name="urgency" options={URGENCY_OPTIONS} value={value.urgency} onChange={e => onChange({ ...value, urgency: e.target.value })} />
+      </FormField>
+    </div>
+  </div>
+);
+
+const RStep2Outcome = ({ value, onChange }) => (
+  <div className="cc-step">
+    <header className="cc-step-header">
+      <span className="cc-step-eyebrow">Step 02 of 05</span>
+      <h2>What outcome are you seeking?</h2>
+      <p>Tell us what success looks like for you and choose the type of support that best fits your needs.</p>
+    </header>
+    <div className="cc-form">
+      <FormField label="Desired outcome" htmlFor="outcome-desc" required>
+        <FormTextarea id="outcome-desc" placeholder="e.g. Enrol children in school and cover 6 months of rent while I look for work." value={value.desiredOutcome} onChange={e => onChange({ ...value, desiredOutcome: e.target.value })} />
+      </FormField>
+      <FormField label="Support pathway" htmlFor="outcome-pathway" required>
+        <FormSelect id="outcome-pathway" options={VERTICAL_OPTIONS} value={value.pathway} onChange={e => onChange({ ...value, pathway: e.target.value })} placeholder="Select a support pathway" />
+      </FormField>
+      <FormField label="Ambassador or verifier contact" htmlFor="outcome-ambassador" hint="Optional — if you are already working with someone.">
+        <FormInput id="outcome-ambassador" placeholder="e.g. Fatima O. or ambassador name" value={value.ambassadorContact} onChange={e => onChange({ ...value, ambassadorContact: e.target.value })} />
+      </FormField>
+    </div>
+  </div>
+);
+
+const RStep3Documents = () => (
+  <div className="cc-step">
+    <header className="cc-step-header">
+      <span className="cc-step-eyebrow">Step 03 of 05</span>
+      <h2>What documents do you have available?</h2>
+      <p>Upload any supporting documents you have. These help verify your situation faster.</p>
+    </header>
+    <div className="cc-form">
+      <div className="cc-form-split">
+        <FormField label="Upload documents" hint="Demo only — uploads are not stored.">
+          <UploadZone />
+        </FormField>
+        <aside className="cc-suggested-docs" aria-label="Suggested documents">
+          <span className="form-field-label">Suggested documents</span>
+          <ul>
+            {RECEIVER_SUGGESTED_DOCS.map((d, i) => (
+              <li key={i}><Icon name="doc" size={14} /> {d}</li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </div>
+);
+
+const RStep4Funding = ({ value, onChange }) => (
+  <div className="cc-step">
+    <header className="cc-step-header">
+      <span className="cc-step-eyebrow">Step 04 of 05</span>
+      <h2>Funding target.</h2>
+      <p>Set an initial funding target if you have one in mind. This is optional.</p>
+    </header>
+    <div className="cc-form">
+      <FormField label="Funding amount (USD)" htmlFor="r-funding-amount">
+        <FormInput id="r-funding-amount" type="number" placeholder="0" value={value.amount} onChange={e => onChange({ ...value, amount: e.target.value })} min="0" />
+      </FormField>
+      <p className="cc-optional-hint">Leave blank if unsure. An ambassador can help determine the right amount.</p>
+    </div>
+  </div>
+);
+
+const RStep5Confirm = ({ caseId, situation, outcome, funding }) => {
+  const rows = [
+    ["Situation", situation.description.slice(0, 220) + (situation.description.length > 220 ? "…" : "")],
+    ["Urgency", URGENCY_LABELS[situation.urgency] || "—"],
+    ["Desired outcome", outcome.desiredOutcome.slice(0, 220) + (outcome.desiredOutcome.length > 220 ? "…" : "")],
+    ["Support pathway", VERTICAL_LABELS[outcome.pathway] || "—"]
+  ];
+  if (outcome.ambassadorContact) {
+    rows.push(["Ambassador contact", outcome.ambassadorContact]);
+  }
+  rows.push(["Funding target", funding.amount ? `$${Number(funding.amount).toLocaleString()}` : "Not specified"]);
+  return (
+    <div className="cc-step cc-confirm">
+      <header className="cc-step-header">
+        <span className="cc-step-eyebrow">Step 05 of 05 · review</span>
+        <h2>Your support request is ready for review.</h2>
+        <p>A community ambassador will review your submission and match you with supporters. You will be notified as your case progresses.</p>
+      </header>
+      <article className="cc-dossier" aria-label="Case dossier summary">
+        <header className="cc-dossier-head">
+          <span className="cc-dossier-tag">Pending review</span>
+          <span className="cc-dossier-id">
+            <span className="cc-dossier-id-label">Case ID</span>
+            <span className="cc-dossier-id-value">{caseId}</span>
+          </span>
+        </header>
+        <dl className="cc-dossier-grid">
+          {rows.map(([k, v]) => (
+            <div key={k}>
+              <dt>{k}</dt>
+              <dd>{v}</dd>
+            </div>
+          ))}
+        </dl>
+        <footer className="cc-dossier-foot">
+          <span><Icon name="shield" size={14} /> Reviewed by community ambassador</span>
+          <span><Icon name="clock" size={14} /> You will be notified of updates</span>
+        </footer>
+      </article>
+    </div>
+  );
+};
+
 export default function CaseCreation() {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const mode = (() => {
+    if (searchParams.get('mode') === 'receiver') return 'receiver';
+    const user = getActiveUser();
+    if (user?.side === 'beneficiary') return 'receiver';
+    return 'supporter';
+  })();
+
+  const isReceiver = mode === 'receiver';
+  const stepLabels = isReceiver ? RECEIVER_STEPS : SUPPORTER_STEPS;
+
   const [step, setStep] = useState(0);
   const [supportType, setSupportType] = useState(null);
   const [beneficiary, setBeneficiary] = useState({ name: "", location: "", category: "" });
   const [need, setNeed] = useState({ description: "" });
   const [funding, setFunding] = useState({ amount: "", frequency: "" });
+  const [situation, setSituation] = useState({ description: "", urgency: "" });
+  const [outcome, setOutcome] = useState({ desiredOutcome: "", pathway: "", ambassadorContact: "" });
+  const [receiverFunding, setReceiverFunding] = useState({ amount: "" });
   const [caseId] = useState(generateCaseId);
-  const navigate = useNavigate();
 
-  const stepContent = [
+  const supporterContent = [
     <Step1Support value={supportType} onSelect={setSupportType} />,
     <Step2Beneficiary value={beneficiary} onChange={setBeneficiary} />,
     <Step3Need value={need} onChange={setNeed} />,
@@ -249,25 +416,58 @@ export default function CaseCreation() {
     <Step5Confirm caseId={caseId} supportType={supportType} beneficiary={beneficiary} need={need} funding={funding} />
   ];
 
-  const isLast = step === stepContent.length - 1;
-  const canAdvance =
-    step === 0 ? !!supportType :
-    step === 1 ? !!(beneficiary.name && beneficiary.location && beneficiary.category) :
-    step === 2 ? need.description.trim().length >= 20 :
-    step === 3 ? !!(Number(funding.amount) > 0 && funding.frequency) :
-    true;
+  const receiverContent = [
+    <RStep1Situation value={situation} onChange={setSituation} />,
+    <RStep2Outcome value={outcome} onChange={setOutcome} />,
+    <RStep3Documents />,
+    <RStep4Funding value={receiverFunding} onChange={setReceiverFunding} />,
+    <RStep5Confirm caseId={caseId} situation={situation} outcome={outcome} funding={receiverFunding} />
+  ];
 
-  const advanceLabel = (() => {
-    if (isLast) return "Submit case";
-    if (step === 0) return "Continue to beneficiary";
-    if (step === 1) return "Continue to need";
-    if (step === 2) return "Continue to funding";
-    if (step === 3) return "Continue to review";
-    return "Continue";
-  })();
+  const steps = isReceiver ? receiverContent : supporterContent;
+  const isLast = step === steps.length - 1;
+
+  const canAdvance = isReceiver
+    ? (
+      step === 0 ? !!(situation.description.trim().length >= 20 && situation.urgency) :
+      step === 1 ? !!(outcome.desiredOutcome.trim().length > 0 && outcome.pathway) :
+      step === 2 ? true :
+      step === 3 ? true :
+      true
+    )
+    : (
+      step === 0 ? !!supportType :
+      step === 1 ? !!(beneficiary.name && beneficiary.location && beneficiary.category) :
+      step === 2 ? need.description.trim().length >= 20 :
+      step === 3 ? !!(Number(funding.amount) > 0 && funding.frequency) :
+      true
+    );
+
+  const advanceLabel = isReceiver
+    ? (
+      isLast ? "Submit request" :
+      step === 0 ? "Continue to outcome" :
+      step === 1 ? "Continue to documents" :
+      step === 2 ? "Continue to funding" :
+      step === 3 ? "Continue to review" :
+      "Continue"
+    )
+    : (
+      isLast ? "Submit case" :
+      step === 0 ? "Continue to beneficiary" :
+      step === 1 ? "Continue to need" :
+      step === 2 ? "Continue to funding" :
+      step === 3 ? "Continue to review" :
+      "Continue"
+    );
 
   const advanceHint = (() => {
     if (canAdvance || isLast) return null;
+    if (isReceiver) {
+      if (step === 0) return "Describe your situation (min 20 characters) and select urgency.";
+      if (step === 1) return "Desired outcome and support pathway required.";
+      return null;
+    }
     if (step === 0) return "Pick a support vertical to continue.";
     if (step === 1) return "Name, location, and category required.";
     if (step === 2) return "Need description must be at least 20 characters.";
@@ -281,13 +481,55 @@ export default function CaseCreation() {
     if (isLast) submit();
     else setStep(step + 1);
   };
-  const dashboardHref = sideDashboardUrl(getEthosSide() || "supporter", 0);
+
+  const dashboardHref = isReceiver ? '/beneficiary' : sideDashboardUrl(getEthosSide() || "supporter", 0);
+
   const submit = () => {
-    const side = getEthosSide() || "supporter";
-    const target = sideDashboardUrl(side, 0);
-    showToast(`Case ${caseId} submitted for verification`);
-    setTimeout(() => { navigate(target); }, 1200);
+    const userId = getActiveUserId();
+    if (isReceiver) {
+      addDraftCase({
+        id: caseId,
+        name: getActiveUser()?.name || 'Receiver',
+        desc: situation.description,
+        vertical: VERTICAL_LABELS[outcome.pathway] || 'General',
+        verticalKey: outcome.pathway || 'general',
+        category: 'receiver',
+        location: '',
+        status: 'pending',
+        ownerUserId: userId,
+        supporterUserIds: [],
+        raised: 0,
+        target: Number(receiverFunding.amount) || 0,
+        isDraft: true
+      });
+      showToast(`Case ${caseId} submitted for review`);
+      setTimeout(() => { navigate('/beneficiary'); }, 1200);
+    } else {
+      addDraftCase({
+        id: caseId,
+        name: beneficiary.name,
+        desc: need.description,
+        vertical: SUPPORT_TYPE_LABELS[supportType],
+        verticalKey: supportType,
+        category: beneficiary.category,
+        location: LOCATION_LABELS[beneficiary.location],
+        status: 'pending',
+        ownerUserId: null,
+        supporterUserIds: userId ? [userId] : [],
+        raised: 0,
+        target: Number(funding.amount) || 0,
+        isDraft: true
+      });
+      showToast(`Case ${caseId} submitted for verification`);
+      setTimeout(() => { navigate(sideDashboardUrl(getEthosSide() || 'supporter', 0)); }, 1200);
+    }
   };
+
+  const headerTag = isReceiver ? "Support request" : "Registration ticket";
+  const headerTitle = isReceiver ? "Register your situation for support." : "Open a verified support case.";
+  const headerDesc = isReceiver
+    ? "Five short stages — situation, outcome, documents, funding, then review. An ambassador will review your submission."
+    : "Five short stages — support type, beneficiary, need, funding, then review. Every field becomes part of the case audit trail.";
 
   return (
     <>
@@ -297,17 +539,17 @@ export default function CaseCreation() {
         <div className="container">
           <header className="cc-header">
             <div className="cc-header-meta">
-              <span className="cc-header-tag">Registration ticket</span>
+              <span className="cc-header-tag">{headerTag}</span>
               <span className="cc-header-id">{caseId}</span>
             </div>
-            <h1>Open a verified support case.</h1>
-            <p>Five short stages — support type, beneficiary, need, funding, then review. Every field becomes part of the case audit trail.</p>
+            <h1>{headerTitle}</h1>
+            <p>{headerDesc}</p>
           </header>
 
-          <StepRail current={step} onJump={setStep} />
+          <StepRail current={step} labels={stepLabels} onJump={setStep} />
 
           <section className="cc-panel" aria-live="polite">
-            {stepContent[step]}
+            {steps[step]}
           </section>
 
           <footer className="cc-actions">

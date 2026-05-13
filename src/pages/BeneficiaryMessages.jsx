@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import Icon from '../components/Icon.jsx';
@@ -7,25 +7,78 @@ import MessageBubble from '../components/MessageBubble.jsx';
 import FormTextarea from '../components/FormTextarea.jsx';
 import Footer from '../components/Footer.jsx';
 import { showToast } from '../components/Toast.jsx';
+import { getActiveUser, getMessagesForReceiver, getCasesForReceiver } from '../data/mockQueries.js';
+import { getUserById } from '../data/mockDb.js';
+import { clearActiveUser } from '../data/mockSession.js';
 import '../../beneficiary/messages.css';
 
-const THREAD = {
-  name: "Fatima O.",
-  initials: "FO",
-  role: "Community ambassador · Khartoum",
-  unread: 1,
-  subject: "Sponsor letter and CPD enrolment",
-  last: "Reminder: please upload the sponsor letter before the CPD desk closes the enrolment file.",
-  time: "09:18"
-};
+function FallbackState() {
+  return (
+    <div className="bene-empty-state">
+      <h2>No active receiver profile</h2>
+      <p>Choose a beneficiary profile to view your messages.</p>
+      <Link to="/role" className="btn btn-primary">Choose profile</Link>
+    </div>
+  );
+}
 
 export default function BeneficiaryMessages() {
+  const navigate = useNavigate();
   const [draft, setDraft] = useState("");
+  const user = getActiveUser();
+
+  if (!user) {
+    return (
+      <>
+        <Nav active="messages" side="beneficiary" depth={1} />
+        <main className="messages-page">
+          <div className="container" style={{ padding: '80px 32px', textAlign: 'center' }}>
+            <FallbackState />
+          </div>
+        </main>
+        <DemoTag />
+        <Footer depth={1} />
+      </>
+    );
+  }
+
+  const allMessages = getMessagesForReceiver(user.id);
+  const cases = getCasesForReceiver(user.id);
+
+  const threads = cases
+    .filter(c => (c.messages || []).length > 0)
+    .map(c => {
+      const msgs = c.messages || [];
+      const lastMsg = msgs[msgs.length - 1];
+      const otherUserId = [...new Set(msgs.map(m => m.from))].find(f => f !== user.id);
+      const otherUser = otherUserId ? getUserById(otherUserId) : null;
+      return {
+        caseId: c.id,
+        caseName: c.name || c.desc,
+        otherUser,
+        lastMessage: lastMsg,
+        messageCount: msgs.length,
+        unread: 0
+      };
+    });
+
+  const [activeThread, setActiveThread] = useState(threads[0]?.caseId || null);
+
+  const activeThreadMessages = activeThread
+    ? allMessages.filter(m => m.caseId === activeThread)
+    : [];
+
+  const activeThreadInfo = threads.find(t => t.caseId === activeThread);
 
   const sendMessage = () => {
     if (!draft.trim()) return;
     showToast("Message sent — demo only");
     setDraft("");
+  };
+
+  const switchProfile = () => {
+    clearActiveUser();
+    navigate('/role');
   };
 
   return (
@@ -36,11 +89,14 @@ export default function BeneficiaryMessages() {
           <div className="container messages-hero-inner">
             <div>
               <div className="eyebrow">Beneficiary Messages</div>
-              <h1>Ambassador thread</h1>
+              <h1>Your conversations</h1>
             </div>
             <p>
-              One verified conversation for CPD enrolment, sponsor-letter follow-up, and partner updates.
+              Messages from supporters and ambassadors across your active cases.
             </p>
+            <button type="button" className="btn btn-soft sm" onClick={switchProfile} style={{ marginTop: 8 }}>
+              Switch profile
+            </button>
           </div>
         </section>
 
@@ -48,74 +104,91 @@ export default function BeneficiaryMessages() {
           <aside className="thread-list" aria-label="Threads">
             <div className="thread-list-head">
               <span>Inbox</span>
-              <span>1 unread</span>
+              <span>{allMessages.length} messages</span>
             </div>
-            <button type="button" className="thread-button active" aria-current="true">
-              <span className="thread-avatar">{THREAD.initials}</span>
-              <span className="thread-content">
-                <span className="thread-topline">
-                  <strong>{THREAD.name}</strong>
-                  <span>{THREAD.time}</span>
-                </span>
-                <span className="thread-role">{THREAD.role}</span>
-                <span className="thread-last">{THREAD.last}</span>
-              </span>
-              <span className="unread-pill" aria-label={`${THREAD.unread} unread message`}>
-                {THREAD.unread}
-              </span>
-            </button>
+            {threads.length === 0 ? (
+              <div style={{ padding: '24px 16px', textAlign: 'center' }}>
+                <p>No conversations yet</p>
+              </div>
+            ) : (
+              threads.map((thread) => (
+                <button
+                  key={thread.caseId}
+                  type="button"
+                  className={`thread-button ${activeThread === thread.caseId ? 'active' : ''}`}
+                  aria-current={activeThread === thread.caseId}
+                  onClick={() => setActiveThread(thread.caseId)}
+                >
+                  <span className="thread-avatar">
+                    {thread.otherUser?.initials || '??'}
+                  </span>
+                  <span className="thread-content">
+                    <span className="thread-topline">
+                      <strong>{thread.otherUser?.name || 'Supporter'}</strong>
+                      <span>{thread.caseId}</span>
+                    </span>
+                    <span className="thread-role">{thread.caseName}</span>
+                    <span className="thread-last">{thread.lastMessage?.text || ''}</span>
+                  </span>
+                </button>
+              ))
+            )}
           </aside>
 
-          <section className="thread-panel" aria-label={`Conversation with ${THREAD.name}`}>
-            <header className="thread-header">
-              <div>
-                <div className="thread-kicker">Active thread</div>
-                <h2>{THREAD.name}</h2>
-                <p>{THREAD.role}</p>
-              </div>
-              <span className="thread-status">Unread · {THREAD.unread}</span>
-            </header>
+          <section className="thread-panel" aria-label={activeThreadInfo ? `Conversation for ${activeThreadInfo.caseName}` : 'Messages'}>
+            {activeThreadInfo ? (
+              <>
+                <header className="thread-header">
+                  <div>
+                    <div className="thread-kicker">Active thread</div>
+                    <h2>{activeThreadInfo.otherUser?.name || 'Supporter'}</h2>
+                    <p>{activeThreadInfo.caseName} · {activeThreadInfo.caseId}</p>
+                  </div>
+                  <span className="thread-status">{activeThreadMessages.length} messages</span>
+                </header>
 
-            <div className="message-history" role="log" aria-label="Message history">
-              <MessageBubble sender="system">
-                CPD enrolment opened for the May 2026 cohort.
-              </MessageBubble>
-              <MessageBubble sender="ambassador" name="Fatima O." timestamp="Mon 08:42">
-                Salaam Maryam. The Khartoum partner confirmed your CPD record is active. They still need the sponsor letter before the enrolment desk closes the file.
-              </MessageBubble>
-              <MessageBubble sender="me" name="Me" timestamp="Mon 08:51">
-                Thank you, Fatima. I have the draft from my uncle in Doha. I am waiting for the signed copy with his passport number.
-              </MessageBubble>
-              <MessageBubble sender="ambassador" name="Fatima O." timestamp="Mon 09:03">
-                That works. Please upload the signed sponsor letter here when ready. The CPD team can hold your seat until Thursday if the letter is attached today.
-              </MessageBubble>
-              <MessageBubble sender="system">
-                Partner note added: CPD seat held pending sponsor-letter verification.
-              </MessageBubble>
-              <MessageBubble sender="me" name="Me" timestamp="Mon 09:11">
-                I also received the enrolment code from the training centre. Should I include it in the same document note?
-              </MessageBubble>
-              <MessageBubble sender="ambassador" name="Fatima O." timestamp="Mon 09:18">
-                Yes. Add the enrolment code in the note and upload the sponsor letter. I will review both and mark the CPD file ready for partner verification.
-              </MessageBubble>
-            </div>
+                <div className="message-history" role="log" aria-label="Message history">
+                  {activeThreadMessages.map((msg) => {
+                    const isMe = msg.from === user.id;
+                    const senderUser = getUserById(msg.from);
+                    return (
+                      <MessageBubble
+                        key={msg.id}
+                        sender={isMe ? 'me' : 'ambassador'}
+                        name={isMe ? 'Me' : (senderUser?.name || msg.from)}
+                        timestamp={msg.date}
+                      >
+                        {msg.text}
+                      </MessageBubble>
+                    );
+                  })}
+                </div>
 
-            <form className="composer" onSubmit={(event) => { event.preventDefault(); sendMessage(); }}>
-              <label className="composer-label" htmlFor="message-draft">Reply</label>
-              <FormTextarea
-                id="message-draft"
-                rows={4}
-                placeholder="Write a short update for Fatima..."
-                value={draft}
-                onChange={(event) => setDraft(event.target.value)}
-              />
-              <div className="composer-actions">
-                <span>Prototype message, no data is stored.</span>
-                <button type="submit" className="btn btn-primary send-button" disabled={!draft.trim()}>
-                  Send
-                </button>
+                <form className="composer" onSubmit={(event) => { event.preventDefault(); sendMessage(); }}>
+                  <label className="composer-label" htmlFor="message-draft">Reply</label>
+                  <FormTextarea
+                    id="message-draft"
+                    rows={4}
+                    placeholder={`Write a reply for ${activeThreadInfo.otherUser?.name || 'your contact'}...`}
+                    value={draft}
+                    onChange={(event) => setDraft(event.target.value)}
+                  />
+                  <div className="composer-actions">
+                    <span>Prototype message, no data is stored.</span>
+                    <button type="submit" className="btn btn-primary send-button" disabled={!draft.trim()}>
+                      Send
+                    </button>
+                  </div>
+                </form>
+              </>
+            ) : (
+              <div style={{ padding: '80px 32px', textAlign: 'center' }}>
+                <Icon name="mail" size={28} />
+                <h2>No messages</h2>
+                <p>Select a thread or create a case to start a conversation.</p>
+                <Link to="/beneficiary/cases" className="btn btn-primary">View cases</Link>
               </div>
-            </form>
+            )}
           </section>
         </section>
       </main>

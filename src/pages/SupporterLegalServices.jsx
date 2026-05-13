@@ -36,10 +36,11 @@ const PRACTITIONERS = [
   { initials: "AR", name: "Amira Rahhal",       spec: "Compliance & Licensing", loc: "Riyadh, KSA",     juris: ["KSA","QA"],  langs: ["Arabic","English"], verified: true }
 ];
 
-export default function SupporterLegalServices() {
+export default function SupporterLegalServices({ viewerSide = 'supporter' }) {
+  const isBen = viewerSide === 'beneficiary'
   return (
     <>
-      <Nav active="legal" side="supporter" depth={1}/>
+      <Nav active="legal" side={isBen ? 'beneficiary' : 'supporter'} depth={1}/>
 
       <section className="vert-hero">
         <div className="container">
@@ -49,8 +50,8 @@ export default function SupporterLegalServices() {
               <h1>Trusted advisers for <em>documentation, residency</em> and compliance.</h1>
               <p>Verified lawyers, accountants, tax advisers and immigration specialists across GCC, UK and East Africa corridors.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <button className="btn btn-primary" onClick={() => showToast("Browse practitioners — coming next")}>Browse {PRACTITIONERS.length} practitioners <Icon name="arrow"/></button>
-                <button className="btn btn-ghost" onClick={() => showToast("List your practice — coming next")}>List Your Practice</button>
+                <button className="btn btn-primary" onClick={() => showToast(isBen ? "View requirements — coming next" : "Browse practitioners — coming next")}>{isBen ? 'View requirements' : `Browse ${PRACTITIONERS.length} practitioners`} <Icon name="arrow"/></button>
+                <button className="btn btn-ghost" onClick={() => showToast(isBen ? "Ask ambassador — coming next" : "List your practice — coming next")}>{isBen ? 'Ask ambassador' : 'List Your Practice'}</button>
               </div>
             </Reveal>
             <Reveal delay={120}><Photo caption="LEGAL · COMPLIANCE · ADVISORY" overlay="Professional advisory session, Dubai 2026" img="../images/legal-advisory.png"/></Reveal>
@@ -93,8 +94,8 @@ export default function SupporterLegalServices() {
               <p>A Sudanese legal professional based in Saudi Arabia used the platform to connect his parents — displaced to Kampala — with a verified local documentation and residency adviser. The adviser navigated Ugandan work permit requirements, UNHCR registration and authenticated family documents for an ongoing legal claim in Sudan.</p>
               <p style={{marginTop:12}}>Result: residency documentation secured within 6 weeks. Legal claim in progress through a verified Sudanese lawyer with East Africa jurisdiction.</p>
               <div style={{display:"flex",gap:12,marginTop:24,flexWrap:"wrap"}}>
-                <button className="btn btn-primary" onClick={() => showToast("Support this case — create a case first")}>Support this case <Icon name="arrow"/></button>
-                <Link to="/create" className="btn btn-ghost">Create similar case</Link>
+                <button className="btn btn-primary" onClick={() => showToast(isBen ? "View requirements — coming next" : "Support this case — create a case first")}>{isBen ? 'View requirements' : 'Support this case'} <Icon name="arrow"/></button>
+                <Link to={isBen ? "/beneficiary/documents" : "/create"} className="btn btn-ghost">{isBen ? 'Prepare documents' : 'Create similar case'}</Link>
               </div>
             </div>
           </Reveal>
@@ -124,7 +125,7 @@ export default function SupporterLegalServices() {
                       <span>{p.langs.join(" · ")}</span>
                     </div>
                   </div>
-                  <button className="btn btn-ghost sm" onClick={() => showToast(`Consultation request sent to ${p.name}`)}>Request Consultation <Icon name="arrow" size={14}/></button>
+                  <button className="btn btn-ghost sm" onClick={() => showToast(isBen ? `Ask ambassador about ${p.name}` : `Consultation request sent to ${p.name}`)}>{isBen ? 'Ask ambassador' : 'Request Consultation'} <Icon name="arrow" size={14}/></button>
                 </div>
               </Reveal>
             ))}

@@ -46,6 +46,13 @@ export default function App() {
       <Route path="/beneficiary/cases" element={<BeneficiaryMyCases />} />
       <Route path="/beneficiary/documents" element={<BeneficiaryDocuments />} />
       <Route path="/beneficiary/messages" element={<BeneficiaryMessages />} />
+      <Route path="/beneficiary/pathways/healthcare" element={<SupporterHealthcare viewerSide="beneficiary" />} />
+      <Route path="/beneficiary/pathways/education" element={<SupporterEducation viewerSide="beneficiary" />} />
+      <Route path="/beneficiary/pathways/women" element={<SupporterWomenEmpowerment viewerSide="beneficiary" />} />
+      <Route path="/beneficiary/pathways/legal" element={<SupporterLegalServices viewerSide="beneficiary" />} />
+      <Route path="/beneficiary/pathways/sme" element={<SupporterSmeAdvisory viewerSide="beneficiary" />} />
+      <Route path="/beneficiary/pathways/traders" element={<SupporterProductTraders viewerSide="beneficiary" />} />
+      <Route path="/beneficiary/pathways/marketplace" element={<SupporterProviderMarketplace viewerSide="beneficiary" />} />
     </Routes>
   )
 }

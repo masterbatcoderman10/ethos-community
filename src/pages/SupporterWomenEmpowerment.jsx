@@ -34,12 +34,13 @@ const MENTORS = [
   { initials: "SK", name: "Prof Samia Khalil", role: "Economics · Georgetown Doha",     skills: ["Economics","Research","Mentoring"],match: "85% match" }
 ];
 
-export default function SupporterWomenEmpowerment() {
+export default function SupporterWomenEmpowerment({ viewerSide = 'supporter' }) {
+  const isBen = viewerSide === 'beneficiary'
   return (
     <>
-      <Nav active="women" side="supporter" depth={1}/>
+      <Nav active="women" side={isBen ? 'beneficiary' : 'supporter'} depth={1}/>
 
-      <section className="vert-hero">
+      <section className="vert-hero hero-with-large-photo">
         <div className="container">
           <div className="vert-grid">
             <Reveal>
@@ -47,8 +48,8 @@ export default function SupporterWomenEmpowerment() {
               <h1>Dignified pathways for <em>women</em> and families.</h1>
               <p>From widows in Kassala to women professionals rebuilding careers in Dubai — verified, purpose-linked support with measurable outcomes.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <Link to="/create" className="btn btn-primary">Start a Women's Case <Icon name="arrow"/></Link>
-                <button className="btn btn-ghost" onClick={() => showToast("View all cases — coming next")}>View all cases</button>
+                <Link to={isBen ? "/beneficiary/cases" : "/create"} className="btn btn-primary">{isBen ? 'Start request' : "Start a Women's Case"} <Icon name="arrow"/></Link>
+                <button className="btn btn-ghost" onClick={() => showToast(isBen ? "View requirements — coming next" : "View all cases — coming next")}>{isBen ? 'View requirements' : 'View all cases'}</button>
               </div>
             </Reveal>
             <Reveal delay={120}><Photo caption="WOMEN · EMPOWERMENT · RESILIENCE" overlay="Women CPD circle, Riyadh 2026" img="../images/women-cpd.png"/></Reveal>
@@ -74,7 +75,7 @@ export default function SupporterWomenEmpowerment() {
                   <div className="we-pathway-icon"><Icon name={p.icon} size={32}/></div>
                   <h3>{p.title}</h3>
                   <p>{p.desc}</p>
-                  <button className="btn btn-text sm" onClick={() => showToast(`${p.title} — learn more`)}>Learn more <Icon name="arrow" size={14}/></button>
+                  <button className="btn btn-text sm" onClick={() => showToast(isBen ? `Prepare documents — ${p.title}` : `${p.title} — learn more`)}>{isBen ? 'Prepare documents' : 'Learn more'} <Icon name="arrow" size={14}/></button>
                 </div>
               </Reveal>
             ))}
@@ -86,7 +87,7 @@ export default function SupporterWomenEmpowerment() {
         <div className="container">
           <Reveal className="block-head">
             <div><div className="section-num">§ Active Cases</div><h2>Women supported right now.</h2></div>
-            <Link to="/supporter/cases/halima" className="btn btn-ghost sm">View Halima's profile <Icon name="arrow" size={14}/></Link>
+            <Link to={isBen ? "/beneficiary/case/halima" : "/supporter/cases/halima"} className="btn btn-ghost sm">View Halima's profile <Icon name="arrow" size={14}/></Link>
           </Reveal>
           <div className="we-cases">
             {CASES.map((c,i) => (
@@ -98,8 +99,8 @@ export default function SupporterWomenEmpowerment() {
                   <p>{c.desc}</p>
                   <CaseProgressBar raised={c.raised} target={c.target}/>
                   {c.href
-                    ? <Link to={c.href} className="btn btn-ghost sm" style={{marginTop:12}}>View profile <Icon name="arrow" size={14}/></Link>
-                    : <button className="btn btn-ghost sm" style={{marginTop:12}} onClick={() => showToast(`Support ${c.name} — create a case`)}>Support this case <Icon name="arrow" size={14}/></button>
+                    ? <Link to={isBen ? `/beneficiary/case/${c.id}` : c.href} className="btn btn-ghost sm" style={{marginTop:12}}>View profile <Icon name="arrow" size={14}/></Link>
+                    : <button className="btn btn-ghost sm" style={{marginTop:12}} onClick={() => showToast(isBen ? `Start request — ${c.name}` : `Support ${c.name} — create a case`)}>{isBen ? 'Start request' : 'Support this case'} <Icon name="arrow" size={14}/></button>
                   }
                 </div>
               </Reveal>
@@ -141,7 +142,7 @@ export default function SupporterWomenEmpowerment() {
                 <h3>Takaful coverage for women and families</h3>
                 <p>Cooperative health and family protection plans for widows and female-headed households — through our Takaful partner network.</p>
               </div>
-              <Link to="/supporter/healthcare" className="btn btn-ghost">View Takaful Pools <Icon name="arrow"/></Link>
+              <Link to={isBen ? "/beneficiary/pathways/healthcare" : "/supporter/healthcare"} className="btn btn-ghost">View Takaful Pools <Icon name="arrow"/></Link>
             </div>
           </Reveal>
         </div>

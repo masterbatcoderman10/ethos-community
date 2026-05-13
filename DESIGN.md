@@ -1,8 +1,8 @@
 ---
 version: alpha
-name: Ethos Community
+name: Kushian
 project:
-  title: Ethos Community™ — Kushian™ Sudan Pilot
+  title: Kushian™ — Powered by Ethos Community™
   type: Development-finance social-impact web prototype
   register: editorial / institutional / warm minimalism
   audience: IsDB Group pitch competition; diaspora supporters; development-finance reviewers
@@ -943,7 +943,7 @@ animation:
 
 ## Overview
 
-Ethos Community™ is a Connection-as-a-Service platform prototype built for the IsDB Group Innovation and Startups Pitch Competition. The visual identity fuses **development-finance gravitas** with **editorial warmth** — a palette of cream paper, deep forest ink, and restrained gold accents that signals trust, transparency, and institutional credibility without feeling cold or corporate.
+Kushian™ is a Connection-as-a-Service application powered by Ethos Community™ and built for the IsDB Group Innovation and Startups Pitch Competition. The visual identity fuses **development-finance gravitas** with **editorial warmth** — a palette of cream paper, deep forest ink, and restrained gold accents that signals trust, transparency, and institutional credibility without feeling cold or corporate.
 
 The design language is intentionally warm and dignified. Serif display typography (three interchangeable pairings) anchors the editorial tone, while a monospace label system (JetBrains Mono) provides the precision and traceability expected of finance and audit contexts. Every surface — from beneficiary profiles to impact dashboards — shares the same restrained color logic and generous whitespace.
 

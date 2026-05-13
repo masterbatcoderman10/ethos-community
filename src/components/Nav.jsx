@@ -20,7 +20,14 @@ const NAV_LINKS_BENEFICIARY = [
   { to: "/beneficiary", label: "Dashboard", key: "dashboard" },
   { to: "/beneficiary/cases", label: "My Cases", key: "my-cases" },
   { to: "/beneficiary/documents", label: "Documents", key: "documents" },
-  { to: "/beneficiary/messages", label: "Messages", key: "messages" }
+  { to: "/beneficiary/messages", label: "Messages", key: "messages" },
+  { to: "/beneficiary/pathways/healthcare", label: "Healthcare", key: "healthcare" },
+  { to: "/beneficiary/pathways/education", label: "Education", key: "education" },
+  { to: "/beneficiary/pathways/women", label: "Women", key: "women" },
+  { to: "/beneficiary/pathways/legal", label: "Legal", key: "legal" },
+  { to: "/beneficiary/pathways/sme", label: "SME", key: "sme" },
+  { to: "/beneficiary/pathways/traders", label: "Trade", key: "trade" },
+  { to: "/beneficiary/pathways/marketplace", label: "Marketplace", key: "marketplace" }
 ];
 
 const NAV_LINKS_NEUTRAL = [
@@ -45,8 +52,8 @@ export default function Nav({ active, side = "supporter", depth = 0 }) {
 
       <div className="container nav-inner">
         <div className="nav-brand">
-          <Link to={logoHref} className="logo"><span className="logo-mark"></span><span className="logo-text"> Ethos Community™</span></Link>
-          <KushianBadge variant="pilot" />
+          <Link to={logoHref} className="logo"><span className="logo-mark"></span><span className="logo-text"> Kushian™</span></Link>
+          <KushianBadge variant="powered" />
         </div>
         <div className="nav-current-section">
           <span className="nav-current-kicker">{sideLabel || "Platform"}</span>

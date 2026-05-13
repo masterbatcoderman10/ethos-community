@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import Reveal from '../components/Reveal.jsx';
@@ -9,54 +9,59 @@ import Avatar from '../components/Avatar.jsx';
 import StatusDot from '../components/StatusDot.jsx';
 import Icon from '../components/Icon.jsx';
 import Footer from '../components/Footer.jsx';
+import { getActiveUser, getCasesForReceiver, getBeneficiarySummary, getActivityFeed } from '../data/mockQueries.js';
+import { clearActiveUser } from '../data/mockSession.js';
+import { getUserById } from '../data/mockDb.js';
 import '../../beneficiary/dashboard.css';
 
-const CASES = [
-  {
-    id: "K-2890",
-    title: "Women's CPD Finance Returnship",
-    category: "Women & Workforce",
-    raised: 5100,
-    target: 8000,
-    status: "verified",
-    supporters: ["RS", "KM", "AA", "YO", "BN"],
-    updated: "Updated 2 hours ago"
-  },
-  {
-    id: "K-3120",
-    title: "Children's Education Support",
-    category: "Education",
-    raised: 2400,
-    target: 3600,
-    status: "pending",
-    supporters: ["MA", "HO", "LT"],
-    updated: "Updated 5 days ago"
-  }
-];
-
-const NEXT_STEPS = [
-  { label: "Upload finance returnship acceptance letter", status: "done" },
-  { label: "Reply to ambassador question on K-3120", status: "active" },
-  { label: "Share K-2890 case link with extended family", status: "idle" },
-  { label: "Confirm bank details for first disbursement", status: "idle" }
-];
-
-const ACTIVITY = [
-  { icon: "heart", who: "Rasha S.", text: "pledged $400 to K-2890", when: "2h ago" },
-  { icon: "shield", who: "Fatima O.", text: "verified your government ID", when: "Yesterday" },
-  { icon: "heart", who: "Khalid M.", text: "pledged $250 to K-2890", when: "Yesterday" },
-  { icon: "doc", who: "System", text: "opened K-3120 for review", when: "5 days ago" },
-  { icon: "mail", who: "Fatima O.", text: "requested an education invoice", when: "1 week ago" }
-];
-
-const totals = CASES.reduce((acc, c) => {
-  acc.raised += c.raised;
-  acc.target += c.target;
-  acc.supporters += c.supporters.length;
-  return acc;
-}, { raised: 0, target: 0, supporters: 0 });
+function FallbackState() {
+  return (
+    <div className="bene-empty-state">
+      <h2>No active receiver profile</h2>
+      <p>Choose a beneficiary profile to view your dashboard.</p>
+      <Link to="/role" className="btn btn-primary">Choose profile</Link>
+    </div>
+  );
+}
 
 export default function BeneficiaryDashboard() {
+  const navigate = useNavigate();
+  const user = getActiveUser();
+
+  if (!user) {
+    return (
+      <>
+        <Nav active="dashboard" side="beneficiary" depth={1} />
+        <DemoTag />
+        <main className="bene-dashboard">
+          <div className="container" style={{ padding: '80px 32px', textAlign: 'center' }}>
+            <FallbackState />
+          </div>
+        </main>
+        <Footer depth={1} />
+      </>
+    );
+  }
+
+  const cases = getCasesForReceiver(user.id);
+  const summary = getBeneficiarySummary(user.id);
+  const activity = getActivityFeed('beneficiary');
+
+  const nextSteps = cases
+    .flatMap(c => (c.milestones || []).map(m => ({ ...m, caseName: c.name, caseId: c.id })))
+    .filter(m => m.status === 'active' || m.status === 'complete')
+    .slice(0, 4)
+    .map(m => ({ label: m.label, status: m.status === 'complete' ? 'done' : 'active' }));
+
+  const firstSupporter = [...new Set(cases.flatMap(c => c.supporterUserIds || []))]
+    .map(id => getUserById(id))
+    .filter(Boolean)[0];
+
+  const switchProfile = () => {
+    clearActiveUser();
+    navigate('/role');
+  };
+
   return (
     <>
       <Nav active="dashboard" side="beneficiary" depth={1} />
@@ -67,7 +72,7 @@ export default function BeneficiaryDashboard() {
             <Reveal as="div" className="bene-hero-inner">
               <div className="bene-hero-copy">
                 <span className="bene-eyebrow">Beneficiary dashboard</span>
-                <h1>Welcome back, Halima</h1>
+                <h1>Welcome back, {user.name}</h1>
                 <p>Track your cases, verification steps, supporter activity, and ambassador guidance from one calm workspace.</p>
               </div>
               <StatusPill status="verified" />
@@ -79,17 +84,17 @@ export default function BeneficiaryDashboard() {
           <div className="bene-stats" aria-label="Case summary">
             <article className="bene-stat">
               <span className="bene-stat-label">Active cases</span>
-              <strong className="bene-stat-value"><Counter to={CASES.length} /></strong>
-              <span className="bene-stat-note">Across workforce and education</span>
+              <strong className="bene-stat-value"><Counter to={summary.activeCases} /></strong>
+              <span className="bene-stat-note">Across your portfolio</span>
             </article>
             <article className="bene-stat">
               <span className="bene-stat-label">Funds raised</span>
-              <strong className="bene-stat-value"><Counter to={totals.raised} prefix="$" /></strong>
-              <span className="bene-stat-note">Of ${totals.target.toLocaleString()} target</span>
+              <strong className="bene-stat-value"><Counter to={summary.fundsRaised} prefix="$" /></strong>
+              <span className="bene-stat-note">Of ${summary.targetTotal.toLocaleString()} target</span>
             </article>
             <article className="bene-stat">
               <span className="bene-stat-label">Supporters</span>
-              <strong className="bene-stat-value"><Counter to={totals.supporters} /></strong>
+              <strong className="bene-stat-value"><Counter to={summary.supporterCount} /></strong>
               <span className="bene-stat-note">Verified diaspora contributors</span>
             </article>
           </div>
@@ -107,31 +112,44 @@ export default function BeneficiaryDashboard() {
               </div>
 
               <div className="bene-case-list">
-                {CASES.map((c, index) => (
-                  <Reveal key={c.id} delay={index * 80}>
-                    <Link to={`/beneficiary/case/${c.id}`} className="bene-case-card" aria-label={`View case ${c.id}: ${c.title}`}>
-                      <div className="bene-case-head">
-                        <div>
-                          <span className="bene-case-id">{c.id}</span>
-                          <h3>{c.title}</h3>
-                          <p>{c.category}</p>
+                {cases.length === 0 ? (
+                  <div className="bene-empty">
+                    <Icon name="doc" size={28} />
+                    <h2>No cases yet</h2>
+                    <p>Create your first case to get started.</p>
+                    <Link to="/create" className="btn btn-primary">New case</Link>
+                  </div>
+                ) : (
+                  cases.map((c, index) => (
+                    <Reveal key={c.id} delay={index * 80}>
+                      <Link to={`/beneficiary/case/${c.id}`} className="bene-case-card" aria-label={`View case ${c.id}: ${c.name || c.desc}`}>
+                        <div className="bene-case-head">
+                          <div>
+                            <span className="bene-case-id">
+                              {c.id}
+                              {c.isDraft && <StatusPill status="draft" />}
+                            </span>
+                            <h3>{c.name || c.desc}</h3>
+                            <p>{c.vertical || c.category}</p>
+                          </div>
+                          <StatusPill status={c.status} />
                         </div>
-                        <StatusPill status={c.status} />
-                      </div>
-                      <CaseProgressBar raised={c.raised} target={c.target} />
-                      <div className="bene-case-foot">
-                        <div className="bene-supporters" aria-label={`${c.supporters.length} supporters`}>
-                          {c.supporters.slice(0, 4).map((initials) => (
-                            <Avatar key={initials} initials={initials} size="sm" />
-                          ))}
-                          {c.supporters.length > 4 && <span className="bene-supporter-more">+{c.supporters.length - 4}</span>}
-                          <span className="bene-updated">{c.updated}</span>
+                        <CaseProgressBar raised={c.raised || 0} target={c.target || 0} />
+                        <div className="bene-case-foot">
+                          <div className="bene-supporters" aria-label={`${(c.supporterUserIds || []).length} supporters`}>
+                            {(c.supporterUserIds || []).slice(0, 4).map((uid) => {
+                              const u = getUserById(uid);
+                              return <Avatar key={uid} initials={u?.initials || '??'} size="sm" />;
+                            })}
+                            {(c.supporterUserIds || []).length > 4 && <span className="bene-supporter-more">+{(c.supporterUserIds || []).length - 4}</span>}
+                            <span className="bene-updated">Since {c.since || 'recently'}</span>
+                          </div>
+                          <span className="bene-card-action">View case <Icon name="arrow" size={14} /></span>
                         </div>
-                        <span className="bene-card-action">View case <Icon name="arrow" size={14} /></span>
-                      </div>
-                    </Link>
-                  </Reveal>
-                ))}
+                      </Link>
+                    </Reveal>
+                  ))
+                )}
               </div>
             </section>
 
@@ -139,42 +157,77 @@ export default function BeneficiaryDashboard() {
               <section className="bene-panel bene-next" aria-labelledby="bene-next-title">
                 <span className="bene-section-kicker">Priority</span>
                 <h2 id="bene-next-title">Next steps</h2>
-                <ul>
-                  {NEXT_STEPS.map((step) => (
-                    <li key={step.label}>
-                      <StatusDot status={step.status} size={18} />
-                      <span>{step.label}</span>
-                    </li>
-                  ))}
-                </ul>
+                {nextSteps.length === 0 ? (
+                  <p>No pending steps</p>
+                ) : (
+                  <ul>
+                    {nextSteps.map((step) => (
+                      <li key={step.label}>
+                        <StatusDot status={step.status} size={18} />
+                        <span>{step.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </section>
 
-              <section className="bene-panel bene-ambassador" aria-labelledby="bene-ambassador-title">
-                <span className="bene-section-kicker">Your ambassador</span>
-                <div className="bene-ambassador-head">
-                  <Avatar initials="FO" green />
-                  <div>
-                    <h2 id="bene-ambassador-title">Fatima O.</h2>
-                    <p>Khartoum coordinator · 47 cases verified</p>
+              {firstSupporter && (
+                <section className="bene-panel bene-ambassador" aria-labelledby="bene-ambassador-title">
+                  <span className="bene-section-kicker">Your supporter</span>
+                  <div className="bene-ambassador-head">
+                    <Avatar initials={firstSupporter.initials} green />
+                    <div>
+                      <h2 id="bene-ambassador-title">{firstSupporter.name}</h2>
+                      <p>{firstSupporter.title}</p>
+                    </div>
                   </div>
-                </div>
-                <p>Fatima is reviewing your education documents and can help unblock both active cases.</p>
-                <Link to="/beneficiary/messages" className="btn btn-primary sm" aria-label="Open conversation with Fatima O.">
-                  Open conversation <Icon name="arrow" size={14} />
-                </Link>
-              </section>
+                  <p>Your primary supporter contact for case updates and verification questions.</p>
+                  <Link to="/beneficiary/messages" className="btn btn-primary sm" aria-label={`Open conversation with ${firstSupporter.name}`}>
+                    Open conversation <Icon name="arrow" size={14} />
+                  </Link>
+                </section>
+              )}
+
+              <div style={{ marginTop: 16 }}>
+                <button type="button" className="btn btn-soft sm" onClick={switchProfile}>Switch profile</button>
+              </div>
             </aside>
           </div>
 
           <section className="bene-panel bene-activity" aria-labelledby="bene-activity-title">
             <div className="bene-section-head">
               <div>
+                <span className="bene-section-kicker">Explore</span>
+                <h2 id="bene-activity-title">Pathways</h2>
+              </div>
+            </div>
+            <div className='bene-pathway-grid'>
+              {[
+                { to: '/beneficiary/pathways/healthcare', label: 'Healthcare', icon: 'health' },
+                { to: '/beneficiary/pathways/education', label: 'Education', icon: 'education' },
+                { to: '/beneficiary/pathways/women', label: 'Women', icon: 'heart' },
+                { to: '/beneficiary/pathways/legal', label: 'Legal', icon: 'legal' },
+                { to: '/beneficiary/pathways/sme', label: 'SME', icon: 'sme' },
+                { to: '/beneficiary/pathways/traders', label: 'Trade', icon: 'globe' },
+                { to: '/beneficiary/pathways/marketplace', label: 'Marketplace', icon: 'search' }
+              ].map(p => (
+                <Link key={p.to} to={p.to} className='bene-pathway-link'>
+                  <Icon name={p.icon} size={18} />
+                  <span className='bene-pathway-label'>{p.label}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <section className="bene-panel bene-activity" aria-labelledby="bene-activity-feed-title">
+            <div className="bene-section-head">
+              <div>
                 <span className="bene-section-kicker">Latest movement</span>
-                <h2 id="bene-activity-title">Recent activity</h2>
+                <h2 id="bene-activity-feed-title">Recent activity</h2>
               </div>
             </div>
             <ul>
-              {ACTIVITY.map((item) => (
+              {activity.map((item) => (
                 <li key={`${item.who}-${item.text}`}>
                   <span className="bene-activity-icon" aria-hidden="true"><Icon name={item.icon} size={18} /></span>
                   <span><strong>{item.who}</strong> {item.text}</span>

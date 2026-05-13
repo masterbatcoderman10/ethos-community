@@ -6,8 +6,8 @@ export default function Footer({ depth = 0 }) {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <Link to="/" className="logo"><span className="logo-mark"></span> Ethos Community™</Link>
-            <p>A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.</p>
+            <Link to="/" className="logo"><span className="logo-mark"></span> Kushian™</Link>
+            <p>Powered by Ethos Community™, Kushian™ connects Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.</p>
           </div>
           <div className="footer-col">
             <h5>Platform</h5>
@@ -39,7 +39,7 @@ export default function Footer({ depth = 0 }) {
         </div>
         <p className="compliance">Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.</p>
         <div className="footer-bottom">
-          <span>© 2026 Ethos Community™</span>
+          <span>© 2026 Kushian™</span>
           <span>Demo · v0.1 · MVP Prototype</span>
         </div>
       </div>

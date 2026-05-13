@@ -78,6 +78,7 @@
 .cc-suggested-docs ul{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px}
 .cc-suggested-docs li{display:flex;align-items:center;gap:8px;font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
 .cc-suggested-docs li svg{color:var(--green);flex-shrink:0}
+.cc-optional-hint{margin:0;font-size:13.5px;line-height:1.55;color:var(--ink-soft);max-width:52ch}
 
 /* dossier (step 5) */
 .cc-confirm{max-width:780px}

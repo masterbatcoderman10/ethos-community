@@ -53,10 +53,11 @@ const FINANCE_PARTNERS = [
   { icon: "sme",    title: "Trade Finance",              desc: "Export/import credit lines and documentary collections." }
 ];
 
-export default function SupporterSmeAdvisory() {
+export default function SupporterSmeAdvisory({ viewerSide = 'supporter' }) {
+  const isBen = viewerSide === 'beneficiary'
   return (
     <>
-      <Nav active="sme" side="supporter" depth={1} />
+      <Nav active="sme" side={isBen ? 'beneficiary' : 'supporter'} depth={1} />
 
       <section className="vert-hero">
         <div className="container">
@@ -66,8 +67,8 @@ export default function SupporterSmeAdvisory() {
               <h1>Rebuilding livelihoods, <em>one balance sheet at a time</em>.</h1>
               <p>Sharia-compliant working capital, licensing advisory, mentor pairing and 12-month milestone tracking — for Sudanese SMEs displaced or rebuilding in Sudan, the GCC and East Africa.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <button className="btn btn-primary" onClick={() => showToast("Browse SMEs — coming next")}>Browse 38 SMEs <Icon name="arrow"/></button>
-                <button className="btn btn-ghost" onClick={() => showToast("Apply for advisory — coming next")}>Apply for advisory</button>
+                <button className="btn btn-primary" onClick={() => showToast(isBen ? "Start request — coming next" : "Browse SMEs — coming next")}>{isBen ? 'Start request' : 'Browse 38 SMEs'} <Icon name="arrow"/></button>
+                <button className="btn btn-ghost" onClick={() => showToast(isBen ? "Ask ambassador — coming next" : "Apply for advisory — coming next")}>{isBen ? 'Ask ambassador' : 'Apply for advisory'}</button>
               </div>
             </Reveal>
             <Reveal delay={120}>
@@ -205,7 +206,7 @@ export default function SupporterSmeAdvisory() {
               <div className="sme-checklist-panel">
                 <h3>Finance-Readiness Checklist</h3>
                 <Checklist items={FINANCE_CHECKLIST}/>
-                <button className="btn btn-ghost" style={{marginTop:24}} onClick={() => showToast("Download readiness guide — coming next")}>Download Readiness Guide <Icon name="download" size={16}/></button>
+                <button className="btn btn-ghost" style={{marginTop:24}} onClick={() => showToast(isBen ? "Prepare documents — coming next" : "Download readiness guide — coming next")}>{isBen ? 'Prepare documents' : 'Download Readiness Guide'} <Icon name="download" size={16}/></button>
               </div>
             </Reveal>
             <Reveal delay={120}>
@@ -234,7 +235,7 @@ export default function SupporterSmeAdvisory() {
                   <div className="sme-fp-icon"><Icon name={p.icon} size={28}/></div>
                   <h4>{p.title}</h4>
                   <p>{p.desc}</p>
-                  <button className="btn btn-ghost sm" onClick={() => showToast(`${p.title} referral sent`)}>Apply for Referral <Icon name="arrow" size={14}/></button>
+                  <button className="btn btn-ghost sm" onClick={() => showToast(isBen ? `Start request — ${p.title}` : `${p.title} referral sent`)}>{isBen ? 'Start request' : 'Apply for Referral'} <Icon name="arrow" size={14}/></button>
                 </div>
               </Reveal>
             ))}

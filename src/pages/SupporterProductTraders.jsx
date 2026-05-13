@@ -53,10 +53,11 @@ const FINANCE_OPTIONS = [
   { icon: "globe",  title: "Trade Finance",     img: "../images/finance-trade.png",    desc: "Letters of credit, documentary collections and supply chain financing." }
 ];
 
-export default function SupporterProductTraders() {
+export default function SupporterProductTraders({ viewerSide = 'supporter' }) {
+  const isBen = viewerSide === 'beneficiary'
   return (
     <>
-      <Nav active="trade" side="supporter" depth={1}/>
+      <Nav active="trade" side={isBen ? 'beneficiary' : 'supporter'} depth={1}/>
 
       <section className="vert-hero">
         <div className="container">
@@ -66,8 +67,8 @@ export default function SupporterProductTraders() {
               <h1>Protecting Sudanese export <em>livelihoods</em>.</h1>
               <p>From sesame to baobab — product profiling, export-readiness, buyer introductions and Islamic trade finance referrals for displaced Sudanese traders.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <button className="btn btn-primary" onClick={() => showToast("Profile your business — coming next")}>Profile Your Business <Icon name="arrow"/></button>
-                <button className="btn btn-ghost" onClick={() => showToast("Trade finance options — coming next")}>Trade Finance Options</button>
+                <button className="btn btn-primary" onClick={() => showToast(isBen ? "Start request — coming next" : "Profile your business — coming next")}>{isBen ? 'Start request' : 'Profile Your Business'} <Icon name="arrow"/></button>
+                <button className="btn btn-ghost" onClick={() => showToast(isBen ? "Prepare documents — coming next" : "Trade finance options — coming next")}>{isBen ? 'Prepare documents' : 'Trade Finance Options'}</button>
               </div>
             </Reveal>
             <Reveal delay={120}><Photo caption="TRADE · EXPORT · RECOVERY" overlay="Sesame processing, Port Sudan 2026" img="../images/sesame-processing.png"/></Reveal>
@@ -128,7 +129,7 @@ export default function SupporterProductTraders() {
                   <div className="pt-trader-product"><PurposeBadge category="sme"/> {t.product}</div>
                   <Checklist items={TRADER_CHECKLIST(t.status)}/>
                   <CaseProgressBar raised={t.raised} target={t.target}/>
-                  <button className="btn btn-ghost sm" style={{marginTop:12}} onClick={() => showToast(`Support request sent for ${t.name}`)}>Request Support <Icon name="arrow" size={14}/></button>
+                  <button className="btn btn-ghost sm" style={{marginTop:12}} onClick={() => showToast(isBen ? `Ask ambassador about ${t.name}` : `Support request sent for ${t.name}`)}>{isBen ? 'Ask ambassador' : 'Request Support'} <Icon name="arrow" size={14}/></button>
                 </div>
               </Reveal>
             ))}
@@ -144,7 +145,7 @@ export default function SupporterProductTraders() {
               <h2>Export documentation checklist.</h2>
               <p style={{color:"var(--ink-soft)",marginBottom:24,lineHeight:1.65}}>Required documents for standard Sudanese agricultural exports. Platform assists with authentication and submission.</p>
               <Checklist items={DOC_CHECKLIST}/>
-              <button className="btn btn-ghost" style={{marginTop:24}} onClick={() => showToast("Download documentation guide — coming next")}>Download Guide <Icon name="download" size={16}/></button>
+              <button className="btn btn-ghost" style={{marginTop:24}} onClick={() => showToast(isBen ? "Prepare documents — coming next" : "Download documentation guide — coming next")}>{isBen ? 'Prepare documents' : 'Download Guide'} <Icon name="download" size={16}/></button>
             </Reveal>
             <Reveal delay={120}>
               <div className="section-num">§ Finance</div>
@@ -156,7 +157,7 @@ export default function SupporterProductTraders() {
                     <div className="pt-finance-icon"><Icon name={f.icon} size={22}/></div>
                     <div className="pt-finance-img"><img src={f.img} alt={f.title}/></div>
                     <div className="pt-finance-body"><strong>{f.title}</strong><p>{f.desc}</p></div>
-                    <button className="btn btn-ghost sm" onClick={() => showToast(`${f.title} referral sent`)}>Apply <Icon name="arrow" size={14}/></button>
+                    <button className="btn btn-ghost sm" onClick={() => showToast(isBen ? `Start request — ${f.title}` : `${f.title} referral sent`)}>{isBen ? 'Start request' : 'Apply'} <Icon name="arrow" size={14}/></button>
                   </div>
                 ))}
               </div>

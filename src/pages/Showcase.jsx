@@ -27,10 +27,10 @@ export default function Showcase() {
   };
 
   return (
-    <>
+    <div className="showcase-page">
       <nav className="nav">
         <div className="container nav-inner">
-          <div className="logo"><span className="logo-mark"></span> Ethos Community™</div>
+          <div className="logo"><span className="logo-mark"></span> Kushian™</div>
           <div className="pair-switch">
             <button className="pair-btn active" onClick={() => setPair("newsreader")}>Newsreader / Manrope</button>
             <button className="pair-btn" onClick={() => setPair("dm")}>DM Serif / DM Sans</button>
@@ -42,7 +42,7 @@ export default function Showcase() {
       <section className="section" style={{paddingBottom:48}}>
         <div className="container">
           <div className="section-eyebrow">Design System · Showcase</div>
-          <h1 className="section-title" style={{fontSize:"clamp(44px,6vw,82px)",lineHeight:1.02,marginBottom:28}}>Ethos Community™<em style={{fontStyle:"italic",color:"var(--green)"}}> design tokens</em> and components.</h1>
+          <h1 className="section-title" style={{fontSize:"clamp(44px,6vw,82px)",lineHeight:1.02,marginBottom:28}}>Kushian™<em style={{fontStyle:"italic",color:"var(--green)"}}> design tokens</em> and components.</h1>
           <p style={{fontSize:19,lineHeight:1.55,color:"var(--ink-soft)",maxWidth:560,margin:"0 0 36px"}}>A living reference for the development-finance editorial identity built for the IsDB Group pitch competition. Switch type pairings above to see the system across three font families.</p>
           <div className="flex-gap-10">
             <a href="#colors" className="btn btn-primary">Explore Colors</a>
@@ -81,7 +81,7 @@ export default function Showcase() {
             <div className="type-sample"><span className="type-label">h1-display</span><span style={{fontFamily:"var(--ff-display)",fontSize:"clamp(44px,6vw,82px)",fontWeight:"var(--display-weight)",letterSpacing:"var(--display-tracking)",lineHeight:1.02}}>A diaspora rebuilding Sudan</span></div>
             <div className="type-sample"><span className="type-label">display</span><span style={{fontFamily:"var(--ff-display)",fontSize:"clamp(34px,4vw,56px)",fontWeight:"var(--display-weight)",letterSpacing:"var(--display-tracking)",lineHeight:1.05}}>Six verticals, partner-delivered.</span></div>
             <div className="type-sample"><span className="type-label">h3</span><span style={{fontFamily:"var(--ff-display)",fontSize:24,fontWeight:"var(--display-weight)",letterSpacing:"var(--display-tracking)",lineHeight:1.15}}>Education, CPD & Mentorship</span></div>
-            <div className="type-sample"><span className="type-label">lede</span><span style={{fontSize:19,lineHeight:1.55,color:"var(--ink-soft)"}}>Every pledge through Ethos Community™ is verified, traceable and partner-delivered.</span></div>
+            <div className="type-sample"><span className="type-label">lede</span><span style={{fontSize:19,lineHeight:1.55,color:"var(--ink-soft)"}}>Every pledge through Kushian™ is verified, traceable and partner-delivered.</span></div>
             <div className="type-sample"><span className="type-label">body-md</span><span style={{fontSize:17,lineHeight:1.6,color:"var(--ink-soft)"}}>The Kushian™ pilot demonstrates how diaspora capital and expertise scale into measurable outcomes.</span></div>
             <div className="type-sample"><span className="type-label">body-sm</span><span style={{fontSize:14,lineHeight:1.55,color:"var(--ink-soft)"}}>Browse displaced families, students, women in transition and SMEs in recovery.</span></div>
             <div className="type-sample"><span className="type-label">label</span><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:11,letterSpacing:".18em",textTransform:"uppercase",color:"var(--gold-2)"}}>Verified · Partner-delivered</span></div>
@@ -378,7 +378,7 @@ export default function Showcase() {
               <div className="audit-seal">
                 <div>
                   <div className="audit-seal-name">E</div>
-                  <div className="audit-seal-sub">Ethos Certified</div>
+                  <div className="audit-seal-sub">Kushian Verified</div>
                 </div>
               </div>
             </div>
@@ -505,7 +505,7 @@ export default function Showcase() {
         <div className="container">
           <div className="footer-top">
             <div>
-              <div className="logo" style={{color:"var(--cream)",marginBottom:16}}><span className="logo-mark"></span> Ethos Community™</div>
+              <div className="logo" style={{color:"var(--cream)",marginBottom:16}}><span className="logo-mark"></span> Kushian™</div>
               <p style={{maxWidth:360,lineHeight:1.6,color:"rgba(247,244,238,.6)",margin:0}}>A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs.</p>
             </div>
             <div className="footer-col">
@@ -534,13 +534,13 @@ export default function Showcase() {
             </div>
           </div>
           <div className="footer-bottom">
-            <span>© 2026 Ethos Community™</span>
+            <span>© 2026 Kushian™</span>
             <span>Demo · v0.1 · MVP Prototype</span>
           </div>
         </div>
       </footer>
 
       <div className="demo-tag">Prototype · Demo Only</div>
-    </>
+    </div>
   );
 }

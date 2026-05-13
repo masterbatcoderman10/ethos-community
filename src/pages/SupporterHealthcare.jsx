@@ -29,13 +29,14 @@ const PARTNERS = [
   { letter: "T", name: "Takaful Re-insurance Co.", sub: "Sharia compliance auditor", desc: "Quarterly review of pool structure for Sharia-compliance and donor protection." }
 ];
 
-export default function SupporterHealthcare() {
-  const navigate = useNavigate();
+export default function SupporterHealthcare({ viewerSide = 'supporter' }) {
+  const navigate = useNavigate()
+  const isBen = viewerSide === 'beneficiary'
   return (
     <>
-      <Nav active="healthcare" side="supporter" depth={1} />
+      <Nav active="healthcare" side={isBen ? 'beneficiary' : 'supporter'} depth={1} />
 
-      <section className="vert-hero">
+      <section className="vert-hero hero-with-large-photo">
         <div className="container">
           <div className="vert-grid">
             <Reveal>
@@ -43,8 +44,8 @@ export default function SupporterHealthcare() {
               <h1><em>Sharia-compliant</em> pooled care for displaced families.</h1>
               <p>Three tiered Takaful pools covering hospitalization, family wellbeing and specialist long-term care. Every payout is partner-attested, every supporter sees the case files, every quarter is independently audited.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <button className="btn btn-primary" onClick={() => showToast("Join pool — coming next")}>Join a pool <Icon name="arrow"/></button>
-                <button className="btn btn-ghost" onClick={() => showToast("Sharia framework — coming next")}>Read Sharia framework</button>
+                <button className="btn btn-primary" onClick={() => showToast(isBen ? "View requirements — coming next" : "Join pool — coming next")}>{isBen ? 'View requirements' : 'Join a pool'} <Icon name="arrow"/></button>
+                <button className="btn btn-ghost" onClick={() => showToast(isBen ? "Prepare documents — coming next" : "Sharia framework — coming next")}>{isBen ? 'Prepare documents' : 'Read Sharia framework'}</button>
               </div>
             </Reveal>
             <Reveal delay={120}>
@@ -68,7 +69,7 @@ export default function SupporterHealthcare() {
                 <h4>Yasmin H. · Paediatric cardiac surgery — 48 hours remaining</h4>
                 <p>$4,200 pledged of $8,400 needed. Surgery scheduled 12 May 2026 at Cleopatra Hospital.</p>
               </div>
-              <button className="btn btn-primary sm" onClick={() => navigate("/supporter/cases/yasmin")}>View case <Icon name="arrow"/></button>
+              <button className="btn btn-primary sm" onClick={() => navigate(isBen ? "/beneficiary/case/yasmin" : "/supporter/cases/yasmin")}>{isBen ? 'View requirements' : 'View case'} <Icon name="arrow"/></button>
             </div>
           </Reveal>
 
@@ -89,7 +90,7 @@ export default function SupporterHealthcare() {
                   <div className="num">${p.price}<small>{p.period}</small></div>
                   <p>{p.desc}</p>
                   <ul>{p.bullets.map(b => <li key={b}>{b}</li>)}</ul>
-                  <button className={`btn ${p.featured ? "btn-gold" : "btn-soft"} sm`} onClick={() => showToast(`Join ${p.title} — coming next`)}>Join this pool <Icon name="arrow"/></button>
+                  <button className={`btn ${p.featured ? "btn-gold" : "btn-soft"} sm`} onClick={() => showToast(isBen ? `Start request — ${p.title}` : `Join ${p.title} — coming next`)}>{isBen ? 'Start request' : 'Join this pool'} <Icon name="arrow"/></button>
                   <div className="takaful-foot">
                     <span>{p.supporters} supporters</span>
                     <span>Verified · Sharia-audited</span>
@@ -116,11 +117,11 @@ export default function SupporterHealthcare() {
                 <div
                   className="case-row"
                   style={{display:"grid",gridTemplateColumns:"80px 1fr 220px 200px 120px",gap:20,alignItems:"center",padding:"20px 0",borderBottom:"1px solid var(--line)",cursor:"pointer"}}
-                  onClick={() => c.id === "K-2756" ? navigate("/supporter/cases/yasmin") : showToast("Full case profiles — coming next")}
+                  onClick={() => c.id === "K-2756" ? navigate(isBen ? "/beneficiary/case/yasmin" : "/supporter/cases/yasmin") : showToast("Full case profiles — coming next")}
                   onKeyDown={(e) => {
                     if (e.key !== "Enter" && e.key !== " ") return;
                     e.preventDefault();
-                    c.id === "K-2756" ? navigate("/supporter/cases/yasmin") : showToast("Full case profiles — coming next");
+                    c.id === "K-2756" ? navigate(isBen ? "/beneficiary/case/yasmin" : "/supporter/cases/yasmin") : showToast("Full case profiles — coming next");
                   }}
                   role="button"
                   tabIndex={0}

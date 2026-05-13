@@ -75,3 +75,13 @@
 @media(prefers-reduced-motion:reduce){
   .bene-case-card{transition:none;transform:none}
 }
+
+.bene-empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;padding:48px 24px;text-align:center}
+.bene-empty-state h2{font-family:var(--ff-display);font-size:24px;font-weight:var(--display-weight);line-height:1.15;letter-spacing:var(--display-tracking);color:var(--ink);margin:0 0 12px}
+.bene-empty-state p{color:var(--ink-soft);font-size:15px;line-height:1.6;margin:0 0 24px}
+
+.bene-pathway-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.bene-pathway-link{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:8px;border:1px solid var(--line);text-decoration:none;color:inherit;transition:border-color .15s ease,background .15s ease}
+.bene-pathway-link:hover{border-color:var(--green);background:var(--cream-2)}
+.bene-pathway-link:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.bene-pathway-label{font-size:14px;font-weight:500}

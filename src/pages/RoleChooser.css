@@ -12,11 +12,6 @@
 .role-chooser-hero h1{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:clamp(40px,5vw,64px);line-height:1.04;letter-spacing:var(--display-tracking);margin:18px 0 22px;color:var(--ink)}
 .role-chooser-lede{font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 36px;max-width:42ch}
 
-.role-chooser-meta{display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;margin:0;padding-top:24px;border-top:1px solid var(--line)}
-.role-chooser-meta>div{display:flex;flex-direction:column;gap:4px}
-.role-chooser-meta dt{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
-.role-chooser-meta dd{font-family:var(--ff-display);font-size:20px;line-height:1.1;letter-spacing:var(--display-tracking);color:var(--ink);margin:0}
-
 /* list column */
 .role-chooser-list-wrap{min-width:0}
 .role-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
@@ -106,4 +101,88 @@
   .role-list .role-row{animation:none;opacity:1}
   .role-chooser-status-text{animation:none}
   .role-chooser-footer .role-chooser-continue:not(:disabled){animation:none}
+  .rc-auth-panel,.rc-mode-card,.rc-login-card,.rc-back-btn{transition:none !important}
 }
+
+/* ── account access ── */
+.rc-auth{display:grid;gap:18px}
+
+.rc-auth-panel{padding:30px;background:var(--cream);border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px -24px rgba(20,21,18,.22);transition:border-color .24s ease,box-shadow .24s ease}
+.rc-auth-panel:focus-within{border-color:rgba(14,59,46,.24);box-shadow:0 16px 34px -26px rgba(14,59,46,.35)}
+@media(max-width:560px){.rc-auth-panel{padding:24px 20px}}
+
+.rc-auth-header{margin-bottom:26px}
+.rc-auth-header h3{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:24px;line-height:1.15;letter-spacing:var(--display-tracking);color:var(--ink);margin:0 0 8px}
+.rc-auth-header p{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0;max-width:48ch}
+
+.rc-auth-secondary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 2px}
+@media(max-width:640px){.rc-auth-secondary{align-items:stretch;flex-direction:column}.rc-auth-secondary .btn{justify-content:center}}
+
+/* ── mode chooser cards ── */
+.rc-mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.rc-mode-grid{grid-template-columns:1fr}}
+
+.rc-mode-card{display:flex;align-items:flex-start;gap:18px;padding:28px 24px;background:var(--cream);border:1px solid var(--line);border-radius:8px;cursor:pointer;text-align:left;color:inherit;font-family:inherit;transition:border-color .2s ease,box-shadow .2s ease,transform .2s cubic-bezier(.2,.65,.3,1)}
+.rc-mode-card:hover{border-color:rgba(14,59,46,.25);box-shadow:0 8px 24px -16px rgba(14,59,46,.2);transform:translateY(-2px)}
+.rc-mode-card:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+.rc-mode-card-icon{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:8px;background:rgba(14,59,46,.06);color:var(--green)}
+.rc-mode-card-body{display:flex;flex-direction:column;gap:4px;min-width:0}
+.rc-mode-card-title{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:18px;line-height:1.2;letter-spacing:var(--display-tracking);color:var(--ink)}
+.rc-mode-card-desc{font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+
+/* ── back button ── */
+.rc-back-btn{display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;padding:6px 12px;background:transparent;border:1px solid var(--line);border-radius:4px;cursor:pointer;font-family:var(--ff-body);font-size:13px;color:var(--ink-soft);transition:border-color .15s ease,color .15s ease}
+.rc-back-btn:hover{border-color:var(--green);color:var(--green)}
+.rc-back-btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+/* ── profile cards ── */
+.rc-login{}
+
+.rc-login-section{margin-bottom:36px}
+.rc-login-section:last-child{margin-bottom:0}
+
+.rc-login-heading{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:20px;line-height:1.2;letter-spacing:var(--display-tracking);color:var(--ink);margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+
+.rc-login-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.rc-login-grid{grid-template-columns:1fr}}
+
+.rc-login-empty{font-size:14px;line-height:1.55;color:var(--ink-soft);margin:0;padding:18px;border:1px dashed var(--line);border-radius:6px;background:var(--cream)}
+
+.rc-login-card{display:flex;align-items:center;gap:14px;width:100%;padding:16px 18px;background:var(--cream);border:1px solid var(--line);border-radius:6px;cursor:pointer;text-align:left;color:inherit;font-family:inherit;transition:border-color .2s ease,box-shadow .2s ease,transform .2s cubic-bezier(.2,.65,.3,1)}
+.rc-login-card:hover{border-color:rgba(14,59,46,.25);box-shadow:0 6px 20px -14px rgba(14,59,46,.2);transform:translateX(4px)}
+.rc-login-card:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+.rc-login-card-avatar{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(14,59,46,.08);font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--green)}
+
+.rc-login-card-body{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.rc-login-card-name{font-size:14.5px;font-weight:600;line-height:1.3;color:var(--ink)}
+.rc-login-card-title{font-size:12.5px;line-height:1.4;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.rc-login-card-arrow{flex-shrink:0;color:var(--green);opacity:.4;transition:opacity .2s ease,transform .2s ease}
+.rc-login-card:hover .rc-login-card-arrow{opacity:1;transform:translateX(2px)}
+
+/* ── registration form ── */
+.rc-register{}
+
+.rc-register-header{margin-bottom:28px}
+.rc-register-header h3{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:24px;line-height:1.15;letter-spacing:var(--display-tracking);color:var(--ink);margin:0 0 8px}
+.rc-register-header p{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
+
+.rc-register-form{display:flex;flex-direction:column;gap:22px;margin-bottom:32px}
+
+.rc-register-submit{display:inline-flex;align-items:center;gap:8px}
+.rc-register-submit:disabled{background:var(--cream-2);color:var(--muted);cursor:not-allowed}
+.rc-register-submit:disabled:hover{background:var(--cream-2);transform:none;box-shadow:none}
+
+/* ── checkbox group ── */
+.rc-checkbox-group{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:560px){.rc-checkbox-group{grid-template-columns:1fr}}
+
+.rc-checkbox{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--line);border-radius:6px;background:var(--cream);cursor:pointer;font-size:13.5px;color:var(--ink);transition:border-color .15s ease,background .15s ease}
+.rc-checkbox input{accent-color:var(--green)}
+.rc-checkbox:hover{border-color:var(--green)}
+.rc-checkbox.checked{border-color:var(--green);background:rgba(14,59,46,.04)}
+
+/* ── register side picker ── */
+.rc-register-pick{}

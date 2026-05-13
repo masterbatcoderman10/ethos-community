@@ -14,7 +14,7 @@ brand (primary: landing page, campaign surfaces) / product (secondary: supporter
 
 ## Product Purpose
 
-Ethos Community™ (Kushian™ Sudan Pilot) is a Connection-as-a-Service (CaaS) platform that links diaspora capital and expertise to displaced Sudanese communities through six partner-delivered service verticals: Education & CPD, Healthcare & Takaful, Family Support, Women Empowerment, SME Recovery, and Legal Services. Success means traceable, verified pledges that convert to measurable outcomes — not just donations, but documented lives changed.
+Kushian™ is the Sudan-focused application powered by Ethos Community™, a Connection-as-a-Service (CaaS) platform that links diaspora capital and expertise to displaced Sudanese communities through six partner-delivered service verticals: Education & CPD, Healthcare & Takaful, Family Support, Women Empowerment, SME Recovery, and Legal Services. Success means traceable, verified pledges that convert to measurable outcomes — not just donations, but documented lives changed.
 
 ## Brand Personality
 

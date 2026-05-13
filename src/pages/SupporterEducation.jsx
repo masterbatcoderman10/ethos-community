@@ -25,13 +25,14 @@ const STUDENTS = [
   { initials: "HK", name: "Huda K.", desc: "Returnship · Finance CPD", track: "Professional", loc: "Riyadh, SA", progress: 88 }
 ];
 
-export default function SupporterEducation() {
-  const navigate = useNavigate();
+export default function SupporterEducation({ viewerSide = 'supporter' }) {
+  const navigate = useNavigate()
+  const isBen = viewerSide === 'beneficiary'
   return (
     <>
-      <Nav active="education" side="supporter" depth={1} />
+      <Nav active="education" side={isBen ? 'beneficiary' : 'supporter'} depth={1} />
 
-      <section className="vert-hero">
+      <section className="vert-hero hero-with-large-photo">
         <div className="container">
           <div className="vert-grid">
             <Reveal>
@@ -39,8 +40,8 @@ export default function SupporterEducation() {
               <h1>Pathways back to <em>study and work</em>, partner-delivered.</h1>
               <p>Credential vault, mentor matching, employability training and graduate support — for displaced students, women returning to the workforce, and Sudanese professionals seeking to relocate or requalify.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <button className="btn btn-primary" onClick={() => showToast("Browse students — coming next")}>Browse 142 students <Icon name="arrow"/></button>
-                <button className="btn btn-ghost" onClick={() => showToast("Become a mentor — coming next")}>Become a mentor</button>
+                <button className="btn btn-primary" onClick={() => showToast(isBen ? "Start request — coming next" : "Browse students — coming next")}>{isBen ? 'Start request' : 'Browse 142 students'} <Icon name="arrow"/></button>
+                <button className="btn btn-ghost" onClick={() => showToast(isBen ? "Ask ambassador — coming next" : "Become a mentor — coming next")}>{isBen ? 'Ask ambassador' : 'Become a mentor'}</button>
               </div>
             </Reveal>
             <Reveal delay={120}>
@@ -165,11 +166,11 @@ export default function SupporterEducation() {
               <div
                 className="student-row"
                 style={{display:"grid",cursor:"pointer"}}
-                onClick={() => isMaryam ? navigate("/supporter/cases/maryam") : showToast("Full student profiles — coming next")}
+                onClick={() => isMaryam ? navigate(isBen ? "/beneficiary/case/maryam" : "/supporter/cases/maryam") : showToast("Full student profiles — coming next")}
                 onKeyDown={(e) => {
                   if (e.key !== "Enter" && e.key !== " ") return;
                   e.preventDefault();
-                  isMaryam ? navigate("/supporter/cases/maryam") : showToast("Full student profiles — coming next");
+                  isMaryam ? navigate(isBen ? "/beneficiary/case/maryam" : "/supporter/cases/maryam") : showToast("Full student profiles — coming next");
                 }}
                 role="button"
                 tabIndex={0}
