@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
@@ -18,7 +19,7 @@ const PATHWAYS = [
 ];
 
 const CASES = [
-  { id: "K-2890", name: "Halima M.", loc: "Dubai → Riyadh",  tag: "women",  desc: "Finance returnship · AAOIFI CPD pathway · Mentor-matched",           raised: 6200, target: 9000,  href: "cases/halima.html" },
+  { id: "K-2890", name: "Halima M.", loc: "Dubai → Riyadh",  tag: "women",  desc: "Finance returnship · AAOIFI CPD pathway · Mentor-matched",           raised: 6200, target: 9000,  href: "/supporter/cases/halima" },
   { id: "K-3120", name: "Fatima A.", loc: "Kassala, Sudan",  tag: "family", desc: "Widowed mother of 3 · Living + children's education support",         raised: 2800, target: 8000,  href: null },
   { id: "K-3275", name: "Amira A.",  loc: "Cairo, Egypt",    tag: "women",  desc: "Displaced nurse · CPD recertification pathway · CCHM target",         raised: 1400, target: 5000,  href: null },
   { id: "K-3401", name: "Nour H.",   loc: "Omdurman, Sudan", tag: "sme",    desc: "Women-led textile cooperative · Export-readiness + market access",    raised: 3600, target: 12000, href: null },
@@ -45,7 +46,7 @@ export default function SupporterWomenEmpowerment() {
               <h1>Dignified pathways for <em>women</em> and families.</h1>
               <p>From widows in Kassala to women professionals rebuilding careers in Dubai — verified, purpose-linked support with measurable outcomes.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-                <a href="../case-creation.html" className="btn btn-primary">Start a Women's Case <Icon name="arrow"/></a>
+                <Link to="/create" className="btn btn-primary">Start a Women's Case <Icon name="arrow"/></Link>
                 <button className="btn btn-ghost" onClick={() => showToast("View all cases — coming next")}>View all cases</button>
               </div>
             </Reveal>
@@ -84,7 +85,7 @@ export default function SupporterWomenEmpowerment() {
         <div className="container">
           <Reveal className="block-head">
             <div><div className="section-num">§ Active Cases</div><h2>Women supported right now.</h2></div>
-            <a href="cases/halima.html" className="btn btn-ghost sm">View Halima's profile <Icon name="arrow" size={14}/></a>
+            <Link to="/supporter/cases/halima" className="btn btn-ghost sm">View Halima's profile <Icon name="arrow" size={14}/></Link>
           </Reveal>
           <div className="we-cases">
             {CASES.map((c,i) => (
@@ -96,7 +97,7 @@ export default function SupporterWomenEmpowerment() {
                   <p>{c.desc}</p>
                   <CaseProgressBar raised={c.raised} target={c.target}/>
                   {c.href
-                    ? <a href={c.href} className="btn btn-ghost sm" style={{marginTop:12}}>View profile <Icon name="arrow" size={14}/></a>
+                    ? <Link to={c.href} className="btn btn-ghost sm" style={{marginTop:12}}>View profile <Icon name="arrow" size={14}/></Link>
                     : <button className="btn btn-ghost sm" style={{marginTop:12}} onClick={() => showToast(`Support ${c.name} — create a case`)}>Support this case <Icon name="arrow" size={14}/></button>
                   }
                 </div>
@@ -139,7 +140,7 @@ export default function SupporterWomenEmpowerment() {
                 <h3>Takaful coverage for women and families</h3>
                 <p>Cooperative health and family protection plans for widows and female-headed households — through our Takaful partner network.</p>
               </div>
-              <a href="healthcare.html" className="btn btn-ghost">View Takaful Pools <Icon name="arrow"/></a>
+              <Link to="/supporter/healthcare" className="btn btn-ghost">View Takaful Pools <Icon name="arrow"/></Link>
             </div>
           </Reveal>
         </div>

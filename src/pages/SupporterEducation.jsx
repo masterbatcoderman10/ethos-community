@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
@@ -24,6 +25,7 @@ const STUDENTS = [
 ];
 
 export default function SupporterEducation() {
+  const navigate = useNavigate();
   return (
     <>
       <Nav active="education" side="supporter" depth={1} />
@@ -162,11 +164,11 @@ export default function SupporterEducation() {
               <div
                 className="student-row"
                 style={{display:"grid",cursor:"pointer"}}
-                onClick={() => isMaryam ? window.location.href = "cases/maryam.html" : showToast("Full student profiles — coming next")}
+                onClick={() => isMaryam ? navigate("/supporter/cases/maryam") : showToast("Full student profiles — coming next")}
                 onKeyDown={(e) => {
                   if (e.key !== "Enter" && e.key !== " ") return;
                   e.preventDefault();
-                  isMaryam ? window.location.href = "cases/maryam.html" : showToast("Full student profiles — coming next");
+                  isMaryam ? navigate("/supporter/cases/maryam") : showToast("Full student profiles — coming next");
                 }}
                 role="button"
                 tabIndex={0}

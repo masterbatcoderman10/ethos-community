@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
@@ -37,6 +38,7 @@ export default function SupporterDashboard() {
   const [persona, setPersona] = useState(PERSONAS[0]);
   const [filter, setFilter] = useState("all");
   const [showEmpty, setShowEmpty] = useState(() => new URLSearchParams(window.location.search).get("empty") === "1");
+  const navigate = useNavigate();
 
   const filtered = filter === "all" ? CASES : CASES.filter(c => c.status === filter);
   const totalPledged = CASES.reduce((s, c) => s + c.pledged, 0);
@@ -67,13 +69,13 @@ export default function SupporterDashboard() {
               <div style={{fontFamily:"JetBrains Mono, monospace",fontSize:11,letterSpacing:".08em",color:"var(--muted)",textTransform:"uppercase",marginTop:4}}>{persona.role}</div>
               <div style={{display:"flex",gap:10,justifyContent:"flex-end",marginTop:20}}>
                 <button className="btn btn-soft sm" onClick={() => showToast("Profile settings — coming next")}>Settings</button>
-                <a href="../case-creation.html" className="btn btn-primary sm"><Icon name="plus" size={14}/> New pledge</a>
+                <Link to="/create" className="btn btn-primary sm"><Icon name="plus" size={14}/> New pledge</Link>
               </div>
             </div>
           </div>
           
           <div style={{display:"flex",justifyContent:"flex-end",marginTop:16}}>
-            <a href="../case-creation.html" className="btn btn-primary"><Icon name="plus" size={16}/> Create New Case</a>
+            <Link to="/create" className="btn btn-primary"><Icon name="plus" size={16}/> Create New Case</Link>
           </div>
 
           <div className="summary-grid">
@@ -124,23 +126,23 @@ export default function SupporterDashboard() {
                   <div className="dash-empty-step"><span className="dash-empty-num">2</span><p>Create your first verified support case</p></div>
                   <div className="dash-empty-step"><span className="dash-empty-num">3</span><p>Track verified outcomes on the impact dashboard</p></div>
                 </div>
-                <a href="../role-chooser.html" className="btn btn-primary">Get Started <Icon name="arrow"/></a>
+                <Link to="/role" className="btn btn-primary">Get Started <Icon name="arrow"/></Link>
                 <button className="btn btn-text sm" style={{marginTop:12}} onClick={() => setShowEmpty(false)}>View demo cases</button>
               </div>
             ) : (
               filtered.map((c, i) => {
-                const profileMap = { "K-2384": "cases/maryam.html", "K-1908": "cases/awad.html", "K-2756": "cases/yasmin.html", "K-3014": "cases/afaf.html", "K-2102": "cases/ibrahim.html", "K-2890": "cases/halima.html" };
+                const profileMap = { "K-2384": "/supporter/cases/maryam", "K-1908": "/supporter/cases/awad", "K-2756": "/supporter/cases/yasmin", "K-3014": "/supporter/cases/afaf", "K-2102": "/supporter/cases/ibrahim", "K-2890": "/supporter/cases/halima" };
                 const profileUrl = profileMap[c.id];
                 return (
                 <Reveal key={c.id} delay={i * 50}>
                   <div
                     className="case-row"
                     style={{display:"grid",cursor:"pointer"}}
-                    onClick={() => profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next")}
+                    onClick={() => profileUrl ? navigate(profileUrl) : showToast("Full case profiles — coming next")}
                     onKeyDown={(e) => {
                       if (e.key !== "Enter" && e.key !== " ") return;
                       e.preventDefault();
-                      profileUrl ? window.location.href = profileUrl : showToast("Full case profiles — coming next");
+                      profileUrl ? navigate(profileUrl) : showToast("Full case profiles — coming next");
                     }}
                     role="button"
                     tabIndex={0}
@@ -194,7 +196,7 @@ export default function SupporterDashboard() {
               <div className="panel-eyebrow">Suggested for you</div>
               <h4>Healthcare verticals</h4>
               <p style={{fontSize:13.5,lineHeight:1.6,color:"var(--ink-soft)",margin:"8px 0 16px"}}>Based on your medical background, 3 hospitalization cases are seeking clinical attestation from a consultant cardiologist.</p>
-              <a className="btn btn-soft sm" href="healthcare.html">View healthcare cases <Icon name="arrow"/></a>
+                <Link className="btn btn-soft sm" to="/supporter/healthcare">View healthcare cases <Icon name="arrow"/></Link>
             </div>
           </aside>
         </div>

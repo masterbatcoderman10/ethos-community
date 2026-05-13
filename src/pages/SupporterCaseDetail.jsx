@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
@@ -43,9 +43,9 @@ const CASES = {
       { initials: "MA", name: "Mohamed Abdalla", loc: "Lattice Capital", amt: 3600 }
     ],
     similarCases: [
-      { id: "SME Advisory",  name: "SME Recovery & Finance-Readiness", href: "../sme-advisory.html" },
-      { id: "K-2890",        name: "Halima M. — Women CPD", href: "halima.html" },
-      { id: "K-3401",        name: "Nour H. — Women-Led SME", href: "../women-empowerment.html" }
+      { id: "SME Advisory",  name: "SME Recovery & Finance-Readiness", href: "/supporter/sme" },
+      { id: "K-2890",        name: "Halima M. — Women CPD", href: "/supporter/cases/halima" },
+      { id: "K-3401",        name: "Nour H. — Women-Led SME", href: "/supporter/women" }
     ],
     sidePanel: {
       eyebrow: "Advisor of record",
@@ -100,9 +100,9 @@ const CASES = {
       { initials: "+1", name: "1 more supporter", loc: "GCC + Africa", amt: 400 }
     ],
     similarCases: [
-      { id: "K-2384", name: "Maryam R. — Family Support", href: "maryam.html" },
-      { id: "K-3120", name: "Fatima A. — Widows Support", href: "../women-empowerment.html" },
-      { id: "K-2890", name: "Halima M. — Women CPD", href: "halima.html" }
+      { id: "K-2384", name: "Maryam R. — Family Support", href: "/supporter/cases/maryam" },
+      { id: "K-3120", name: "Fatima A. — Widows Support", href: "/supporter/women" },
+      { id: "K-2890", name: "Halima M. — Women CPD", href: "/supporter/cases/halima" }
     ],
     sidePanel: {
       eyebrow: "Partner of record",
@@ -153,9 +153,9 @@ const CASES = {
       { initials: "NK", name: "Nouf K.", loc: "Riyadh, SA", amt: 400 }
     ],
     similarCases: [
-      { id: "Women",      name: "Browse women's support pathways", href: "../women-empowerment.html" },
-      { id: "K-3275",     name: "Amira A. — Women CPD", href: "../women-empowerment.html" },
-      { id: "K-3401",     name: "Nour H. — Women-Led SME", href: "../women-empowerment.html" }
+      { id: "Women",      name: "Browse women's support pathways", href: "/supporter/women" },
+      { id: "K-3275",     name: "Amira A. — Women CPD", href: "/supporter/women" },
+      { id: "K-3401",     name: "Nour H. — Women-Led SME", href: "/supporter/women" }
     ],
     sidePanel: {
       eyebrow: "Mentor of record",
@@ -212,9 +212,9 @@ const CASES = {
       { initials: "+12", name: "12 more supporters", loc: "GCC + Global", amt: 3900 }
     ],
     similarCases: [
-      { id: "Education",  name: "Browse all education cases", href: "../education.html" },
-      { id: "K-2384",     name: "Maryam R. — Student support", href: "maryam.html" },
-      { id: "Mentors",    name: "View diaspora mentor network", href: "../education.html" }
+      { id: "Education",  name: "Browse all education cases", href: "/supporter/education" },
+      { id: "K-2384",     name: "Maryam R. — Student support", href: "/supporter/cases/maryam" },
+      { id: "Mentors",    name: "View diaspora mentor network", href: "/supporter/education" }
     ],
     sidePanel: {
       eyebrow: "Partner of record",
@@ -269,9 +269,9 @@ const CASES = {
       { initials: "+5", name: "5 more supporters", loc: "GCC + Europe", amt: 900 }
     ],
     similarCases: [
-      { id: "K-1908", name: "Awad T. — Family Support", href: "awad.html" },
-      { id: "K-3120", name: "Fatima A. — Widows Support", href: "../women-empowerment.html" },
-      { id: "K-3580", name: "Samira K. — Family Resilience", href: "../women-empowerment.html" }
+      { id: "K-1908", name: "Awad T. — Family Support", href: "/supporter/cases/awad" },
+      { id: "K-3120", name: "Fatima A. — Widows Support", href: "/supporter/women" },
+      { id: "K-3580", name: "Samira K. — Family Resilience", href: "/supporter/women" }
     ],
     sidePanel: {
       eyebrow: "Partner of record",
@@ -323,9 +323,9 @@ const CASES = {
       { initials: "FE", name: "Fatima E.", loc: "London, UK", amt: 600 }
     ],
     similarCases: [
-      { id: "Healthcare", name: "Browse all healthcare cases", href: "../healthcare.html" },
-      { id: "K-3275",    name: "Amira A. — Displaced nurse", href: "../women-empowerment.html" },
-      { id: "Takaful",   name: "View Takaful coverage options", href: "../healthcare.html" }
+      { id: "Healthcare", name: "Browse all healthcare cases", href: "/supporter/healthcare" },
+      { id: "K-3275",    name: "Amira A. — Displaced nurse", href: "/supporter/women" },
+      { id: "Takaful",   name: "View Takaful coverage options", href: "/supporter/healthcare" }
     ],
     sidePanel: {
       eyebrow: "Partner of record",
@@ -353,7 +353,7 @@ export default function SupporterCaseDetail() {
         <div className="container" style={{padding: "80px 32px", textAlign: "center"}}>
           <h1>Case not found</h1>
           <p>The case "{id}" does not exist.</p>
-          <a href="../dashboard.html" className="btn btn-primary">Back to Dashboard</a>
+          <Link to="/supporter" className="btn btn-primary">Back to Dashboard</Link>
         </div>
         <Footer depth={2} />
       </>
@@ -368,7 +368,7 @@ export default function SupporterCaseDetail() {
       <Nav side="supporter" depth={2} />
 
       <div className="container bp-back">
-        <a href="../dashboard.html" style={{display:"flex",alignItems:"center",gap:6}}><Icon name="arrow-left" size={14}/> Back to dashboard</a>
+        <Link to="/supporter" style={{display:"flex",alignItems:"center",gap:6}}><Icon name="arrow-left" size={14}/> Back to dashboard</Link>
         <span style={{color:"var(--line)"}}>·</span>
         <span style={{fontFamily:"JetBrains Mono, monospace",fontSize:11,letterSpacing:".08em"}}>CASE {c.caseId}</span>
       </div>
@@ -563,10 +563,10 @@ export default function SupporterCaseDetail() {
             <h3 style={{fontSize:20,fontWeight:400,marginBottom:24}}>Other cases you might support</h3>
             <div style={{display:"flex",gap:16,flexWrap:"wrap"}}>
               {c.similarCases.map((s,i) => (
-                <a key={i} href={s.href} className="similar-case-link">
+                <Link key={i} to={s.href} className="similar-case-link">
                   <span className="similar-case-id">{s.id}</span>
                   <span className="similar-case-name">{s.name} <Icon name="arrow" size={14}/></span>
-                </a>
+                </Link>
               ))}
             </div>
           </Reveal>

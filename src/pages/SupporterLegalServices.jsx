@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
@@ -92,7 +93,7 @@ export default function SupporterLegalServices() {
               <p style={{marginTop:12}}>Result: residency documentation secured within 6 weeks. Legal claim in progress through a verified Sudanese lawyer with East Africa jurisdiction.</p>
               <div style={{display:"flex",gap:12,marginTop:24,flexWrap:"wrap"}}>
                 <button className="btn btn-primary" onClick={() => showToast("Support this case — create a case first")}>Support this case <Icon name="arrow"/></button>
-                <a href="../case-creation.html" className="btn btn-ghost">Create similar case</a>
+                <Link to="/create" className="btn btn-ghost">Create similar case</Link>
               </div>
             </div>
           </Reveal>
