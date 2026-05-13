@@ -7,7 +7,7 @@ import Footer from '../components/Footer.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import { showToast } from '../components/Toast.jsx';
 import { getEthosRole, setEthosRole, roleToSide } from '../utils/role.js';
-import '../../role-chooser.css';
+import './RoleChooser.css';
 
 const ROLES = [
   { id: "supporter", title: "Diaspora Supporter", lede: "Direct, traceable support to your family and community.", detail: "Pledge to verified beneficiaries across six service verticals. Receive milestone updates, audited disbursement records, and impact statements you can share with family or employer." },

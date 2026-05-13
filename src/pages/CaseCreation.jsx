@@ -12,7 +12,7 @@ import FormTextarea from '../components/FormTextarea.jsx';
 import UploadZone from '../components/UploadZone.jsx';
 import { showToast } from '../components/Toast.jsx';
 import { getEthosSide, sideDashboardUrl } from '../utils/role.js';
-import '../../case-creation.css';
+import './CaseCreation.css';
 
 const SUPPORT_TYPES = [
   { id: "health", icon: "health", title: "Healthcare", desc: "Clinic referrals, telemedicine, hospitalization, and Takaful pathways." },

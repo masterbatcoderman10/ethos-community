@@ -1,0 +1,225 @@
+.bene-documents{
+  padding:48px 0 96px;
+}
+
+.bene-documents-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:32px;
+  margin:0 0 32px;
+}
+
+.bene-documents-copy{
+  max-width:660px;
+}
+
+.bene-documents-header h1{
+  font-family:var(--ff-display);
+  font-size:clamp(34px,4vw,52px);
+  font-weight:var(--display-weight);
+  line-height:1.05;
+  letter-spacing:var(--display-tracking);
+  margin:10px 0 12px;
+  text-wrap:balance;
+}
+
+.bene-documents-header p{
+  color:var(--ink-soft);
+  font-size:17px;
+  line-height:1.58;
+  margin:0;
+  max-width:60ch;
+}
+
+.bene-documents-summary{
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-radius:6px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:260px;
+  padding:18px;
+}
+
+.bene-documents-summary-num{
+  color:var(--green);
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  line-height:1.4;
+  text-transform:uppercase;
+}
+
+.bene-doc-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  list-style:none;
+  margin:0 0 34px;
+  padding:0;
+}
+
+.bene-doc-card{
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-radius:6px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  min-height:238px;
+  padding:22px;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.bene-doc-card:hover{
+  border-color:#d4caac;
+  box-shadow:0 4px 16px -8px rgba(20,21,18,.1);
+  transform:translateY(-1px);
+}
+
+.bene-doc-card-complete{
+  border-color:rgba(14,59,46,.38);
+}
+
+.bene-doc-card-in_progress{
+  border-color:rgba(168,136,74,.65);
+}
+
+.bene-doc-card-head{
+  align-items:flex-start;
+  display:flex;
+  gap:13px;
+}
+
+.bene-doc-card-title{
+  min-width:0;
+}
+
+.bene-doc-status{
+  color:var(--gold-2);
+  display:block;
+  font-family:"JetBrains Mono",monospace;
+  font-size:10.5px;
+  letter-spacing:.12em;
+  line-height:1.4;
+  margin:1px 0 8px;
+  text-transform:uppercase;
+}
+
+.bene-doc-card-complete .bene-doc-status{
+  color:var(--green);
+}
+
+.bene-doc-card-pending .bene-doc-status{
+  color:var(--muted);
+}
+
+.bene-doc-card h2{
+  font-family:var(--ff-display);
+  font-size:22px;
+  font-weight:var(--display-weight);
+  letter-spacing:var(--display-tracking);
+  line-height:1.15;
+  margin:0 0 7px;
+}
+
+.bene-doc-card p{
+  color:var(--ink-soft);
+  font-size:14px;
+  line-height:1.55;
+  margin:0;
+}
+
+.bene-doc-card-note{
+  align-items:flex-start;
+  background:rgba(201,169,97,.14);
+  border:1px solid rgba(168,136,74,.28);
+  border-radius:6px;
+  color:var(--green-2);
+  display:flex;
+  font-size:13px;
+  gap:9px;
+  line-height:1.5;
+  padding:11px 12px;
+}
+
+.bene-doc-card-note svg{
+  color:var(--gold-2);
+  flex:0 0 auto;
+  margin-top:2px;
+}
+
+.bene-doc-card-foot{
+  align-items:center;
+  display:flex;
+  gap:14px;
+  justify-content:space-between;
+  margin-top:auto;
+  padding-top:2px;
+}
+
+.bene-doc-card-updated{
+  color:var(--muted);
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;
+  letter-spacing:.04em;
+  line-height:1.45;
+}
+
+.bene-documents-cta{
+  border-top:1px solid var(--line);
+  padding-top:30px;
+  text-align:center;
+}
+
+.bene-documents .btn:focus-visible{
+  outline:2px solid var(--green);
+  outline-offset:4px;
+}
+
+@media(max-width:880px){
+  .bene-documents-header{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .bene-documents-summary{
+    min-width:0;
+  }
+
+  .bene-doc-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:560px){
+  .bene-documents{
+    padding:36px 0 80px;
+  }
+
+  .bene-doc-card{
+    min-height:0;
+    padding:20px;
+  }
+
+  .bene-doc-card-foot{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .bene-doc-card-foot .btn{
+    width:100%;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .bene-doc-card{
+    transition:none;
+  }
+
+  .bene-doc-card:hover{
+    transform:none;
+  }
+}
