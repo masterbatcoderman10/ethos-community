@@ -1,0 +1,175 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Ethos Community™" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: Ethos Community™
+        - generic [ref=e9]: Kushian™
+      - generic [ref=e10]:
+        - generic [ref=e11]: Platform
+        - generic [ref=e12]: Get Started
+      - generic [ref=e13]:
+        - group [ref=e14]:
+          - generic "Sections" [ref=e15] [cursor=pointer]
+        - group [ref=e16]:
+          - generic "Account" [ref=e17] [cursor=pointer]
+        - link "Create Case" [ref=e18] [cursor=pointer]:
+          - /url: /create
+  - generic [ref=e19]: Prototype · Demo Only
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]: Registration · Step 01
+          - heading "Choose how you'll show up." [level=1] [ref=e25]
+          - paragraph [ref=e26]: Ethos Community serves seven kinds of people. Pick the role that fits your starting point. Switching is easy from your account settings.
+          - generic [ref=e27]:
+            - generic [ref=e28]:
+              - term [ref=e29]: Roster
+              - definition [ref=e30]: 07 roles
+            - generic [ref=e31]:
+              - term [ref=e32]: Avg. setup time
+              - definition [ref=e33]: ~ 3 min
+            - generic [ref=e34]:
+              - term [ref=e35]: Verification
+              - definition [ref=e36]: Partner-led
+        - region "Available roles" [ref=e37]:
+          - list [ref=e38]:
+            - listitem [ref=e39]:
+              - button "01 Diaspora Supporter Direct, traceable support to your family and community. Selected" [ref=e40] [cursor=pointer]:
+                - generic [ref=e41]: "01"
+                - generic [ref=e42]:
+                  - generic [ref=e43]: Diaspora Supporter
+                  - generic [ref=e44]: Direct, traceable support to your family and community.
+                - generic [ref=e46]:
+                  - img [ref=e48]
+                  - generic: Selected
+              - paragraph [ref=e51]: Pledge to verified beneficiaries across six service verticals. Receive milestone updates, audited disbursement records, and impact statements you can share with family or employer.
+            - listitem [ref=e52]:
+              - button "02 Beneficiary Register yourself or a family member for verified access. Selected" [ref=e53] [cursor=pointer]:
+                - generic [ref=e54]: "02"
+                - generic [ref=e55]:
+                  - generic [ref=e56]: Beneficiary
+                  - generic [ref=e57]: Register yourself or a family member for verified access.
+                - generic [ref=e59]:
+                  - img [ref=e61]
+                  - generic: Selected
+              - paragraph [ref=e64]: Submit a profile, link partner-issued documents, and receive support from diaspora pledgers through Ethos-managed disbursement. Verification is led by a community ambassador in your locality.
+            - listitem [ref=e65]:
+              - button "03 Mentor / Service Provider Offer professional skills, mentorship, or services. Selected" [ref=e66] [cursor=pointer]:
+                - generic [ref=e67]: "03"
+                - generic [ref=e68]:
+                  - generic [ref=e69]: Mentor / Service Provider
+                  - generic [ref=e70]: Offer professional skills, mentorship, or services.
+                - generic [ref=e72]:
+                  - img [ref=e74]
+                  - generic: Selected
+              - paragraph [ref=e77]: Match with students, women in transition, or SME operators. Log sessions, milestones, and outcomes through the partner portal. Suitable for individual practitioners and consultancies.
+            - listitem [ref=e78]:
+              - button "04 SME / Business Owner Recovery support, finance-readiness, and advisory. Selected" [ref=e79] [cursor=pointer]:
+                - generic [ref=e80]: "04"
+                - generic [ref=e81]:
+                  - generic [ref=e82]: SME / Business Owner
+                  - generic [ref=e83]: Recovery support, finance-readiness, and advisory.
+                - generic [ref=e85]:
+                  - img [ref=e87]
+                  - generic: Selected
+              - paragraph [ref=e90]: Diagnostic intake, restart capital pathways, licensing assistance, and access to advisor cohorts. For Sudanese-owned businesses operating in Sudan or relocated regionally.
+            - listitem [ref=e91]:
+              - button "05 Community Ambassador Verify needs, onboard users, and build local trust. Selected" [ref=e92] [cursor=pointer]:
+                - generic [ref=e93]: "05"
+                - generic [ref=e94]:
+                  - generic [ref=e95]: Community Ambassador
+                  - generic [ref=e96]: Verify needs, onboard users, and build local trust.
+                - generic [ref=e98]:
+                  - img [ref=e100]
+                  - generic: Selected
+              - paragraph [ref=e103]: Trained volunteer or partner staff who confirm beneficiary identity, document local need, and act as the first point of contact. Includes a stipend or honorarium where applicable.
+            - listitem [ref=e104]:
+              - button "06 Finance / Takaful Partner Regulated financial and risk-protection pathways. Selected" [ref=e105] [cursor=pointer]:
+                - generic [ref=e106]: "06"
+                - generic [ref=e107]:
+                  - generic [ref=e108]: Finance / Takaful Partner
+                  - generic [ref=e109]: Regulated financial and risk-protection pathways.
+                - generic [ref=e111]:
+                  - img [ref=e113]
+                  - generic: Selected
+              - paragraph [ref=e116]: Banks, payment institutions, Takaful operators, and Islamic-finance providers. Plug regulated rails into Ethos disbursement, education savings, and family-protection products.
+            - listitem [ref=e117]:
+              - button "07 Development Partner NGOs, foundations, and public-sector stakeholders. Selected" [ref=e118] [cursor=pointer]:
+                - generic [ref=e119]: "07"
+                - generic [ref=e120]:
+                  - generic [ref=e121]: Development Partner
+                  - generic [ref=e122]: NGOs, foundations, and public-sector stakeholders.
+                - generic [ref=e124]:
+                  - img [ref=e126]
+                  - generic: Selected
+              - paragraph [ref=e129]: Co-fund verticals, share programme infrastructure, and consume the audit feed for monitoring and evaluation. Includes IsDB, bilateral donors, and humanitarian agencies.
+      - generic [ref=e130]:
+        - link "Skip — continue as guest arrow_forward" [ref=e131] [cursor=pointer]:
+          - /url: /
+          - text: Skip — continue as guest
+          - generic [ref=e132]: arrow_forward
+        - generic [ref=e133]:
+          - generic [ref=e135]: No role selected
+          - button "Continue arrow_forward" [disabled] [ref=e136]:
+            - generic [ref=e137]: Continue
+            - generic [ref=e138]: arrow_forward
+  - contentinfo [ref=e139]:
+    - generic [ref=e140]:
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - link "Ethos Community™" [ref=e143] [cursor=pointer]:
+            - /url: /
+            - text: Ethos Community™
+          - paragraph [ref=e145]: A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.
+        - generic [ref=e146]:
+          - heading "Platform" [level=5] [ref=e147]
+          - list [ref=e148]:
+            - listitem [ref=e149]:
+              - link "Supporter Dashboard" [ref=e150] [cursor=pointer]:
+                - /url: /supporter
+            - listitem [ref=e151]:
+              - link "Impact Dashboard" [ref=e152] [cursor=pointer]:
+                - /url: /supporter/impact
+            - listitem [ref=e153]:
+              - link "Beneficiary Cases" [ref=e154] [cursor=pointer]:
+                - /url: /supporter/cases/maryam
+            - listitem [ref=e155]:
+              - link "Partner Directory" [ref=e156] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e157]:
+          - heading "Verticals" [level=5] [ref=e158]
+          - list [ref=e159]:
+            - listitem [ref=e160]:
+              - link "Education & CPD" [ref=e161] [cursor=pointer]:
+                - /url: /supporter/education
+            - listitem [ref=e162]:
+              - link "Healthcare & Takaful" [ref=e163] [cursor=pointer]:
+                - /url: /supporter/healthcare
+            - listitem [ref=e164]:
+              - link "SME Advisory" [ref=e165] [cursor=pointer]:
+                - /url: /supporter/sme
+            - listitem [ref=e166]:
+              - link "Women & Workforce" [ref=e167] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e168]:
+          - heading "Organisation" [level=5] [ref=e169]
+          - list [ref=e170]:
+            - listitem [ref=e171]:
+              - link "About Kushian™" [ref=e172] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e173]:
+              - link "Founder" [ref=e174] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e175]:
+              - link "Press & Media" [ref=e176] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e177]:
+              - link "Contact" [ref=e178] [cursor=pointer]:
+                - /url: "#"
+      - paragraph [ref=e179]: Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.
+      - generic [ref=e180]:
+        - generic [ref=e181]: © 2026 Ethos Community™
+        - generic [ref=e182]: Demo · v0.1 · MVP Prototype

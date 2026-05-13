@@ -1,0 +1,216 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Ethos Community™" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: Ethos Community™
+        - generic [ref=e9]: Kushian™
+      - generic [ref=e10]:
+        - generic [ref=e11]: Beneficiary
+        - generic [ref=e12]: Dashboard
+      - generic [ref=e13]:
+        - group [ref=e14]:
+          - generic "Sections" [ref=e15] [cursor=pointer]
+        - group [ref=e16]:
+          - generic "Beneficiary" [ref=e17] [cursor=pointer]
+        - link "Create Case" [ref=e18] [cursor=pointer]:
+          - /url: /create
+  - generic [ref=e19]: Prototype · Demo Only
+  - main [ref=e20]:
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - generic [ref=e25]: Beneficiary dashboard
+        - heading "Welcome back, Halima" [level=1] [ref=e26]
+        - paragraph [ref=e27]: Track your cases, verification steps, supporter activity, and ambassador guidance from one calm workspace.
+      - generic [ref=e28]: Verified
+    - region "Beneficiary dashboard overview" [ref=e29]:
+      - generic "Case summary" [ref=e30]:
+        - article [ref=e31]:
+          - generic [ref=e32]: Active cases
+          - strong [ref=e33]: "0"
+          - generic [ref=e34]: Across workforce and education
+        - article [ref=e35]:
+          - generic [ref=e36]: Funds raised
+          - strong [ref=e37]:
+            - generic [ref=e38]: $204
+          - generic [ref=e39]: Of $11,600 target
+        - article [ref=e40]:
+          - generic [ref=e41]: Supporters
+          - strong [ref=e42]: "0"
+          - generic [ref=e43]: Verified diaspora contributors
+      - generic [ref=e44]:
+        - region "Your cases" [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]:
+              - generic [ref=e48]: Case portfolio
+              - heading "Your cases" [level=2] [ref=e49]
+            - link "View all my cases" [ref=e50] [cursor=pointer]:
+              - /url: /beneficiary/cases
+              - text: My Cases
+              - img [ref=e51]
+          - generic [ref=e53]:
+            - 'link "View case K-2890: Women''s CPD Finance Returnship" [ref=e55] [cursor=pointer]':
+              - /url: /beneficiary/case/K-2890
+              - generic [ref=e56]:
+                - generic [ref=e57]:
+                  - text: K-2890
+                  - heading "Women's CPD Finance Returnship" [level=3] [ref=e58]
+                  - paragraph [ref=e59]: Women & Workforce
+                - generic [ref=e60]: Verified
+              - generic [ref=e61]:
+                - generic [ref=e62]:
+                  - generic [ref=e63]: $5,100 raised
+                  - generic [ref=e64]: $2,900 to go
+                - progressbar "64% funded" [ref=e65]
+              - generic [ref=e67]:
+                - generic "5 supporters" [ref=e68]:
+                  - generic [ref=e69]: RS
+                  - generic [ref=e70]: KM
+                  - generic [ref=e71]: AA
+                  - generic [ref=e72]: YO
+                  - generic [ref=e73]: "+1"
+                  - generic [ref=e74]: Updated 2 hours ago
+                - generic [ref=e75]:
+                  - text: View case
+                  - img [ref=e76]
+            - 'link "View case K-3120: Children''s Education Support" [ref=e79] [cursor=pointer]':
+              - /url: /beneficiary/case/K-3120
+              - generic [ref=e80]:
+                - generic [ref=e81]:
+                  - text: K-3120
+                  - heading "Children's Education Support" [level=3] [ref=e82]
+                  - paragraph [ref=e83]: Education
+                - generic [ref=e84]: Pending review
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - generic [ref=e87]: $2,400 raised
+                  - generic [ref=e88]: $1,200 to go
+                - progressbar "67% funded" [ref=e89]
+              - generic [ref=e91]:
+                - generic "3 supporters" [ref=e92]:
+                  - generic [ref=e93]: MA
+                  - generic [ref=e94]: HO
+                  - generic [ref=e95]: LT
+                  - generic [ref=e96]: Updated 5 days ago
+                - generic [ref=e97]:
+                  - text: View case
+                  - img [ref=e98]
+        - complementary "Next actions and ambassador" [ref=e100]:
+          - region "Next steps" [ref=e101]:
+            - generic [ref=e102]: Priority
+            - heading "Next steps" [level=2] [ref=e103]
+            - list [ref=e104]:
+              - listitem [ref=e105]:
+                - img [ref=e107]
+                - generic [ref=e109]: Upload finance returnship acceptance letter
+              - listitem [ref=e110]:
+                - generic [ref=e112]: Reply to ambassador question on K-3120
+              - listitem [ref=e113]:
+                - generic [ref=e115]: Share K-2890 case link with extended family
+              - listitem [ref=e116]:
+                - generic [ref=e118]: Confirm bank details for first disbursement
+          - region "Fatima O." [ref=e119]:
+            - generic [ref=e120]: Your ambassador
+            - generic [ref=e121]:
+              - generic [ref=e122]: FO
+              - generic [ref=e123]:
+                - heading "Fatima O." [level=2] [ref=e124]
+                - paragraph [ref=e125]: Khartoum coordinator · 47 cases verified
+            - paragraph [ref=e126]: Fatima is reviewing your education documents and can help unblock both active cases.
+            - link "Open conversation with Fatima O." [ref=e127] [cursor=pointer]:
+              - /url: /beneficiary/messages
+              - text: Open conversation
+              - img [ref=e128]
+      - region "Recent activity" [ref=e130]:
+        - generic [ref=e132]:
+          - generic [ref=e133]: Latest movement
+          - heading "Recent activity" [level=2] [ref=e134]
+        - list [ref=e135]:
+          - listitem [ref=e136]:
+            - img [ref=e138]
+            - generic [ref=e140]:
+              - strong [ref=e141]: Rasha S.
+              - text: pledged $400 to K-2890
+            - time [ref=e142]: 2h ago
+          - listitem [ref=e143]:
+            - img [ref=e145]
+            - generic [ref=e148]:
+              - strong [ref=e149]: Fatima O.
+              - text: verified your government ID
+            - time [ref=e150]: Yesterday
+          - listitem [ref=e151]:
+            - img [ref=e153]
+            - generic [ref=e155]:
+              - strong [ref=e156]: Khalid M.
+              - text: pledged $250 to K-2890
+            - time [ref=e157]: Yesterday
+          - listitem [ref=e158]:
+            - img [ref=e160]
+            - generic [ref=e163]:
+              - strong [ref=e164]: System
+              - text: opened K-3120 for review
+            - time [ref=e165]: 5 days ago
+          - listitem [ref=e166]:
+            - img [ref=e168]
+            - generic [ref=e171]:
+              - strong [ref=e172]: Fatima O.
+              - text: requested an education invoice
+            - time [ref=e173]: 1 week ago
+  - contentinfo [ref=e174]:
+    - generic [ref=e175]:
+      - generic [ref=e176]:
+        - generic [ref=e177]:
+          - link "Ethos Community™" [ref=e178] [cursor=pointer]:
+            - /url: /
+            - text: Ethos Community™
+          - paragraph [ref=e180]: A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.
+        - generic [ref=e181]:
+          - heading "Platform" [level=5] [ref=e182]
+          - list [ref=e183]:
+            - listitem [ref=e184]:
+              - link "Supporter Dashboard" [ref=e185] [cursor=pointer]:
+                - /url: /supporter
+            - listitem [ref=e186]:
+              - link "Impact Dashboard" [ref=e187] [cursor=pointer]:
+                - /url: /supporter/impact
+            - listitem [ref=e188]:
+              - link "Beneficiary Cases" [ref=e189] [cursor=pointer]:
+                - /url: /supporter/cases/maryam
+            - listitem [ref=e190]:
+              - link "Partner Directory" [ref=e191] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e192]:
+          - heading "Verticals" [level=5] [ref=e193]
+          - list [ref=e194]:
+            - listitem [ref=e195]:
+              - link "Education & CPD" [ref=e196] [cursor=pointer]:
+                - /url: /supporter/education
+            - listitem [ref=e197]:
+              - link "Healthcare & Takaful" [ref=e198] [cursor=pointer]:
+                - /url: /supporter/healthcare
+            - listitem [ref=e199]:
+              - link "SME Advisory" [ref=e200] [cursor=pointer]:
+                - /url: /supporter/sme
+            - listitem [ref=e201]:
+              - link "Women & Workforce" [ref=e202] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e203]:
+          - heading "Organisation" [level=5] [ref=e204]
+          - list [ref=e205]:
+            - listitem [ref=e206]:
+              - link "About Kushian™" [ref=e207] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e208]:
+              - link "Founder" [ref=e209] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e210]:
+              - link "Press & Media" [ref=e211] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e212]:
+              - link "Contact" [ref=e213] [cursor=pointer]:
+                - /url: "#"
+      - paragraph [ref=e214]: Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.
+      - generic [ref=e215]:
+        - generic [ref=e216]: © 2026 Ethos Community™
+        - generic [ref=e217]: Demo · v0.1 · MVP Prototype

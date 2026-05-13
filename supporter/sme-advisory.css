@@ -1,0 +1,66 @@
+/* sme-advisory */
+.vert-hero{background:var(--cream-2);border-bottom:1px solid var(--line);padding:64px 0 80px}
+.vert-hero h1{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:clamp(40px,5vw,72px);line-height:1.05;letter-spacing:var(--display-tracking);margin:14px 0 24px;text-wrap:balance;max-width:18ch}
+.vert-hero h1 em{font-style:italic;color:var(--green)}
+.vert-hero p{font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:560px;margin:0 0 32px}
+.vert-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:end}
+@media(max-width:980px){.vert-grid{grid-template-columns:1fr}}
+.vert-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+.vert-stats .num{font-family:var(--ff-display);font-size:36px;line-height:1;font-weight:var(--display-weight);letter-spacing:var(--display-tracking)}
+.vert-stats .label{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+.section-block{padding:80px 0;border-bottom:1px solid var(--line)}
+.block-head{display:grid;grid-template-columns:1fr 2fr;gap:48px;margin-bottom:48px;align-items:end}
+@media(max-width:880px){.block-head{grid-template-columns:1fr}}
+.block-head h2{font-family:var(--ff-display);font-size:clamp(28px,3vw,42px);line-height:1.1;letter-spacing:var(--display-tracking);font-weight:var(--display-weight);margin:8px 0 0;text-wrap:balance}
+
+.sme-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:880px){.sme-grid{grid-template-columns:1fr}}
+.sme-card{background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;cursor:pointer;transition:all .2s ease}
+.sme-card:hover{border-color:var(--green);transform:translateY(-2px)}
+@media(max-width:720px){.sme-card{grid-template-columns:1fr}}
+.sme-card h3{font-family:var(--ff-display);font-size:24px;font-weight:var(--display-weight);letter-spacing:var(--display-tracking);margin:6px 0 6px;line-height:1.2}
+.sme-card .biz{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-2)}
+.sme-card .lede{font-size:14px;line-height:1.6;color:var(--ink-soft);margin:0 0 14px}
+.sme-card .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;padding-top:14px;border-top:1px dashed var(--line)}
+.sme-card .stats strong{display:block;font-family:var(--ff-display);font-size:20px;color:var(--ink);font-weight:var(--display-weight);letter-spacing:0;margin-bottom:2px}
+
+.svc-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:880px){.svc-list{grid-template-columns:1fr}}
+.svc{padding:24px;background:var(--cream);border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column;gap:10px}
+.svc .ic{width:36px;height:36px;border-radius:8px;background:var(--cream-2);color:var(--green);display:flex;align-items:center;justify-content:center}
+.svc h4{font-family:var(--ff-display);font-size:18px;margin:0;line-height:1.2}
+.svc p{font-size:13px;line-height:1.55;color:var(--ink-soft);margin:0}
+
+.advisor-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:880px){.advisor-row{grid-template-columns:repeat(2,1fr)}}
+.advisor{background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:20px;text-align:center}
+.advisor .ava{width:56px;height:56px;border-radius:50%;background:var(--green);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:18px;margin:0 auto 12px}
+.advisor h4{font-family:var(--ff-display);font-size:16px;margin:0 0 4px;line-height:1.2}
+.advisor .role{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.06em}
+
+.workflow{background:var(--ink);color:var(--cream);border-radius:8px;padding:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative}
+@media(max-width:880px){.workflow{grid-template-columns:1fr;gap:24px;padding:32px}}
+@media(max-width:560px){.vert-stats{grid-template-columns:1fr;gap:18px}.advisor-row{grid-template-columns:1fr}.workflow{padding:28px 20px}}
+.wf-step .num{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--gold);letter-spacing:.14em;margin-bottom:14px}
+.wf-step h4{font-family:var(--ff-display);font-size:22px;margin:0 0 8px;line-height:1.2;color:var(--cream)}
+.wf-step p{font-size:13.5px;line-height:1.55;color:rgba(247,244,238,.7);margin:0}
+.wf-step .arrow{display:none}
+
+.sme-finance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; align-items: start; }
+@media (max-width: 720px) { .sme-finance-grid { grid-template-columns: 1fr; } }
+.sme-checklist-panel, .sme-cashflow-panel { background: var(--cream); border: 1px solid var(--line); border-radius: 6px; padding: 32px; }
+.sme-checklist-panel h3, .sme-cashflow-panel h3 { font-size: 20px; font-weight: 400; margin: 0 0 24px; }
+.sme-cashflow-table { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.sme-cf-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; padding: 12px 16px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 12px; }
+.sme-cf-row:last-child { border-bottom: none; }
+.sme-cf-row.header { background: var(--cream-2); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: 10.5px; }
+.sme-cf-row.positive { color: var(--green); font-weight: 500; }
+.sme-finance-partners { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 40px; }
+@media (max-width: 880px) { .sme-finance-partners { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px) { .sme-finance-partners { grid-template-columns: 1fr; } }
+.sme-finance-partner-card { background: var(--cream); border: 1px solid var(--line); border-radius: 6px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: border-color .18s; }
+.sme-finance-partner-card:hover { border-color: #d4caac; }
+.sme-fp-icon { color: var(--green); }
+.sme-finance-partner-card h4 { font-size: 15px; font-weight: 400; margin: 0; }
+.sme-finance-partner-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin: 0; flex: 1; }

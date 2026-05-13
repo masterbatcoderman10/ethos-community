@@ -5,6 +5,7 @@ import Footer from '../components/Footer.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import Reveal from '../components/Reveal.jsx';
 import ProviderCard from '../components/ProviderCard.jsx';
+import '../../supporter/provider-marketplace.css';
 
 const PROVIDERS = [
   { name: "Cleopatra Hospital",          category: "Clinics & Hospitals",         location: "Cairo, Egypt",     verified: true,  rating: 4.8, desc: "500-bed multi-specialty hospital serving Sudanese diaspora families. Telehealth available." },

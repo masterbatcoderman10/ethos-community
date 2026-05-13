@@ -1,0 +1,17 @@
+[     205ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:20100
+[     247ms] ReferenceError: React is not defined
+    at http://localhost:3002/src/pages/SupporterImpact.jsx:437:44
+    at Array.map (<anonymous>)
+    at SupporterImpact (http://localhost:3002/src/pages/SupporterImpact.jsx:436:133)
+    at Object.react_stack_bottom_frame (http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:18507:20)
+    at renderWithHooks (http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:5652:24)
+    at updateFunctionComponent (http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:7473:21)
+    at beginWork (http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:8523:20)
+    at runWithFiberInDEV (http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:995:72)
+    at performUnitOfWork (http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:12559:98)
+    at workLoopSync (http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:12422:43)
+[     219ms] [WARNING] %s
+
+%s
+ An error occurred in the <SupporterImpact> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://localhost:3002/node_modules/.vite/deps/react-dom_client.js?v=e58044c5:6963

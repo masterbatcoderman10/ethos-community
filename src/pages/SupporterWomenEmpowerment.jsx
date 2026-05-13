@@ -9,6 +9,7 @@ import Photo from '../components/Photo.jsx';
 import Avatar from '../components/Avatar.jsx';
 import CaseProgressBar from '../components/CaseProgressBar.jsx';
 import PurposeBadge from '../components/PurposeBadge.jsx';
+import '../../supporter/women-empowerment.css';
 
 const PATHWAYS = [
   { icon: "heart",     title: "Widows Support",                     desc: "Living support, legal documentation, residency guidance and family stability for widowed women in Sudan and displacement corridors." },

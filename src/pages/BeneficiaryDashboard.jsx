@@ -9,7 +9,7 @@ import Avatar from '../components/Avatar.jsx';
 import StatusDot from '../components/StatusDot.jsx';
 import Icon from '../components/Icon.jsx';
 import Footer from '../components/Footer.jsx';
-import '../styles/beneficiary/dashboard.css';
+import '../../beneficiary/dashboard.css';
 
 const CASES = [
   {

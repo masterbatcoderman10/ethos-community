@@ -7,7 +7,7 @@ import MessageBubble from '../components/MessageBubble.jsx';
 import FormTextarea from '../components/FormTextarea.jsx';
 import Footer from '../components/Footer.jsx';
 import { showToast } from '../components/Toast.jsx';
-import '../styles/beneficiary/messages.css';
+import '../../beneficiary/messages.css';
 
 const THREAD = {
   name: "Fatima O.",

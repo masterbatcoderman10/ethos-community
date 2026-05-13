@@ -1,0 +1,324 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Ethos Community™" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: Ethos Community™
+        - generic [ref=e9]: Kushian™
+      - generic [ref=e10]:
+        - generic [ref=e11]: Supporter
+        - generic [ref=e12]: Education
+      - generic [ref=e13]:
+        - group [ref=e14]:
+          - generic "Sections" [ref=e15] [cursor=pointer]
+        - group [ref=e16]:
+          - generic "Supporter" [ref=e17] [cursor=pointer]
+        - link "Create Case" [ref=e18] [cursor=pointer]:
+          - /url: /create
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]: Vertical 01 · Education, CPD & Mentorship
+        - heading "Pathways back to study and work, partner-delivered." [level=1] [ref=e24]:
+          - text: Pathways back to
+          - emphasis [ref=e25]: study and work
+          - text: ", partner-delivered."
+        - paragraph [ref=e26]: Credential vault, mentor matching, employability training and graduate support — for displaced students, women returning to the workforce, and Sudanese professionals seeking to relocate or requalify.
+        - generic [ref=e27]:
+          - button "Browse 142 students" [ref=e28] [cursor=pointer]:
+            - text: Browse 142 students
+            - img [ref=e29]
+          - button "Become a mentor" [ref=e31] [cursor=pointer]
+      - generic [ref=e33]:
+        - generic [ref=e34]: Graduate cohort, Riyadh CPD circle
+        - generic [ref=e35]:
+          - generic [ref=e36]: EDUCATION · CPD · MENTORSHIP
+          - generic [ref=e37]: "4 : 5"
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]: "0"
+        - generic [ref=e41]: Active students
+      - generic [ref=e42]:
+        - generic [ref=e43]: "0"
+        - generic [ref=e44]: Diaspora mentors
+      - generic [ref=e45]:
+        - generic [ref=e47]: 0%
+        - generic [ref=e48]: Year-1 retention
+  - generic [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]: § Mentorship
+        - heading "68 mentors, matched by skill and need." [level=2] [ref=e54]
+      - paragraph [ref=e55]: The Kushian™ matching engine pairs students with diaspora professionals by discipline, language, and host-country credentialling. Verified profiles, structured 6-month engagements.
+    - generic [ref=e56]:
+      - generic [ref=e58] [cursor=pointer]:
+        - generic [ref=e59]:
+          - generic [ref=e60]: AT
+          - generic [ref=e61]:
+            - heading "Dr Amira Tahir" [level=4] [ref=e62]
+            - generic [ref=e63]: Senior Lecturer · Imperial College
+        - paragraph [ref=e64]: Civil engineering, water systems and post-conflict infrastructure planning. 8 mentees placed.
+        - generic [ref=e65]:
+          - generic [ref=e66]: Engineering
+          - generic [ref=e67]: Water
+          - generic [ref=e68]: Infrastructure
+        - generic [ref=e69]:
+          - generic [ref=e70]: ● 94% match
+          - generic [ref=e71]:
+            - text: Connect
+            - img [ref=e72]
+      - generic [ref=e75] [cursor=pointer]:
+        - generic [ref=e76]:
+          - generic [ref=e77]: RM
+          - generic [ref=e78]:
+            - heading "Rasha Mahjoub" [level=4] [ref=e79]
+            - generic [ref=e80]: Senior Counsel · Standard Chartered Dubai
+        - paragraph [ref=e81]: Sharia-compliant finance, Islamic banking and graduate placement in GCC institutions.
+        - generic [ref=e82]:
+          - generic [ref=e83]: Finance
+          - generic [ref=e84]: Sharia
+          - generic [ref=e85]: GCC
+        - generic [ref=e86]:
+          - generic [ref=e87]: ● 91% match
+          - generic [ref=e88]:
+            - text: Connect
+            - img [ref=e89]
+      - generic [ref=e92] [cursor=pointer]:
+        - generic [ref=e93]:
+          - generic [ref=e94]: MO
+          - generic [ref=e95]:
+            - heading "Dr Mohamed Osman" [level=4] [ref=e96]
+            - generic [ref=e97]: Consultant Pediatrician · Toronto
+        - paragraph [ref=e98]: Medical residency pathway support for Sudanese physicians in Canada and the UK.
+        - generic [ref=e99]:
+          - generic [ref=e100]: Medicine
+          - generic [ref=e101]: Residency
+          - generic [ref=e102]: Canada/UK
+        - generic [ref=e103]:
+          - generic [ref=e104]: ● 88% match
+          - generic [ref=e105]:
+            - text: Connect
+            - img [ref=e106]
+      - generic [ref=e109] [cursor=pointer]:
+        - generic [ref=e110]:
+          - generic [ref=e111]: FE
+          - generic [ref=e112]:
+            - heading "Fatima El-Bashir" [level=4] [ref=e113]
+            - generic [ref=e114]: Director · UN Women Cairo
+        - paragraph [ref=e115]: Programme management, gender-responsive policy and UN system pathways.
+        - generic [ref=e116]:
+          - generic [ref=e117]: Policy
+          - generic [ref=e118]: UN
+          - generic [ref=e119]: Gender
+        - generic [ref=e120]:
+          - generic [ref=e121]: ● 86% match
+          - generic [ref=e122]:
+            - text: Connect
+            - img [ref=e123]
+      - generic [ref=e126] [cursor=pointer]:
+        - generic [ref=e127]:
+          - generic [ref=e128]: OK
+          - generic [ref=e129]:
+            - heading "Prof. Omar Khalifa" [level=4] [ref=e130]
+            - generic [ref=e131]: Computer Science · TU Munich
+        - paragraph [ref=e132]: Software engineering, EU PhD applications, scholarship navigation for displaced researchers.
+        - generic [ref=e133]:
+          - generic [ref=e134]: CS
+          - generic [ref=e135]: PhD
+          - generic [ref=e136]: EU
+        - generic [ref=e137]:
+          - generic [ref=e138]: ● 82% match
+          - generic [ref=e139]:
+            - text: Connect
+            - img [ref=e140]
+      - generic [ref=e143] [cursor=pointer]:
+        - generic [ref=e144]:
+          - generic [ref=e145]: NA
+          - generic [ref=e146]:
+            - heading "Nour Adam" [level=4] [ref=e147]
+            - generic [ref=e148]: Lead Architect · Aedas Doha
+        - paragraph [ref=e149]: Architecture and urban design pathways, returnship after displacement.
+        - generic [ref=e150]:
+          - generic [ref=e151]: Architecture
+          - generic [ref=e152]: Design
+          - generic [ref=e153]: Returnship
+        - generic [ref=e154]:
+          - generic [ref=e155]: ● 78% match
+          - generic [ref=e156]:
+            - text: Connect
+            - img [ref=e157]
+  - generic [ref=e160]:
+    - generic [ref=e161]:
+      - generic [ref=e162]:
+        - generic [ref=e163]: § CPD Pathway
+        - heading "A four-stage employability track." [level=2] [ref=e164]
+      - paragraph [ref=e165]: Designed for Sudanese graduates, women returning to work and mid-career professionals seeking host-country recognition.
+    - generic [ref=e167]:
+      - generic [ref=e168]:
+        - generic [ref=e169]: STEP 01
+        - heading "Skills audit" [level=4] [ref=e170]
+        - paragraph [ref=e171]: 30-minute structured intake. Credentials catalogued, gaps identified.
+      - generic [ref=e174]:
+        - generic [ref=e175]: STEP 02
+        - heading "CPD modules" [level=4] [ref=e176]
+        - paragraph [ref=e177]: Sharia-compliance, finance, healthcare regulation, project management.
+      - generic [ref=e180]:
+        - generic [ref=e181]: STEP 03
+        - heading "Mentor pairing" [level=4] [ref=e182]
+        - paragraph [ref=e183]: Six-month structured engagement with a diaspora professional.
+      - generic [ref=e186]:
+        - generic [ref=e187]: STEP 04
+        - heading "Placement" [level=4] [ref=e188]
+        - paragraph [ref=e189]: CV review, interview prep, partner-led introductions in target market.
+  - generic [ref=e193]:
+    - generic [ref=e194]:
+      - generic [ref=e195]:
+        - generic [ref=e196]: § Credential vault
+        - heading "Documents, attested and portable." [level=2] [ref=e197]
+      - paragraph [ref=e198]: Beneficiaries upload originals once. Partners attest. Credentials become portable across host-country institutions.
+    - generic [ref=e199]:
+      - generic [ref=e201]:
+        - img [ref=e203]
+        - generic [ref=e206]:
+          - generic [ref=e207]: Academic transcripts
+          - generic [ref=e208]: Verified · 142 students
+      - generic [ref=e210]:
+        - img [ref=e212]
+        - generic [ref=e215]:
+          - generic [ref=e216]: Professional certifications
+          - generic [ref=e217]: AAOIFI, CISI, ACCA, CFA
+      - generic [ref=e219]:
+        - img [ref=e221]
+        - generic [ref=e224]:
+          - generic [ref=e225]: Identity documents
+          - generic [ref=e226]: UNHCR-co-signed
+      - generic [ref=e228]:
+        - img [ref=e230]
+        - generic [ref=e233]:
+          - generic [ref=e234]: Reference letters
+          - generic [ref=e235]: Mentor & employer
+      - generic [ref=e237]:
+        - img [ref=e239]
+        - generic [ref=e242]:
+          - generic [ref=e243]: Language attestations
+          - generic [ref=e244]: IELTS, TOEFL, DELF
+      - generic [ref=e246]:
+        - img [ref=e248]
+        - generic [ref=e251]:
+          - generic [ref=e252]: Medical credentials
+          - generic [ref=e253]: GMC, MCC, ECFMG
+  - generic [ref=e255]:
+    - generic [ref=e256]:
+      - generic [ref=e257]:
+        - generic [ref=e258]: § Active students
+        - heading "Students seeking support." [level=2] [ref=e259]
+      - paragraph [ref=e260]: From secondary tuition to postgraduate research — every student profile is verified and pledge-traceable.
+    - button "MA Maryam A. Year 9 · Al-Manarah School · Cairo, EG Secondary Funded 91%" [ref=e262] [cursor=pointer]:
+      - generic [ref=e263]: MA
+      - generic [ref=e264]:
+        - heading "Maryam A." [level=4] [ref=e265]
+        - generic [ref=e266]: Year 9 · Al-Manarah School · Cairo, EG
+      - generic [ref=e267]: Secondary
+      - generic [ref=e270]:
+        - generic [ref=e271]: Funded
+        - generic [ref=e272]: 91%
+      - img [ref=e276]
+    - button "TM Tariq M. Engineering Year 2 · Qatar University · Doha, QA Undergraduate Funded 64%" [ref=e280] [cursor=pointer]:
+      - generic [ref=e281]: TM
+      - generic [ref=e282]:
+        - heading "Tariq M." [level=4] [ref=e283]
+        - generic [ref=e284]: Engineering Year 2 · Qatar University · Doha, QA
+      - generic [ref=e285]: Undergraduate
+      - generic [ref=e288]:
+        - generic [ref=e289]: Funded
+        - generic [ref=e290]: 64%
+      - img [ref=e294]
+    - button "AS Amira S. Year 11 · St Andrew's College · Kampala, UG Secondary Funded 78%" [ref=e298] [cursor=pointer]:
+      - generic [ref=e299]: AS
+      - generic [ref=e300]:
+        - heading "Amira S." [level=4] [ref=e301]
+        - generic [ref=e302]: Year 11 · St Andrew's College · Kampala, UG
+      - generic [ref=e303]: Secondary
+      - generic [ref=e306]:
+        - generic [ref=e307]: Funded
+        - generic [ref=e308]: 78%
+      - img [ref=e312]
+    - button "YE Yousef E. MSc Public Health · LSHTM · London, UK Postgraduate Funded 45%" [ref=e316] [cursor=pointer]:
+      - generic [ref=e317]: YE
+      - generic [ref=e318]:
+        - heading "Yousef E." [level=4] [ref=e319]
+        - generic [ref=e320]: MSc Public Health · LSHTM · London, UK
+      - generic [ref=e321]: Postgraduate
+      - generic [ref=e324]:
+        - generic [ref=e325]: Funded
+        - generic [ref=e326]: 45%
+      - img [ref=e330]
+    - button "HK Huda K. Returnship · Finance CPD · Riyadh, SA Professional Funded 88%" [ref=e334] [cursor=pointer]:
+      - generic [ref=e335]: HK
+      - generic [ref=e336]:
+        - heading "Huda K." [level=4] [ref=e337]
+        - generic [ref=e338]: Returnship · Finance CPD · Riyadh, SA
+      - generic [ref=e339]: Professional
+      - generic [ref=e342]:
+        - generic [ref=e343]: Funded
+        - generic [ref=e344]: 88%
+      - img [ref=e348]
+  - contentinfo [ref=e351]:
+    - generic [ref=e352]:
+      - generic [ref=e353]:
+        - generic [ref=e354]:
+          - link "Ethos Community™" [ref=e355] [cursor=pointer]:
+            - /url: /
+            - text: Ethos Community™
+          - paragraph [ref=e357]: A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.
+        - generic [ref=e358]:
+          - heading "Platform" [level=5] [ref=e359]
+          - list [ref=e360]:
+            - listitem [ref=e361]:
+              - link "Supporter Dashboard" [ref=e362] [cursor=pointer]:
+                - /url: /supporter
+            - listitem [ref=e363]:
+              - link "Impact Dashboard" [ref=e364] [cursor=pointer]:
+                - /url: /supporter/impact
+            - listitem [ref=e365]:
+              - link "Beneficiary Cases" [ref=e366] [cursor=pointer]:
+                - /url: /supporter/cases/maryam
+            - listitem [ref=e367]:
+              - link "Partner Directory" [ref=e368] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e369]:
+          - heading "Verticals" [level=5] [ref=e370]
+          - list [ref=e371]:
+            - listitem [ref=e372]:
+              - link "Education & CPD" [ref=e373] [cursor=pointer]:
+                - /url: /supporter/education
+            - listitem [ref=e374]:
+              - link "Healthcare & Takaful" [ref=e375] [cursor=pointer]:
+                - /url: /supporter/healthcare
+            - listitem [ref=e376]:
+              - link "SME Advisory" [ref=e377] [cursor=pointer]:
+                - /url: /supporter/sme
+            - listitem [ref=e378]:
+              - link "Women & Workforce" [ref=e379] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e380]:
+          - heading "Organisation" [level=5] [ref=e381]
+          - list [ref=e382]:
+            - listitem [ref=e383]:
+              - link "About Kushian™" [ref=e384] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e385]:
+              - link "Founder" [ref=e386] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e387]:
+              - link "Press & Media" [ref=e388] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e389]:
+              - link "Contact" [ref=e390] [cursor=pointer]:
+                - /url: "#"
+      - paragraph [ref=e391]: Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.
+      - generic [ref=e392]:
+        - generic [ref=e393]: © 2026 Ethos Community™
+        - generic [ref=e394]: Demo · v0.1 · MVP Prototype
+  - generic [ref=e395]: Prototype · Demo Only

@@ -1,0 +1,318 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Ethos Community™" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: Ethos Community™
+        - generic [ref=e9]: Kushian™
+      - generic [ref=e10]:
+        - generic [ref=e11]: Supporter
+        - generic [ref=e12]: Dashboard
+      - generic [ref=e13]:
+        - group [ref=e14]:
+          - generic "Sections" [ref=e15] [cursor=pointer]
+        - group [ref=e16]:
+          - generic "Supporter" [ref=e17] [cursor=pointer]
+        - link "Create Case" [ref=e18] [cursor=pointer]:
+          - /url: /create
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]: Supporter Dashboard · Live Cohort
+        - heading "Welcome back, Dr Sarah." [level=1] [ref=e24]:
+          - text: Welcome back,
+          - emphasis [ref=e25]: Dr Sarah.
+        - generic [ref=e26]:
+          - button "SM Sarah" [ref=e27] [cursor=pointer]:
+            - generic [ref=e28]: SM
+            - text: Sarah
+          - button "OI Osman" [ref=e29] [cursor=pointer]:
+            - generic [ref=e30]: OI
+            - text: Osman
+          - button "KA Khalid" [ref=e31] [cursor=pointer]:
+            - generic [ref=e32]: KA
+            - text: Khalid
+          - button "HY Hassan" [ref=e33] [cursor=pointer]:
+            - generic [ref=e34]: HY
+            - text: Hassan
+      - generic [ref=e35]:
+        - generic [ref=e36]: Active session
+        - generic [ref=e37]: Dr Sarah Mahmoud
+        - generic [ref=e38]: Consultant Cardiologist · Manchester, UK
+        - generic [ref=e39]:
+          - button "Settings" [ref=e40] [cursor=pointer]
+          - link "New pledge" [ref=e41] [cursor=pointer]:
+            - /url: /create
+            - img [ref=e42]
+            - text: New pledge
+    - link "Create New Case" [ref=e44] [cursor=pointer]:
+      - /url: /create
+      - img [ref=e45]
+      - text: Create New Case
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]: Total Pledged · YTD
+        - generic [ref=e50]: $0
+        - generic [ref=e51]: ↑ 24% vs last quarter
+      - generic [ref=e52]:
+        - generic [ref=e53]: Active Cases
+        - generic [ref=e54]: "0"
+        - generic [ref=e55]: 2 awaiting verification
+      - generic [ref=e56]:
+        - generic [ref=e57]: Lives Reached
+        - generic [ref=e58]: "0"
+        - generic [ref=e59]: ↑ 6 this month
+      - generic [ref=e60]:
+        - generic [ref=e61]: Partner Verifications
+        - generic [ref=e62]: "0"
+        - generic [ref=e63]: All up to date
+  - generic [ref=e65]:
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - button "All cases · 6" [ref=e68] [cursor=pointer]
+        - button "Verified · 3" [ref=e69] [cursor=pointer]
+        - button "Urgent · 1" [ref=e70] [cursor=pointer]
+        - button "Pending · 1" [ref=e71] [cursor=pointer]
+        - button "Complete · 1" [ref=e72] [cursor=pointer]
+        - button "Export" [ref=e73] [cursor=pointer]:
+          - img [ref=e74]
+          - text: Export
+        - button "More filters" [ref=e76] [cursor=pointer]:
+          - img [ref=e77]
+          - text: More filters
+      - button "Education Maryam A. Year 9 student, displaced from Omdurman Cairo, EG Since Sept 2025 Case K-2384 Family $3,840 / $4,200 91% 12 supporters Verified · Active" [ref=e79] [cursor=pointer]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - img [ref=e83]
+            - text: Education
+          - heading "Maryam A." [level=4] [ref=e86]
+          - generic [ref=e87]: Year 9 student, displaced from Omdurman
+          - generic [ref=e88]:
+            - generic [ref=e89]:
+              - img [ref=e90]
+              - text: Cairo, EG
+            - generic [ref=e93]:
+              - img [ref=e94]
+              - text: Since Sept 2025
+            - generic [ref=e96]:
+              - text: Case K-2384
+              - generic [ref=e97]: Family
+        - generic [ref=e98]:
+          - generic [ref=e99]:
+            - generic [ref=e100]: $3,840 / $4,200
+            - generic [ref=e101]: 91%
+          - generic [ref=e104]: 12 supporters
+        - generic [ref=e106]: Verified · Active
+        - img [ref=e109]
+      - button "Family Support Awad Family 5 dependents, father seeking work Kampala, UG Since Jul 2025 Case K-1908 Family $6,240 / $9,600 65% 8 supporters Verified · Active" [ref=e113] [cursor=pointer]:
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - img [ref=e117]
+            - text: Family Support
+          - heading "Awad Family" [level=4] [ref=e122]
+          - generic [ref=e123]: 5 dependents, father seeking work
+          - generic [ref=e124]:
+            - generic [ref=e125]:
+              - img [ref=e126]
+              - text: Kampala, UG
+            - generic [ref=e129]:
+              - img [ref=e130]
+              - text: Since Jul 2025
+            - generic [ref=e132]:
+              - text: Case K-1908
+              - generic [ref=e133]: Family
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - generic [ref=e136]: $6,240 / $9,600
+            - generic [ref=e137]: 65%
+          - generic [ref=e140]: 8 supporters
+        - generic [ref=e142]: Verified · Active
+        - img [ref=e145]
+      - button "SME Recovery Dr Afaf O. Dental clinic relocation advisory Sharjah, AE Since Jan 2026 Case K-3014 SME $12,400 / $18,000 69% 4 supporters Verified · Active" [ref=e149] [cursor=pointer]:
+        - generic [ref=e151]:
+          - generic [ref=e152]:
+            - img [ref=e153]
+            - text: SME Recovery
+          - heading "Dr Afaf O." [level=4] [ref=e156]
+          - generic [ref=e157]: Dental clinic relocation advisory
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - img [ref=e160]
+              - text: Sharjah, AE
+            - generic [ref=e163]:
+              - img [ref=e164]
+              - text: Since Jan 2026
+            - generic [ref=e166]:
+              - text: Case K-3014
+              - generic [ref=e167]: SME
+        - generic [ref=e168]:
+          - generic [ref=e169]:
+            - generic [ref=e170]: $12,400 / $18,000
+            - generic [ref=e171]: 69%
+          - generic [ref=e174]: 4 supporters
+        - generic [ref=e176]: Verified · Active
+        - img [ref=e179]
+      - button "Healthcare Yasmin H. Hospitalization · cardiac surgery Khartoum, SD Since Mar 2026 Case K-2756 Health $4,200 / $8,400 50% 6 supporters Urgent · 48h remaining" [ref=e183] [cursor=pointer]:
+        - generic [ref=e185]:
+          - generic [ref=e186]:
+            - img [ref=e187]
+            - text: Healthcare
+          - heading "Yasmin H." [level=4] [ref=e190]
+          - generic [ref=e191]: Hospitalization · cardiac surgery
+          - generic [ref=e192]:
+            - generic [ref=e193]:
+              - img [ref=e194]
+              - text: Khartoum, SD
+            - generic [ref=e197]:
+              - img [ref=e198]
+              - text: Since Mar 2026
+            - generic [ref=e200]:
+              - text: Case K-2756
+              - generic [ref=e201]: Health
+        - generic [ref=e202]:
+          - generic [ref=e203]:
+            - generic [ref=e204]: $4,200 / $8,400
+            - generic [ref=e205]: 50%
+          - generic [ref=e208]: 6 supporters
+        - generic [ref=e210]: Urgent · 48h remaining
+        - img [ref=e213]
+      - button "Education Ibrahim Engineering Cohort 12 graduate engineers · CPD return-track Riyadh, SA Since Aug 2025 Case K-2102 Education $14,400 / $14,400 100% 22 supporters Complete" [ref=e217] [cursor=pointer]:
+        - generic [ref=e219]:
+          - generic [ref=e220]:
+            - img [ref=e221]
+            - text: Education
+          - heading "Ibrahim Engineering Cohort" [level=4] [ref=e224]
+          - generic [ref=e225]: 12 graduate engineers · CPD return-track
+          - generic [ref=e226]:
+            - generic [ref=e227]:
+              - img [ref=e228]
+              - text: Riyadh, SA
+            - generic [ref=e231]:
+              - img [ref=e232]
+              - text: Since Aug 2025
+            - generic [ref=e234]:
+              - text: Case K-2102
+              - generic [ref=e235]: Education
+        - generic [ref=e236]:
+          - generic [ref=e237]:
+            - generic [ref=e238]: $14,400 / $14,400
+            - generic [ref=e239]: 100%
+          - generic [ref=e242]: 22 supporters
+        - generic [ref=e244]: Complete
+        - img [ref=e247]
+      - button "Women & Workforce Halima M. Women's returnship programme · finance Doha, QA Since Feb 2026 Case K-2890 Women $1,800 / $3,600 50% 3 supporters Pending verification" [ref=e251] [cursor=pointer]:
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - img [ref=e255]
+            - text: Women & Workforce
+          - heading "Halima M." [level=4] [ref=e257]
+          - generic [ref=e258]: Women's returnship programme · finance
+          - generic [ref=e259]:
+            - generic [ref=e260]:
+              - img [ref=e261]
+              - text: Doha, QA
+            - generic [ref=e264]:
+              - img [ref=e265]
+              - text: Since Feb 2026
+            - generic [ref=e267]:
+              - text: Case K-2890
+              - generic [ref=e268]: Women
+        - generic [ref=e269]:
+          - generic [ref=e270]:
+            - generic [ref=e271]: $1,800 / $3,600
+            - generic [ref=e272]: 50%
+          - generic [ref=e275]: 3 supporters
+        - generic [ref=e277]: Pending verification
+        - img [ref=e280]
+    - complementary [ref=e283]:
+      - generic [ref=e284]:
+        - generic [ref=e285]: Activity feed
+        - generic [ref=e286]:
+          - generic [ref=e287]: 2h
+          - generic [ref=e288]: Cairo school partner posted Term 2 attendance attestation for Maryam A. · 100% present
+        - generic [ref=e289]:
+          - generic [ref=e290]: 1d
+          - generic [ref=e291]: Hospitalization milestone reached for Yasmin H. · Surgery scheduled 12 May 2026
+        - generic [ref=e292]:
+          - generic [ref=e293]: 2d
+          - generic [ref=e294]: Dr Afaf O. lease signed · clinic fit-out begins 15 May 2026
+        - generic [ref=e295]:
+          - generic [ref=e296]: 4d
+          - generic [ref=e297]: 8 new diaspora supporters joined the Manchester chapter
+        - generic [ref=e298]:
+          - generic [ref=e299]: 1w
+          - generic [ref=e300]: Ibrahim cohort graduation ceremony · 12 of 12 placed
+      - generic [ref=e301]:
+        - generic [ref=e302]: Featured this month
+        - heading "Manchester diaspora circle" [level=4] [ref=e303]
+        - paragraph [ref=e304]: 32 supporters from the NHS Sudanese physicians network are co-funding 4 hospitalization cases this quarter. Join their pledge.
+        - button "Join the circle" [ref=e305] [cursor=pointer]:
+          - text: Join the circle
+          - img [ref=e306]
+      - generic [ref=e308]:
+        - generic [ref=e309]: Suggested for you
+        - heading "Healthcare verticals" [level=4] [ref=e310]
+        - paragraph [ref=e311]: Based on your medical background, 3 hospitalization cases are seeking clinical attestation from a consultant cardiologist.
+        - link "View healthcare cases" [ref=e312] [cursor=pointer]:
+          - /url: /supporter/healthcare
+          - text: View healthcare cases
+          - img [ref=e313]
+  - contentinfo [ref=e315]:
+    - generic [ref=e316]:
+      - generic [ref=e317]:
+        - generic [ref=e318]:
+          - link "Ethos Community™" [ref=e319] [cursor=pointer]:
+            - /url: /
+            - text: Ethos Community™
+          - paragraph [ref=e321]: A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.
+        - generic [ref=e322]:
+          - heading "Platform" [level=5] [ref=e323]
+          - list [ref=e324]:
+            - listitem [ref=e325]:
+              - link "Supporter Dashboard" [ref=e326] [cursor=pointer]:
+                - /url: /supporter
+            - listitem [ref=e327]:
+              - link "Impact Dashboard" [ref=e328] [cursor=pointer]:
+                - /url: /supporter/impact
+            - listitem [ref=e329]:
+              - link "Beneficiary Cases" [ref=e330] [cursor=pointer]:
+                - /url: /supporter/cases/maryam
+            - listitem [ref=e331]:
+              - link "Partner Directory" [ref=e332] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e333]:
+          - heading "Verticals" [level=5] [ref=e334]
+          - list [ref=e335]:
+            - listitem [ref=e336]:
+              - link "Education & CPD" [ref=e337] [cursor=pointer]:
+                - /url: /supporter/education
+            - listitem [ref=e338]:
+              - link "Healthcare & Takaful" [ref=e339] [cursor=pointer]:
+                - /url: /supporter/healthcare
+            - listitem [ref=e340]:
+              - link "SME Advisory" [ref=e341] [cursor=pointer]:
+                - /url: /supporter/sme
+            - listitem [ref=e342]:
+              - link "Women & Workforce" [ref=e343] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e344]:
+          - heading "Organisation" [level=5] [ref=e345]
+          - list [ref=e346]:
+            - listitem [ref=e347]:
+              - link "About Kushian™" [ref=e348] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e349]:
+              - link "Founder" [ref=e350] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e351]:
+              - link "Press & Media" [ref=e352] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e353]:
+              - link "Contact" [ref=e354] [cursor=pointer]:
+                - /url: "#"
+      - paragraph [ref=e355]: Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.
+      - generic [ref=e356]:
+        - generic [ref=e357]: © 2026 Ethos Community™
+        - generic [ref=e358]: Demo · v0.1 · MVP Prototype
+  - generic [ref=e359]: Prototype · Demo Only

@@ -8,6 +8,7 @@ import Photo from '../components/Photo.jsx';
 import Checklist from '../components/Checklist.jsx';
 import CaseProgressBar from '../components/CaseProgressBar.jsx';
 import PurposeBadge from '../components/PurposeBadge.jsx';
+import '../../supporter/product-traders.css';
 
 const PRODUCTS = [
   { name: "Sesame",     icon: "sme",     volume: "520,000 MT/yr", demand: "high",   img: "../images/sesame.png", desc: "Sudan's largest agricultural export. Key global input for tahini, oil and food manufacturing. Supply disrupted." },

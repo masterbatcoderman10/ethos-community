@@ -1,0 +1,317 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Ethos Community™" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: Ethos Community™
+        - generic [ref=e9]: Kushian™
+      - generic [ref=e10]:
+        - generic [ref=e11]: Supporter
+        - generic [ref=e12]: Impact
+      - generic [ref=e13]:
+        - group [ref=e14]:
+          - generic "Sections" [ref=e15] [cursor=pointer]
+        - group [ref=e16]:
+          - generic "Supporter" [ref=e17] [cursor=pointer]
+        - link "Create Case" [ref=e18] [cursor=pointer]:
+          - /url: /create
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]: § Impact dashboard · Live ledger · Q2 2026
+        - heading "3,892 lives. Every payout, traceable." [level=1] [ref=e24]:
+          - text: 3,892 lives.
+          - emphasis [ref=e25]: Every payout, traceable.
+        - paragraph [ref=e26]: The Kushian™ Impact Ledger publishes every disbursement, every partner attestation and every Sharia audit — in real time. Independent quarterly review by the Sudan Doctors Network and Takaful Re-insurance Co.
+      - generic [ref=e28]:
+        - generic [ref=e29]: Kushian™ beneficiary community, Q2 2026
+        - generic [ref=e30]:
+          - generic [ref=e31]: BENEFICIARIES · 14 COUNTRIES
+          - generic [ref=e32]: "4 : 5"
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Verified Support Facilitated
+          - generic [ref=e38]: $0
+        - generic [ref=e39]: Across all verified cases, verticals and corridors · Updated monthly
+      - generic [ref=e40]:
+        - generic [ref=e41]: "0"
+        - generic [ref=e42]: Lives reached
+        - generic [ref=e43]: ↑ 412 this quarter
+      - generic [ref=e44]:
+        - generic [ref=e46]: $0.0m
+        - generic [ref=e47]: Capital structured
+        - generic [ref=e48]: ↑ 18% YoY
+      - generic [ref=e49]:
+        - generic [ref=e50]: "0"
+        - generic [ref=e51]: Jobs supported
+        - generic [ref=e52]: ↑ 64 this quarter
+      - generic [ref=e53]:
+        - generic [ref=e55]: 0%
+        - generic [ref=e56]: Year-1 retention
+        - generic [ref=e57]: Stable
+      - generic [ref=e58]:
+        - generic [ref=e59]: "0"
+        - generic [ref=e60]: Women Reached
+      - generic [ref=e61]:
+        - generic [ref=e62]: "0"
+        - generic [ref=e63]: Students Supported
+      - generic [ref=e64]:
+        - generic [ref=e65]: "0"
+        - generic [ref=e66]: Healthcare Cases
+  - generic [ref=e68]:
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e71]: § Vertical breakdown
+        - heading "Where pledges land." [level=2] [ref=e72]
+      - paragraph [ref=e73]: Active beneficiaries by Kushian™ vertical, Q2 2026. Most cases are co-funded across two or more verticals — the totals reflect lead vertical only.
+    - generic [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e77]: Education & Mentorship
+        - generic [ref=e79]: 142 cases
+        - generic [ref=e80]: Family Support
+        - generic [ref=e82]: 96 cases
+        - generic [ref=e83]: SME Recovery
+        - generic [ref=e85]: 38 cases
+        - generic [ref=e86]: Healthcare & Takaful
+        - generic [ref=e88]: 124 cases
+        - generic [ref=e89]: Women & Workforce
+        - generic [ref=e91]: 68 cases
+        - generic [ref=e92]: Hospitalization
+        - generic [ref=e94]: 18 cases
+      - generic [ref=e96]:
+        - generic [ref=e97]: $ Allocation by use
+        - generic [ref=e98]:
+          - img [ref=e99]
+          - generic [ref=e106]:
+            - generic [ref=e107]:
+              - generic [ref=e109]: Direct beneficiary
+              - strong [ref=e110]: 39%
+            - generic [ref=e111]:
+              - generic [ref=e113]: Partner verification
+              - strong [ref=e114]: 22%
+            - generic [ref=e115]:
+              - generic [ref=e117]: SME deployment
+              - strong [ref=e118]: 18%
+            - generic [ref=e119]:
+              - generic [ref=e121]: Programme operations
+              - strong [ref=e122]: 12%
+            - generic [ref=e123]:
+              - generic [ref=e125]: Sharia & audit reserve
+              - strong [ref=e126]: 9%
+  - generic [ref=e128]:
+    - generic [ref=e129]:
+      - generic [ref=e130]:
+        - generic [ref=e131]: § Geographic reach
+        - heading "14 countries, one network." [level=2] [ref=e132]
+      - paragraph [ref=e133]: Active beneficiaries by host country — including those still inside Sudan with reinforcement support.
+    - generic [ref=e134]:
+      - generic [ref=e136]:
+        - generic [ref=e137]: "0"
+        - generic [ref=e138]: Sudan
+      - generic [ref=e140]:
+        - generic [ref=e141]: "0"
+        - generic [ref=e142]: Egypt
+      - generic [ref=e144]:
+        - generic [ref=e145]: "0"
+        - generic [ref=e146]: UAE
+      - generic [ref=e148]:
+        - generic [ref=e149]: "0"
+        - generic [ref=e150]: Saudi
+      - generic [ref=e152]:
+        - generic [ref=e153]: "0"
+        - generic [ref=e154]: Qatar
+      - generic [ref=e156]:
+        - generic [ref=e157]: "0"
+        - generic [ref=e158]: Uganda
+      - generic [ref=e160]:
+        - generic [ref=e161]: "0"
+        - generic [ref=e162]: Kenya
+      - generic [ref=e164]:
+        - generic [ref=e165]: "0"
+        - generic [ref=e166]: UK
+      - generic [ref=e168]:
+        - generic [ref=e169]: "0"
+        - generic [ref=e170]: Canada
+      - generic [ref=e172]:
+        - generic [ref=e173]: "0"
+        - generic [ref=e174]: USA
+      - generic [ref=e176]:
+        - generic [ref=e177]: "0"
+        - generic [ref=e178]: Germany
+      - generic [ref=e180]:
+        - generic [ref=e181]: "0"
+        - generic [ref=e182]: Australia
+      - generic [ref=e184]:
+        - generic [ref=e185]: "0"
+        - generic [ref=e186]: France
+      - generic [ref=e188]:
+        - generic [ref=e189]: "0"
+        - generic [ref=e190]: Other
+  - generic [ref=e192]:
+    - generic [ref=e194]:
+      - generic [ref=e195]: § Verticals
+      - heading "Six verticals impacted." [level=2] [ref=e196]
+    - generic [ref=e197]:
+      - generic [ref=e199]:
+        - generic [ref=e200]: Education
+        - generic [ref=e201]: "0"
+        - generic [ref=e202]: Education
+      - generic [ref=e204]:
+        - generic [ref=e205]: Health
+        - generic [ref=e206]: "0"
+        - generic [ref=e207]: Healthcare
+      - generic [ref=e209]:
+        - generic [ref=e210]: Family
+        - generic [ref=e211]: "0"
+        - generic [ref=e212]: Family Support
+      - generic [ref=e214]:
+        - generic [ref=e215]: Women
+        - generic [ref=e216]: "0"
+        - generic [ref=e217]: Women
+      - generic [ref=e219]:
+        - generic [ref=e220]: SME
+        - generic [ref=e221]: "0"
+        - generic [ref=e222]: SME Recovery
+      - generic [ref=e224]:
+        - generic [ref=e225]: Legal
+        - generic [ref=e226]: "0"
+        - generic [ref=e227]: Legal
+  - generic [ref=e229]:
+    - generic [ref=e230]:
+      - generic [ref=e231]:
+        - generic [ref=e232]: § Live ledger · Last 7 days
+        - heading "Every disbursement, on the record." [level=2] [ref=e233]
+      - paragraph [ref=e234]: Public, immutable record of all Kushian™ payouts. Click any case to see partner attestation and Sharia review.
+    - generic [ref=e235]:
+      - generic [ref=e236]:
+        - generic [ref=e237]:
+          - generic [ref=e238]: Date
+          - generic [ref=e239]: Disbursement
+          - generic [ref=e240]: Partner of record
+          - generic [ref=e241]: Amount
+          - generic [ref=e242]: Status
+        - generic [ref=e243]:
+          - generic [ref=e244]: 08 May · 2026
+          - generic [ref=e245]: K-2384 · Maryam A. · Term 2 tuition disbursement
+          - generic [ref=e246]: Al-Manarah School
+          - generic [ref=e247]: $480
+          - generic [ref=e249]: settled
+        - generic [ref=e251]:
+          - generic [ref=e252]: 07 May · 2026
+          - generic [ref=e253]: K-2812 · Awad M. · Quarterly chronic-care payout
+          - generic [ref=e254]: Cleopatra Hospital
+          - generic [ref=e255]: $540
+          - generic [ref=e257]: settled
+        - generic [ref=e259]:
+          - generic [ref=e260]: 06 May · 2026
+          - generic [ref=e261]: K-1908 · Awad family · May household stipend
+          - generic [ref=e262]: Kampala Diaspora Org
+          - generic [ref=e263]: $800
+          - generic [ref=e265]: settled
+        - generic [ref=e267]:
+          - generic [ref=e268]: 06 May · 2026
+          - generic [ref=e269]: K-3014 · Dr Afaf O. · Equipment financing tranche 2
+          - generic [ref=e270]: Sharjah CDR
+          - generic [ref=e271]: $4,800
+          - generic [ref=e273]: settled
+        - generic [ref=e275]:
+          - generic [ref=e276]: 05 May · 2026
+          - generic [ref=e277]: K-2756 · Yasmin H. · Surgery deposit
+          - generic [ref=e278]: Cleopatra Hospital
+          - generic [ref=e279]: $2,100
+          - generic [ref=e281]: pending
+        - generic [ref=e283]:
+          - generic [ref=e284]: 04 May · 2026
+          - generic [ref=e285]: K-2102 · Ibrahim cohort · Final placement bonus
+          - generic [ref=e286]: Riyadh Eng. Institute
+          - generic [ref=e287]: $6,000
+          - generic [ref=e289]: settled
+        - generic [ref=e291]:
+          - generic [ref=e292]: 03 May · 2026
+          - generic [ref=e293]: K-2890 · Halima M. · CPD module 3 fees
+          - generic [ref=e294]: AAOIFI Pathway
+          - generic [ref=e295]: $360
+          - generic [ref=e297]: settled
+      - button "View full ledger" [ref=e300] [cursor=pointer]:
+        - text: View full ledger
+        - img [ref=e301]
+  - generic [ref=e306]:
+    - generic [ref=e307]:
+      - generic [ref=e308]: § Quarterly audit · Q1 2026
+      - heading "Independent Sharia compliance + impact attestation." [level=3] [ref=e309]
+      - paragraph [ref=e310]: Reviewed by Takaful Re-insurance Co. (Sharia framework) and the Sudan Doctors Network (clinical attestation). Q1 2026 report covers 1,847 disbursements totalling $384,000 across 6 verticals.
+      - generic [ref=e311]:
+        - button "Download Q1 2026 report" [ref=e312] [cursor=pointer]:
+          - text: Download Q1 2026 report
+          - img [ref=e313]
+        - button "Sharia framework" [ref=e315] [cursor=pointer]:
+          - text: Sharia framework
+          - img [ref=e316]
+    - generic [ref=e319]:
+      - generic [ref=e320]:
+        - text: Q1
+        - text: "2026"
+      - generic [ref=e321]:
+        - text: Audited
+        - text: · Sharia ·
+        - text: Compliant
+  - contentinfo [ref=e322]:
+    - generic [ref=e323]:
+      - generic [ref=e324]:
+        - generic [ref=e325]:
+          - link "Ethos Community™" [ref=e326] [cursor=pointer]:
+            - /url: /
+            - text: Ethos Community™
+          - paragraph [ref=e328]: A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.
+        - generic [ref=e329]:
+          - heading "Platform" [level=5] [ref=e330]
+          - list [ref=e331]:
+            - listitem [ref=e332]:
+              - link "Supporter Dashboard" [ref=e333] [cursor=pointer]:
+                - /url: /supporter
+            - listitem [ref=e334]:
+              - link "Impact Dashboard" [ref=e335] [cursor=pointer]:
+                - /url: /supporter/impact
+            - listitem [ref=e336]:
+              - link "Beneficiary Cases" [ref=e337] [cursor=pointer]:
+                - /url: /supporter/cases/maryam
+            - listitem [ref=e338]:
+              - link "Partner Directory" [ref=e339] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e340]:
+          - heading "Verticals" [level=5] [ref=e341]
+          - list [ref=e342]:
+            - listitem [ref=e343]:
+              - link "Education & CPD" [ref=e344] [cursor=pointer]:
+                - /url: /supporter/education
+            - listitem [ref=e345]:
+              - link "Healthcare & Takaful" [ref=e346] [cursor=pointer]:
+                - /url: /supporter/healthcare
+            - listitem [ref=e347]:
+              - link "SME Advisory" [ref=e348] [cursor=pointer]:
+                - /url: /supporter/sme
+            - listitem [ref=e349]:
+              - link "Women & Workforce" [ref=e350] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e351]:
+          - heading "Organisation" [level=5] [ref=e352]
+          - list [ref=e353]:
+            - listitem [ref=e354]:
+              - link "About Kushian™" [ref=e355] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e356]:
+              - link "Founder" [ref=e357] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e358]:
+              - link "Press & Media" [ref=e359] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e360]:
+              - link "Contact" [ref=e361] [cursor=pointer]:
+                - /url: "#"
+      - paragraph [ref=e362]: Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.
+      - generic [ref=e363]:
+        - generic [ref=e364]: © 2026 Ethos Community™
+        - generic [ref=e365]: Demo · v0.1 · MVP Prototype
+  - generic [ref=e366]: Prototype · Demo Only

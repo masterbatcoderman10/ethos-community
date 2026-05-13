@@ -6,7 +6,7 @@ import StatusDot from '../components/StatusDot.jsx';
 import CaseProgressBar from '../components/CaseProgressBar.jsx';
 import Footer from '../components/Footer.jsx';
 import { showToast } from '../components/Toast.jsx';
-import '../styles/beneficiary/documents.css';
+import '../../beneficiary/documents.css';
 
 const DOCS = [
   {

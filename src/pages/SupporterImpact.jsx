@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from '../components/Icon.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
@@ -7,6 +7,7 @@ import Reveal from '../components/Reveal.jsx';
 import Counter from '../components/Counter.jsx';
 import Photo from '../components/Photo.jsx';
 import PurposeBadge from '../components/PurposeBadge.jsx';
+import '../../supporter/impact.css';
 
 const VERT_BREAKDOWN = [
   { lab: "Education & Mentorship", val: 142, of: 500, color: "" },

@@ -10,7 +10,7 @@ import StatusDot from '../components/StatusDot.jsx';
 import MessageBubble from '../components/MessageBubble.jsx';
 import Footer from '../components/Footer.jsx';
 import { showToast } from '../components/Toast.jsx';
-import '../styles/beneficiary/case-detail.css';
+import '../../beneficiary/case-detail.css';
 
 const CASE = {
   id: "K-2890",

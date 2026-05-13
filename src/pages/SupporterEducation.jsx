@@ -6,6 +6,7 @@ import DemoTag from '../components/DemoTag.jsx';
 import Reveal from '../components/Reveal.jsx';
 import Counter from '../components/Counter.jsx';
 import Photo from '../components/Photo.jsx';
+import '../../supporter/education.css';
 
 const MENTORS = [
   { initials: "AT", name: "Dr Amira Tahir", role: "Senior Lecturer · Imperial College", bio: "Civil engineering, water systems and post-conflict infrastructure planning. 8 mentees placed.", skills: ["Engineering","Water","Infrastructure"], match: "94% match" },

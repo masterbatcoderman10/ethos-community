@@ -9,6 +9,7 @@ import Footer from '../components/Footer.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import { showToast } from '../components/Toast.jsx';
 import { Link } from 'react-router-dom';
+import './Landing.css';
 import { getEthosRole, roleToSide, sideDashboardUrl } from '../utils/role.js';
 
 // ─────── Hero variants ───────────────────────────────────────────────────
@@ -233,12 +234,14 @@ export default function Landing() {
 
       {/* IMPACT STRIP */}
       <section className="strip" id="impact">
-        <div className="container strip-grid">
+        <div className="container">
+          <div className="strip-grid">
           <div className="stat"><div className="num"><Counter to={1247}/></div><div className="label">Diaspora Supporters</div></div>
           <div className="stat"><div className="num"><Counter to={3892}/></div><div className="label">Lives Reached</div></div>
           <div className="stat"><div className="num"><Counter to={486}/></div><div className="label">Women Onboarded</div></div>
           <div className="stat"><div className="num"><Counter to={142}/></div><div className="label">SMEs Advised</div></div>
           <div className="stat"><div className="num"><Counter to={14}/></div><div className="label">Countries Served</div></div>
+          </div>
         </div>
       </section>
 

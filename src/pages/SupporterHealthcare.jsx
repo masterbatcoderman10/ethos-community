@@ -7,6 +7,7 @@ import Reveal from '../components/Reveal.jsx';
 import Counter from '../components/Counter.jsx';
 import Photo from '../components/Photo.jsx';
 import PurposeBadge from '../components/PurposeBadge.jsx';
+import '../../supporter/healthcare.css';
 
 const POOLS = [
   { eyebrow: "POOL · TIER I", title: "Acute & Hospitalization", price: 18, period: "/month", desc: "Pooled supporter contributions covering verified hospitalization, surgery and acute care for displaced families.", bullets: ["Average payout $4,200 per case","Verified by clinical partner","48-hour review SLA","Quarterly impact attestation"], featured: false, supporters: 142 },

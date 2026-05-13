@@ -6,7 +6,7 @@ import Icon from '../components/Icon.jsx';
 import CaseProgressBar from '../components/CaseProgressBar.jsx';
 import StatusPill from '../components/StatusPill.jsx';
 import Footer from '../components/Footer.jsx';
-import '../styles/beneficiary/my-cases.css';
+import '../../beneficiary/my-cases.css';
 
 const ALL_BENE_CASES = [
   {

@@ -6,6 +6,7 @@ import Reveal from '../components/Reveal.jsx';
 import Counter from '../components/Counter.jsx';
 import Photo from '../components/Photo.jsx';
 import Checklist from '../components/Checklist.jsx';
+import '../../supporter/sme-advisory.css';
 
 const SMES = [
   { biz: "Healthcare clinic", name: "Dr Afaf Osman", lede: "Dental clinic relocated from Khartoum to Sharjah. Equipment financing, lease structuring and CDR licensing.", raised: 12400, target: 18000, jobs: 6, status: "verified" },

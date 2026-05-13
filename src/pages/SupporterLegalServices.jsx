@@ -8,6 +8,7 @@ import Counter from '../components/Counter.jsx';
 import Photo from '../components/Photo.jsx';
 import Avatar from '../components/Avatar.jsx';
 import PurposeBadge from '../components/PurposeBadge.jsx';
+import '../../supporter/legal-services.css';
 
 const SERVICE_CATS = [
   { icon: "legal",     title: "Legal Advisory",          count: 14, desc: "Litigation, documentation, contract review and family law across GCC, UK and East Africa." },

@@ -1,0 +1,305 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Ethos Community™" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: Ethos Community™
+        - generic [ref=e9]: Kushian™
+      - generic [ref=e10]:
+        - generic [ref=e11]: Supporter
+        - generic [ref=e12]: Women
+      - generic [ref=e13]:
+        - group [ref=e14]:
+          - generic "Sections" [ref=e15] [cursor=pointer]
+        - group [ref=e16]:
+          - generic "Supporter" [ref=e17] [cursor=pointer]
+        - link "Create Case" [ref=e18] [cursor=pointer]:
+          - /url: /create
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]: Vertical 04 · Women Empowerment & Family Resilience
+        - heading "Dignified pathways for women and families." [level=1] [ref=e24]:
+          - text: Dignified pathways for
+          - emphasis [ref=e25]: women
+          - text: and families.
+        - paragraph [ref=e26]: From widows in Kassala to women professionals rebuilding careers in Dubai — verified, purpose-linked support with measurable outcomes.
+        - generic [ref=e27]:
+          - link "Start a Women's Case" [ref=e28] [cursor=pointer]:
+            - /url: /create
+            - text: Start a Women's Case
+            - img [ref=e29]
+          - button "View all cases" [ref=e31] [cursor=pointer]
+      - generic [ref=e33]:
+        - generic [ref=e34]: Women CPD circle, Riyadh 2026
+        - generic [ref=e35]:
+          - generic [ref=e36]: WOMEN · EMPOWERMENT · RESILIENCE
+          - generic [ref=e37]: "4 : 5"
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]: "4"
+        - generic [ref=e41]: Women supported
+      - generic [ref=e42]:
+        - generic [ref=e43]: "1"
+        - generic [ref=e44]: Widows reached
+      - generic [ref=e45]:
+        - generic [ref=e46]: "0"
+        - generic [ref=e47]: Women-led SMEs
+      - generic [ref=e48]:
+        - generic [ref=e50]: 1%
+        - generic [ref=e51]: Case verification rate
+  - generic [ref=e53]:
+    - generic [ref=e55]:
+      - generic [ref=e56]: § Pathways
+      - heading "Five pathways for women-centred support." [level=2] [ref=e57]
+    - generic [ref=e58]:
+      - generic [ref=e60]:
+        - img [ref=e62]
+        - heading "Widows Support" [level=3] [ref=e64]
+        - paragraph [ref=e65]: Living support, legal documentation, residency guidance and family stability for widowed women in Sudan and displacement corridors.
+        - button "Learn more" [ref=e66] [cursor=pointer]:
+          - text: Learn more
+          - img [ref=e67]
+      - generic [ref=e70]:
+        - img [ref=e72]
+        - heading "Female-Headed Household Resilience" [level=3] [ref=e77]
+        - paragraph [ref=e78]: Income generation, children's education support, rent assistance and ambassador-verified need tracking.
+        - button "Learn more" [ref=e79] [cursor=pointer]:
+          - text: Learn more
+          - img [ref=e80]
+      - generic [ref=e83]:
+        - img [ref=e85]
+        - heading "Women CPD & Certification" [level=3] [ref=e88]
+        - paragraph [ref=e89]: Professional development, AAOIFI/industry credential preservation, employability training and mentor matching.
+        - button "Learn more" [ref=e90] [cursor=pointer]:
+          - text: Learn more
+          - img [ref=e91]
+      - generic [ref=e94]:
+        - img [ref=e96]
+        - heading "Women-Led SME Support" [level=3] [ref=e99]
+        - paragraph [ref=e100]: Business setup, licensing guidance, finance-readiness and marketplace access for women entrepreneurs.
+        - button "Learn more" [ref=e101] [cursor=pointer]:
+          - text: Learn more
+          - img [ref=e102]
+      - generic [ref=e105]:
+        - img [ref=e107]
+        - heading "Family Resilience" [level=3] [ref=e112]
+        - paragraph [ref=e113]: Combined health, education and living support for vulnerable families through a single verified case.
+        - button "Learn more" [ref=e114] [cursor=pointer]:
+          - text: Learn more
+          - img [ref=e115]
+  - generic [ref=e118]:
+    - generic [ref=e119]:
+      - generic [ref=e120]:
+        - generic [ref=e121]: § Active Cases
+        - heading "Women supported right now." [level=2] [ref=e122]
+      - link "View Halima's profile" [ref=e123] [cursor=pointer]:
+        - /url: /supporter/cases/halima
+        - text: View Halima's profile
+        - img [ref=e124]
+    - generic [ref=e126]:
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - generic [ref=e130]: K-2890
+          - generic [ref=e131]: Women
+        - heading "Halima M." [level=4] [ref=e132]
+        - generic [ref=e133]:
+          - img [ref=e134]
+          - text: Dubai → Riyadh
+        - paragraph [ref=e137]: Finance returnship · AAOIFI CPD pathway · Mentor-matched
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e140]: $6,200 raised
+            - generic [ref=e141]: $2,800 to go
+          - progressbar "69% funded" [ref=e142]
+        - link "View profile" [ref=e144] [cursor=pointer]:
+          - /url: /supporter/cases/halima
+          - text: View profile
+          - img [ref=e145]
+      - generic [ref=e148]:
+        - generic [ref=e149]:
+          - generic [ref=e150]: K-3120
+          - generic [ref=e151]: Family
+        - heading "Fatima A." [level=4] [ref=e152]
+        - generic [ref=e153]:
+          - img [ref=e154]
+          - text: Kassala, Sudan
+        - paragraph [ref=e157]: Widowed mother of 3 · Living + children's education support
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - generic [ref=e160]: $2,800 raised
+            - generic [ref=e161]: $5,200 to go
+          - progressbar "35% funded" [ref=e162]
+        - button "Support this case" [ref=e164] [cursor=pointer]:
+          - text: Support this case
+          - img [ref=e165]
+      - generic [ref=e168]:
+        - generic [ref=e169]:
+          - generic [ref=e170]: K-3275
+          - generic [ref=e171]: Women
+        - heading "Amira A." [level=4] [ref=e172]
+        - generic [ref=e173]:
+          - img [ref=e174]
+          - text: Cairo, Egypt
+        - paragraph [ref=e177]: Displaced nurse · CPD recertification pathway · CCHM target
+        - generic [ref=e178]:
+          - generic [ref=e179]:
+            - generic [ref=e180]: $1,400 raised
+            - generic [ref=e181]: $3,600 to go
+          - progressbar "28% funded" [ref=e182]
+        - button "Support this case" [ref=e184] [cursor=pointer]:
+          - text: Support this case
+          - img [ref=e185]
+      - generic [ref=e188]:
+        - generic [ref=e189]:
+          - generic [ref=e190]: K-3401
+          - generic [ref=e191]: SME
+        - heading "Nour H." [level=4] [ref=e192]
+        - generic [ref=e193]:
+          - img [ref=e194]
+          - text: Omdurman, Sudan
+        - paragraph [ref=e197]: Women-led textile cooperative · Export-readiness + market access
+        - generic [ref=e198]:
+          - generic [ref=e199]:
+            - generic [ref=e200]: $3,600 raised
+            - generic [ref=e201]: $8,400 to go
+          - progressbar "30% funded" [ref=e202]
+        - button "Support this case" [ref=e204] [cursor=pointer]:
+          - text: Support this case
+          - img [ref=e205]
+      - generic [ref=e208]:
+        - generic [ref=e209]:
+          - generic [ref=e210]: K-3580
+          - generic [ref=e211]: Family
+        - heading "Samira K." [level=4] [ref=e212]
+        - generic [ref=e213]:
+          - img [ref=e214]
+          - text: Port Sudan
+        - paragraph [ref=e217]: Female-headed household · Combined health + education support
+        - generic [ref=e218]:
+          - generic [ref=e219]:
+            - generic [ref=e220]: $900 raised
+            - generic [ref=e221]: $5,600 to go
+          - progressbar "14% funded" [ref=e222]
+        - button "Support this case" [ref=e224] [cursor=pointer]:
+          - text: Support this case
+          - img [ref=e225]
+  - generic [ref=e228]:
+    - generic [ref=e230]:
+      - generic [ref=e231]: § Mentor Matching
+      - heading "Women mentors, diaspora-matched." [level=2] [ref=e232]
+    - generic [ref=e233]:
+      - generic [ref=e235] [cursor=pointer]:
+        - generic [ref=e236]:
+          - generic [ref=e237]: NA
+          - generic [ref=e238]:
+            - strong [ref=e239]: Dr Nadia Ahmed
+            - generic [ref=e240]: Consultant Physician · London
+        - generic [ref=e241]:
+          - generic [ref=e242]: Medicine
+          - generic [ref=e243]: CPD
+          - generic [ref=e244]: UK Pathways
+        - generic [ref=e245]: 97% match
+      - generic [ref=e247] [cursor=pointer]:
+        - generic [ref=e248]:
+          - generic [ref=e249]: LH
+          - generic [ref=e250]:
+            - strong [ref=e251]: Lina Hassan
+            - generic [ref=e252]: Senior Partner · Deloitte Dubai
+        - generic [ref=e253]:
+          - generic [ref=e254]: Finance
+          - generic [ref=e255]: Audit
+          - generic [ref=e256]: GCC
+        - generic [ref=e257]: 93% match
+      - generic [ref=e259] [cursor=pointer]:
+        - generic [ref=e260]:
+          - generic [ref=e261]: RO
+          - generic [ref=e262]:
+            - strong [ref=e263]: Rawan Osman
+            - generic [ref=e264]: Corporate Lawyer · Riyadh
+        - generic [ref=e265]:
+          - generic [ref=e266]: Legal
+          - generic [ref=e267]: Immigration
+          - generic [ref=e268]: Contracts
+        - generic [ref=e269]: 89% match
+      - generic [ref=e271] [cursor=pointer]:
+        - generic [ref=e272]:
+          - generic [ref=e273]: SK
+          - generic [ref=e274]:
+            - strong [ref=e275]: Prof Samia Khalil
+            - generic [ref=e276]: Economics · Georgetown Doha
+        - generic [ref=e277]:
+          - generic [ref=e278]: Economics
+          - generic [ref=e279]: Research
+          - generic [ref=e280]: Mentoring
+        - generic [ref=e281]: 85% match
+  - generic [ref=e285]:
+    - img [ref=e287]
+    - img "Healthcare support" [ref=e291]
+    - generic [ref=e292]:
+      - generic [ref=e293]: Healthcare & Protection
+      - heading "Takaful coverage for women and families" [level=3] [ref=e294]
+      - paragraph [ref=e295]: Cooperative health and family protection plans for widows and female-headed households — through our Takaful partner network.
+    - link "View Takaful Pools" [ref=e296] [cursor=pointer]:
+      - /url: /supporter/healthcare
+      - text: View Takaful Pools
+      - img [ref=e297]
+  - contentinfo [ref=e299]:
+    - generic [ref=e300]:
+      - generic [ref=e301]:
+        - generic [ref=e302]:
+          - link "Ethos Community™" [ref=e303] [cursor=pointer]:
+            - /url: /
+            - text: Ethos Community™
+          - paragraph [ref=e305]: A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.
+        - generic [ref=e306]:
+          - heading "Platform" [level=5] [ref=e307]
+          - list [ref=e308]:
+            - listitem [ref=e309]:
+              - link "Supporter Dashboard" [ref=e310] [cursor=pointer]:
+                - /url: /supporter
+            - listitem [ref=e311]:
+              - link "Impact Dashboard" [ref=e312] [cursor=pointer]:
+                - /url: /supporter/impact
+            - listitem [ref=e313]:
+              - link "Beneficiary Cases" [ref=e314] [cursor=pointer]:
+                - /url: /supporter/cases/maryam
+            - listitem [ref=e315]:
+              - link "Partner Directory" [ref=e316] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e317]:
+          - heading "Verticals" [level=5] [ref=e318]
+          - list [ref=e319]:
+            - listitem [ref=e320]:
+              - link "Education & CPD" [ref=e321] [cursor=pointer]:
+                - /url: /supporter/education
+            - listitem [ref=e322]:
+              - link "Healthcare & Takaful" [ref=e323] [cursor=pointer]:
+                - /url: /supporter/healthcare
+            - listitem [ref=e324]:
+              - link "SME Advisory" [ref=e325] [cursor=pointer]:
+                - /url: /supporter/sme
+            - listitem [ref=e326]:
+              - link "Women & Workforce" [ref=e327] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e328]:
+          - heading "Organisation" [level=5] [ref=e329]
+          - list [ref=e330]:
+            - listitem [ref=e331]:
+              - link "About Kushian™" [ref=e332] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e333]:
+              - link "Founder" [ref=e334] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e335]:
+              - link "Press & Media" [ref=e336] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e337]:
+              - link "Contact" [ref=e338] [cursor=pointer]:
+                - /url: "#"
+      - paragraph [ref=e339]: Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.
+      - generic [ref=e340]:
+        - generic [ref=e341]: © 2026 Ethos Community™
+        - generic [ref=e342]: Demo · v0.1 · MVP Prototype
+  - generic [ref=e343]: Prototype · Demo Only
