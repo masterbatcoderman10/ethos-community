@@ -26,6 +26,14 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
 /* nav */
 .nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);background:rgba(247,244,238,.82);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px;min-width:0}
+/* landing nav — accepted V2: clean bar, underline links, no strip */
+.lnav-bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:60px}
+.lnav-bar-links{display:flex;gap:28px;font-size:14px;color:var(--ink-soft)}
+.lnav-bar-links a{transition:color .15s ease;padding-bottom:3px;border-bottom:1px solid var(--line)}
+.lnav-bar-links a:hover{color:var(--green)}
+.lnav-bar-cta{display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;background:var(--green);color:var(--cream);font-size:13px;font-weight:500;white-space:nowrap;transition:background .2s ease,transform .2s ease}
+.lnav-bar-cta:hover{background:var(--green-2);transform:translateY(-1px)}
+@media(max-width:880px){.lnav-bar-links{display:none}}
 .logo{display:flex;align-items:center;gap:10px;min-width:0;font-family:var(--ff-display);font-size:22px;letter-spacing:var(--display-tracking)}
 .logo-mark{width:28px;height:28px;border-radius:50%;background:var(--green);position:relative}
 .logo-mark::after{content:"";position:absolute;inset:6px;border-radius:50%;border:1.5px solid var(--gold)}
