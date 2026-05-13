@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import Reveal from '../components/Reveal.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import { showToast } from '../components/Toast.jsx';
-import { getEthosRole, setEthosRole, roleToSide, sideDashboardUrl } from '../utils/role.js';
-import '../role-chooser.css';
+import { getEthosRole, setEthosRole, roleToSide } from '../utils/role.js';
+import '../../role-chooser.css';
 
 const ROLES = [
   { id: "supporter", title: "Diaspora Supporter", lede: "Direct, traceable support to your family and community.", detail: "Pledge to verified beneficiaries across six service verticals. Receive milestone updates, audited disbursement records, and impact statements you can share with family or employer." },
@@ -46,6 +47,7 @@ const RoleRow = ({ index, role, isSelected, onSelect }) => {
 
 export default function RoleChooser() {
   const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const stored = getEthosRole();
     if (stored && ROLES.some(r => r.id === stored)) setSelected(stored);
@@ -59,10 +61,10 @@ export default function RoleChooser() {
     if (!selected) return;
     setEthosRole(selected);
     const side = roleToSide(selected);
-    const target = side === "beneficiary" ? "beneficiary/dashboard.html" : "supporter/dashboard.html";
+    const target = side === "beneficiary" ? "/beneficiary" : "/supporter";
     const title = ROLES.find(r => r.id === selected)?.title || "selected role";
     showToast(`Continuing as ${title}...`);
-    setTimeout(() => { window.location.href = target; }, 600);
+    setTimeout(() => { navigate(target); }, 600);
   };
   const selectedRole = ROLES.find(r => r.id === selected);
   return (
@@ -91,7 +93,7 @@ export default function RoleChooser() {
             </section>
           </div>
           <footer className={`role-chooser-footer ${selected ? "is-ready" : ""}`}>
-            <a href="landing.html" className="btn-text">Skip — continue as guest <span className="material-symbols-rounded arrow">arrow_forward</span></a>
+            <Link to="/" className="btn-text">Skip — continue as guest <span className="material-symbols-rounded arrow">arrow_forward</span></Link>
             <div className="role-chooser-footer-action">
               <span className="role-chooser-status" aria-live="polite">
                 {selectedRole ? <><span className="role-chooser-status-dot" aria-hidden="true" /> <span className="role-chooser-status-text" key={selectedRole.id}>{selectedRole.title}</span></> : <span className="role-chooser-status-text" key="none">No role selected</span>}

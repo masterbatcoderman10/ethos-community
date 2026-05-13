@@ -8,6 +8,7 @@ import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
 import DemoTag from '../components/DemoTag.jsx';
 import { showToast } from '../components/Toast.jsx';
+import { Link } from 'react-router-dom';
 import { getEthosRole, roleToSide, sideDashboardUrl } from '../utils/role.js';
 
 // ─────── Hero variants ───────────────────────────────────────────────────
@@ -90,9 +91,9 @@ const getStoredRoleSide = (role) => {
 
 const getStoredSideDashboardUrl = (side) => {
   if (typeof sideDashboardUrl === "function") return sideDashboardUrl(side, 0);
-  if (side === "beneficiary") return "beneficiary/dashboard.html";
-  if (side === "supporter") return "supporter/dashboard.html";
-  return "landing.html";
+  if (side === "beneficiary") return "/beneficiary";
+  if (side === "supporter") return "/supporter";
+  return "/";
 };
 
 const ReturningRibbon = () => {
@@ -107,7 +108,7 @@ const ReturningRibbon = () => {
     <div className="returning-ribbon">
       <div className="container returning-ribbon-inner">
         <span className="returning-ribbon-label">Welcome back, {sideLabel}.</span>
-        <a href={href} className="returning-ribbon-link">Return to your dashboard <Icon name="arrow" size={14} /></a>
+        <Link to={href} className="returning-ribbon-link">Return to your dashboard <Icon name="arrow" size={14} /></Link>
       </div>
     </div>
   );
@@ -124,7 +125,7 @@ const LandingFallbackNav = ({ menuOpen, setMenuOpen, onCTA }) => (
         <a href="#founder">About</a>
       </div>
       <div className="nav-cta">
-        <a href="role-chooser.html" className="btn btn-ghost nav-cta-btn">Get Started</a>
+        <Link to="/role" className="btn btn-ghost nav-cta-btn">Get Started</Link>
         <button className="btn btn-primary nav-cta-btn" onClick={onCTA("Support a Case")}>Support a Case <Icon name="arrow"/></button>
         <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
           <Icon name={menuOpen ? "close" : "hamburger"}/>

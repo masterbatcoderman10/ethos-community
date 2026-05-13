@@ -1,29 +1,30 @@
+import { Link } from "react-router-dom";
+
 export default function Footer({ depth = 0 }) {
-  const p = "../".repeat(depth);
   return (
     <footer>
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <a href={`${p}landing.html`} className="logo"><span className="logo-mark"></span> Ethos Community™</a>
+            <Link to="/" className="logo"><span className="logo-mark"></span> Ethos Community™</Link>
             <p>A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.</p>
           </div>
           <div className="footer-col">
             <h5>Platform</h5>
             <ul>
-              <li><a href={`${p}supporter/dashboard.html`}>Supporter Dashboard</a></li>
-              <li><a href={`${p}supporter/impact.html`}>Impact Dashboard</a></li>
-              <li><a href={`${p}supporter/cases/maryam.html`}>Beneficiary Cases</a></li>
+              <li><Link to="/supporter">Supporter Dashboard</Link></li>
+              <li><Link to="/supporter/impact">Impact Dashboard</Link></li>
+              <li><Link to="/supporter/cases/maryam">Beneficiary Cases</Link></li>
               <li><a href="#">Partner Directory</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Verticals</h5>
             <ul>
-              <li><a href={`${p}supporter/education.html`}>Education & CPD</a></li>
-              <li><a href={`${p}supporter/healthcare.html`}>Healthcare & Takaful</a></li>
-              <li><a href={`${p}supporter/sme-advisory.html`}>SME Advisory</a></li>
-              <li><a href="#">Women & Workforce</a></li>
+              <li><Link to="/supporter/education">Education &amp; CPD</Link></li>
+              <li><Link to="/supporter/healthcare">Healthcare &amp; Takaful</Link></li>
+              <li><Link to="/supporter/sme">SME Advisory</Link></li>
+              <li><a href="#">Women &amp; Workforce</a></li>
             </ul>
           </div>
           <div className="footer-col">
@@ -31,7 +32,7 @@ export default function Footer({ depth = 0 }) {
             <ul>
               <li><a href="#">About Kushian™</a></li>
               <li><a href="#">Founder</a></li>
-              <li><a href="#">Press & Media</a></li>
+              <li><a href="#">Press &amp; Media</a></li>
               <li><a href="#">Contact</a></li>
             </ul>
           </div>

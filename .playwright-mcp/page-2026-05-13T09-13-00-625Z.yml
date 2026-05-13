@@ -1,0 +1,326 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Ethos Community™" [ref=e6] [cursor=pointer]:
+          - /url: landing.html
+          - generic [ref=e8]: Ethos Community™
+        - generic [ref=e9]: Kushian™
+      - generic [ref=e10]:
+        - generic [ref=e11]: Platform
+        - generic [ref=e12]: Home
+      - generic [ref=e13]:
+        - group [ref=e14]:
+          - generic "Sections" [ref=e15] [cursor=pointer]
+        - group [ref=e16]:
+          - generic "Account" [ref=e17] [cursor=pointer]
+        - link "Create Case" [ref=e18] [cursor=pointer]:
+          - /url: case-creation.html
+  - generic [ref=e19]: Prototype · Demo Only
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - generic [ref=e23]: Ethos Community™ · Kushian™ Sudan Pilot
+      - generic [ref=e24]:
+        - generic [ref=e25]: Kushian™ · Sudan Pilot
+        - text: Sudan Pilot
+      - heading "A diaspora rebuilding Sudan, one family at a time." [level=1] [ref=e26]:
+        - text: A diaspora
+        - text: rebuilding Sudan,
+        - emphasis [ref=e27]: one family at a time.
+      - paragraph [ref=e28]: Ethos Community™ is a Connection-as-a-Service platform linking Sudanese diaspora supporters in the GCC, UK, Europe and USA with displaced families, students, women professionals and SMEs through partner-enabled support — under the Kushian™ pilot.
+      - generic [ref=e29]:
+        - button "Support a Case" [ref=e30] [cursor=pointer]:
+          - text: Support a Case
+          - img [ref=e31]
+        - button "Find Services" [ref=e33] [cursor=pointer]
+        - button "View Impact →" [ref=e34] [cursor=pointer]:
+          - text: View Impact
+          - generic [ref=e35]: →
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: "14"
+          - text: countries served
+        - generic [ref=e39]:
+          - generic [ref=e40]: "6"
+          - text: service verticals
+        - generic [ref=e41]:
+          - generic [ref=e42]: "2026"
+          - text: pilot cohort
+    - generic [ref=e44]:
+      - generic [ref=e45]: Diaspora gathering, Riyadh — November 2025
+      - generic [ref=e46]:
+        - generic [ref=e47]: DIASPORA · GCC + EUROPE + UK
+        - generic [ref=e48]: "4 : 5"
+  - generic [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e52]: "0"
+      - generic [ref=e53]: Diaspora Supporters
+    - generic [ref=e54]:
+      - generic [ref=e55]: "0"
+      - generic [ref=e56]: Lives Reached
+    - generic [ref=e57]:
+      - generic [ref=e58]: "0"
+      - generic [ref=e59]: Women Onboarded
+    - generic [ref=e60]:
+      - generic [ref=e61]: "0"
+      - generic [ref=e62]: SMEs Advised
+    - generic [ref=e63]:
+      - generic [ref=e64]: "0"
+      - generic [ref=e65]: Countries Served
+  - generic [ref=e67]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - generic [ref=e70]: § 01 / Services
+        - heading "Six verticals, partner-delivered." [level=2] [ref=e71]
+      - paragraph [ref=e72]: Each vertical is operated through verified partners — clinics, universities, advisory firms, Takaful operators and legal counsel — coordinated by the Kushian™ platform under a single beneficiary identity.
+    - generic [ref=e73]:
+      - generic [ref=e74] [cursor=pointer]:
+        - generic [ref=e75]:
+          - generic [ref=e76]: "01"
+          - img [ref=e78]
+        - img [ref=e81]
+        - heading "Education, CPD & Mentorship" [level=3] [ref=e84]
+        - paragraph [ref=e85]: Credential vault, mentor matching, employability training and graduate support — pathways back to study and work for displaced students.
+        - generic [ref=e86]:
+          - generic [ref=e87]: CPD
+          - generic [ref=e88]: Mentorship
+          - generic [ref=e89]: Vault
+      - generic [ref=e90] [cursor=pointer]:
+        - generic [ref=e91]:
+          - generic [ref=e92]: "02"
+          - img [ref=e94]
+        - img [ref=e97]
+        - heading "Healthcare & Takaful Access" [level=3] [ref=e100]
+        - paragraph [ref=e101]: Partner-enabled medical referrals, clinic directory, hospitalization support, and cooperative Takaful workflows for vulnerable cases.
+        - generic [ref=e102]:
+          - generic [ref=e103]: Clinics
+          - generic [ref=e104]: Takaful
+          - generic [ref=e105]: Referrals
+      - generic [ref=e106] [cursor=pointer]:
+        - generic [ref=e107]:
+          - generic [ref=e108]: "03"
+          - img [ref=e110]
+        - img [ref=e113]
+        - heading "Purpose-Linked Family Support" [level=3] [ref=e118]
+        - paragraph [ref=e119]: Verified family and student profiles with document checklists, supporter pledges and transparent purpose-linked status updates.
+        - generic [ref=e120]:
+          - generic [ref=e121]: Pledges
+          - generic [ref=e122]: Verified
+          - generic [ref=e123]: Transparent
+      - generic [ref=e124] [cursor=pointer]:
+        - generic [ref=e125]:
+          - generic [ref=e126]: "04"
+          - img [ref=e128]
+        - img [ref=e131]
+        - heading "Women Empowerment & Workforce" [level=3] [ref=e133]
+        - paragraph [ref=e134]: Skills bridges, returnship tracks and CPD circles for women professionals and graduates seeking remote and relocated employment.
+        - generic [ref=e135]:
+          - generic [ref=e136]: Skills
+          - generic [ref=e137]: Returnship
+          - generic [ref=e138]: CPD
+      - generic [ref=e139] [cursor=pointer]:
+        - generic [ref=e140]:
+          - generic [ref=e141]: "05"
+          - img [ref=e143]
+        - img [ref=e146]
+        - heading "SME Recovery Finance & Advisory" [level=3] [ref=e149]
+        - paragraph [ref=e150]: Advisory journeys for relocated Sudanese businesses — Ibrahim's audit practice, Ali's restaurant, Atif's grocery, Dr Afaf's clinic.
+        - generic [ref=e151]:
+          - generic [ref=e152]: Advisory
+          - generic [ref=e153]: Recovery
+          - generic [ref=e154]: Diaspora
+      - generic [ref=e155] [cursor=pointer]:
+        - generic [ref=e156]:
+          - generic [ref=e157]: "06"
+          - img [ref=e159]
+        - img [ref=e162]
+        - heading "Legal & Professional Services" [level=3] [ref=e165]
+        - paragraph [ref=e166]: Notarised documents, residency and licensing referrals, Sharia-compliance reviews and pro-bono legal support across host countries.
+        - generic [ref=e167]:
+          - generic [ref=e168]: Legal
+          - generic [ref=e169]: Sharia
+          - generic [ref=e170]: Pro-bono
+  - generic [ref=e172]:
+    - generic [ref=e173]:
+      - generic [ref=e174]:
+        - generic [ref=e175]: § 02 / Featured Case
+        - heading "A single pledge, traced end-to-end." [level=2] [ref=e176]
+      - paragraph [ref=e177]: Every supporter sees the verification trail behind their pledge — beneficiary identity, partner delivery, milestone updates and outcome data. No black boxes.
+    - generic [ref=e178]:
+      - generic [ref=e179]:
+        - generic [ref=e180]: Maryam, 14 — Omdurman → Cairo
+        - generic [ref=e181]: "BENEFICIARY · CASE #K-2384VERIFIED"
+      - generic [ref=e182]:
+        - generic [ref=e183]: Case Study · Education vertical
+        - heading "\"Maryam was one of 200,000 Sudanese girls out of school. Twelve diaspora supporters changed that.\"" [level=3] [ref=e184]
+        - paragraph [ref=e185]: When her family was displaced from Omdurman, Maryam's secondary education stopped. Through Kushian™, twelve supporters across Riyadh, Doha, Manchester and Toronto pledged toward her tuition, books, transport and counselling — coordinated by a verified Cairo school partner.
+        - generic [ref=e186]:
+          - generic [ref=e187]:
+            - generic [ref=e188]: "12"
+            - generic [ref=e189]: Supporters
+          - generic [ref=e190]:
+            - generic [ref=e191]: $3,840
+            - generic [ref=e192]: Pledged · Demo
+          - generic [ref=e193]:
+            - generic [ref=e194]: 9 mo
+            - generic [ref=e195]: Coverage
+        - button "Support a similar case" [ref=e197] [cursor=pointer]:
+          - text: Support a similar case
+          - img [ref=e198]
+  - generic [ref=e201]:
+    - generic [ref=e202]:
+      - generic [ref=e203]:
+        - generic [ref=e204]: § 03 / How it works
+        - heading "Three steps, fully traceable." [level=2] [ref=e205]
+      - paragraph [ref=e206]: A development-finance grade workflow — KYC-verified beneficiaries, partner-delivered services, and reporting your audit committee can defend.
+    - generic [ref=e207]:
+      - generic [ref=e208]:
+        - generic [ref=e209]: "01"
+        - heading "Discover a verified case" [level=4] [ref=e210]
+        - paragraph [ref=e211]: Browse displaced families, students, women in transition and SMEs in recovery — each with documented identity, location and need, verified by a Kushian™ partner on the ground.
+      - generic [ref=e212]:
+        - generic [ref=e213]: "02"
+        - heading "Pledge purpose-linked support" [level=4] [ref=e214]
+        - paragraph [ref=e215]: Allocate a pledge against a defined purpose — tuition, hospitalization, working capital advisory, mentorship hours. Pledges are routed through licensed partners, never held by Ethos.
+      - generic [ref=e216]:
+        - generic [ref=e217]: "03"
+        - heading "Track outcomes, not outputs" [level=4] [ref=e218]
+        - paragraph [ref=e219]: Receive milestone updates, partner attestations and impact metrics. Your supporter dashboard rolls into the Kushian™ portfolio view for diaspora circles and family offices.
+  - generic [ref=e221]:
+    - generic [ref=e222]:
+      - generic [ref=e223]:
+        - generic [ref=e224]: § Ecosystem
+        - heading "An Ecosystem of Trusted Partners" [level=2] [ref=e225]
+      - paragraph [ref=e226]: Ethos Community connects diaspora supporters with verified providers, finance partners and community institutions — a governed ecosystem, not a single service.
+    - generic [ref=e227]:
+      - generic [ref=e228] [cursor=pointer]:
+        - img [ref=e230]
+        - heading "Technology Partner" [level=4] [ref=e233]
+        - paragraph [ref=e234]: iWire — web, mobile, dashboard and integration development.
+      - generic [ref=e235] [cursor=pointer]:
+        - heading "Payment & Fintech Partners" [level=4] [ref=e236]
+        - paragraph [ref=e237]: Regulated payment flows, wallets, cards and remittance integration.
+      - generic [ref=e238] [cursor=pointer]:
+        - img [ref=e240]
+        - heading "Healthcare & Takaful Partners" [level=4] [ref=e243]
+        - paragraph [ref=e244]: Clinics, hospitals, telemedicine providers and cooperative insurance operators.
+      - generic [ref=e245] [cursor=pointer]:
+        - img [ref=e247]
+        - heading "Education & CPD Partners" [level=4] [ref=e250]
+        - paragraph [ref=e251]: Universities, online learning providers and professional certification bodies.
+      - generic [ref=e252] [cursor=pointer]:
+        - img [ref=e254]
+        - heading "Professional Service Partners" [level=4] [ref=e257]
+        - paragraph [ref=e258]: Lawyers, accountants, auditors, tax advisers and immigration specialists.
+      - generic [ref=e259] [cursor=pointer]:
+        - heading "Community Partners" [level=4] [ref=e260]
+        - paragraph [ref=e261]: Diaspora associations, women networks, student groups, NGOs and community ambassadors.
+  - generic [ref=e264]:
+    - generic [ref=e266]: "FOUNDER4 : 5"
+    - generic [ref=e267]:
+      - generic [ref=e268]: § 04 / Founder
+      - blockquote [ref=e269]: “Ethos Community™ exists because the Sudanese diaspora has both the capital and the conviction to rebuild — what was missing was the trusted infrastructure to channel it.
+      - generic [ref=e270]: Dr Hatim El Tahir
+      - generic [ref=e271]: Founder · Ethos Community™ · Kushian™ Sudan Pilot
+      - generic [ref=e272]:
+        - generic [ref=e273]: Former Deloitte · Islamic Finance leadership
+        - generic [ref=e274]: AAOIFI Ethics & Governance Committee
+        - generic [ref=e275]: IIFM Sukuk Working Group
+        - generic [ref=e276]: CISI IFQ accredited training
+        - generic [ref=e277]: Curriculum-development · Takaful
+  - generic [ref=e281]:
+    - generic [ref=e282]: § Business Model
+    - paragraph [ref=e283]:
+      - text: This is not a charity app — it is
+      - emphasis [ref=e284]: scalable human-development infrastructure
+      - text: that converts informal diaspora support into verified, purpose-linked and measurable outcomes.
+    - generic [ref=e285]:
+      - generic [ref=e286]: Platform Fees
+      - generic [ref=e287]: Subscriptions
+      - generic [ref=e288]: Referral Commissions
+      - generic [ref=e289]: Training & CPD
+      - generic [ref=e290]: SME Advisory
+      - generic [ref=e291]: White-Label Licensing
+    - button "Learn about our model" [ref=e292] [cursor=pointer]:
+      - text: Learn about our model
+      - img [ref=e293]
+  - generic [ref=e297]:
+    - heading "Scalable across 57 OIC member countries" [level=3] [ref=e298]
+    - generic [ref=e299]:
+      - generic [ref=e300]: Sudan
+      - generic [ref=e301]: Yemen
+      - generic [ref=e302]: Palestine
+      - generic [ref=e303]: Syria
+      - generic [ref=e304]: Somalia
+      - generic [ref=e305]: Iraq
+      - generic [ref=e306]: Libya
+      - generic [ref=e307]: Pakistan
+      - generic [ref=e308]: Bangladesh
+      - generic [ref=e309]: Indonesia
+      - generic [ref=e310]: Nigeria
+      - generic [ref=e311]: Mali
+  - generic [ref=e314]:
+    - heading "The diaspora is ready. Are you?" [level=2] [ref=e315]
+    - paragraph [ref=e316]: Join the Kushian™ pilot cohort. Pledge to a verified case in under three minutes, or request the Ethos Community™ pitch deck for the IsDB Group Innovation and Startups review.
+    - generic [ref=e317]:
+      - button "Support a Case" [ref=e318] [cursor=pointer]:
+        - text: Support a Case
+        - img [ref=e319]
+      - button "Request pitch deck" [ref=e321] [cursor=pointer]
+  - contentinfo [ref=e322]:
+    - generic [ref=e323]:
+      - generic [ref=e324]:
+        - generic [ref=e325]:
+          - link "Ethos Community™" [ref=e326] [cursor=pointer]:
+            - /url: landing.html
+            - text: Ethos Community™
+          - paragraph [ref=e328]: A Connection-as-a-Service platform connecting Sudanese diaspora supporters with displaced families, students, women professionals and SMEs through verified partner-enabled services.
+        - generic [ref=e329]:
+          - heading "Platform" [level=5] [ref=e330]
+          - list [ref=e331]:
+            - listitem [ref=e332]:
+              - link "Supporter Dashboard" [ref=e333] [cursor=pointer]:
+                - /url: supporter/dashboard.html
+            - listitem [ref=e334]:
+              - link "Impact Dashboard" [ref=e335] [cursor=pointer]:
+                - /url: supporter/impact.html
+            - listitem [ref=e336]:
+              - link "Beneficiary Cases" [ref=e337] [cursor=pointer]:
+                - /url: supporter/cases/maryam.html
+            - listitem [ref=e338]:
+              - link "Partner Directory" [ref=e339] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e340]:
+          - heading "Verticals" [level=5] [ref=e341]
+          - list [ref=e342]:
+            - listitem [ref=e343]:
+              - link "Education & CPD" [ref=e344] [cursor=pointer]:
+                - /url: supporter/education.html
+            - listitem [ref=e345]:
+              - link "Healthcare & Takaful" [ref=e346] [cursor=pointer]:
+                - /url: supporter/healthcare.html
+            - listitem [ref=e347]:
+              - link "SME Advisory" [ref=e348] [cursor=pointer]:
+                - /url: supporter/sme-advisory.html
+            - listitem [ref=e349]:
+              - link "Women & Workforce" [ref=e350] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e351]:
+          - heading "Organisation" [level=5] [ref=e352]
+          - list [ref=e353]:
+            - listitem [ref=e354]:
+              - link "About Kushian™" [ref=e355] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e356]:
+              - link "Founder" [ref=e357] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e358]:
+              - link "Press & Media" [ref=e359] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e360]:
+              - link "Contact" [ref=e361] [cursor=pointer]:
+                - /url: "#"
+      - paragraph [ref=e362]: Prototype for demonstration only. Future financial, insurance, healthcare and payment services will be delivered through licensed partners subject to applicable laws and approvals. Ethos Community™ and Kushian™ are demonstration marks shown for the IsDB Group Innovation and Startups Pitch Competition.
+      - generic [ref=e363]:
+        - generic [ref=e364]: © 2026 Ethos Community™
+        - generic [ref=e365]: Demo · v0.1 · MVP Prototype

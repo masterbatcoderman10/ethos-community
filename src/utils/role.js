@@ -24,14 +24,8 @@ export const clearEthosRole = () => {
   try { localStorage.removeItem("ethos.role"); } catch (e) {}
 };
 
-const SIDE_ROOT = {
-  supporter: "supporter/",
-  beneficiary: "beneficiary/"
-};
-
 export const sideDashboardUrl = (side, fromDepth = 0) => {
-  const prefix = fromDepth === 0 ? "" : "../".repeat(fromDepth);
-  const root = SIDE_ROOT[side];
-  if (!root) return `${prefix}landing.html`;
-  return `${prefix}${root}dashboard.html`;
+  if (side === "beneficiary") return "/beneficiary";
+  if (side === "supporter") return "/supporter";
+  return "/";
 };

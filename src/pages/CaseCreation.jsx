@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
@@ -11,7 +12,7 @@ import FormTextarea from '../components/FormTextarea.jsx';
 import UploadZone from '../components/UploadZone.jsx';
 import { showToast } from '../components/Toast.jsx';
 import { getEthosSide, sideDashboardUrl } from '../utils/role.js';
-import '../case-creation.css';
+import '../../case-creation.css';
 
 const SUPPORT_TYPES = [
   { id: "health", icon: "health", title: "Healthcare", desc: "Clinic referrals, telemedicine, hospitalization, and Takaful pathways." },
@@ -238,6 +239,7 @@ export default function CaseCreation() {
   const [need, setNeed] = useState({ description: "" });
   const [funding, setFunding] = useState({ amount: "", frequency: "" });
   const [caseId] = useState(generateCaseId);
+  const navigate = useNavigate();
 
   const stepContent = [
     <Step1Support value={supportType} onSelect={setSupportType} />,
@@ -284,7 +286,7 @@ export default function CaseCreation() {
     const side = getEthosSide() || "supporter";
     const target = sideDashboardUrl(side, 0);
     showToast(`Case ${caseId} submitted for verification`);
-    setTimeout(() => { window.location.href = target; }, 1200);
+    setTimeout(() => { navigate(target); }, 1200);
   };
 
   return (
@@ -323,7 +325,7 @@ export default function CaseCreation() {
           </footer>
 
           <div className="cc-cancel">
-            <a href={dashboardHref} className="btn-text">Cancel and return to dashboard</a>
+            <Link to={dashboardHref} className="btn-text">Cancel and return to dashboard</Link>
           </div>
         </div>
       </main>
