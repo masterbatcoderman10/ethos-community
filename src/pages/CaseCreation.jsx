@@ -84,6 +84,8 @@ const SUPPORTER_STEPS = ["Support type", "Beneficiary", "Need", "Funding", "Conf
 const RECEIVER_STEPS = ["Situation", "Outcome", "Documents", "Funding", "Confirm"];
 
 const generateCaseId = () => `K-${3500 + Math.floor(Math.random() * 500)}`;
+const fmtAmount = (v) => { const n = Number(String(v).replace(/,/g, '')); return v === '' || isNaN(n) ? v : n.toLocaleString(); };
+const parseAmount = (v) => String(v).replace(/[^0-9]/g, '');
 const SUPPORT_TYPE_LABELS = Object.fromEntries(SUPPORT_TYPES.map(s => [s.id, s.title]));
 const LOCATION_LABELS = Object.fromEntries(LOCATIONS.map(l => [l.value, l.label]));
 const CATEGORY_LABELS = Object.fromEntries(BENEFICIARY_CATEGORIES.map(c => [c.value, c.label]));
@@ -119,7 +121,7 @@ const StepRail = ({ current, labels, onJump }) => (
 const SupportRow = ({ index, item, isSelected, onSelect }) => {
   const num = String(index + 1).padStart(2, "0");
   return (
-    <li className={`cc-pick ${isSelected ? "is-selected" : ""}`}>
+    <li className={`cc-pick ${isSelected ? "is-selected" : ""}`} style={{ animationDelay: `${index * 0.04}s` }}>
       <button type="button" className="cc-pick-trigger" onClick={onSelect} aria-pressed={isSelected}>
         <span className="cc-pick-num">{num}</span>
         <span className="cc-pick-icon"><Icon name={item.icon} size={22} /></span>
@@ -140,7 +142,7 @@ const Step1Support = ({ value, onSelect }) => (
     <header className="cc-step-header">
       <span className="cc-step-eyebrow">Step 01 of 05</span>
       <h2>What kind of support is this case for?</h2>
-      <p>Choose the vertical that best matches the underlying need. You can refine specifics in the next steps.</p>
+      <p>Choose the vertical that best matches the underlying need. Every detail you provide strengthens the case for verification.</p>
     </header>
     <ol className="cc-pick-list">
       {SUPPORT_TYPES.map((s, i) => (
@@ -209,7 +211,7 @@ const Step4Funding = ({ value, onChange }) => (
     <div className="cc-form">
       <div className="cc-form-row">
         <FormField label="Pledge target (USD)" htmlFor="funding-amount" required>
-          <FormInput id="funding-amount" type="number" placeholder="0" value={value.amount} onChange={e => onChange({ ...value, amount: e.target.value })} min="0" />
+          <FormInput id="funding-amount" type="text" inputMode="numeric" placeholder="0" value={fmtAmount(value.amount)} onChange={e => onChange({ ...value, amount: parseAmount(e.target.value) })} />
         </FormField>
         <FormField label="Frequency" required>
           <FormRadioGroup name="frequency" options={FREQUENCIES} value={value.frequency} onChange={e => onChange({ ...value, frequency: e.target.value })} />
@@ -234,7 +236,7 @@ const Step5Confirm = ({ caseId, supportType, beneficiary, need, funding }) => {
       <header className="cc-step-header">
         <span className="cc-step-eyebrow">Step 05 of 05 · review</span>
         <h2>Case dossier ready for verification.</h2>
-        <p>A community ambassador reviews this dossier within 48 hours. You will receive milestone updates as it progresses through the audit trail.</p>
+        <p>A community ambassador reviews this dossier within 48 hours. Every milestone is recorded in the audit trail and shared with you.</p>
       </header>
       <article className="cc-dossier" aria-label="Case dossier summary">
         <header className="cc-dossier-head">
@@ -274,6 +276,11 @@ const RStep1Situation = ({ value, onChange }) => (
       </FormField>
       <FormField label="Urgency" required>
         <FormRadioGroup name="urgency" options={URGENCY_OPTIONS} value={value.urgency} onChange={e => onChange({ ...value, urgency: e.target.value })} />
+        {value.urgency === "critical" && (
+          <p style={{ fontSize: "13.5px", lineHeight: "1.5", color: "oklch(55% 0.12 45)", margin: "0", fontFamily: "inherit" }}>
+            Flagged for priority review within 24 hours.
+          </p>
+        )}
       </FormField>
     </div>
   </div>
@@ -294,7 +301,7 @@ const RStep2Outcome = ({ value, onChange }) => (
         <FormSelect id="outcome-pathway" options={VERTICAL_OPTIONS} value={value.pathway} onChange={e => onChange({ ...value, pathway: e.target.value })} placeholder="Select a support pathway" />
       </FormField>
       <FormField label="Ambassador or verifier contact" htmlFor="outcome-ambassador" hint="Optional — if you are already working with someone.">
-        <FormInput id="outcome-ambassador" placeholder="e.g. Fatima O. or ambassador name" value={value.ambassadorContact} onChange={e => onChange({ ...value, ambassadorContact: e.target.value })} />
+        <FormInput id="outcome-ambassador" placeholder="e.g. Ambassador Fatima O., or leave blank" value={value.ambassadorContact} onChange={e => onChange({ ...value, ambassadorContact: e.target.value })} />
       </FormField>
     </div>
   </div>
@@ -334,7 +341,7 @@ const RStep4Funding = ({ value, onChange }) => (
     </header>
     <div className="cc-form">
       <FormField label="Funding amount (USD)" htmlFor="r-funding-amount">
-        <FormInput id="r-funding-amount" type="number" placeholder="0" value={value.amount} onChange={e => onChange({ ...value, amount: e.target.value })} min="0" />
+        <FormInput id="r-funding-amount" type="text" inputMode="numeric" placeholder="0" value={fmtAmount(value.amount)} onChange={e => onChange({ ...value, amount: parseAmount(e.target.value) })} />
       </FormField>
       <p className="cc-optional-hint">Leave blank if unsure. An ambassador can help determine the right amount.</p>
     </div>
@@ -357,7 +364,7 @@ const RStep5Confirm = ({ caseId, situation, outcome, funding }) => {
       <header className="cc-step-header">
         <span className="cc-step-eyebrow">Step 05 of 05 · review</span>
         <h2>Your support request is ready for review.</h2>
-        <p>A community ambassador will review your submission and match you with supporters. You will be notified as your case progresses.</p>
+        <p>A community ambassador will review your submission and connect you with the right supporters. You will be notified at every milestone.</p>
       </header>
       <article className="cc-dossier" aria-label="Case dossier summary">
         <header className="cc-dossier-head">
@@ -445,7 +452,7 @@ export default function CaseCreation() {
 
   const advanceLabel = isReceiver
     ? (
-      isLast ? "Submit request" :
+      isLast ? "Submit to ambassador" :
       step === 0 ? "Continue to outcome" :
       step === 1 ? "Continue to documents" :
       step === 2 ? "Continue to funding" :
@@ -453,7 +460,7 @@ export default function CaseCreation() {
       "Continue"
     )
     : (
-      isLast ? "Submit case" :
+      isLast ? "Seal case for review" :
       step === 0 ? "Continue to beneficiary" :
       step === 1 ? "Continue to need" :
       step === 2 ? "Continue to funding" :
@@ -549,7 +556,7 @@ export default function CaseCreation() {
           <StepRail current={step} labels={stepLabels} onJump={setStep} />
 
           <section className="cc-panel" aria-live="polite">
-            {steps[step]}
+            <div key={step}>{steps[step]}</div>
           </section>
 
           <footer className="cc-actions">

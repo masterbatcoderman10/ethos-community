@@ -419,7 +419,7 @@ export default function RoleChooser() {
   const handleBack = () => setMode(null)
 
   return (
-    <>
+    <div className="rc-page">
       <Nav side="neutral" depth={0} active="role" />
       <main className="role-chooser">
         <div className="container">
@@ -438,6 +438,6 @@ export default function RoleChooser() {
         </div>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

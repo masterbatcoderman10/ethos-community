@@ -63,14 +63,6 @@ const VERTICALS = [
   { num: "06", icon: "legal", title: "Legal & Professional Services", desc: "Notarised documents, residency and licensing referrals, Sharia-compliance reviews and pro-bono legal support across host countries.", tags: ["Legal", "Sharia", "Pro-bono"], href: "/supporter/legal" }
 ];
 
-const PARTNERS = [
-  { icon: "sme",       name: "Technology Partner",           desc: "iWire — web, mobile, dashboard and integration development." },
-  { icon: "trend",     name: "Payment & Fintech Partners",    desc: "Regulated payment flows, wallets, cards and remittance integration." },
-  { icon: "health",    name: "Healthcare & Takaful Partners", desc: "Clinics, hospitals, telemedicine providers and cooperative insurance operators." },
-  { icon: "education", name: "Education & CPD Partners",      desc: "Universities, online learning providers and professional certification bodies." },
-  { icon: "legal",     name: "Professional Service Partners", desc: "Lawyers, accountants, auditors, tax advisers and immigration specialists." },
-  { icon: "users",     name: "Community Partners",            desc: "Diaspora associations, women networks, student groups, NGOs and community ambassadors." }
-];
 
 const readStoredEthosRole = () => {
   if (typeof getEthosRole === "function") return getEthosRole();
@@ -97,19 +89,40 @@ const getStoredSideDashboardUrl = (side) => {
   return "/";
 };
 
+const ROLE_LABELS = {
+  supporter: "Supporter", mentor: "Mentor", ambassador: "Ambassador",
+  finance: "Finance Partner", development: "Development Partner",
+  beneficiary: "Beneficiary", sme: "SME Member",
+};
+
 const ReturningRibbon = () => {
   const [role, setRole] = useState(null);
-  useEffect(() => { setRole(readStoredEthosRole()); }, []);
+  const [greeting, setGreeting] = useState("Welcome back");
+
+  useEffect(() => {
+    setRole(readStoredEthosRole());
+    const h = new Date().getHours();
+    setGreeting(h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : h < 21 ? "Good evening" : "Welcome back");
+  }, []);
+
   if (!role) return null;
   const side = getStoredRoleSide(role);
   if (!side) return null;
-  const sideLabel = side === "supporter" ? "Supporter" : "Beneficiary";
+  const roleLabel = ROLE_LABELS[role] || (side === "supporter" ? "Supporter" : "Beneficiary");
+  const subMessage = side === "supporter" ? "Your cases are waiting." : "Your support network is here.";
   const href = getStoredSideDashboardUrl(side);
+
   return (
     <div className="returning-ribbon">
       <div className="container returning-ribbon-inner">
-        <span className="returning-ribbon-label">Welcome back, {sideLabel}.</span>
-        <Link to={href} className="returning-ribbon-link">Return to your dashboard <Icon name="arrow" size={14} /></Link>
+        <div className="returning-ribbon-left">
+          <span className="returning-dot" aria-hidden="true" />
+          <span className="returning-greeting">{greeting}, {roleLabel}.</span>
+          <span className="returning-sub">{subMessage}</span>
+        </div>
+        <Link to={href} className="returning-ribbon-link">
+          Open dashboard <Icon name="arrow" size={13} />
+        </Link>
       </div>
     </div>
   );
@@ -336,15 +349,18 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* PARTNERSHIP STRIP */}
-      <section className="section-block" id="ecosystem" style={{background:"var(--cream-2)",borderTop:"1px solid var(--line)",borderBottom:"1px solid var(--line)"}}>
+      {/* PARTNER MARQUEE */}
+      <section className="partner-section" id="ecosystem">
         <div className="container">
-          <Reveal className="block-head">
-            <div><div className="section-num">§ Ecosystem</div><h2>An Ecosystem of Trusted Partners</h2></div>
-            <p style={{fontSize:16,lineHeight:1.65,color:"var(--ink-soft)",maxWidth:480}}>Kushian™ connects diaspora supporters with verified providers, finance partners and community institutions, powered by Ethos Community™ governance and infrastructure.</p>
+          <Reveal className="partner-head">
+            <div>
+              <div className="section-num">§ 04 / Ecosystem</div>
+              <h2 className="partner-section-title">Our Partner Network</h2>
+            </div>
+            <p className="partner-section-lede">Seven partner categories — technology, payment, healthcare, education, finance, professional services, and community — coordinated by Ethos Community™ governance and delivered on the ground.</p>
           </Reveal>
-          <PartnershipStrip partners={PARTNERS}/>
         </div>
+        <PartnershipStrip />
       </section>
 
       <div className="scalability-band">

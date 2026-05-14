@@ -1,5 +1,6 @@
 /* role chooser — editorial role registry */
-.role-chooser{padding:88px 0 120px}
+.rc-page{min-height:100dvh;display:flex;flex-direction:column;overflow-x:hidden}
+.role-chooser{flex:1;padding:88px 0 120px}
 @media(max-width:880px){.role-chooser{padding:48px 0 72px}}
 
 .role-chooser-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:88px;align-items:start}
@@ -119,10 +120,11 @@
 @media(max-width:640px){.rc-auth-secondary{align-items:stretch;flex-direction:column}.rc-auth-secondary .btn{justify-content:center}}
 
 /* ── mode chooser cards ── */
-.rc-mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:560px){.rc-mode-grid{grid-template-columns:1fr}}
+.rc-mode-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media(max-width:880px){.rc-mode-grid{grid-template-columns:1fr}}
 
-.rc-mode-card{display:flex;align-items:flex-start;gap:18px;padding:28px 24px;background:var(--cream);border:1px solid var(--line);border-radius:8px;cursor:pointer;text-align:left;color:inherit;font-family:inherit;transition:border-color .2s ease,box-shadow .2s ease,transform .2s cubic-bezier(.2,.65,.3,1)}
+.rc-mode-card{display:flex;align-items:flex-start;gap:18px;padding:28px 24px;background:var(--cream);border:1px solid var(--line);border-radius:8px;cursor:pointer;text-align:left;color:inherit;font-family:inherit;min-width:0;width:100%;transition:border-color .2s ease,box-shadow .2s ease,transform .2s cubic-bezier(.2,.65,.3,1)}
+@media(max-width:640px){.rc-mode-card{padding:20px 18px;gap:14px}}
 .rc-mode-card:hover{border-color:rgba(14,59,46,.25);box-shadow:0 8px 24px -16px rgba(14,59,46,.2);transform:translateY(-2px)}
 .rc-mode-card:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 
@@ -137,15 +139,15 @@
 .rc-back-btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 
 /* ── profile cards ── */
-.rc-login{}
+.rc-login{min-width:0}
 
 .rc-login-section{margin-bottom:36px}
 .rc-login-section:last-child{margin-bottom:0}
 
 .rc-login-heading{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:20px;line-height:1.2;letter-spacing:var(--display-tracking);color:var(--ink);margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 
-.rc-login-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.rc-login-grid{grid-template-columns:1fr}}
+.rc-login-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media(max-width:880px){.rc-login-grid{grid-template-columns:1fr}}
 
 .rc-login-empty{font-size:14px;line-height:1.55;color:var(--ink-soft);margin:0;padding:18px;border:1px dashed var(--line);border-radius:6px;background:var(--cream)}
 
@@ -163,7 +165,7 @@
 .rc-login-card:hover .rc-login-card-arrow{opacity:1;transform:translateX(2px)}
 
 /* ── registration form ── */
-.rc-register{}
+.rc-register{min-width:0}
 
 .rc-register-header{margin-bottom:28px}
 .rc-register-header h3{font-family:var(--ff-display);font-weight:var(--display-weight);font-size:24px;line-height:1.15;letter-spacing:var(--display-tracking);color:var(--ink);margin:0 0 8px}
@@ -176,8 +178,8 @@
 .rc-register-submit:disabled:hover{background:var(--cream-2);transform:none;box-shadow:none}
 
 /* ── checkbox group ── */
-.rc-checkbox-group{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:560px){.rc-checkbox-group{grid-template-columns:1fr}}
+.rc-checkbox-group{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+@media(max-width:640px){.rc-checkbox-group{grid-template-columns:1fr}}
 
 .rc-checkbox{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--line);border-radius:6px;background:var(--cream);cursor:pointer;font-size:13.5px;color:var(--ink);transition:border-color .15s ease,background .15s ease}
 .rc-checkbox input{accent-color:var(--green)}
@@ -185,4 +187,4 @@
 .rc-checkbox.checked{border-color:var(--green);background:rgba(14,59,46,.04)}
 
 /* ── register side picker ── */
-.rc-register-pick{}
+.rc-register-pick{min-width:0}

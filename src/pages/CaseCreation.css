@@ -1,7 +1,7 @@
 /* case creation — registration ticket */
 .case-creation{padding:64px 0 120px;background:var(--cream)}
 @media(max-width:880px){.case-creation{padding:40px 0 80px}}
-.case-creation .container{max-width:1080px}
+.case-creation .container{max-width:860px}
 
 /* header */
 .cc-header{margin-bottom:48px;max-width:780px}
@@ -15,6 +15,7 @@
 /* step rail */
 .cc-rail{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:0;margin:0 0 56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 @media(max-width:720px){.cc-rail{grid-template-columns:repeat(5,minmax(64px,1fr));overflow-x:auto;border-bottom-color:transparent}}
+@media(max-width:520px){.cc-rail-label{display:none}.cc-rail-trigger{gap:0;padding:18px 12px}}
 
 .cc-rail-step{position:relative;display:flex;align-items:stretch;min-width:0}
 .cc-rail-trigger{display:flex;flex-direction:column;align-items:flex-start;gap:10px;flex:1;padding:22px 18px;background:transparent;border:0;cursor:pointer;text-align:left;color:inherit;font-family:inherit;transition:background .25s ease}
@@ -82,7 +83,7 @@
 
 /* dossier (step 5) */
 .cc-confirm{max-width:780px}
-.cc-dossier{background:var(--cream-2);border:1px solid var(--line);border-radius:6px;padding:32px 36px;position:relative;overflow:hidden}
+.cc-dossier{background:var(--cream-2);border:1px solid var(--line);border-radius:12px;padding:32px 36px;position:relative;overflow:hidden}
 .cc-dossier::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:repeating-linear-gradient(90deg,var(--green) 0,var(--green) 8px,transparent 8px,transparent 16px)}
 @media(max-width:560px){.cc-dossier{padding:26px 22px}}
 
@@ -94,7 +95,7 @@
 .cc-dossier-id-label{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .cc-dossier-id-value{font-family:var(--ff-display);font-size:32px;line-height:1;letter-spacing:var(--display-tracking);color:var(--ink)}
 
-.cc-dossier-grid{display:grid;grid-template-columns:140px 1fr;gap:18px 28px;margin:0}
+.cc-dossier-grid{display:grid;grid-template-columns:minmax(130px,160px) 1fr;gap:18px 28px;margin:0}
 .cc-dossier-grid>div{display:contents}
 .cc-dossier-grid dt{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:4px;margin:0}
 .cc-dossier-grid dd{font-size:15px;line-height:1.55;color:var(--ink);margin:0;padding-bottom:18px;border-bottom:1px dashed rgba(20,21,18,.12)}
@@ -105,12 +106,13 @@
   .cc-dossier-grid dd{padding-bottom:14px}
 }
 
-.cc-dossier-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:28px;padding-top:20px;border-top:1px dashed rgba(20,21,18,.18);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--ink-soft)}
+.cc-dossier-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin:28px -36px -32px;padding:18px 36px;background:rgba(14,59,46,.08);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--ink)}
+@media(max-width:560px){.cc-dossier-foot{margin:20px -22px -26px;padding:14px 22px}}
 .cc-dossier-foot span{display:inline-flex;align-items:center;gap:8px}
 .cc-dossier-foot svg{color:var(--green)}
 
 /* actions */
-.cc-actions{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cc-actions{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:20px 28px;background:var(--cream-2);border:1px solid var(--line);border-radius:10px;margin-top:8px}
 @media(max-width:680px){.cc-actions{grid-template-columns:1fr 1fr;gap:14px;padding:20px 0}}
 
 .cc-actions-status{text-align:center;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
@@ -122,4 +124,76 @@
 
 @media (prefers-reduced-motion: reduce){
   .cc-rail-trigger,.cc-pick,.cc-pick-icon,.cc-pick-meta svg,.cc-pick-num,.cc-pick-title{transition:none !important}
+}
+
+/* ─── delight enhancements ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference){
+  /* 1. step content entrance */
+  @keyframes cc-step-enter{
+    from{opacity:0;transform:translateY(14px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .cc-step-header{animation:cc-step-enter 0.35s cubic-bezier(0.16,1,0.3,1) both}
+  .cc-form,.cc-pick-list{animation:cc-step-enter 0.38s cubic-bezier(0.16,1,0.3,1) 0.06s both}
+
+  /* 2. rail active underline slide-in */
+  @keyframes cc-rail-line-in{
+    from{transform:scaleX(0);transform-origin:left center}
+    to{transform:scaleX(1)}
+  }
+  .cc-rail-active .cc-rail-trigger::after{
+    transform-origin:left center;
+    animation:cc-rail-line-in 0.3s cubic-bezier(0.16,1,0.3,1) both;
+  }
+
+  /* 3. rail done checkmark pop */
+  @keyframes cc-done-pop{
+    from{transform:scale(0.5);opacity:0}
+    50%{transform:scale(1.15)}
+    to{transform:scale(1);opacity:1}
+  }
+  .cc-rail-done .cc-rail-num svg{animation:cc-done-pop 0.32s cubic-bezier(0.16,1,0.3,1) both}
+
+  /* 4. pick-row selection flash */
+  @keyframes cc-pick-chose{
+    0%{background:transparent}
+    25%{background:oklch(22% 0.08 155 / 0.08)}
+    100%{background:oklch(22% 0.08 155 / 0.04)}
+  }
+  .cc-pick.is-selected{animation:cc-pick-chose 0.4s cubic-bezier(0.16,1,0.3,1) both}
+
+  /* 5. dossier entrance */
+  @keyframes cc-dossier-enter{
+    from{opacity:0;transform:translateY(20px) scale(0.99)}
+    to{opacity:1;transform:translateY(0) scale(1)}
+  }
+  .cc-confirm .cc-dossier{animation:cc-dossier-enter 0.5s cubic-bezier(0.16,1,0.3,1) 0.15s both}
+
+  /* 6. dossier tag pulse dot */
+  @keyframes cc-tag-pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:0.45;transform:scale(0.75)}
+  }
+  .cc-dossier-tag::before{
+    content:"";
+    display:inline-block;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:oklch(65% 0.12 70);
+    margin-right:8px;
+    vertical-align:middle;
+    animation:cc-tag-pulse 2.4s ease-in-out 0.8s infinite;
+  }
+
+  /* 7. primary button lift + press */
+  .btn-primary:not(:disabled){transition:transform 0.18s cubic-bezier(0.16,1,0.3,1),box-shadow 0.18s cubic-bezier(0.16,1,0.3,1)}
+  .btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 20px oklch(22% 0.08 155 / 0.22)}
+  .btn-primary:active:not(:disabled){transform:translateY(1px);box-shadow:0 1px 6px oklch(22% 0.08 155 / 0.14)}
+
+  /* 8. chosen pill entrance */
+  @keyframes cc-pill-enter{
+    from{opacity:0;transform:scale(0.8)}
+    to{opacity:1;transform:scale(1)}
+  }
+  .cc-pick-pill{animation:cc-pill-enter 0.25s cubic-bezier(0.16,1,0.3,1) both}
 }
