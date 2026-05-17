@@ -1,3 +1,85 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Vite / caches
+.vite/
+*.vite-temp/
+
+# Playwright MCP logs
+.playwright-mcp/
+
+# Impeccable live sessions
 .impeccable/live/sessions/
 .impeccable/live/server.json
 .impeccable-live.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Render outputs
+hyperframes/**/renders/
+*.mp4
+*.mov
+*.webm
+*.avi
+*.wav
+*.mp3
+*.aac
+*.ogg
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# Large images
+*.psd
+*.ai
+*.sketch
+
+# Uploads (user-generated)
+uploads/*
+!uploads/.gitkeep
+
+# Coverage / test artifacts
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+# Misc
+.cache/
+.temp/
+tmp/
