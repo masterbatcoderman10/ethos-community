@@ -18,12 +18,12 @@ const HeroMission = () => (
     <div className="eyebrow">Kushian™ &nbsp;·&nbsp; Powered by Ethos Community™</div>
     <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/></div>
     <h1 className="display">A diaspora<br/>rebuilding Sudan,<br/><em>one family at a time.</em></h1>
-    <p className="lede">Kushian™ is powered by Ethos Community™, a Connection-as-a-Service platform linking Sudanese diaspora supporters in the GCC, UK, Europe and USA with displaced families, students, women professionals and SMEs through partner-enabled support.</p>
+    <p className="lede">Kushian™ is powered by Ethos Community™, a Community-as-a-Service platform that converts informal diaspora support into verified, purpose-linked and measurable outcomes for displaced families, students, women professionals and SMEs in Sudan.</p>
   </>
 );
 const HeroProposition = () => (
   <>
-    <div className="eyebrow">Connection-as-a-Service · CaaS</div>
+    <div className="eyebrow">Community-as-a-Service · CaaS</div>
     <div className="hero-eyebrow-kushian"><KushianBadge variant="full"/></div>
     <h1 className="display">Six verticals.<br/>One <em>trusted</em><br/>support network.</h1>
     <p className="lede">Education and mentorship, healthcare and Takaful, purpose-linked family support, women empowerment, SME recovery, and legal services — coordinated end-to-end by Kushian™ for displaced Sudanese communities.</p>
